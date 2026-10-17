@@ -1,4 +1,5 @@
 import React from 'react';
+import { KolamFrame } from './KolamFrame';
 import { Sparkles, ArrowRight, ShieldCheck, TrendingUp, Cpu } from 'lucide-react';
 
 interface PartnerInvitationProps {
@@ -9,9 +10,10 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
   return (
     <section className="partner-invitation-section">
       <div className="container">
-        <div className="partner-banner-card">
+        {/* KolamFrame with Turmeric Yellow variant matching Visual Reference 2 */}
+        <KolamFrame variant="turmeric" hasCorners={true}>
           <div className="partner-text-block">
-            <div className="badge-tag">
+            <div className="badge-tag" style={{ background: '#FFFFFF', color: '#8C6500' }}>
               <Sparkles size={13} />
               <span>FoodPreneur Growth Engine</span>
             </div>
@@ -50,39 +52,18 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
               </button>
             </div>
           </div>
-        </div>
+        </KolamFrame>
       </div>
 
       <style>{`
         .partner-invitation-section {
           padding-top: 60px;
-          padding-bottom: 100px;
+          padding-bottom: 80px;
           background-color: var(--color-warm-white);
         }
 
-        .partner-banner-card {
-          background: linear-gradient(135deg, #FFFDF5 0%, #FFF8E1 100%);
-          border-radius: var(--radius-lg);
-          padding: 64px 48px;
-          border: 1.5px solid rgba(255, 210, 51, 0.5);
-          box-shadow: 0 16px 40px rgba(255, 210, 51, 0.12);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .partner-banner-card::after {
-          content: "";
-          position: absolute;
-          right: -50px;
-          bottom: -50px;
-          width: 260px;
-          height: 260px;
-          background: radial-gradient(circle, rgba(255, 210, 51, 0.25) 0%, transparent 70%);
-          pointer-events: none;
-        }
-
         .partner-text-block {
-          max-width: 800px;
+          max-width: 820px;
           position: relative;
           z-index: 1;
         }
@@ -99,7 +80,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
 
         .partner-desc {
           font-size: 1.08rem;
-          color: var(--color-text-secondary);
+          color: #222222;
           line-height: 1.65;
           margin-bottom: 32px;
         }
@@ -107,7 +88,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         .partner-benefits-row {
           display: flex;
           flex-wrap: wrap;
-          gap: 16px;
+          gap: 14px;
           margin-bottom: 36px;
         }
 
@@ -120,9 +101,9 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           padding: 10px 18px;
           border-radius: var(--radius-capsule);
           font-size: 0.88rem;
-          font-weight: 600;
+          font-weight: 700;
           color: var(--color-ink-black);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .benefit-badge svg {
@@ -130,9 +111,6 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         }
 
         @media (max-width: 768px) {
-          .partner-banner-card {
-            padding: 36px 24px;
-          }
           .partner-benefits-row {
             flex-direction: column;
             gap: 10px;

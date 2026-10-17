@@ -8,14 +8,29 @@ interface EditorialHeroProps {
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
   return (
     <section className="editorial-hero">
+      {/* Background Kolam Linework Pattern */}
+      <div className="hero-kolam-backdrop" aria-hidden="true">
+        <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="hero-kolam-svg">
+          {/* Symmetrical South Indian Pulli Kolam Loops */}
+          <circle cx="400" cy="400" r="320" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.35" />
+          <circle cx="400" cy="400" r="240" stroke="#FFD233" strokeWidth="1.5" opacity="0.25" />
+          <circle cx="400" cy="400" r="160" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="4 4" opacity="0.4" />
+          
+          <path d="M400,80 C480,240 560,240 720,400 C560,560 480,560 400,720 C320,560 240,560 80,400 C240,240 320,240 400,80 Z" 
+                stroke="#FFD233" strokeWidth="1.8" fill="none" opacity="0.3" />
+          <path d="M400,160 C460,280 520,280 640,400 C520,520 460,520 400,640 C340,520 280,520 160,400 C280,280 340,280 400,160 Z" 
+                stroke="#FFD233" strokeWidth="1.4" fill="none" opacity="0.35" />
+        </svg>
+      </div>
+
       <div className="container hero-container">
-        {/* Brand Tag Pill */}
+        {/* Cultural Tag Pill */}
         <div className="hero-pill-badge">
           <Sparkles size={14} className="hero-sparkle" />
           <span>FOOD • CULTURE • CONNECT</span>
         </div>
 
-        {/* Reference C: Editorial headline with inline rounded food imagery inserted into text */}
+        {/* Reference C: Editorial headline with inline rounded food imagery */}
         <h1 className="hero-editorial-headline">
           The taste of{' '}
           <span className="inline-food-capsule inline-food-idli" title="Malli Poo Idli">
@@ -56,7 +71,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           </button>
         </div>
 
-        {/* Supporting Verified Labels (No fake statistics) */}
+        {/* Supporting Verified Labels */}
         <div className="hero-supporting-labels">
           <div className="support-label-item">
             <span className="label-dot" />
@@ -78,24 +93,33 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
       <style>{`
         .editorial-hero {
           position: relative;
-          padding-top: 80px;
-          padding-bottom: 90px;
+          padding-top: 90px;
+          padding-bottom: 100px;
           background-color: var(--color-warm-white);
           overflow: hidden;
           text-align: center;
         }
 
-        .editorial-hero::before {
-          content: "";
+        .hero-kolam-backdrop {
           position: absolute;
-          top: -20%;
+          top: 50%;
           left: 50%;
-          transform: translateX(-50%);
-          width: 900px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(255, 210, 51, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+          transform: translate(-50%, -50%);
+          width: 820px;
+          height: 820px;
           pointer-events: none;
           z-index: 0;
+          animation: slowKolamRotate 80s linear infinite;
+        }
+
+        @keyframes slowKolamRotate {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-kolam-svg {
+          width: 100%;
+          height: 100%;
         }
 
         .hero-container {
@@ -110,9 +134,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 8px 18px;
+          padding: 8px 20px;
           background: #FFFFFF;
-          border: 1.5px solid rgba(255, 210, 51, 0.6);
+          border: 1.5px solid rgba(255, 210, 51, 0.7);
           box-shadow: 0 4px 14px rgba(255, 210, 51, 0.18);
           border-radius: var(--radius-capsule);
           font-size: 0.78rem;
@@ -126,7 +150,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           color: #D49B00;
         }
 
-        /* Reference C: Headline with inline food imagery */
         .hero-editorial-headline {
           font-size: clamp(2.4rem, 5.8vw, 4.4rem);
           font-weight: 800;
