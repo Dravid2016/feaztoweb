@@ -1,91 +1,104 @@
 import React from 'react';
-import { ArrowRight, Sparkles, ChefHat } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
 
 interface EditorialHeroProps {
   navigate: (route: string) => void;
 }
 
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
+  const verifiedCities = ['Bengaluru', 'Mysuru', 'Hyderabad', 'Chennai', 'Coimbatore', 'Kochi'];
+
   return (
     <section className="editorial-hero">
-      {/* Background Kolam Linework Pattern */}
+      {/* Symmetrical South Indian Pulli Kolam Radial Background */}
       <div className="hero-kolam-backdrop" aria-hidden="true">
         <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="hero-kolam-svg">
-          {/* Symmetrical South Indian Pulli Kolam Loops */}
-          <circle cx="400" cy="400" r="320" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="6 4" opacity="0.35" />
-          <circle cx="400" cy="400" r="240" stroke="#FFD233" strokeWidth="1.5" opacity="0.25" />
-          <circle cx="400" cy="400" r="160" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="4 4" opacity="0.4" />
-          
-          <path d="M400,80 C480,240 560,240 720,400 C560,560 480,560 400,720 C320,560 240,560 80,400 C240,240 320,240 400,80 Z" 
-                stroke="#FFD233" strokeWidth="1.8" fill="none" opacity="0.3" />
-          <path d="M400,160 C460,280 520,280 640,400 C520,520 460,520 400,640 C340,520 280,520 160,400 C280,280 340,280 400,160 Z" 
-                stroke="#FFD233" strokeWidth="1.4" fill="none" opacity="0.35" />
+          <circle cx="400" cy="400" r="340" stroke="#FFD233" strokeWidth="1" strokeDasharray="6 4" opacity="0.3" />
+          <circle cx="400" cy="400" r="260" stroke="#FFD233" strokeWidth="1.2" opacity="0.25" />
+          <circle cx="400" cy="400" r="180" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="4 4" opacity="0.35" />
+          <path d="M400,60 C480,220 580,220 740,400 C580,580 480,580 400,740 C320,580 220,580 60,400 C220,220 320,220 400,60 Z" 
+                stroke="#FFD233" strokeWidth="1.8" fill="none" opacity="0.25" />
+          <path d="M400,140 C460,260 540,260 660,400 C540,540 460,540 400,660 C340,540 260,540 140,400 C260,260 340,260 400,140 Z" 
+                stroke="#FFD233" strokeWidth="1.4" fill="none" opacity="0.3" />
         </svg>
       </div>
 
       <div className="container hero-container">
-        {/* Cultural Tag Pill */}
+        {/* Plenti-Style Pill Trust Badge */}
         <div className="hero-pill-badge">
-          <Sparkles size={14} className="hero-sparkle" />
-          <span>FOOD • CULTURE • CONNECT</span>
+          <span className="live-pulse-dot" />
+          <span>FOOD • CULTURE • CONNECT — Home food with cloud-kitchen precision</span>
         </div>
 
-        {/* Reference C: Editorial headline with inline rounded food imagery */}
+        {/* Reference C: Plenti-Style Editorial Headline with Inline Rounded Food Capsules */}
         <h1 className="hero-editorial-headline">
           The taste of{' '}
-          <span className="inline-food-capsule inline-food-idli" title="Malli Poo Idli">
-            <img src="/brand/plate-idli.png" alt="Steamed Jasmine Idli" />
+          <span className="inline-food-capsule inline-food-idli" title="Stone Ground Jasmine Idli">
+            <img src="/brand/plate-idli.png" alt="Malli Poo Idli" />
           </span>{' '}
           home,
           <br className="headline-break" />
           wherever life{' '}
-          <span className="inline-food-capsule inline-food-biryani" title="Handi Dum Biryani">
-            <img src="/brand/plate-biryani.png" alt="Handi Dum Biryani" />
+          <span className="inline-food-capsule inline-food-biryani" title="Seeraga Samba Dum Biryani">
+            <img src="/brand/plate-biryani.png" alt="Dum Biryani" />
           </span>{' '}
           takes you.
         </h1>
 
         {/* Narrative Subtitle */}
         <p className="hero-narrative-copy">
-          FEAzTO bridges the emotional nostalgia of regional home recipes with modern cloud-kitchen precision. Discover authentic dishes from verified FoodPreneurs, prepared with heirloom methods and delivered with unwavering hygiene.
+          Discover authentic regional flavours and heirloom home kitchens. We empower certified FoodPreneurs with modern food safety audits, cloud infrastructure, and doorstep precision delivery.
         </p>
 
-        {/* CTAs */}
+        {/* Plenti-Inspired Live City Badges */}
+        <div className="hero-cities-ticker">
+          <span className="cities-label">Ecosystem Clusters:</span>
+          <div className="cities-pills">
+            {verifiedCities.map((city, idx) => (
+              <span key={city} className={`city-chip ${idx === 0 ? 'active' : ''}`}>
+                {idx === 0 && <span className="city-active-dot" />}
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Dual Actions Group (Plenti Style) */}
         <div className="hero-actions-group">
           <button 
             type="button" 
-            onClick={() => navigate('/discover')}
+            onClick={() => navigate('/download')}
             className="btn btn-yellow hero-primary-btn"
           >
-            <span>Explore Regional Flavours</span>
+            <span>Download Early Access</span>
             <ArrowRight size={18} />
           </button>
 
           <button 
             type="button" 
             onClick={() => navigate('/our-story')}
-            className="btn btn-outline hero-secondary-btn"
+            className="btn btn-white hero-secondary-btn"
           >
-            <ChefHat size={18} />
-            <span>Our Heritage Story</span>
+            <Play size={16} fill="currentColor" />
+            <span>Discover The Story</span>
           </button>
         </div>
 
-        {/* Supporting Verified Labels */}
+        {/* Supporting Verified Trust Badges */}
         <div className="hero-supporting-labels">
           <div className="support-label-item">
             <span className="label-dot" />
-            <span>FSSAI Hygiene Audited</span>
+            <span>FSSAI Hygiene Audited Kitchens</span>
           </div>
           <div className="support-label-separator">•</div>
           <div className="support-label-item">
             <span className="label-dot" />
-            <span>Certified FoodPreneurs</span>
+            <span>Verified Generational FoodPreneurs</span>
           </div>
           <div className="support-label-separator">•</div>
           <div className="support-label-item">
             <span className="label-dot" />
-            <span>Zero Preservative Kitchens</span>
+            <span>100% Zero Synthetic Additives</span>
           </div>
         </div>
       </div>
@@ -93,8 +106,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
       <style>{`
         .editorial-hero {
           position: relative;
-          padding-top: 90px;
-          padding-bottom: 100px;
+          padding-top: 88px;
+          padding-bottom: 104px;
           background-color: var(--color-warm-white);
           overflow: hidden;
           text-align: center;
@@ -105,11 +118,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 820px;
-          height: 820px;
+          width: 860px;
+          height: 860px;
           pointer-events: none;
           z-index: 0;
-          animation: slowKolamRotate 80s linear infinite;
+          animation: slowKolamRotate 90s linear infinite;
         }
 
         @keyframes slowKolamRotate {
@@ -133,31 +146,41 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .hero-pill-badge {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 8px 20px;
+          gap: 10px;
+          padding: 8px 22px;
           background: #FFFFFF;
           border: 1.5px solid rgba(255, 210, 51, 0.7);
-          box-shadow: 0 4px 14px rgba(255, 210, 51, 0.18);
+          box-shadow: 0 4px 16px rgba(255, 210, 51, 0.18);
           border-radius: var(--radius-capsule);
-          font-size: 0.78rem;
+          font-size: 0.8rem;
           font-weight: 700;
-          letter-spacing: 0.12em;
+          letter-spacing: 0.08em;
           color: #8C6500;
           margin-bottom: 28px;
         }
 
-        .hero-sparkle {
-          color: #D49B00;
+        .live-pulse-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #2E7D32;
+          box-shadow: 0 0 8px rgba(46, 125, 50, 0.8);
+          animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.7; }
         }
 
         .hero-editorial-headline {
-          font-size: clamp(2.4rem, 5.8vw, 4.4rem);
+          font-size: clamp(2.4rem, 5.6vw, 4.3rem);
           font-weight: 800;
           color: var(--color-ink-black);
           line-height: 1.22;
           letter-spacing: -0.03em;
-          max-width: 960px;
-          margin-bottom: 28px;
+          max-width: 980px;
+          margin-bottom: 24px;
         }
 
         .inline-food-capsule {
@@ -180,13 +203,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .inline-food-idli {
-          width: clamp(52px, 7vw, 84px);
-          height: clamp(34px, 4.5vw, 52px);
+          width: clamp(54px, 7vw, 86px);
+          height: clamp(34px, 4.5vw, 54px);
           margin: 0 8px;
         }
 
         .inline-food-biryani {
-          width: clamp(58px, 7.5vw, 92px);
+          width: clamp(60px, 7.5vw, 94px);
           height: clamp(36px, 4.8vw, 56px);
           margin: 0 8px;
         }
@@ -198,12 +221,65 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .hero-narrative-copy {
-          font-size: clamp(1.05rem, 2vw, 1.25rem);
+          font-size: clamp(1.05rem, 1.8vw, 1.25rem);
           color: var(--color-text-secondary);
           max-width: 720px;
           line-height: 1.7;
-          margin-bottom: 40px;
+          margin-bottom: 32px;
           font-weight: 400;
+        }
+
+        /* Cities Ticker */
+        .hero-cities-ticker {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 36px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .cities-label {
+          font-size: 0.78rem;
+          font-weight: 700;
+          color: #777777;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+
+        .cities-pills {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
+        .city-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 4px 12px;
+          border-radius: var(--radius-capsule);
+          background: #FFFFFF;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--color-text-secondary);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .city-chip.active {
+          border-color: rgba(255, 210, 51, 0.8);
+          color: var(--color-ink-black);
+          background: #FFFDF5;
+          font-weight: 700;
+        }
+
+        .city-active-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #2E7D32;
         }
 
         .hero-actions-group {
@@ -223,7 +299,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .hero-secondary-btn {
           padding: 16px 32px;
           font-size: 1.02rem;
-          background: #FFFFFF;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
         }
 
         .hero-supporting-labels {
@@ -232,7 +308,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           gap: 16px;
           flex-wrap: wrap;
           justify-content: center;
-          padding-top: 16px;
+          padding-top: 20px;
           border-top: 1px solid rgba(0, 0, 0, 0.07);
         }
 
