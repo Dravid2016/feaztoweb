@@ -22,10 +22,19 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           </p>
         </div>
 
-        {/* Kitchen Cards Grid */}
+        {/* Kitchen Cards Grid with Cultural Framing */}
         <div className="kitchen-stories-grid">
           {KITCHEN_STORIES.map((cook) => (
-            <div key={cook.id} className="cook-profile-card">
+            <div key={cook.id} className="cultural-cook-card">
+              {/* Kolam Geometric Header Strip */}
+              <div className="cook-card-kolam-strip" aria-hidden="true">
+                <svg viewBox="0 0 500 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0,6 Q25,0 50,6 T100,6 T150,6 T200,6 T250,6 T300,6 T350,6 T400,6 T450,6 T500,6" 
+                        stroke="#FFD233" strokeWidth="1.2" fill="none" strokeDasharray="4 2" />
+                  <circle cx="250" cy="6" r="2.5" fill="#E5B81C" />
+                </svg>
+              </div>
+
               <div className="cook-image-side">
                 <img src={cook.image} alt={cook.title} className="cook-visual-img" />
                 <div className="cook-experience-badge">
@@ -117,19 +126,32 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           margin-bottom: 50px;
         }
 
-        .cook-profile-card {
+        .cultural-cook-card {
           background: var(--color-warm-white);
           border-radius: var(--radius-lg);
-          border: 1px solid rgba(0, 0, 0, 0.07);
+          border: 1.5px solid rgba(255, 210, 51, 0.45);
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          transition: transform 0.28s ease, box-shadow 0.28s ease;
+          transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+          position: relative;
         }
 
-        .cook-profile-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+        .cultural-cook-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 44px rgba(255, 210, 51, 0.16);
+          border-color: rgba(255, 210, 51, 0.9);
+        }
+
+        .cook-card-kolam-strip {
+          width: 100%;
+          line-height: 0;
+          padding: 4px 16px;
+          background: #FFFDF5;
+        }
+        .cook-card-kolam-strip svg {
+          width: 100%;
+          height: 12px;
         }
 
         .cook-image-side {
@@ -145,7 +167,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           transition: transform 0.4s ease;
         }
 
-        .cook-profile-card:hover .cook-visual-img {
+        .cultural-cook-card:hover .cook-visual-img {
           transform: scale(1.05);
         }
 
@@ -153,7 +175,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           position: absolute;
           bottom: 16px;
           left: 16px;
-          background: rgba(17, 17, 17, 0.85);
+          background: rgba(17, 17, 17, 0.88);
           backdrop-filter: blur(8px);
           color: var(--color-brand-yellow);
           padding: 6px 14px;
@@ -163,6 +185,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           display: flex;
           align-items: center;
           gap: 6px;
+          border: 1px solid rgba(255, 210, 51, 0.4);
         }
 
         .cook-info-side {
@@ -207,7 +230,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           font-size: 0.9rem;
           color: #333333;
           background: #FFFFFF;
-          padding: 12px 16px;
+          padding: 14px 18px;
           border-radius: 8px;
           border-left: 3px solid var(--color-brand-yellow);
           margin-bottom: 16px;
@@ -227,7 +250,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           gap: 10px;
           margin-top: auto;
           padding-top: 14px;
-          border-top: 1px dashed rgba(0, 0, 0, 0.08);
+          border-top: 1px dashed rgba(255, 210, 51, 0.4);
         }
 
         .signature-label {

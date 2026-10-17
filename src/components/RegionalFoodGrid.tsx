@@ -22,11 +22,37 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           </p>
         </div>
 
-        {/* Editorial Food Cards Grid */}
+        {/* Editorial Food Cards Grid with Cultural Kolam Framing */}
         <div className="food-grid">
           {REGIONAL_FOODS.map((dish) => (
-            <div key={dish.id} className="food-card">
+            <div key={dish.id} className="cultural-food-card">
+              {/* Kolam Corner Accent Linework */}
+              <div className="card-kolam-corner top-left" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4,28 C4,16 16,4 28,4" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
+                  <circle cx="16" cy="16" r="2" fill="#E5B81C" />
+                </svg>
+              </div>
+              <div className="card-kolam-corner top-right" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M28,28 C28,16 16,4 4,4" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
+                  <circle cx="16" cy="16" r="2" fill="#E5B81C" />
+                </svg>
+              </div>
+
               <div className="food-card-image-wrap">
+                {/* Traditional Kolam halo behind the plate */}
+                <div className="plate-kolam-halo" aria-hidden="true">
+                  <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="80" cy="80" r="70" stroke="#FFD233" strokeWidth="1" strokeDasharray="4 3" opacity="0.6" />
+                    <circle cx="80" cy="80" r="54" stroke="#E5B81C" strokeWidth="1" opacity="0.4" />
+                    <circle cx="80" cy="10" r="2.5" fill="#E5B81C" />
+                    <circle cx="80" cy="150" r="2.5" fill="#E5B81C" />
+                    <circle cx="10" cy="80" r="2.5" fill="#E5B81C" />
+                    <circle cx="150" cy="80" r="2.5" fill="#E5B81C" />
+                  </svg>
+                </div>
+
                 <img 
                   src={dish.image} 
                   alt={dish.name} 
@@ -37,6 +63,14 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
                   <MapPin size={12} />
                   <span>{dish.originState}</span>
                 </div>
+              </div>
+
+              {/* Kolam border trim between image and content */}
+              <div className="card-kolam-border-trim" aria-hidden="true">
+                <svg viewBox="0 0 300 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="0" y1="4" x2="300" y2="4" stroke="#FFD233" strokeWidth="1" strokeDasharray="6 3" />
+                  <circle cx="150" cy="4" r="3" fill="#E5B81C" />
+                </svg>
               </div>
 
               <div className="food-card-body">
@@ -114,25 +148,47 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           margin-bottom: 48px;
         }
 
-        .food-card {
+        .cultural-food-card {
+          position: relative;
           background: #FFFFFF;
           border-radius: var(--radius-lg);
           overflow: hidden;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
+          border: 1.5px solid rgba(255, 210, 51, 0.45);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
           display: flex;
           flex-direction: column;
         }
 
-        .food-card:hover {
+        .cultural-food-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 20px 42px rgba(255, 210, 51, 0.18);
+          border-color: rgba(255, 210, 51, 0.9);
+        }
+
+        .card-kolam-corner {
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          z-index: 2;
+          pointer-events: none;
+        }
+        .card-kolam-corner.top-left {
+          top: 8px;
+          left: 8px;
+        }
+        .card-kolam-corner.top-right {
+          top: 8px;
+          right: 8px;
+        }
+        .card-kolam-corner svg {
+          width: 100%;
+          height: 100%;
         }
 
         .food-card-image-wrap {
           position: relative;
-          background: #FFF9E6;
+          background: linear-gradient(180deg, #FFFDF5 0%, #FFF8E1 100%);
           padding: 30px;
           display: flex;
           align-items: center;
@@ -141,7 +197,21 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           overflow: hidden;
         }
 
+        .plate-kolam-halo {
+          position: absolute;
+          width: 160px;
+          height: 160px;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .plate-kolam-halo svg {
+          width: 100%;
+          height: 100%;
+        }
+
         .food-card-img {
+          position: relative;
+          z-index: 2;
           width: 80%;
           max-height: 170px;
           object-fit: contain;
@@ -149,7 +219,7 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.15));
         }
 
-        .food-card:hover .food-card-img {
+        .cultural-food-card:hover .food-card-img {
           transform: scale(1.08) rotate(1.5deg);
         }
 
@@ -168,6 +238,19 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           font-weight: 700;
           color: var(--color-ink-black);
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+          border: 1px solid rgba(255, 210, 51, 0.3);
+          z-index: 3;
+        }
+
+        .card-kolam-border-trim {
+          width: 100%;
+          line-height: 0;
+          padding: 0 20px;
+          background: #FFF8E1;
+        }
+        .card-kolam-border-trim svg {
+          width: 100%;
+          height: 8px;
         }
 
         .food-card-body {

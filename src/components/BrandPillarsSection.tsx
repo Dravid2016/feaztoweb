@@ -51,12 +51,29 @@ export const BrandPillarsSection: React.FC = () => {
 
         <div className="pillars-grid">
           {pillars.map((item, idx) => (
-            <div key={idx} className="pillar-card">
+            <div key={idx} className="cultural-pillar-card">
+              {/* Subtle Kolam Linework Pattern Background */}
+              <div className="pillar-kolam-watermark" aria-hidden="true">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="42" stroke="#FFD233" strokeWidth="0.8" strokeDasharray="3 3" opacity="0.35" />
+                  <path d="M50,10 C60,30 70,30 90,50 C70,70 60,70 50,90 C40,70 30,70 10,50 C30,30 40,30 50,10 Z" 
+                        stroke="#FFD233" strokeWidth="1" fill="none" opacity="0.25" />
+                  <circle cx="50" cy="50" r="2.5" fill="#FFD233" opacity="0.4" />
+                </svg>
+              </div>
+
               <div className="pillar-icon-wrap">
                 {item.icon}
               </div>
               <h3 className="pillar-card-title">{item.title}</h3>
               <p className="pillar-card-desc">{item.desc}</p>
+
+              {/* Decorative Kolam dot indicator row */}
+              <div className="pillar-kolam-dots" aria-hidden="true">
+                <span className="k-dot" />
+                <span className="k-line" />
+                <span className="k-dot" />
+              </div>
             </div>
           ))}
         </div>
@@ -98,19 +115,36 @@ export const BrandPillarsSection: React.FC = () => {
           gap: 28px;
         }
 
-        .pillar-card {
+        .cultural-pillar-card {
+          position: relative;
           background: #FFFFFF;
           border-radius: var(--radius-lg);
-          padding: 32px 28px;
-          border: 1px solid rgba(0, 0, 0, 0.06);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
-          transition: transform 0.25s ease, border-color 0.25s ease;
+          padding: 34px 28px;
+          border: 1.5px solid rgba(255, 210, 51, 0.35);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+          transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
         }
 
-        .pillar-card:hover {
-          transform: translateY(-5px);
-          border-color: rgba(255, 210, 51, 0.6);
-          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+        .cultural-pillar-card:hover {
+          transform: translateY(-6px);
+          border-color: rgba(255, 210, 51, 0.9);
+          box-shadow: 0 16px 36px rgba(255, 210, 51, 0.16);
+        }
+
+        .pillar-kolam-watermark {
+          position: absolute;
+          top: -10px;
+          right: -10px;
+          width: 120px;
+          height: 120px;
+          pointer-events: none;
+        }
+        .pillar-kolam-watermark svg {
+          width: 100%;
+          height: 100%;
         }
 
         .pillar-icon-wrap {
@@ -123,7 +157,9 @@ export const BrandPillarsSection: React.FC = () => {
           background: var(--color-brand-yellow-subtle);
           color: #8C6500;
           margin-bottom: 20px;
-          border: 1px solid rgba(255, 210, 51, 0.3);
+          border: 1px solid rgba(255, 210, 51, 0.5);
+          position: relative;
+          z-index: 1;
         }
 
         .pillar-card-title {
@@ -131,12 +167,35 @@ export const BrandPillarsSection: React.FC = () => {
           font-weight: 700;
           color: var(--color-ink-black);
           margin-bottom: 10px;
+          position: relative;
+          z-index: 1;
         }
 
         .pillar-card-desc {
           font-size: 0.92rem;
           color: var(--color-text-secondary);
           line-height: 1.6;
+          position: relative;
+          z-index: 1;
+          margin-bottom: 20px;
+        }
+
+        .pillar-kolam-dots {
+          margin-top: auto;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .k-dot {
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background: #E5B81C;
+        }
+        .k-line {
+          width: 24px;
+          height: 1px;
+          background: #FFD233;
         }
       `}</style>
     </section>

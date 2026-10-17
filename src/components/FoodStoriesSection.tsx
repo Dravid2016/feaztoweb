@@ -44,9 +44,18 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           </p>
         </div>
 
+        {/* Stories Editorial Grid with Kolam Corner Elements */}
         <div className="stories-editorial-grid">
           {stories.map((st, idx) => (
-            <article key={idx} className="story-card" onClick={() => navigate('/our-story')}>
+            <article key={idx} className="cultural-story-card" onClick={() => navigate('/our-story')}>
+              {/* Kolam Corner Motif */}
+              <div className="story-kolam-corner" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2,22 C2,10 10,2 22,2" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
+                  <circle cx="12" cy="12" r="2" fill="#E5B81C" />
+                </svg>
+              </div>
+
               <div className="story-card-image">
                 <img src={st.img} alt={st.title} />
                 <span className="story-region-tag">{st.region}</span>
@@ -59,7 +68,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
                 <h3 className="story-headline-title">{st.title}</h3>
                 <p className="story-summary-text">{st.subtitle}</p>
                 <div className="story-card-link">
-                  <span>Read Essay</span>
+                  <span>Read Cultural Essay</span>
                   <ArrowRight size={14} />
                 </div>
               </div>
@@ -104,26 +113,43 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           gap: 32px;
         }
 
-        .story-card {
+        .cultural-story-card {
+          position: relative;
           background: var(--color-warm-white);
           border-radius: var(--radius-lg);
-          border: 1px solid rgba(0, 0, 0, 0.06);
+          border: 1.5px solid rgba(255, 210, 51, 0.4);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
           overflow: hidden;
           cursor: pointer;
           display: flex;
           flex-direction: column;
-          transition: transform 0.28s ease, box-shadow 0.28s ease;
+          transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
         }
 
-        .story-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+        .cultural-story-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 18px 40px rgba(255, 210, 51, 0.16);
+          border-color: rgba(255, 210, 51, 0.9);
+        }
+
+        .story-kolam-corner {
+          position: absolute;
+          top: 8px;
+          right: 8px;
+          width: 24px;
+          height: 24px;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .story-kolam-corner svg {
+          width: 100%;
+          height: 100%;
         }
 
         .story-card-image {
           position: relative;
           height: 200px;
-          background: #FFF9E6;
+          background: linear-gradient(180deg, #FFFDF5 0%, #FFF8E1 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -137,7 +163,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           transition: transform 0.3s ease;
         }
 
-        .story-card:hover .story-card-image img {
+        .cultural-story-card:hover .story-card-image img {
           transform: scale(1.08);
         }
 
@@ -146,11 +172,13 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           top: 14px;
           left: 14px;
           background: #FFFFFF;
-          padding: 4px 10px;
+          padding: 4px 12px;
           border-radius: var(--radius-capsule);
           font-size: 0.72rem;
           font-weight: 700;
           color: #8C6500;
+          border: 1px solid rgba(255, 210, 51, 0.35);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 
         .story-card-text {
@@ -195,7 +223,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           transition: color 0.2s;
         }
 
-        .story-card:hover .story-card-link {
+        .cultural-story-card:hover .story-card-link {
           color: #8C6500;
         }
       `}</style>
