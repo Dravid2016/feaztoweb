@@ -1,0 +1,214 @@
+/* FEAzTO Global Design Tokens & Typography */
+:root {
+  /* Brand Colours */
+  --color-brand-yellow: #FFD233;
+  --color-brand-yellow-hover: #F0C418;
+  --color-brand-yellow-subtle: #FFF9E6;
+  --color-ink-black: #111111;
+  --color-ink-light: #222222;
+  --color-pure-white: #FFFFFF;
+  --color-warm-white: #FAFAFA;
+  --color-cream-surface: #F5F3EF;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted: #888888;
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-dark: rgba(255, 255, 255, 0.12);
+
+  /* Spice Accents */
+  --color-spice-saffron: #E26D2D;
+  --color-spice-cardamom: #3B7A57;
+  --color-spice-chili: #C93B2B;
+
+  /* Typography */
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout & Spacing */
+  --max-width: 1240px;
+  --radius-capsule: 9999px;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 8px;
+
+  /* Transitions */
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-warm-white);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Base Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-ink-black);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container Utilities */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-padding {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+/* Button Component Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: var(--radius-capsule);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--color-ink-black);
+  color: var(--color-pure-white);
+  border: 1px solid var(--color-ink-black);
+}
+
+.btn-primary:hover {
+  background-color: #2b2b2b;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.btn-yellow {
+  background-color: var(--color-brand-yellow);
+  color: var(--color-ink-black);
+  border: 1px solid #E5B81C;
+  font-weight: 700;
+}
+
+.btn-yellow:hover {
+  background-color: var(--color-brand-yellow-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 210, 51, 0.35);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-ink-black);
+  border: 1.5px solid rgba(17, 17, 17, 0.2);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-ink-black);
+  background-color: rgba(17, 17, 17, 0.03);
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  background-color: var(--color-pure-white);
+  color: var(--color-ink-black);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.btn-white:hover {
+  background-color: #F8F8F8;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Badge styling */
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-capsule);
+  background-color: var(--color-brand-yellow-subtle);
+  color: #7A5B00;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 210, 51, 0.4);
+}
+
+.badge-tag-dark {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFD233;
+  border-color: rgba(255, 210, 51, 0.25);
+}
+
+/* Reduced Motion Respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

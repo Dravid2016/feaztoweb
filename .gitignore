@@ -1,0 +1,12 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.*
+.DS_Store
+Thumbs.db
+docx_extracted
+docx_summary.txt
+feazto_doc_summary.txt
+feazto_doc_summary_utf8.txt
