@@ -15,13 +15,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         {/* Traditional South Indian Kitchen Artwork (Right-aligned, blending left) */}
         <div className="hero-artwork-wrap" aria-hidden="true">
-          <div 
-            className="hero-artwork-bg"
-            style={{
-              backgroundImage: `url('/south-indian-art-bg.jpg')`,
-            }}
+          <img 
+            src="/south-indian-art-bg.jpg" 
+            alt="Traditional South Indian kitchen with home cook preparing food" 
+            className="hero-artwork-img"
           />
-          {/* Subtle warm wash on the artwork */}
+          {/* Soft atmospheric gradient wash on the artwork */}
           <div className="hero-artwork-gradient-mask" />
         </div>
 
@@ -291,16 +290,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           overflow: hidden;
         }
 
-        .hero-artwork-bg {
+        .hero-artwork-img {
           position: absolute;
           inset: 0;
-          background-size: cover;
-          background-position: right 18% center;
-          background-repeat: no-repeat;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: right 18% center;
           /* Mask edges so artwork dissolves softly into the warm parchment left & top */
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 32%, black 65%);
-          -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, rgba(0,0,0,0.85) 32%, black 65%);
-          filter: contrast(1.03) saturate(1.04);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 12%, rgba(0,0,0,0.85) 28%, black 60%);
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 12%, rgba(0,0,0,0.85) 28%, black 60%);
+          filter: contrast(1.03) saturate(1.05);
         }
 
         .hero-artwork-gradient-mask {
