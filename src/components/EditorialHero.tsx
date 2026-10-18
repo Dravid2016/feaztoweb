@@ -36,11 +36,24 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </span>
           </div>
 
-          {/* Master Headline - Clean Typography, Centered, No Image */}
+          {/* Master Headline - Centered with Food Image Capsule */}
           <h1 className="hero-master-headline">
-            The taste of home,
-            <br />
-            wherever life takes you.
+            <span className="headline-line">The taste of</span>
+            <span className="headline-line with-capsule">
+              h
+              <span className="food-word-capsule" title="Traditional South Indian Curry Bowl">
+                <img 
+                  src="/dish-capsule-curry.jpg" 
+                  alt="Traditional South Indian Curry Bowl" 
+                  className="capsule-dish-img"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/plate-thali.png';
+                  }}
+                />
+              </span>
+              me, wherever
+            </span>
+            <span className="headline-line">life takes you.</span>
           </h1>
 
           {/* Supporting Copy - Center Aligned */}
@@ -238,6 +251,53 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           letter-spacing: -0.035em;
           margin: 0 0 24px 0;
           text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .headline-line {
+          display: block;
+          text-align: center;
+        }
+
+        .headline-line.with-capsule {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0;
+          flex-wrap: nowrap;
+        }
+
+        /* Transition Card / Capsule Image between the text */
+        .food-word-capsule {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: clamp(56px, 7.8vw, 88px);
+          height: clamp(36px, 4.8vw, 56px);
+          margin: 0 5px;
+          border-radius: 9999px;
+          background: #FFFFFF;
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+          border: 2.5px solid #F5B700;
+          overflow: hidden;
+          vertical-align: middle;
+          transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+          cursor: pointer;
+          flex-shrink: 0;
+        }
+
+        .food-word-capsule:hover {
+          transform: scale(1.1) rotate(2deg);
+          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+        }
+
+        .capsule-dish-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
 
         /* Supporting Copy - Centered */
