@@ -9,13 +9,14 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Matched to target reference and real website routes
   const navLinks = [
     { label: 'Home', route: '/' },
     { label: 'Our Story', route: '/our-story' },
     { label: 'Discover Food', route: '/discover' },
     { label: 'Home Kitchens', route: '/home-kitchens' },
-    { label: 'Book a Cook', route: '/book-a-cook' },
     { label: 'Partners', route: '/partners' },
+    { label: 'Download', route: '/download' },
     { label: 'FAQ', route: '/faq' },
     { label: 'Contact', route: '/contact' },
   ];
@@ -29,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   return (
     <header className="feazto-header">
       <div className="container header-container">
-        {/* Brand Logo */}
+        {/* Brand Logo with exact proportions */}
         <a 
           href="#home" 
           onClick={(e) => { e.preventDefault(); handleNavClick('/'); }} 
@@ -54,22 +55,21 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
                   className={`nav-link ${currentRoute === item.route ? 'active' : ''}`}
                 >
                   {item.label}
-                  {currentRoute === item.route && <span className="active-dot" />}
+                  {currentRoute === item.route && <span className="active-underline" />}
                 </button>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Primary CTA Button */}
+        {/* Primary CTA Button: "Explore feazto" in Turmeric Yellow */}
         <div className="header-actions">
           <button 
             type="button"
-            onClick={() => handleNavClick('/download')}
-            className="btn btn-yellow header-cta-btn"
+            onClick={() => handleNavClick('/discover')}
+            className="header-turmeric-cta"
           >
-            <span>Get the App</span>
-            <ArrowRight size={16} />
+            <span>Explore feazto</span>
           </button>
 
           {/* Mobile Hamburger Button */}
@@ -121,13 +121,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             <div className="mobile-drawer-footer">
               <button
                 type="button"
-                onClick={() => handleNavClick('/download')}
+                onClick={() => handleNavClick('/discover')}
                 className="btn btn-yellow btn-full-width"
               >
-                <span>Download Early Access</span>
+                <span>Explore feazto</span>
                 <ArrowRight size={16} />
               </button>
-              <p className="mobile-copy-tagline">Home food with cloud-kitchen precision.</p>
+              <p className="mobile-copy-tagline">The taste of home, wherever life takes you.</p>
             </div>
           </div>
         </div>
@@ -138,10 +138,10 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           position: sticky;
           top: 0;
           z-index: 1000;
-          background: rgba(250, 250, 250, 0.94);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          background: rgba(251, 249, 245, 0.95);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
           transition: var(--transition-smooth);
         }
 
@@ -149,7 +149,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 76px;
+          height: 74px;
+          max-width: 1320px;
         }
 
         .brand-logo-link {
@@ -159,14 +160,14 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         .header-logo-img {
-          height: 48px;
+          height: 44px;
           width: auto;
           object-fit: contain;
           transition: transform 0.2s ease;
         }
 
         .brand-logo-link:hover .header-logo-img {
-          transform: scale(1.03);
+          transform: scale(1.02);
         }
 
         .desktop-nav {
@@ -177,37 +178,41 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .nav-list {
           display: flex;
           align-items: center;
-          gap: 24px;
+          gap: 26px;
           list-style: none;
         }
 
         .nav-link {
           position: relative;
-          font-size: 0.9rem;
+          font-family: var(--font-body);
+          font-size: 0.92rem;
           font-weight: 500;
-          color: var(--color-ink-black);
-          padding: 8px 4px;
+          color: #222222;
+          padding: 8px 2px;
           transition: color 0.2s ease;
           display: inline-flex;
+          flex-direction: column;
           align-items: center;
-          gap: 6px;
+          cursor: pointer;
         }
 
         .nav-link:hover {
-          color: #A37900;
+          color: #111111;
         }
 
         .nav-link.active {
-          font-weight: 700;
-          color: var(--color-ink-black);
+          font-weight: 600;
+          color: #111111;
         }
 
-        .active-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background-color: var(--color-brand-yellow);
-          box-shadow: 0 0 8px rgba(255, 210, 51, 0.8);
+        .active-underline {
+          position: absolute;
+          bottom: 2px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background-color: #F5B700;
+          border-radius: 2px;
         }
 
         .header-actions {
@@ -216,9 +221,27 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           gap: 16px;
         }
 
-        .header-cta-btn {
-          padding: 10px 20px;
+        .header-turmeric-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px 24px;
+          border-radius: 9999px;
+          background-color: #F5B700;
+          color: #111111;
+          font-family: var(--font-heading);
           font-size: 0.88rem;
+          font-weight: 700;
+          border: 1px solid #E5AA00;
+          box-shadow: 0 4px 14px rgba(245, 183, 0, 0.3);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+          cursor: pointer;
+        }
+
+        .header-turmeric-cta:hover {
+          background-color: #E6A700;
+          transform: translateY(-1.5px);
+          box-shadow: 0 6px 18px rgba(245, 183, 0, 0.4);
         }
 
         .mobile-toggle-btn {
@@ -229,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           height: 42px;
           border-radius: 50%;
           background: rgba(0, 0, 0, 0.05);
-          color: var(--color-ink-black);
+          color: #111111;
           transition: background 0.2s ease;
         }
 
@@ -240,7 +263,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         /* Mobile Drawer */
         .mobile-nav-drawer {
           position: fixed;
-          top: 76px;
+          top: 74px;
           left: 0;
           right: 0;
           bottom: 0;
@@ -254,7 +277,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .mobile-nav-inner {
           background: #FFFFFF;
           padding: 24px 20px;
-          border-bottom: 2px solid var(--color-brand-yellow);
+          border-bottom: 3px solid #F5B700;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
           max-height: 85vh;
           overflow-y: auto;
@@ -289,7 +312,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           border-radius: 10px;
           font-size: 1.05rem;
           font-weight: 600;
-          color: var(--color-ink-black);
+          color: #111111;
           text-align: left;
           transition: background 0.2s;
         }
@@ -301,10 +324,10 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .mobile-active-pill {
           font-size: 0.72rem;
           font-weight: 700;
-          background: var(--color-brand-yellow);
+          background: #F5B700;
           padding: 3px 8px;
           border-radius: 9999px;
-          color: var(--color-ink-black);
+          color: #111111;
         }
 
         .mobile-drawer-footer {
@@ -321,19 +344,19 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         .mobile-copy-tagline {
-          font-size: 0.8rem;
-          color: var(--color-text-muted);
+          font-size: 0.82rem;
+          color: #666666;
           text-align: center;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1080px) {
           .desktop-nav {
             display: none;
           }
           .mobile-toggle-btn {
             display: flex;
           }
-          .header-cta-btn {
+          .header-turmeric-cta {
             display: none;
           }
         }
