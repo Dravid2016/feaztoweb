@@ -281,8 +281,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           top: 0;
           right: 0;
           bottom: 0;
-          width: 58%;
-          max-width: 900px;
+          width: 62%;
+          max-width: 980px;
           height: 100%;
           z-index: 1;
           pointer-events: none;
@@ -295,11 +295,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: right 18% center;
+          object-position: center center;
           /* Mask edges so artwork dissolves softly into the warm parchment left & top */
-          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 12%, rgba(0,0,0,0.85) 28%, black 60%);
-          -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 12%, rgba(0,0,0,0.85) 28%, black 60%);
-          filter: contrast(1.03) saturate(1.05);
+          mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 8%, rgba(0,0,0,0.85) 24%, black 50%);
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.2) 8%, rgba(0,0,0,0.85) 24%, black 50%);
+          filter: contrast(1.02) saturate(1.05);
         }
 
         .hero-artwork-gradient-mask {
