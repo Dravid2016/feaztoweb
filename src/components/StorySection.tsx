@@ -12,9 +12,9 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
       <div className="container">
         {/* Cultural Kolam Frame wrapping the storytelling section */}
         <KolamFrame variant="light" hasCorners={true}>
-          <div className="story-container">
-            {/* Left Column: Rich Editorial Storytelling */}
-            <div className="story-content-col">
+          <div className="story-container-centered">
+            {/* Centered Editorial Storytelling */}
+            <div className="story-content-col-centered">
               <div className="badge-tag">
                 <Sparkles size={13} />
                 <span>The Soul of FEAzTO</span>
@@ -33,8 +33,8 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
                 FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks—our FoodPreneurs—possess centuries of culinary mastery waiting to be shared.
               </p>
 
-              {/* Pillars List */}
-              <div className="story-pillars-grid">
+              {/* Pillars List - Centered Grid */}
+              <div className="story-pillars-grid-centered">
                 <div className="pillar-item">
                   <div className="pillar-icon-box">
                     <Flame size={20} />
@@ -76,35 +76,6 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
                 </button>
               </div>
             </div>
-
-            {/* Right Column: Reference B Painterly Indian Kitchen Scene */}
-            <div className="story-visual-col">
-              <div className="painterly-frame-wrap">
-                {/* The Painterly Kitchen Image */}
-                <img 
-                  src="/brand/painterly-kitchen-hero.jpg" 
-                  alt="Painterly illustration of an authentic Indian kitchen with hands seasoning a bubbling pan" 
-                  className="painterly-image-main"
-                />
-                
-                {/* Kolam Emblem Overlay */}
-                <div className="kolam-corner-accent">
-                  <img src="/brand/kolam-1.png" alt="Traditional decorative kolam" />
-                </div>
-
-                {/* Floating Story Card */}
-                <div className="floating-story-card">
-                  <div className="floating-quote-icon">“</div>
-                  <p className="floating-quote-text">
-                    Every pinch of spice tells a story of the soil it grew in and the hands that nurtured it.
-                  </p>
-                  <div className="floating-author">
-                    <span className="author-name">Padmavathi Rao</span>
-                    <span className="author-role">FEAzTO FoodPreneur</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </KolamFrame>
       </div>
@@ -118,27 +89,33 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
           overflow: hidden;
         }
 
-        .story-container {
-          display: grid;
-          grid-template-columns: 1.15fr 1fr;
-          gap: 60px;
-          align-items: center;
-        }
-
-        .story-content-col {
+        .story-container-centered {
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
+          text-align: center;
+          max-width: 860px;
+          margin: 0 auto;
+          padding: 20px 0;
+        }
+
+        .story-content-col-centered {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          width: 100%;
         }
 
         .story-headline {
           font-size: clamp(2rem, 3.8vw, 2.9rem);
           font-weight: 800;
-          line-height: 1.2;
+          line-height: 1.25;
           color: var(--color-ink-black);
           margin-top: 18px;
           margin-bottom: 20px;
           letter-spacing: -0.025em;
+          text-align: center;
         }
 
         .story-lead-p {
@@ -147,36 +124,43 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
           font-weight: 500;
           line-height: 1.7;
           margin-bottom: 16px;
+          text-align: center;
+          max-width: 760px;
         }
 
         .story-body-p {
           font-size: 1rem;
           color: var(--color-text-secondary);
           line-height: 1.7;
-          margin-bottom: 30px;
+          margin-bottom: 36px;
+          text-align: center;
+          max-width: 760px;
         }
 
-        .story-pillars-grid {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          margin-bottom: 32px;
+        .story-pillars-grid-centered {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-bottom: 36px;
           width: 100%;
+          text-align: center;
         }
 
         .pillar-item {
           display: flex;
-          align-items: flex-start;
-          gap: 16px;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 14px;
           background: var(--color-warm-white);
-          padding: 16px 20px;
+          padding: 24px 20px;
           border-radius: var(--radius-md);
           border: 1px solid var(--color-border-subtle);
           transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .pillar-item:hover {
-          transform: translateX(4px);
+          transform: translateY(-4px);
           border-color: rgba(255, 210, 51, 0.6);
         }
 
@@ -184,8 +168,8 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
           border-radius: 12px;
           background: var(--color-brand-yellow-subtle);
           color: #8C6500;
@@ -193,113 +177,30 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
         }
 
         .pillar-title {
-          font-size: 0.98rem;
+          font-size: 1rem;
           font-weight: 700;
           color: var(--color-ink-black);
-          margin-bottom: 4px;
+          margin-bottom: 6px;
+          text-align: center;
         }
 
         .pillar-desc {
-          font-size: 0.86rem;
+          font-size: 0.88rem;
           color: var(--color-text-secondary);
           line-height: 1.5;
+          text-align: center;
         }
 
-        /* Right Column Visual */
-        .story-visual-col {
-          position: relative;
-        }
-
-        .painterly-frame-wrap {
-          position: relative;
-          border-radius: var(--radius-lg);
-          padding: 10px;
-          background: #FFFFFF;
-          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
-          border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .painterly-image-main {
-          width: 100%;
-          border-radius: 16px;
-          object-fit: cover;
-          display: block;
-        }
-
-        .kolam-corner-accent {
-          position: absolute;
-          top: -20px;
-          right: -20px;
-          width: 80px;
-          height: 80px;
-          opacity: 0.55;
-          pointer-events: none;
-        }
-
-        .kolam-corner-accent img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-        }
-
-        .floating-story-card {
-          position: absolute;
-          bottom: -28px;
-          left: -20px;
-          background: #FFFFFF;
-          border-radius: var(--radius-md);
-          padding: 18px 22px;
-          max-width: 310px;
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
-          border-left: 4px solid var(--color-brand-yellow);
-          border-top: 1px solid rgba(0, 0, 0, 0.05);
-          border-right: 1px solid rgba(0, 0, 0, 0.05);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .floating-quote-icon {
-          font-size: 2.2rem;
-          font-family: var(--font-serif);
-          color: var(--color-brand-yellow);
-          line-height: 0.8;
-          margin-bottom: 4px;
-        }
-
-        .floating-quote-text {
-          font-size: 0.86rem;
-          font-style: italic;
-          color: var(--color-ink-black);
-          line-height: 1.5;
-          margin-bottom: 10px;
-        }
-
-        .floating-author {
+        .story-action-row {
           display: flex;
-          flex-direction: column;
-        }
-
-        .author-name {
-          font-size: 0.8rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-        }
-
-        .author-role {
-          font-size: 0.7rem;
-          color: var(--color-text-muted);
+          justify-content: center;
+          width: 100%;
         }
 
         @media (max-width: 960px) {
-          .story-container {
+          .story-pillars-grid-centered {
             grid-template-columns: 1fr;
-            gap: 40px;
-          }
-          .floating-story-card {
-            position: relative;
-            bottom: auto;
-            left: auto;
-            margin-top: 16px;
-            max-width: 100%;
+            gap: 16px;
           }
         }
       `}</style>
