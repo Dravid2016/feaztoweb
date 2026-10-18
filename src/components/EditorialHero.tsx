@@ -93,14 +93,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <span className="headline-line">The taste of</span>
             <span className="headline-line with-capsule">
               h
-              <span className="food-word-capsule" title="Traditional Home Curry Bowl">
+              <span className="food-word-capsule" title="Traditional South Indian Curry Bowl">
                 <img 
-                  src="/plate-thali.png" 
-                  alt="Traditional Home Curry Bowl" 
+                  src="/dish-capsule-curry.jpg" 
+                  alt="Traditional South Indian Curry Bowl" 
                   className="capsule-dish-img"
                   onError={(e) => {
-                    // Fallback to biryani if thali fails
-                    (e.target as HTMLImageElement).src = '/plate-biryani.png';
+                    (e.target as HTMLImageElement).src = '/plate-thali.png';
                   }}
                 />
               </span>
@@ -183,17 +182,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </p>
           </div>
 
-          {/* 3 Food Dish Preview Cards */}
+          {/* 3 Food Dish Preview Cards with Authentic Oil Painting Artwork */}
           <div className="teaser-cards-grid">
             {/* Dish Card 1: Coastal Curry */}
             <div className="dish-preview-card">
               <div className="dish-image-wrapper">
                 <img 
-                  src="/plate-biryani.png" 
-                  alt="Authentic Malabar coastal curry with aromatic herbs" 
+                  src="/dish-coastal-curry.jpg" 
+                  alt="Authentic South Indian coastal curry simmering in an earthen clay pot" 
                   className="dish-preview-img"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/brand/plate-biryani.png';
+                    (e.target as HTMLImageElement).src = '/plate-biryani.png';
                   }}
                 />
               </div>
@@ -203,15 +202,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </div>
             </div>
 
-            {/* Dish Card 2: Crispy Dosa & Chutneys */}
+            {/* Dish Card 2: Crispy Ghee Roast Dosa */}
             <div className="dish-preview-card">
               <div className="dish-image-wrapper">
                 <img 
-                  src="/plate-idli.png" 
-                  alt="Crispy golden ghee roast dosa with fresh coconut chutney" 
+                  src="/dish-ghee-dosa.jpg" 
+                  alt="Crispy golden ghee roast dosa served with coconut and tomato chutneys" 
                   className="dish-preview-img"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/brand/plate-idli.png';
+                    (e.target as HTMLImageElement).src = '/plate-idli.png';
                   }}
                 />
               </div>
@@ -221,15 +220,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </div>
             </div>
 
-            {/* Dish Card 3: Slow Dum Biryani / Festive Rice */}
+            {/* Dish Card 3: Slow Dum Biryani */}
             <div className="dish-preview-card">
               <div className="dish-image-wrapper">
                 <img 
-                  src="/plate-thali.png" 
-                  alt="Rich heirloom festival platter and spiced biryani" 
+                  src="/dish-dum-biryani.jpg" 
+                  alt="Fragrant Dum Biryani in a traditional bronze uruli with caramelized onions and whole spices" 
                   className="dish-preview-img"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                    (e.target as HTMLImageElement).src = '/plate-thali.png';
                   }}
                 />
               </div>
