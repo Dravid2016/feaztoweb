@@ -72,7 +72,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
             <div className="book-cook-visual">
               <div className="cook-art-frame">
                 <img 
-                  src="/brand/indian-art-backdrop.png" 
+                  src="/brand/painterly-kitchen-hero.jpg" 
                   alt="Traditional Indian culinary celebration and home hospitality" 
                   className="cook-art-img"
                 />

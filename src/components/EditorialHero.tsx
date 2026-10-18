@@ -18,7 +18,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           <div 
             className="hero-artwork-bg"
             style={{
-              backgroundImage: `url('/indian-art-no-text.png'), url('/south-indian-art-bg.jpg')`,
+              backgroundImage: `url('/south-indian-art-bg.jpg')`,
             }}
           />
           {/* Subtle warm wash on the artwork */}

@@ -69,7 +69,7 @@ export const KITCHEN_STORIES: KitchenStory[] = [
     locationArea: 'Frazer Town, Bengaluru',
     signatureDish: 'Awadhi Yakhni Pulao & Shahi Tukda',
     quote: 'True aroma cannot be manufactured by speed. It needs patience, whole spices, and genuine intentions.',
-    image: '/brand/indian-art-backdrop.png',
+    image: '/brand/painterly-kitchen-hero.jpg',
     story: 'Farida Begum brought century-old family heirloom spice ratios to Bengaluru. In FEAzTO, she found a tech-enabled partner that respects culinary heritage while providing state-of-the-art hygiene inspection and cold-chain precision.'
   }
 ];
