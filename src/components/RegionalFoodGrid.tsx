@@ -121,12 +121,19 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
             transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1)'
           }}
         >
-          <img 
-            src={dish.image} 
-            alt={dish.name} 
-            className="card-round-plate-img" 
-            loading="lazy"
-          />
+          {dish.image ? (
+            <img 
+              src={dish.image} 
+              alt={dish.name} 
+              className="card-round-plate-img" 
+              loading="lazy"
+            />
+          ) : (
+            <div className="card-plate-placeholder">
+              <Sparkles size={26} className="placeholder-dish-icon" />
+              <span className="placeholder-dish-lbl">Awaiting Dish Photo</span>
+            </div>
+          )}
         </div>
         
         {/* Subtle decorative glow ring */}
@@ -395,6 +402,32 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           justify-content: center;
           z-index: 2;
           cursor: grab;
+        }
+
+        .card-plate-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          text-align: center;
+          padding: 12px;
+          background: linear-gradient(135deg, #1C1917 0%, #292524 100%);
+        }
+
+        .placeholder-dish-icon {
+          color: var(--color-brand-yellow);
+        }
+
+        .placeholder-dish-lbl {
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: rgba(255, 255, 255, 0.7);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          line-height: 1.2;
         }
 
         .card-round-plate-img {

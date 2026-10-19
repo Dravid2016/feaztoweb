@@ -6,7 +6,7 @@ export interface FoodItem {
   category: 'Breakfast' | 'Curry & Rice' | 'Bread & Gravy' | 'Snacks & Sweets';
   description: string;
   storyNote: string;
-  image: string;
+  image?: string;
   tags: string[];
   prepTime?: string;
   calories?: string;
