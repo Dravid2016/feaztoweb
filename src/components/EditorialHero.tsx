@@ -113,12 +113,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             />
           </svg>
 
-          {/* Center Kolam Diamond seated along the dynamic crest of the curve */}
+          {/* Center Kolam Diamond in authentic cultural brown on the curve */}
           <div className="curve-center-kolam" aria-hidden="true">
             <svg width="46" height="46" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#F8B504" strokeWidth="2.2" fill="#FFFDF7" />
-              <path d="M22,4 C25,12 32,12 40,22 C32,32 25,32 22,40 C19,32 12,32 4,22 C12,12 19,12 22,4 Z" stroke="#F8B504" strokeWidth="1.6" fill="none" />
-              <circle cx="22" cy="22" r="3.2" fill="#F8B504" />
+              {/* Outer diamond frame */}
+              <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#5C330A" strokeWidth="2.4" fill="#FFFFFF" />
+              {/* Inner petal loops in authentic brown */}
+              <path d="M22,4 C25,12 32,12 40,22 C32,32 25,32 22,40 C19,32 12,32 4,22 C12,12 19,12 22,4 Z" stroke="#6E3B0C" strokeWidth="1.8" fill="none" />
+              {/* Center sacred bindi / brahma dot in rich brown */}
+              <circle cx="22" cy="22" r="3.2" fill="#5C330A" />
             </svg>
           </div>
         </div>
