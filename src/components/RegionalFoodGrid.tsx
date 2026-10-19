@@ -211,7 +211,8 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
         .regional-food-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background-color: var(--color-warm-white);
+          background: linear-gradient(180deg, #FFFDF7 0%, #FEF5D8 40%, #FDF0C8 100%);
+          position: relative;
         }
 
         .food-section-header {

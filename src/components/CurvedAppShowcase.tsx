@@ -148,7 +148,7 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
           line-height: 0;
           position: relative;
           top: -1px;
-          background-color: var(--color-pure-white);
+          background: #FFFDF7;
         }
 
         .curved-boundary-shape svg {

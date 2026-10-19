@@ -107,7 +107,8 @@ export const BrandPillarsSection: React.FC = () => {
         .pillars-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background-color: var(--color-warm-white);
+          background: linear-gradient(180deg, #FEF7DE 0%, #FEF1CD 50%, #FDECB9 100%);
+          position: relative;
         }
 
         .pillars-header {

@@ -3,16 +3,19 @@
   /* Brand Colours */
   --color-brand-yellow: #FFD233;
   --color-brand-yellow-hover: #F0C418;
-  --color-brand-yellow-subtle: #FFF9E6;
+  --color-brand-yellow-subtle: #FFF4CC;
+  --color-brand-yellow-glow: rgba(255, 210, 51, 0.28);
   --color-ink-black: #111111;
   --color-ink-light: #222222;
   --color-pure-white: #FFFFFF;
-  --color-warm-white: #FAFAFA;
-  --color-cream-surface: #F5F3EF;
-  --color-text-primary: #111111;
-  --color-text-secondary: #555555;
-  --color-text-muted: #888888;
-  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-warm-white: #FFFDF7;
+  --color-cream-surface: #FDF6E2;
+  --color-warm-gold-bg: #FEF7DE;
+  --color-warm-sand-bg: #FAF1D4;
+  --color-text-primary: #181204;
+  --color-text-secondary: #584422;
+  --color-text-muted: #8E7A5A;
+  --color-border-subtle: rgba(135, 71, 0, 0.12);
   --color-border-dark: rgba(255, 255, 255, 0.12);
 
   /* Spice Accents */
@@ -53,6 +56,11 @@ html {
 body {
   font-family: var(--font-body);
   background-color: var(--color-warm-white);
+  background-image: 
+    radial-gradient(ellipse 80% 40% at 50% -10%, rgba(255, 210, 51, 0.35) 0%, transparent 70%),
+    radial-gradient(circle 600px at 100% 30%, rgba(245, 183, 0, 0.12) 0%, transparent 70%),
+    radial-gradient(circle 700px at 0% 65%, rgba(255, 210, 51, 0.15) 0%, transparent 60%);
+  background-attachment: fixed;
   color: var(--color-text-primary);
   line-height: 1.6;
   overflow-x: hidden;

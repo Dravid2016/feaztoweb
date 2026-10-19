@@ -65,7 +65,7 @@ export const HowItWorksSection: React.FC = () => {
         .how-it-works-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background-color: var(--color-pure-white);
+          background: linear-gradient(180deg, #FDECB9 0%, #FEF8E6 50%, #FFFDF7 100%);
         }
 
         .how-header {

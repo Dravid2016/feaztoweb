@@ -81,7 +81,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
         .food-stories-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background-color: var(--color-pure-white);
+          background: linear-gradient(180deg, #FFFDF7 0%, #FEF7DE 50%, #FEF1CD 100%);
         }
 
         .stories-header {

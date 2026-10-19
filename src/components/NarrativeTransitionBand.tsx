@@ -40,10 +40,10 @@ export const NarrativeTransitionBand: React.FC = () => {
 
       <style>{`
         .narrative-transition-wrapper {
-          padding: 36px 0;
-          background: linear-gradient(180deg, var(--color-warm-white) 0%, #FFFFFF 100%);
-          border-top: 1px dashed rgba(0, 0, 0, 0.08);
-          border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+          padding: 40px 0;
+          background: linear-gradient(180deg, #FDF0C8 0%, #FEF8E3 50%, #FEF4D3 100%);
+          border-top: 1.5px dashed rgba(181, 132, 0, 0.25);
+          border-bottom: 1.5px dashed rgba(181, 132, 0, 0.25);
           overflow: hidden;
         }
 

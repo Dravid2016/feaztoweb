@@ -98,19 +98,19 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <path 
               d="M0,120 Q220,175 480,125 T1020,135 T1440,65 L1440,180 L0,180 Z" 
               fill="#F5B700" 
-              opacity="0.35" 
+              opacity="0.45" 
             />
-            {/* Clean Cream Lower Wave Transition into section below */}
+            {/* Rich Warm Butter Yellow Lower Wave Transition into section below */}
             <path 
               d="M0,140 Q240,195 520,140 T1040,148 T1440,85 L1440,180 L0,180 Z" 
-              fill="#FBF9F5" 
+              fill="#FFF8E1" 
             />
           </svg>
 
           {/* Center-Placed Traditional Kolam Motif along the organic curve */}
           <div className="curve-center-kolam" aria-hidden="true">
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#F5B700" strokeWidth="1.8" fill="#FBF9F5" />
+              <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#F5B700" strokeWidth="1.8" fill="#FFF8E1" />
               <path d="M22,5 C25,12 32,12 39,22 C32,32 25,32 22,39 C19,32 12,32 5,22 C12,12 19,12 22,5 Z" stroke="#F5B700" strokeWidth="1.4" fill="none" />
               <circle cx="22" cy="22" r="3" fill="#F5B700" />
             </svg>
@@ -172,7 +172,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .feazto-master-hero {
           position: relative;
           min-height: 560px;
-          background: linear-gradient(180deg, #FDFBF7 0%, #F6F1E5 100%);
+          background: linear-gradient(180deg, #FFF6D6 0%, #FEEDB3 50%, #FDE496 100%);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -183,14 +183,14 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           text-align: center;
         }
 
-        /* Subtle warm parchment texture */
+        /* Subtle warm parchment texture with golden light flares */
         .parchment-texture-layer {
           position: absolute;
           inset: 0;
           background-image: 
-            radial-gradient(circle at 50% 25%, rgba(245, 183, 0, 0.08) 0%, transparent 60%),
-            radial-gradient(circle at 20% 80%, rgba(212, 137, 26, 0.05) 0%, transparent 50%),
-            radial-gradient(circle at 80% 80%, rgba(245, 183, 0, 0.05) 0%, transparent 50%);
+            radial-gradient(circle at 50% 20%, rgba(255, 210, 51, 0.45) 0%, transparent 65%),
+            radial-gradient(circle at 15% 75%, rgba(226, 109, 45, 0.12) 0%, transparent 55%),
+            radial-gradient(circle at 85% 75%, rgba(245, 183, 0, 0.25) 0%, transparent 55%);
           pointer-events: none;
           z-index: 0;
         }
@@ -420,7 +420,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── NEXT SECTION: FOOD DISCOVERY TEASER (CENTERED) ── */
         .food-discovery-teaser-section {
           position: relative;
-          background-color: #FBF9F5;
+          background: linear-gradient(180deg, #FFF8E1 0%, #FEF4D1 60%, #FDF0C3 100%);
           padding-top: 36px;
           padding-bottom: 84px;
           z-index: 5;
@@ -447,7 +447,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           font-size: 0.82rem;
           font-weight: 700;
           letter-spacing: 0.14em;
-          color: #C28D00;
+          color: #9E6B00;
           text-transform: uppercase;
           margin-bottom: 10px;
           text-align: center;
@@ -457,7 +457,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           font-family: var(--font-heading);
           font-size: clamp(2rem, 3.2vw, 2.7rem);
           font-weight: 800;
-          color: #111111;
+          color: #1A1103;
           line-height: 1.2;
           letter-spacing: -0.025em;
           margin: 0 0 14px 0;
@@ -467,7 +467,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .teaser-description {
           font-family: var(--font-body);
           font-size: 1.02rem;
-          color: #555555;
+          color: #5C4522;
           line-height: 1.65;
           margin: 0 auto;
           text-align: center;
@@ -484,8 +484,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .text-center-card {
           background: #FFFFFF;
           border-radius: 20px;
-          border: 1px solid rgba(245, 183, 0, 0.25);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(245, 183, 0, 0.4);
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.08);
           transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
           display: flex;
           flex-direction: column;
@@ -496,7 +496,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .text-center-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 16px 36px rgba(245, 183, 0, 0.15);
+          box-shadow: 0 16px 36px rgba(245, 183, 0, 0.25);
           border-color: #F5B700;
         }
 

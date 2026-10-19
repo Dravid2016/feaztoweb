@@ -120,7 +120,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         .layered-showcase-section {
           padding-top: 100px;
           padding-bottom: 120px;
-          background: #FAFAFA;
+          background: linear-gradient(180deg, #FEF5D6 0%, #FEF8E3 50%, #FFFDF7 100%);
           overflow: hidden;
           position: relative;
         }

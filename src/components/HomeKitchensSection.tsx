@@ -100,7 +100,8 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
         .kitchens-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background-color: var(--color-pure-white);
+          background: linear-gradient(180deg, #FEF4D3 0%, #FFFDF5 50%, #FEF7DE 100%);
+          position: relative;
         }
 
         .kitchens-header {

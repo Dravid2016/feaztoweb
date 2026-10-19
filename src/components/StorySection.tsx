@@ -84,7 +84,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
         .feazto-story-section {
           padding-top: 60px;
           padding-bottom: 60px;
-          background-color: var(--color-pure-white);
+          background: linear-gradient(180deg, #FDF0C3 0%, #FEF8E6 50%, #FFFDF7 100%);
           position: relative;
           overflow: hidden;
         }

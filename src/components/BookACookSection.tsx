@@ -100,7 +100,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
         .book-cook-section {
           padding-top: 60px;
           padding-bottom: 100px;
-          background-color: var(--color-warm-white);
+          background: linear-gradient(180deg, #FFFDF7 0%, #FEF4D3 50%, #FDECB9 100%);
         }
 
         .book-cook-card {
