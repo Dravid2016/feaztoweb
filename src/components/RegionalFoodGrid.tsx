@@ -13,28 +13,20 @@ interface InteractivePlateCardProps {
 
 const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [rotation, setRotation] = useState<number>(0);
   const [tilt, setTilt] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left; // x position within card
-    const y = e.clientY - rect.top;  // y position within card
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
     const deltaX = x - centerX;
     const deltaY = y - centerY;
-
-    // Calculate angle in degrees from center
-    const angleRad = Math.atan2(deltaY, deltaX);
-    const angleDeg = (angleRad * 180) / Math.PI;
-
-    // Smooth dramatic rotation around the card center (-45 to +45 or continuous)
-    setRotation(angleDeg * 0.45);
 
     // Subtle 3D card tilt
     const tiltX = (deltaY / centerY) * -5;
@@ -48,7 +40,6 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setRotation(0);
     setTilt({ x: 0, y: 0 });
   };
 
@@ -152,17 +143,19 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
         <div 
           className="plate-circular-frame"
           style={{
-            transform: `rotate(${rotation}deg) scale(${isHovered ? 1.05 : 1})`,
-            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)'
+            transform: `scale(${isHovered ? 1.05 : 1})`,
+            transition: 'transform 0.4s ease-out'
           }}
         >
           {dish.image ? (
-            <img 
-              src={dish.image} 
-              alt={dish.name} 
-              className="card-round-plate-img" 
-              loading="lazy"
-            />
+            <div className="plate-spinning-wrapper">
+              <img 
+                src={dish.image} 
+                alt={dish.name} 
+                className="card-round-plate-img" 
+                loading="lazy"
+              />
+            </div>
           ) : (
             <div className="card-plate-placeholder">
               <Sparkles size={28} className="placeholder-dish-icon" />
@@ -172,13 +165,7 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
         </div>
         
         {/* Cultural Dashed Orbit Aura Ring around plate edge */}
-        <div 
-          className="plate-aura-ring"
-          style={{
-            transform: `rotate(${-rotation * 0.4}deg)`,
-            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.5s ease-out'
-          }}
-        />
+        <div className="plate-aura-ring plate-aura-spin" />
       </div>
     </div>
   );
@@ -474,6 +461,10 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           z-index: 1;
         }
 
+        .plate-aura-spin {
+          animation: spinAuraReverse 45s linear infinite;
+        }
+
         .plate-circular-frame {
           width: 270px;
           height: 270px;
@@ -486,6 +477,40 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           align-items: center;
           justify-content: center;
           z-index: 2;
+        }
+
+        /* Continuous Slow Loop Spinning Animation */
+        .plate-spinning-wrapper {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: slowSpinLoop 32s linear infinite;
+          transform-origin: center center;
+          will-change: transform;
+        }
+
+        .cultural-food-card:hover .plate-spinning-wrapper {
+          animation-duration: 20s; /* Subtly accelerates when user interacts */
+        }
+
+        @keyframes slowSpinLoop {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes spinAuraReverse {
+          0% {
+            transform: rotate(360deg);
+          }
+          100% {
+            transform: rotate(0deg);
+          }
         }
 
         .card-plate-placeholder {
