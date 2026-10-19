@@ -65,22 +65,57 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
           : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)'
       }}
     >
+      {/* Cultural Themed Kolam & Heritage Line-art Doodles Background */}
+      <div className="card-cultural-doodle-layer" aria-hidden="true">
+        {/* Intricate Geometric Rangoli / Kolam Watermark Motif */}
+        <svg className="doodle-watermark-svg" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.14" stroke="#874700" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            {/* Top-left Kolam corner loops */}
+            <path d="M20 20 C40 10, 50 40, 20 50 C10 35, 15 15, 35 15 C55 15, 65 45, 35 55" />
+            <circle cx="28" cy="28" r="3" fill="#874700" />
+            <circle cx="50" cy="50" r="2.5" fill="#874700" />
+            <circle cx="72" cy="28" r="2.5" fill="#874700" />
+            
+            {/* Traditional paisley / mango / kalash motif */}
+            <path d="M120 18 C145 10, 165 30, 155 55 C145 78, 115 82, 108 58 C102 38, 108 24, 120 18 Z" />
+            <path d="M125 32 C135 28, 145 38, 140 48 C135 58, 122 58, 120 46 Z" />
+            <circle cx="132" cy="42" r="2" fill="#874700" />
+
+            {/* Continuous lotus petals and traditional swags */}
+            <path d="M190 25 Q210 5, 230 25 T270 25" />
+            <path d="M190 32 Q210 16, 230 32 T270 32" strokeDasharray="3 3" />
+            
+            {/* Subtle folk cooking handi / mortar doodle linework */}
+            <path d="M50 180 C40 160, 80 160, 70 180 Z" />
+            <path d="M45 180 L75 180" strokeWidth="1.8" />
+            <path d="M60 155 L60 170" />
+            
+            {/* Delicate spice star anise & leaves */}
+            <path d="M160 195 L180 195 M170 185 L170 205 M163 188 L177 202 M163 202 L177 188" />
+            <path d="M220 190 C235 175, 255 185, 250 200 C235 210, 215 200, 220 190 Z" />
+          </g>
+        </svg>
+
+        {/* Traditional border strip at top */}
+        <div className="card-top-doodle-border" />
+      </div>
+
       {/* Left Details Box */}
       <div className="card-info-side">
         <div className="card-top-tag-row">
           <span className="pill-category-badge">{dish.category}</span>
-          <span className="pill-state-origin"><MapPin size={11} /> {dish.originState}</span>
+          <span className="pill-state-origin"><MapPin size={12} /> {dish.originState}</span>
         </div>
 
         <h3 className="card-plate-title">{dish.name}</h3>
 
         <p className="card-plate-desc">{dish.description}</p>
 
-        {/* Nutrition and Timing Badges with modern dark capsule icons */}
+        {/* Nutrition and Timing Badges with refined high-contrast pills */}
         <div className="card-metrics-row">
           {dish.prepTime && (
             <div className="metric-pill">
-              <Clock size={14} className="metric-icon clock-icon" />
+              <Clock size={15} className="metric-icon clock-icon" />
               <div className="metric-text-group">
                 <span className="metric-val">{dish.prepTime.replace(/[^0-9]/g, '')}</span>
                 <span className="metric-lbl">min</span>
@@ -89,7 +124,7 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
           )}
           {dish.calories && (
             <div className="metric-pill">
-              <Flame size={14} className="metric-icon flame-icon" />
+              <Flame size={15} className="metric-icon flame-icon" />
               <div className="metric-text-group">
                 <span className="metric-val">{dish.calories.replace(/[^0-9]/g, '')}</span>
                 <span className="metric-lbl">kcal</span>
@@ -98,7 +133,7 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
           )}
           {dish.protein && (
             <div className="metric-pill">
-              <Leaf size={14} className="metric-icon leaf-icon" />
+              <Leaf size={15} className="metric-icon leaf-icon" />
               <div className="metric-text-group">
                 <span className="metric-val">{dish.protein.replace(/[^0-9]/g, '')}</span>
                 <span className="metric-lbl">protein</span>
@@ -112,13 +147,13 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
         </div>
       </div>
 
-      {/* Right Circular Plate Viewport with Overflow Rotation */}
-      <div className="card-plate-side">
+      {/* Right Corner Oversized Half-Visible Rotating Plate */}
+      <div className="card-plate-anchor">
         <div 
           className="plate-circular-frame"
           style={{
-            transform: `rotate(${rotation}deg) scale(${isHovered ? 1.08 : 1})`,
-            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1)'
+            transform: `rotate(${rotation}deg) scale(${isHovered ? 1.05 : 1})`,
+            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)'
           }}
         >
           {dish.image ? (
@@ -130,13 +165,13 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
             />
           ) : (
             <div className="card-plate-placeholder">
-              <Sparkles size={26} className="placeholder-dish-icon" />
+              <Sparkles size={28} className="placeholder-dish-icon" />
               <span className="placeholder-dish-lbl">Awaiting Dish Photo</span>
             </div>
           )}
         </div>
         
-        {/* Subtle decorative glow ring */}
+        {/* Cultural Dashed Orbit Aura Ring around plate edge */}
         <div 
           className="plate-aura-ring"
           style={{
@@ -217,23 +252,24 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
 
         .food-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
-          gap: 28px;
+          grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+          gap: 32px;
           margin-bottom: 52px;
         }
 
+        /* Yellow Heritage Card with Cultural Doodles */
         .cultural-food-card {
           position: relative;
-          background: #111111;
-          border-radius: 24px;
-          border: 1.5px solid rgba(255, 210, 51, 0.25);
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+          background: linear-gradient(135deg, #FFD233 0%, #F5C618 60%, #E8B90E 100%);
+          border-radius: 28px;
+          border: 2px solid rgba(135, 71, 0, 0.22);
+          box-shadow: 0 16px 36px rgba(135, 71, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);
           display: flex;
           flex-direction: row;
           align-items: center;
           overflow: hidden;
-          padding: 22px 24px;
-          gap: 20px;
+          padding: 26px 28px;
+          min-height: 230px;
           transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
           transform-style: preserve-3d;
           will-change: transform;
@@ -241,8 +277,43 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
         }
 
         .cultural-food-card.card-active {
-          border-color: rgba(255, 210, 51, 0.95);
-          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 210, 51, 0.18);
+          border-color: rgba(135, 71, 0, 0.55);
+          box-shadow: 0 24px 50px rgba(135, 71, 0, 0.22), 0 0 24px rgba(255, 210, 51, 0.5);
+        }
+
+        /* Cultural Doodle Background Layer */
+        .card-cultural-doodle-layer {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .doodle-watermark-svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+        }
+
+        .card-top-doodle-border {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: repeating-linear-gradient(
+            90deg,
+            #874700 0,
+            #874700 8px,
+            transparent 8px,
+            transparent 14px
+          );
+          opacity: 0.25;
         }
 
         /* Left Information Column */
@@ -253,69 +324,78 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           align-items: flex-start;
           z-index: 2;
           min-width: 0;
+          padding-right: 140px; /* Space reserved so text never overlaps the right-corner half plate */
         }
 
         .card-top-tag-row {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 10px;
           margin-bottom: 12px;
           flex-wrap: wrap;
         }
 
         .pill-category-badge {
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          color: rgba(255, 255, 255, 0.88);
+          background: rgba(17, 17, 17, 0.88);
+          border: 1px solid rgba(17, 17, 17, 0.95);
+          color: #FFD233;
           font-size: 0.72rem;
-          font-weight: 600;
-          padding: 3px 10px;
+          font-weight: 700;
+          padding: 4px 12px;
           border-radius: 9999px;
-          letter-spacing: 0.02em;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
         }
 
         .pill-state-origin {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          color: var(--color-brand-yellow);
-          font-size: 0.72rem;
-          font-weight: 600;
+          color: #4A2800;
+          font-size: 0.76rem;
+          font-weight: 800;
+          letter-spacing: 0.01em;
         }
 
         .card-plate-title {
-          font-size: 1.25rem;
-          font-weight: 800;
-          color: #FFFFFF;
-          line-height: 1.3;
+          font-size: 1.3rem;
+          font-weight: 900;
+          color: #1A1103;
+          line-height: 1.25;
           margin-bottom: 8px;
-          letter-spacing: -0.01em;
+          letter-spacing: -0.015em;
         }
 
         .card-plate-desc {
-          font-size: 0.84rem;
-          color: rgba(255, 255, 255, 0.65);
-          line-height: 1.5;
+          font-size: 0.86rem;
+          color: #4E3205;
+          line-height: 1.48;
           margin-bottom: 16px;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          font-weight: 500;
         }
 
-        /* Metrics row like the reference screenshot */
+        /* Metrics row */
         .card-metrics-row {
           display: flex;
           align-items: center;
           gap: 16px;
           margin-bottom: 14px;
+          flex-wrap: wrap;
         }
 
         .metric-pill {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.55);
+          backdrop-filter: blur(4px);
+          padding: 4px 10px;
+          border-radius: 8px;
+          border: 1px solid rgba(135, 71, 0, 0.15);
         }
 
         .metric-icon {
@@ -323,15 +403,15 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
         }
 
         .metric-icon.clock-icon {
-          color: #E0E0E0;
+          color: #2D2418;
         }
 
         .metric-icon.flame-icon {
-          color: #FF7A00;
+          color: #D32F2F;
         }
 
         .metric-icon.leaf-icon {
-          color: #4CAF50;
+          color: #1B5E20;
         }
 
         .metric-text-group {
@@ -342,66 +422,70 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
 
         .metric-val {
           font-size: 0.92rem;
-          font-weight: 800;
-          color: #FFFFFF;
+          font-weight: 900;
+          color: #1A1103;
         }
 
         .metric-lbl {
           font-size: 0.72rem;
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.6);
+          font-weight: 700;
+          color: #5C3D05;
         }
 
         .card-tradition-snippet {
-          font-size: 0.75rem;
-          color: rgba(255, 210, 51, 0.9);
-          background: rgba(255, 210, 51, 0.08);
-          border-left: 2px solid var(--color-brand-yellow);
-          padding: 6px 10px;
+          font-size: 0.76rem;
+          color: #382103;
+          background: rgba(255, 255, 255, 0.5);
+          border-left: 3px solid #874700;
+          padding: 7px 12px;
           border-radius: 4px;
-          line-height: 1.4;
+          line-height: 1.45;
           width: 100%;
+          font-weight: 500;
         }
 
         .snippet-lead {
-          font-weight: 700;
-          color: #FFFFFF;
+          font-weight: 800;
+          color: #874700;
           margin-right: 4px;
         }
 
-        /* Right Circular Plate Viewport */
-        .card-plate-side {
-          width: 170px;
-          height: 170px;
-          min-width: 170px;
-          position: relative;
+        /* Right Corner Anchored Oversized Half Plate */
+        .card-plate-anchor {
+          position: absolute;
+          right: -130px; /* Anchored to right corner, ~half of 280px plate extends outside */
+          top: 50%;
+          transform: translateY(-50%);
+          width: 280px;
+          height: 280px;
+          z-index: 3;
           display: flex;
           align-items: center;
           justify-content: center;
+          pointer-events: none; /* Mouse movements pass to card for rotation tracking */
         }
 
         .plate-aura-ring {
           position: absolute;
-          inset: 4px;
+          inset: -12px;
           border-radius: 50%;
-          border: 1px dashed rgba(255, 210, 51, 0.35);
+          border: 2px dashed rgba(135, 71, 0, 0.35);
           pointer-events: none;
           z-index: 1;
         }
 
         .plate-circular-frame {
-          width: 156px;
-          height: 156px;
+          width: 270px;
+          height: 270px;
           border-radius: 50%;
           overflow: hidden;
-          background: #1A1A1A;
-          border: 2px solid rgba(255, 210, 51, 0.4);
-          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 0 16px rgba(0, 0, 0, 0.4);
+          background: #111111;
+          border: 4px solid #FFFFFF;
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38), 0 4px 12px rgba(135, 71, 0, 0.3);
           display: flex;
           align-items: center;
           justify-content: center;
           z-index: 2;
-          cursor: grab;
         }
 
         .card-plate-placeholder {
@@ -411,23 +495,22 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 6px;
+          gap: 8px;
           text-align: center;
-          padding: 12px;
+          padding: 16px;
           background: linear-gradient(135deg, #1C1917 0%, #292524 100%);
         }
 
         .placeholder-dish-icon {
-          color: var(--color-brand-yellow);
+          color: #FFD233;
         }
 
         .placeholder-dish-lbl {
-          font-size: 0.68rem;
+          font-size: 0.72rem;
           font-weight: 700;
-          color: rgba(255, 255, 255, 0.7);
+          color: rgba(255, 255, 255, 0.8);
           text-transform: uppercase;
-          letter-spacing: 0.04em;
-          line-height: 1.2;
+          letter-spacing: 0.05em;
         }
 
         .card-round-plate-img {
@@ -436,7 +519,7 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           object-fit: cover;
           display: block;
           user-select: none;
-          pointer-events: none;
+          filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
         }
 
         .food-cta-row {
@@ -444,19 +527,25 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           justify-content: center;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
           .food-grid {
             grid-template-columns: 1fr;
           }
           .cultural-food-card {
-            flex-direction: column-reverse;
-            padding: 20px;
+            padding: 22px 20px;
+            min-height: auto;
           }
-          .card-plate-side {
-            width: 150px;
-            height: 150px;
-            min-width: 150px;
-            margin-bottom: 12px;
+          .card-info-side {
+            padding-right: 90px;
+          }
+          .card-plate-anchor {
+            right: -110px;
+            width: 220px;
+            height: 220px;
+          }
+          .plate-circular-frame {
+            width: 210px;
+            height: 210px;
           }
         }
       `}</style>
