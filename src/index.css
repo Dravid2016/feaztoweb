@@ -1,21 +1,21 @@
 /* FEAzTO Global Design Tokens & Typography */
 :root {
-  /* Brand Colours */
-  --color-brand-yellow: #FFD233;
-  --color-brand-yellow-hover: #F0C418;
-  --color-brand-yellow-subtle: #FFF4CC;
-  --color-brand-yellow-glow: rgba(255, 210, 51, 0.28);
+  /* Official Brand Yellow (#F8B504) */
+  --color-brand-yellow: #F8B504;
+  --color-brand-yellow-hover: #E5A400;
+  --color-brand-yellow-subtle: #FFF4D1;
+  --color-brand-yellow-glow: rgba(248, 181, 4, 0.35);
   --color-ink-black: #111111;
   --color-ink-light: #222222;
   --color-pure-white: #FFFFFF;
   --color-warm-white: #FFFDF7;
-  --color-cream-surface: #FDF6E2;
-  --color-warm-gold-bg: #FEF7DE;
-  --color-warm-sand-bg: #FAF1D4;
-  --color-text-primary: #181204;
-  --color-text-secondary: #584422;
-  --color-text-muted: #8E7A5A;
-  --color-border-subtle: rgba(135, 71, 0, 0.12);
+  --color-cream-surface: #FFF9E8;
+  --color-warm-gold-bg: #FEF3D0;
+  --color-warm-sand-bg: #FDF0C5;
+  --color-text-primary: #111111;
+  --color-text-secondary: #4A3A22;
+  --color-text-muted: #7E6C4E;
+  --color-border-subtle: rgba(248, 181, 4, 0.28);
   --color-border-dark: rgba(255, 255, 255, 0.12);
 
   /* Spice Accents */
@@ -56,13 +56,14 @@ html {
 body {
   font-family: var(--font-body);
   background-color: #FFFDF7;
+  /* Highlighted Brand Yellow (#F8B504) to White gradient atmosphere */
   background-image: 
-    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(248, 181, 4, 0.42) 0%, rgba(255, 230, 138, 0.25) 45%, transparent 75%),
-    radial-gradient(circle 900px at 100% 25%, rgba(245, 183, 0, 0.2) 0%, transparent 60%),
-    radial-gradient(circle 800px at 0% 65%, rgba(248, 181, 4, 0.18) 0%, transparent 55%),
-    linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 30%, #FFF8E6 70%, #FFFDF7 100%);
+    radial-gradient(ellipse 100% 75% at 50% -12%, #F8B504 0%, rgba(248, 181, 4, 0.72) 32%, rgba(254, 237, 180, 0.38) 60%, transparent 85%),
+    radial-gradient(circle 900px at 100% 30%, rgba(248, 181, 4, 0.35) 0%, transparent 60%),
+    radial-gradient(circle 800px at 0% 70%, rgba(248, 181, 4, 0.28) 0%, transparent 55%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFFDF8 25%, #FFF9EB 60%, #FFFDF7 100%);
   background-attachment: fixed;
-  color: #1A1208;
+  color: #111111;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
