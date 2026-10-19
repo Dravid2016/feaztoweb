@@ -183,16 +183,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           text-align: center;
         }
 
-        /* Subtle warm parchment texture with golden light flares */
+        /* Transparent layer to seamlessly blend with page */
         .parchment-texture-layer {
-          position: absolute;
-          inset: 0;
-          background-image: 
-            radial-gradient(circle at 50% 20%, rgba(255, 210, 51, 0.45) 0%, transparent 65%),
-            radial-gradient(circle at 15% 75%, rgba(226, 109, 45, 0.12) 0%, transparent 55%),
-            radial-gradient(circle at 85% 75%, rgba(245, 183, 0, 0.25) 0%, transparent 55%);
-          pointer-events: none;
-          z-index: 0;
+          display: none;
         }
 
         /* Hero Content Center Column */
