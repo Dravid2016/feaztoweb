@@ -57,7 +57,6 @@ export const KITCHEN_STORIES: KitchenStory[] = [
     locationArea: 'BTM Layout, Bengaluru',
     signatureDish: 'Gongura Mamsam & Pappu Charu',
     quote: 'Cooking for others is not a business transaction; it is placing your heart on a banana leaf.',
-    image: '/brand/painterly-kitchen-hero.jpg',
     story: 'For almost three decades, Padmavathi prepared recipes taught by her grandmother in rural Guntur. Through FEAzTO’s cloud kitchen ecosystem, her authentic spice blends now feed homes across the city without compromising the slow hand-grinding process.'
   },
   {
@@ -69,7 +68,6 @@ export const KITCHEN_STORIES: KitchenStory[] = [
     locationArea: 'Frazer Town, Bengaluru',
     signatureDish: 'Awadhi Yakhni Pulao & Shahi Tukda',
     quote: 'True aroma cannot be manufactured by speed. It needs patience, whole spices, and genuine intentions.',
-    image: '/brand/painterly-kitchen-hero.jpg',
     story: 'Farida Begum brought century-old family heirloom spice ratios to Bengaluru. In FEAzTO, she found a tech-enabled partner that respects culinary heritage while providing state-of-the-art hygiene inspection and cold-chain precision.'
   }
 ];

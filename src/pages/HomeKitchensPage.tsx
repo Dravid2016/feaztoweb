@@ -48,7 +48,14 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
             {KITCHEN_STORIES.map((cook) => (
               <div key={cook.id} className="detailed-cook-card">
                 <div className="cook-media-box">
-                  <img src={cook.image} alt={cook.cookName} />
+                  {cook.image ? (
+                    <img src={cook.image} alt={cook.cookName} />
+                  ) : (
+                    <div className="cook-media-placeholder">
+                      <Award size={48} className="placeholder-award-icon" />
+                      <span className="placeholder-region">{cook.regionSpecialty}</span>
+                    </div>
+                  )}
                   <div className="cook-badge-strip">
                     <span>{cook.experienceYears} Years Traditional Mastery</span>
                   </div>
@@ -147,6 +154,32 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
           border-radius: 18px;
           overflow: hidden;
           min-height: 280px;
+        }
+
+        .cook-media-placeholder {
+          width: 100%;
+          min-height: 280px;
+          height: 100%;
+          background: linear-gradient(135deg, #27211B 0%, #171512 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          color: #FFFFFF;
+          padding: 24px;
+          text-align: center;
+        }
+
+        .placeholder-award-icon {
+          color: var(--color-brand-yellow);
+        }
+
+        .placeholder-region {
+          font-size: 1rem;
+          font-weight: 700;
+          color: rgba(255, 255, 255, 0.9);
+          letter-spacing: 0.02em;
         }
 
         .cook-media-box img {

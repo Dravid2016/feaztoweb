@@ -68,14 +68,24 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
               </small>
             </div>
 
-            {/* Right Visual Image */}
+            {/* Right Visual Highlight */}
             <div className="book-cook-visual">
               <div className="cook-art-frame">
-                <img 
-                  src="/brand/painterly-kitchen-hero.jpg" 
-                  alt="Traditional Indian culinary celebration and home hospitality" 
-                  className="cook-art-img"
-                />
+                <div className="cook-art-fallback">
+                  <div className="fallback-inner">
+                    <div className="fallback-badge">
+                      <Sparkles size={16} />
+                      <span>FEAzTO Private Feasts</span>
+                    </div>
+                    <h3>Culinary Heritage in Your Home</h3>
+                    <p>Experience the warmth of unhurried traditional cooking, slow-ground spices, and generational wisdom brought straight to your dining table.</p>
+                    <div className="fallback-points">
+                      <div className="fb-point">✦ Tailored Regional Menus</div>
+                      <div className="fb-point">✦ Handcrafted by Master Cooks</div>
+                      <div className="fb-point">✦ Zero Commercial Pre-mixes</div>
+                    </div>
+                  </div>
+                </div>
                 <div className="cook-art-tag">
                   <Sparkles size={14} />
                   <span>Heirloom Hospitality</span>
@@ -195,11 +205,58 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
           border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        .cook-art-img {
-          width: 100%;
-          height: auto;
-          object-fit: cover;
-          display: block;
+        .cook-art-fallback {
+          background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #1c1408 100%);
+          padding: 48px 36px;
+          min-height: 380px;
+          display: flex;
+          align-items: center;
+          position: relative;
+          color: #FFFFFF;
+        }
+
+        .fallback-inner {
+          position: relative;
+          z-index: 2;
+        }
+
+        .fallback-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(255, 210, 51, 0.15);
+          color: var(--color-brand-yellow);
+          border: 1px solid rgba(255, 210, 51, 0.3);
+          padding: 6px 14px;
+          border-radius: 9999px;
+          font-size: 0.76rem;
+          font-weight: 700;
+          margin-bottom: 20px;
+        }
+
+        .fallback-inner h3 {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: #FFFFFF;
+          margin-bottom: 14px;
+          line-height: 1.3;
+        }
+
+        .fallback-inner p {
+          font-size: 0.92rem;
+          color: rgba(255, 255, 255, 0.78);
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+
+        .fallback-points {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: var(--color-brand-yellow);
+          margin-bottom: 30px;
         }
 
         .cook-art-tag {

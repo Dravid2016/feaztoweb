@@ -36,7 +36,14 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
               </div>
 
               <div className="cook-image-side">
-                <img src={cook.image} alt={cook.title} className="cook-visual-img" />
+                {cook.image ? (
+                  <img src={cook.image} alt={cook.title} className="cook-visual-img" />
+                ) : (
+                  <div className="cook-visual-gradient">
+                    <Award size={36} className="gradient-award-icon" />
+                    <span className="gradient-badge-title">{cook.regionSpecialty}</span>
+                  </div>
+                )}
                 <div className="cook-experience-badge">
                   <Award size={14} />
                   <span>{cook.experienceYears} Years Heritage</span>
@@ -158,6 +165,31 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           position: relative;
           height: 240px;
           overflow: hidden;
+        }
+
+        .cook-visual-gradient {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #27211B 0%, #171512 100%);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          color: #FFFFFF;
+          padding: 24px;
+          text-align: center;
+        }
+
+        .gradient-award-icon {
+          color: var(--color-brand-yellow);
+        }
+
+        .gradient-badge-title {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: rgba(255, 255, 255, 0.9);
+          letter-spacing: 0.02em;
         }
 
         .cook-visual-img {

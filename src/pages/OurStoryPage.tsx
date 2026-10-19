@@ -32,16 +32,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
               Food is cultural memory held together by smoke, earth, water, and intention. For generations across India, family recipes were never measured in grams; they were gauged by aroma, the hiss of hot cold-pressed mustard oil, and the intuitive touch of mothers and grandmothers.
             </div>
 
-            <div className="story-media-break">
-              <img 
-                src="/brand/painterly-kitchen-hero.jpg" 
-                alt="Authentic painterly kitchen showing traditional cooking techniques" 
-                className="article-inline-image"
-              />
-              <span className="caption-text">
-                Painterly depiction of an authentic home kitchen: patience, earthen pots, and heirloom seasoning.
-              </span>
-            </div>
+
 
             <h2 className="article-section-title">The Commercialization Paradox</h2>
             <p className="article-p">

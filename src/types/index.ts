@@ -19,7 +19,7 @@ export interface KitchenStory {
   locationArea: string;
   signatureDish: string;
   quote: string;
-  image: string;
+  image?: string;
   story: string;
 }
 
