@@ -55,28 +55,25 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: #FFD233;
+  background-color: #FFFDF7;
   background-image: 
-    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 235, 140, 0.7) 0%, transparent 80%),
-    radial-gradient(circle 800px at 100% 40%, rgba(240, 180, 0, 0.4) 0%, transparent 70%),
-    radial-gradient(circle 700px at 0% 70%, rgba(255, 210, 51, 0.5) 0%, transparent 60%);
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(248, 181, 4, 0.42) 0%, rgba(255, 230, 138, 0.25) 45%, transparent 75%),
+    radial-gradient(circle 900px at 100% 25%, rgba(245, 183, 0, 0.2) 0%, transparent 60%),
+    radial-gradient(circle 800px at 0% 65%, rgba(248, 181, 4, 0.18) 0%, transparent 55%),
+    linear-gradient(180deg, #FFFFFF 0%, #FFFDF5 30%, #FFF8E6 70%, #FFFDF7 100%);
   background-attachment: fixed;
-  color: #2D1A02;
+  color: #1A1208;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Authentic Brown Kolam Art Background Pattern Layer */
+/* Subtle, refined ambient texture layer */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url('/brand/kolam-brown-hd.png');
-  background-repeat: repeat;
-  background-size: 280px 280px;
-  opacity: 0.16;
-  mix-blend-mode: multiply;
+  background-image: radial-gradient(circle at 50% 50%, rgba(248, 181, 4, 0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
