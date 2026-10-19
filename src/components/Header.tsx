@@ -138,10 +138,11 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           position: sticky;
           top: 0;
           z-index: 1000;
-          background: rgba(251, 249, 245, 0.95);
+          background: rgba(255, 210, 51, 0.94);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-bottom: 1.5px solid rgba(135, 71, 0, 0.22);
+          box-shadow: 0 4px 20px rgba(135, 71, 0, 0.08);
           transition: var(--transition-smooth);
         }
 
