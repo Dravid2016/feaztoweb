@@ -20,22 +20,20 @@ export const SpoonKolamCanvas: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Parametric Lissajous & Rose Knot Curves for authentic Kolam loops
+    // Parametric timing for the continuous Kolam drawing stroke
     let t = 0;
-    const speed = 0.007;
+    const speed = 0.0055; // Graceful, deliberate traditional drawing pace
 
-    // Trail buffer of drawn points with opacity decay
     interface DrawnPoint {
       x: number;
       y: number;
-      age: number; // 0 (fresh) to 1 (faded)
-      dot?: boolean;
+      age: number;
     }
 
     const trail: DrawnPoint[] = [];
-    const maxTrailLength = 550;
+    const maxTrailLength = 950; // Long expansive memory to keep full Kolam mandalas visible
 
-    // Sparkle particles created from the spoon tip
+    // Sparkle particles created from the spoon tip (traditional rice powder dust)
     interface Sparkle {
       x: number;
       y: number;
@@ -47,71 +45,127 @@ export const SpoonKolamCanvas: React.FC = () => {
     }
     const sparkles: Sparkle[] = [];
 
-    const getKolamPoint = (time: number) => {
-      // Scale and center dynamic loops across the viewport
+    // ── AUTHENTIC MAHA-KOLAM / SIKKU MANDALA GENERATOR ──
+    // Generates genuine 8-petal interconnected loops, diamond brahma knots, and outer lotus curls
+    const getBigKolamPoint = (time: number) => {
       const cx = width * 0.5;
-      const cy = height * 0.48;
+      const cy = height * 0.5;
+      const baseR = Math.min(width, height) * 0.38;
 
-      // Authentic Sikku Kolam petal geometry using harmonic frequencies
-      const r = Math.min(width, height) * 0.36 * (Math.sin(3 * time) * 0.5 + 0.55);
-      const x = cx + r * Math.cos(2 * time) * Math.cos(time);
-      const y = cy + r * Math.sin(3 * time) * Math.sin(time) * 0.85;
+      // Authentic Sikku mathematical harmonic:
+      // Combining 4-fold cardinal diamond symmetry with 8-fold lotus loops and radial petal swells
+      const petalSwelling = Math.cos(4 * time) * 0.32 + Math.cos(8 * time) * 0.16 + 0.62;
+      const radius = baseR * petalSwelling;
+
+      // Closed continuous looped knot (Sikku / Brahma Knot)
+      const x = cx + radius * (Math.cos(time) + 0.28 * Math.cos(5 * time) - 0.12 * Math.cos(9 * time));
+      const y = cy + radius * (Math.sin(time) - 0.28 * Math.sin(5 * time) - 0.12 * Math.sin(9 * time));
 
       return { x, y };
+    };
+
+    // Calculate Brahma Dots (Pulli) that form the traditional Kolam matrix
+    const getPulliDots = () => {
+      const dots: { x: number; y: number }[] = [];
+      const cx = width * 0.5;
+      const cy = height * 0.5;
+      const step = Math.min(width, height) * 0.085;
+      const gridSize = 3;
+
+      for (let i = -gridSize; i <= gridSize; i++) {
+        for (let j = -gridSize; j <= gridSize; j++) {
+          if (Math.abs(i) + Math.abs(j) <= gridSize + 1) {
+            dots.push({ x: cx + i * step, y: cy + j * step });
+          }
+        }
+      }
+      return dots;
     };
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Compute current spoon tip position
-      const currentPt = getKolamPoint(t);
-      const nextPt = getKolamPoint(t + 0.015);
+      // ── 0. DRAW TRADITIONAL PULLI (RICE POWDER DOT MATRIX) ──
+      const pulliDots = getPulliDots();
+      ctx.save();
+      for (const dot of pulliDots) {
+        // Soft golden sacred dots
+        ctx.fillStyle = 'rgba(248, 181, 4, 0.28)';
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, 2.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+
+      // Compute current spoon tip position on the big Kolam path
+      const currentPt = getBigKolamPoint(t);
+      const nextPt = getBigKolamPoint(t + 0.012);
       const angle = Math.atan2(nextPt.y - currentPt.y, nextPt.x - currentPt.x);
 
-      // Add to path trail
+      // Record point in continuous Kolam trail
       trail.push({ x: currentPt.x, y: currentPt.y, age: 0 });
       if (trail.length > maxTrailLength) {
         trail.shift();
       }
 
-      // Periodically spawn golden rice powder sparkles
-      if (Math.random() < 0.45) {
+      // Spawn traditional golden rice powder sparkles
+      if (Math.random() < 0.55) {
         sparkles.push({
-          x: currentPt.x + (Math.random() - 0.5) * 6,
-          y: currentPt.y + (Math.random() - 0.5) * 6,
-          vx: (Math.random() - 0.5) * 0.8,
-          vy: (Math.random() - 0.5) * 0.8 + 0.3,
-          size: Math.random() * 2.5 + 1.2,
-          alpha: 0.85,
-          decay: 0.018,
+          x: currentPt.x + (Math.random() - 0.5) * 8,
+          y: currentPt.y + (Math.random() - 0.5) * 8,
+          vx: (Math.random() - 0.5) * 0.9,
+          vy: (Math.random() - 0.5) * 0.9 + 0.25,
+          size: Math.random() * 2.8 + 1.2,
+          alpha: 0.9,
+          decay: 0.016,
         });
       }
 
-      // ── 1. DRAW KOLAM LINEWORK TRAIL ──
+      // ── 1. DRAW INTRICATE KOLAM MANDALA LINEWORK ──
       if (trail.length > 2) {
         ctx.save();
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
 
-        // Glowing soft halo behind stroke
-        ctx.shadowColor = 'rgba(248, 181, 4, 0.4)';
-        ctx.shadowBlur = 8;
+        // Outer warm ambient glow
+        ctx.shadowColor = 'rgba(248, 181, 4, 0.45)';
+        ctx.shadowBlur = 10;
 
         for (let i = 1; i < trail.length; i++) {
           const p1 = trail[i - 1];
           const p2 = trail[i];
-          const progress = i / trail.length; // 0 (oldest) to 1 (newest)
+          const progress = i / trail.length; // 0 to 1
 
-          // Smooth gradient stroke from translucent gold to radiant FEAzTO yellow
-          const alpha = progress * 0.55;
+          // Dual-layer stroke: Rich turmeric gold core with bright white highlights
+          const alpha = 0.15 + progress * 0.55;
           ctx.strokeStyle = `rgba(248, 181, 4, ${alpha})`;
-          ctx.lineWidth = 1.8 + progress * 1.6;
+          ctx.lineWidth = 2.2 + progress * 1.8;
 
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
           ctx.stroke();
         }
+
+        // Inner crisp white rice-powder core line
+        for (let i = Math.floor(trail.length * 0.2); i < trail.length; i++) {
+          const p1 = trail[i - 1];
+          const p2 = trail[i];
+          const progress = i / trail.length;
+
+          ctx.strokeStyle = `rgba(255, 255, 255, ${progress * 0.45})`;
+          ctx.lineWidth = 1.0;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+
         ctx.restore();
       }
 
@@ -128,80 +182,77 @@ export const SpoonKolamCanvas: React.FC = () => {
         }
 
         ctx.save();
-        ctx.fillStyle = `rgba(248, 181, 4, ${s.alpha * 0.75})`;
+        ctx.fillStyle = `rgba(248, 181, 4, ${s.alpha * 0.8})`;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
 
-      // ── 3. DRAW TRADITIONAL BRASS / HERITAGE SPOON ──
+      // ── 3. DRAW AUTHENTIC SOUTH INDIAN BRASS HERITAGE SPOON ──
       ctx.save();
       ctx.translate(currentPt.x, currentPt.y);
-      // Tilt spoon naturally in drawing direction + slight ergonomic angle
+      // Ergonomic tilt following the drawing curve
       ctx.rotate(angle + Math.PI / 4);
 
-      // Soft ambient drop-shadow beneath spoon
-      ctx.shadowColor = 'rgba(135, 71, 0, 0.22)';
-      ctx.shadowBlur = 10;
-      ctx.shadowOffsetX = 4;
-      ctx.shadowOffsetY = 6;
+      // Deep drop-shadow beneath spoon
+      ctx.shadowColor = 'rgba(135, 71, 0, 0.26)';
+      ctx.shadowBlur = 12;
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 7;
 
       // ── Spoon Bowl (Scoop) ──
-      // Outer brass body gradient
-      const bowlGrad = ctx.createRadialGradient(-2, -6, 2, 0, 0, 16);
-      bowlGrad.addColorStop(0, '#FFE885');
+      const bowlGrad = ctx.createRadialGradient(-2, -6, 2, 0, 0, 18);
+      bowlGrad.addColorStop(0, '#FFF19E');
       bowlGrad.addColorStop(0.45, '#F8B504');
       bowlGrad.addColorStop(0.85, '#D99100');
       bowlGrad.addColorStop(1, '#9C6200');
 
       ctx.fillStyle = bowlGrad;
       ctx.beginPath();
-      // Elliptical spoon scoop
-      ctx.ellipse(0, 0, 11, 16, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, 12, 17, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Inner bowl highlight (shiny brass bevel)
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.65)';
-      ctx.lineWidth = 1.2;
+      // Inner bowl highlight (polished brass rim)
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.lineWidth = 1.4;
       ctx.beginPath();
-      ctx.ellipse(-1.5, -2, 7.5, 11.5, 0, 0, Math.PI * 2);
+      ctx.ellipse(-1.5, -2, 8, 12, 0, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Golden Rice powder / Turmeric inside spoon scoop tip
+      // Golden Rice Flour inside spoon scoop tip
       ctx.fillStyle = '#FFFFFF';
       ctx.beginPath();
-      ctx.ellipse(0, 3, 4.5, 6, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 3, 5, 7, 0, 0, Math.PI * 2);
       ctx.fill();
 
       // ── Spoon Long Slender Handle ──
-      const handleGrad = ctx.createLinearGradient(0, -14, 0, -56);
+      const handleGrad = ctx.createLinearGradient(0, -15, 0, -62);
       handleGrad.addColorStop(0, '#D99100');
       handleGrad.addColorStop(0.3, '#F8B504');
-      handleGrad.addColorStop(0.7, '#FFE885');
+      handleGrad.addColorStop(0.7, '#FFF19E');
       handleGrad.addColorStop(1, '#C78100');
 
       ctx.fillStyle = handleGrad;
       ctx.beginPath();
-      // Tapered graceful South Indian culinary ladle handle
-      ctx.moveTo(-2.5, -14);
-      ctx.lineTo(-1.8, -50);
-      // Decorative ornamental finial ring at handle tip
-      ctx.quadraticCurveTo(-3, -56, 0, -58);
-      ctx.quadraticCurveTo(3, -56, 1.8, -50);
-      ctx.lineTo(2.5, -14);
+      ctx.moveTo(-2.8, -15);
+      ctx.lineTo(-2.0, -54);
+      // Traditional ornamental curved finial ring at handle tip
+      ctx.quadraticCurveTo(-3.5, -60, 0, -62);
+      ctx.quadraticCurveTo(3.5, -60, 2.0, -54);
+      ctx.lineTo(2.8, -15);
       ctx.closePath();
       ctx.fill();
 
-      // Decorative Kolam carving dot on handle finial
-      ctx.fillStyle = '#FFEAA7';
+      // Carved cultural lotus dot on handle
+      ctx.fillStyle = '#FFF8D6';
       ctx.beginPath();
-      ctx.arc(0, -53, 2, 0, Math.PI * 2);
+      ctx.arc(0, -56, 2.2, 0, Math.PI * 2);
       ctx.fill();
 
       ctx.restore();
 
-      // Advance animation parameter
+      // Advance drawing parameter
       t += speed;
       animationFrameId = requestAnimationFrame(render);
     };
@@ -223,7 +274,7 @@ export const SpoonKolamCanvas: React.FC = () => {
           position: fixed;
           inset: 0;
           pointer-events: none;
-          z-index: 1; /* Floating right above the body background, below interactive content */
+          z-index: 1; /* Floating directly over the background, below text and buttons */
           overflow: hidden;
         }
 
