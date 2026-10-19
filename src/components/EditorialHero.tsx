@@ -85,37 +85,37 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           </div>
         </div>
 
-        {/* ── DRAMATIC ORGANIC CURVED TRANSITION (Deep Sculptural Wave) ── */}
+        {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION ── */}
         <div className="hero-curved-bottom-separator" aria-hidden="true">
           <svg 
-            viewBox="0 0 1440 240" 
+            viewBox="0 0 1440 280" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
             className="curved-svg-canvas"
           >
-            {/* Deep Dynamic Turmeric Yellow Ribbon Waves */}
+            {/* Upper Flowing Yellow Ribbon Layer */}
             <path 
-              d="M0,60 C260,20 420,190 720,130 C1020,70 1200,210 1440,50 L1440,240 L0,240 Z" 
+              d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 L1440,280 L0,280 Z" 
               fill="#F8B504" 
-              opacity="0.35" 
+              opacity="0.38" 
             />
-            {/* Pronounced Middle Gold Sweep */}
+            {/* Dynamic Accent Golden Wave Sweep */}
             <path 
-              d="M0,95 C280,45 460,210 740,150 C1000,90 1220,230 1440,80 L1440,240 L0,240 Z" 
+              d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 L1440,280 L0,280 Z" 
               fill="#F8B504" 
-              opacity="0.65" 
+              opacity="0.75" 
             />
             {/* Deep Curled Lower Boundary into Section Below */}
             <path 
-              d="M0,135 C300,75 480,225 760,170 C1040,115 1250,240 1440,110 L1440,240 L0,240 Z" 
+              d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
               fill="#FFFDF7" 
             />
           </svg>
 
-          {/* Center-Placed Traditional Kolam Motif along the deepest crest of the curl */}
+          {/* Center Kolam Diamond seated along the dynamic crest of the curve */}
           <div className="curve-center-kolam" aria-hidden="true">
-            <svg width="48" height="48" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="46" height="46" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#F8B504" strokeWidth="2.2" fill="#FFFDF7" />
               <path d="M22,4 C25,12 32,12 40,22 C32,32 25,32 22,40 C19,32 12,32 4,22 C12,12 19,12 22,4 Z" stroke="#F8B504" strokeWidth="1.6" fill="none" />
               <circle cx="22" cy="22" r="3.2" fill="#F8B504" />
@@ -395,7 +395,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           left: 0;
           right: 0;
           width: 100%;
-          height: 160px;
+          height: 180px;
           z-index: 4;
           pointer-events: none;
           line-height: 0;
@@ -409,7 +409,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .curve-center-kolam {
           position: absolute;
-          bottom: 42px;
+          bottom: 38px;
           left: 50%;
           transform: translateX(-50%);
           z-index: 5;
