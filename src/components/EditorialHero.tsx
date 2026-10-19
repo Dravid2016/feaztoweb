@@ -7,219 +7,328 @@ interface EditorialHeroProps {
 
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
   return (
-    <div className="feazto-hero-and-discovery-wrapper">
+    <div className="feazto-master-wrapper">
       {/* ── TOP HERO SECTION ── */}
-      <section className="feazto-master-hero">
-        {/* Subtle background texture overlay */}
-        <div className="parchment-texture-layer" aria-hidden="true" />
+      <section className="feazto-hero-section">
+        {/* Subtle warm parchment texture overlay */}
+        <div className="parchment-glow-layer" aria-hidden="true" />
 
-        {/* Main Content Area - Center Aligned */}
-        <div className="hero-content-wrapper">
-          {/* Cultural Eyebrow with Kolam Motifs - Center Aligned */}
-          <div className="hero-eyebrow-row">
-            <span className="eyebrow-kolam" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="6" width="22" height="22" rx="3" transform="rotate(45 17 17)" stroke="#F5B700" strokeWidth="1.8" fill="none" />
-                <path d="M17,4 C19,9 25,9 30,17 C25,25 19,25 17,30 C15,25 9,25 4,17 C9,9 15,9 17,4 Z" stroke="#F5B700" strokeWidth="1.4" fill="none" />
-                <circle cx="17" cy="17" r="2.5" fill="#F5B700" />
-              </svg>
-            </span>
-            <span className="eyebrow-text">
-              REGIONAL FOOD <span className="eyebrow-spark">✦</span> HOME KITCHENS <span className="eyebrow-spark">✦</span> CULTURE
-            </span>
-            <span className="eyebrow-kolam" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="6" width="22" height="22" rx="3" transform="rotate(45 17 17)" stroke="#F5B700" strokeWidth="1.8" fill="none" />
-                <path d="M17,4 C19,9 25,9 30,17 C25,25 19,25 17,30 C15,25 9,25 4,17 C9,9 15,9 17,4 Z" stroke="#F5B700" strokeWidth="1.4" fill="none" />
-                <circle cx="17" cy="17" r="2.5" fill="#F5B700" />
-              </svg>
-            </span>
+        {/* Floating spice leaves and ingredient cutouts */}
+        <div className="floating-ingredients-layer" aria-hidden="true">
+          <img 
+            src="/assets/cutout-curry-leaves.png" 
+            alt="" 
+            className="leaf-float leaf-float-1" 
+          />
+          <img 
+            src="/assets/cutout-red-chilies.png" 
+            alt="" 
+            className="leaf-float leaf-float-2" 
+          />
+          <img 
+            src="/assets/cutout-tulsi-herb.png" 
+            alt="" 
+            className="leaf-float leaf-float-3" 
+          />
+        </div>
+
+        <div className="hero-grid-container">
+          {/* ── LEFT COLUMN: EDITORIAL TYPOGRAPHY & CTAs ── */}
+          <div className="hero-text-column">
+            {/* Cultural Eyebrow with Yellow Diamond Kolam Motif */}
+            <div className="hero-eyebrow-wrapper">
+              <span className="eyebrow-kolam-icon" aria-hidden="true">
+                <img src="/assets/kolam-diamond.svg" alt="" width="26" height="26" />
+              </span>
+              <span className="eyebrow-text">
+                REGIONAL FOOD <span className="eyebrow-spark">✦</span> HOME KITCHENS <span className="eyebrow-spark">✦</span> CULTURE
+              </span>
+            </div>
+
+            {/* Left-Aligned Master Headline with Food Capsule inside 'home' */}
+            <h1 className="hero-display-headline">
+              <span className="headline-block">The taste of</span>
+              <span className="headline-block headline-middle-row">
+                <span className="letter-h">h</span>
+                <span className="home-food-capsule" title="Traditional South Indian Curry">
+                  <img 
+                    src="/assets/food-capsule-home-circle.png" 
+                    alt="Authentic coastal curry" 
+                    className="capsule-dish-img"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/assets/food-dish-coastal-curry-hd.jpg';
+                    }}
+                  />
+                </span>
+                <span className="letters-me">me, wherever</span>
+              </span>
+              <span className="headline-block">life takes you.</span>
+            </h1>
+
+            {/* Supporting Copy */}
+            <p className="hero-subparagraph">
+              Discover the regional flavours, home kitchens and food traditions that bring people closer to what feels like home.
+            </p>
+
+            {/* Two Aligned CTA Buttons */}
+            <div className="hero-cta-group">
+              <button 
+                type="button" 
+                onClick={() => navigate('/discover')}
+                className="hero-primary-btn"
+              >
+                <span>Explore Food</span>
+                <ArrowRight size={18} className="btn-arrow-motion" />
+              </button>
+
+              <button 
+                type="button" 
+                onClick={() => navigate('/our-story')}
+                className="hero-secondary-btn"
+              >
+                <span>Our Story</span>
+                <span className="play-circle-bubble">
+                  <Play size={10} fill="#111111" strokeWidth={0} />
+                </span>
+              </button>
+            </div>
+
+            {/* Decorative Diamond Kolam Accent (Mid-Left area under CTAs as seen in mockup) */}
+            <div className="hero-accent-kolam" aria-hidden="true">
+              <img src="/assets/kolam-diamond.svg" alt="" width="52" height="52" />
+            </div>
           </div>
 
-          {/* Master Headline - Centered with Food Image Capsule */}
-          <h1 className="hero-master-headline">
-            <span className="headline-line">The taste of</span>
-            <span className="headline-line with-capsule">
-              h
-              <span className="food-word-capsule" title="Traditional South Indian Curry Bowl">
+          {/* ── RIGHT COLUMN: PAINTERLY SOUTH INDIAN KITCHEN ARTWORK ── */}
+          <div className="hero-artwork-column">
+            <div className="painterly-scene-container">
+              {/* Arched Organic Mask / Background Canvas */}
+              <div className="scene-artwork-wrapper">
                 <img 
-                  src="/dish-capsule-curry.jpg" 
-                  alt="Traditional South Indian Curry Bowl" 
-                  className="capsule-dish-img"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/plate-thali.png';
-                  }}
+                  src="/assets/hero-kitchen-scene.jpg" 
+                  alt="South Indian home kitchen with woman cooking over traditional stove, temple river background" 
+                  className="painterly-kitchen-img"
                 />
-              </span>
-              me, wherever
-            </span>
-            <span className="headline-line">life takes you.</span>
-          </h1>
+              </div>
 
-          {/* Supporting Copy - Center Aligned */}
-          <p className="hero-master-subcopy">
-            Discover the regional flavours, home kitchens and food traditions that bring people closer to what feels like home.
-          </p>
-
-          {/* Dual CTAs - Center Aligned */}
-          <div className="hero-cta-buttons-row">
-            <button 
-              type="button" 
-              onClick={() => navigate('/discover')}
-              className="master-primary-cta"
-            >
-              <span>Explore Food</span>
-              <ArrowRight size={18} className="cta-arrow-icon" />
-            </button>
-
-            <button 
-              type="button" 
-              onClick={() => navigate('/our-story')}
-              className="master-secondary-cta"
-            >
-              <span>Our Story</span>
-              <span className="play-circle-icon">
-                <Play size={11} fill="#111111" strokeWidth={0} />
-              </span>
-            </button>
+              {/* Vertical Kolam Garland on the far right edge (from reference) */}
+              <div className="hero-right-kolam-spine" aria-hidden="true">
+                <img src="/assets/kolam-vertical-chain.svg" alt="" width="26" height="110" />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* ── ORGANIC CURVED TRANSITION (Desktop & Mobile) ── */}
-        <div className="hero-curved-bottom-separator" aria-hidden="true">
+        {/* ── ORGANIC CURVED BOTTOM TRANSITION WITH TURMERIC YELLOW SHAPE ── */}
+        <div className="hero-organic-curved-bottom" aria-hidden="true">
           <svg 
             viewBox="0 0 1440 180" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
-            className="curved-svg-canvas"
+            className="curved-boundary-svg"
           >
-            {/* Turmeric Gold Accent Wave Line */}
+            {/* Turmeric Yellow Flowing Accent Ribbon on Left (matching reference) */}
             <path 
-              d="M0,120 Q220,175 480,125 T1020,135 T1440,65 L1440,180 L0,180 Z" 
+              d="M0,80 C180,70 320,130 460,135 C620,140 920,80 1440,110 L1440,180 L0,180 Z" 
               fill="#F5B700" 
-              opacity="0.45" 
+              opacity="0.3"
             />
-            {/* Rich Warm Butter Yellow Lower Wave Transition into section below */}
             <path 
-              d="M0,140 Q240,195 520,140 T1040,148 T1440,85 L1440,180 L0,180 Z" 
-              fill="#FFF8E1" 
+              d="M0,105 C140,85 280,120 440,140 C600,160 880,105 1440,125 L1440,180 L0,180 Z" 
+              fill="#F5B700" 
+              opacity="0.55"
+            />
+            {/* Warm Ivory / Light Cream lower fill blending into the regional food section */}
+            <path 
+              d="M0,125 C160,115 320,135 480,150 C680,170 940,115 1440,145 L1440,180 L0,180 Z" 
+              fill="#FAFAFA" 
             />
           </svg>
 
-          {/* Center-Placed Traditional Kolam Motif along the organic curve */}
-          <div className="curve-center-kolam" aria-hidden="true">
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="6" y="6" width="32" height="32" rx="4" transform="rotate(45 22 22)" stroke="#F5B700" strokeWidth="1.8" fill="#FFF8E1" />
-              <path d="M22,5 C25,12 32,12 39,22 C32,32 25,32 22,39 C19,32 12,32 5,22 C12,12 19,12 22,5 Z" stroke="#F5B700" strokeWidth="1.4" fill="none" />
-              <circle cx="22" cy="22" r="3" fill="#F5B700" />
-            </svg>
+          {/* Central Kolam Diamond on the organic wave curve boundary */}
+          <div className="wave-center-kolam" aria-hidden="true">
+            <img src="/assets/kolam-diamond.svg" alt="" width="38" height="38" />
           </div>
         </div>
       </section>
 
-      {/* ── NEXT SECTION: REGIONAL HIGHLIGHT TEASER (Centered, No Card Images) ── */}
-      <section className="food-discovery-teaser-section">
-        <div className="teaser-inner-container">
-          {/* Eyebrow & Headline - Center Aligned */}
-          <div className="teaser-header">
-            <span className="teaser-eyebrow">EXPLORE REGIONAL FLAVORS</span>
-            <h2 className="teaser-title">A world of authentic tastes</h2>
-            <p className="teaser-description">
+      {/* ── PHASE 6: REBUILT REGIONAL FOOD SECTION ── */}
+      <section className="regional-flavours-preview-section">
+        <div className="container regional-preview-container">
+          {/* Eyebrow, Heading & Supporting copy (Left-aligned & beautifully spaced) */}
+          <div className="regional-preview-header">
+            <span className="regional-preview-eyebrow">EXPLORE REGIONAL FLAVOURS</span>
+            <h2 className="regional-preview-heading">A world of authentic tastes</h2>
+            <p className="regional-preview-copy">
               From fiery coastal curries to comforting home-style meals, explore the rich and diverse flavours of India — one region at a time.
             </p>
           </div>
 
-          {/* 3 Regional Heritage Highlights - Clean Typography Cards without image clutter */}
-          <div className="teaser-cards-grid">
-            <div className="dish-preview-card text-center-card">
-              <div className="dish-card-caption">
-                <span className="dish-origin-tag">Coastal Heritage</span>
-                <h4 className="dish-name-heading">Fragrant Coastal Curries</h4>
-                <p className="dish-name-desc">Slow-simmered kokum, stone-ground coconut pastes, and fresh coastal temperings.</p>
+          {/* 3 Carefully Aligned Food Images with Consistent Crops & Rounded Corners */}
+          <div className="regional-preview-grid">
+            {/* Dish 1: Coastal Curry */}
+            <div className="food-preview-card" onClick={() => navigate('/discover')}>
+              <div className="food-image-frame">
+                <img 
+                  src="/assets/food-dish-coastal-curry-hd.jpg" 
+                  alt="Coastal Fish & Coconut Curry on Banana Leaf" 
+                  className="preview-dish-img"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/dish-coastal-curry.jpg';
+                  }}
+                />
+              </div>
+              <div className="food-card-caption">
+                <span className="dish-region-tag">Coastal Heritage</span>
+                <h4 className="dish-title">Fiery Coastal Curry</h4>
+                <p className="dish-snippet">Slow-simmered kokum, stone-ground coconut paste, and coastal temperings.</p>
               </div>
             </div>
 
-            <div className="dish-preview-card text-center-card">
-              <div className="dish-card-caption">
-                <span className="dish-origin-tag">South Traditions</span>
-                <h4 className="dish-name-heading">Golden Crispy Dosas & Chutneys</h4>
-                <p className="dish-name-desc">Cast-iron seasoned crisps, fresh fermented batters, and roasted gram chutneys.</p>
+            {/* Dish 2: Ghee Dosa */}
+            <div className="food-preview-card" onClick={() => navigate('/discover')}>
+              <div className="food-image-frame">
+                <img 
+                  src="/assets/food-dish-ghee-dosa-hd.jpg" 
+                  alt="Crispy Golden Ghee Roast Dosa with Chutneys" 
+                  className="preview-dish-img"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/dish-ghee-dosa.jpg';
+                  }}
+                />
+              </div>
+              <div className="food-card-caption">
+                <span className="dish-region-tag">South Traditions</span>
+                <h4 className="dish-title">Crisp Ghee Roast Dosa</h4>
+                <p className="dish-snippet">Cast-iron seasoned crisps, fresh fermented batters, and roasted chutneys.</p>
               </div>
             </div>
 
-            <div className="dish-preview-card text-center-card">
-              <div className="dish-card-caption">
-                <span className="dish-origin-tag">Deccani Spice</span>
-                <h4 className="dish-name-heading">Slow-Fire Dum Biryani</h4>
-                <p className="dish-name-desc">Dough-sealed handis, saffron strands, aromatic spices, and tender long-grain rice.</p>
+            {/* Dish 3: Spiced Rice */}
+            <div className="food-preview-card" onClick={() => navigate('/discover')}>
+              <div className="food-image-frame">
+                <img 
+                  src="/assets/food-dish-spiced-rice-hd.jpg" 
+                  alt="Traditional Spiced Rice / Dum Biryani in Clay Handi" 
+                  className="preview-dish-img"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = '/dish-dum-biryani.jpg';
+                  }}
+                />
+              </div>
+              <div className="food-card-caption">
+                <span className="dish-region-tag">Deccani Spice</span>
+                <h4 className="dish-title">Clay Pot Spiced Biryani</h4>
+                <p className="dish-snippet">Dough-sealed handis, saffron strands, and aromatic aged long grains.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── COMPONENT STYLES ── */}
+      {/* ── STYLES MATCHING THE EXACT MOCKUP COMPOSITION ── */}
       <style>{`
-        /* Overall Wrapper */
-        .feazto-hero-and-discovery-wrapper {
+        .feazto-master-wrapper {
           position: relative;
           background-color: #F8F5EE;
           overflow: hidden;
         }
 
-        /* ── HERO MAIN SECTION ── */
-        .feazto-master-hero {
+        /* ── HERO SECTION ── */
+        .feazto-hero-section {
           position: relative;
-          min-height: 560px;
-          background: linear-gradient(180deg, #FFF6D6 0%, #FEEDB3 50%, #FDE496 100%);
+          min-height: 640px;
+          background: linear-gradient(175deg, #F9F5EC 0%, #F8F3E5 40%, #F5EECF 100%);
           display: flex;
           flex-direction: column;
-          align-items: center;
           justify-content: center;
-          padding-top: 72px;
-          padding-bottom: 120px;
+          padding-top: 48px;
+          padding-bottom: 110px;
           box-sizing: border-box;
-          text-align: center;
+          overflow: hidden;
         }
 
-        /* Subtle warm parchment texture with golden light flares */
-        .parchment-texture-layer {
+        .parchment-glow-layer {
           position: absolute;
           inset: 0;
           background-image: 
-            radial-gradient(circle at 50% 20%, rgba(255, 210, 51, 0.45) 0%, transparent 65%),
-            radial-gradient(circle at 15% 75%, rgba(226, 109, 45, 0.12) 0%, transparent 55%),
-            radial-gradient(circle at 85% 75%, rgba(245, 183, 0, 0.25) 0%, transparent 55%);
+            radial-gradient(circle at 75% 35%, rgba(245, 183, 0, 0.18) 0%, transparent 60%),
+            radial-gradient(circle at 10% 20%, rgba(255, 235, 140, 0.25) 0%, transparent 50%),
+            radial-gradient(circle at 25% 80%, rgba(226, 109, 45, 0.08) 0%, transparent 50%);
           pointer-events: none;
-          z-index: 0;
+          z-index: 1;
         }
 
-        /* Hero Content Center Column */
-        .hero-content-wrapper {
+        /* Floating Ingredients */
+        .floating-ingredients-layer {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          z-index: 2;
+          overflow: hidden;
+        }
+
+        .leaf-float {
+          position: absolute;
+          opacity: 0.85;
+          filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.08));
+          transition: transform 0.6s ease;
+        }
+
+        .leaf-float-1 {
+          top: 36%;
+          left: 1.5%;
+          width: 58px;
+          transform: rotate(-18deg);
+        }
+
+        .leaf-float-2 {
+          top: 60%;
+          left: 0.8%;
+          width: 62px;
+          transform: rotate(32deg);
+        }
+
+        .leaf-float-3 {
+          top: 68%;
+          left: 31%;
+          width: 48px;
+          transform: rotate(-12deg);
+        }
+
+        /* 2-Column Hero Grid */
+        .hero-grid-container {
           position: relative;
           z-index: 3;
-          max-width: 860px;
+          max-width: 1380px;
           width: 100%;
           margin: 0 auto;
-          padding: 0 clamp(20px, 4vw, 40px);
-          display: flex;
-          flex-direction: column;
+          padding: 0 clamp(24px, 4vw, 56px);
+          display: grid;
+          grid-template-columns: 1.05fr 1fr;
           align-items: center;
-          text-align: center;
+          gap: clamp(24px, 4vw, 56px);
           box-sizing: border-box;
         }
 
-        /* Eyebrow with Kolam - Centered */
-        .hero-eyebrow-row {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 14px;
-          margin-bottom: 28px;
+        /* ── LEFT COLUMN ── */
+        .hero-text-column {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+          position: relative;
         }
 
-        .eyebrow-kolam {
+        .hero-eyebrow-wrapper {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 22px;
+        }
+
+        .eyebrow-kolam-icon {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -227,70 +336,68 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .eyebrow-text {
-          font-family: var(--font-heading);
-          font-size: 0.88rem;
+          font-family: var(--font-body);
+          font-size: 0.84rem;
           font-weight: 700;
-          letter-spacing: 0.16em;
-          color: #3A3A3A;
+          letter-spacing: 0.18em;
+          color: #333333;
           text-transform: uppercase;
         }
 
         .eyebrow-spark {
           color: #F5B700;
           margin: 0 4px;
-          font-size: 0.9rem;
         }
 
-        /* Editorial Bold Headline - Centered */
-        .hero-master-headline {
+        /* Large Bold Left-Aligned Headline */
+        .hero-display-headline {
           font-family: var(--font-heading);
-          font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+          font-size: clamp(2.8rem, 4.8vw, 4.4rem);
           font-weight: 800;
           color: #111111;
-          line-height: 1.15;
+          line-height: 1.12;
           letter-spacing: -0.035em;
-          margin: 0 0 24px 0;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+          margin: 0 0 22px 0;
+          text-align: left;
         }
 
-        .headline-line {
+        .headline-block {
           display: block;
-          text-align: center;
         }
 
-        .headline-line.with-capsule {
+        .headline-middle-row {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
-          gap: 0;
           flex-wrap: nowrap;
+          gap: 0;
         }
 
-        /* Transition Card / Capsule Image between the text */
-        .food-word-capsule {
+        .letter-h {
+          display: inline;
+        }
+
+        /* Food Capsule inside 'home' */
+        .home-food-capsule {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: clamp(56px, 7.8vw, 88px);
-          height: clamp(36px, 4.8vw, 56px);
-          margin: 0 5px;
+          width: clamp(52px, 6.4vw, 76px);
+          height: clamp(36px, 4.4vw, 52px);
+          margin: 0 4px;
           border-radius: 9999px;
           background: #FFFFFF;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
-          border: 2.5px solid #F5B700;
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
+          border: 2px solid #F5B700;
           overflow: hidden;
           vertical-align: middle;
-          transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
           cursor: pointer;
           flex-shrink: 0;
+          transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.24s ease;
         }
 
-        .food-word-capsule:hover {
-          transform: scale(1.1) rotate(2deg);
-          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+        .home-food-capsule:hover {
+          transform: scale(1.1) rotate(3deg);
+          box-shadow: 0 10px 24px rgba(245, 183, 0, 0.35);
         }
 
         .capsule-dish-img {
@@ -300,38 +407,41 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: block;
         }
 
-        /* Supporting Copy - Centered */
-        .hero-master-subcopy {
-          font-family: var(--font-body);
-          font-size: clamp(1.05rem, 1.4vw, 1.22rem);
-          font-weight: 400;
-          line-height: 1.7;
-          color: #4A4A4A;
-          max-width: 620px;
-          margin: 0 auto 38px auto;
-          text-align: center;
+        .letters-me {
+          display: inline;
+          margin-left: 2px;
         }
 
-        /* CTA Buttons Row - Centered */
-        .hero-cta-buttons-row {
+        /* Supporting Copy */
+        .hero-subparagraph {
+          font-family: var(--font-body);
+          font-size: clamp(1rem, 1.25vw, 1.15rem);
+          font-weight: 400;
+          line-height: 1.65;
+          color: #555555;
+          max-width: 500px;
+          margin: 0 0 34px 0;
+        }
+
+        /* CTA Buttons */
+        .hero-cta-group {
           display: flex;
           align-items: center;
-          justify-content: center;
-          gap: 18px;
+          gap: 16px;
           flex-wrap: wrap;
         }
 
-        .master-primary-cta {
+        .hero-primary-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
-          padding: 16px 36px;
+          padding: 15px 34px;
           border-radius: 9999px;
           background-color: #F5B700;
           color: #111111;
-          font-family: var(--font-heading);
-          font-size: 1rem;
+          font-family: var(--font-body);
+          font-size: 0.98rem;
           font-weight: 700;
           border: 1px solid #E5AA00;
           box-shadow: 0 6px 20px rgba(245, 183, 0, 0.35);
@@ -339,259 +449,318 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
         }
 
-        .master-primary-cta:hover {
-          background-color: #E6A700;
+        .hero-primary-btn:hover {
+          background-color: #E2A600;
           transform: translateY(-2px);
           box-shadow: 0 10px 26px rgba(245, 183, 0, 0.45);
         }
 
-        .cta-arrow-icon {
+        .btn-arrow-motion {
           transition: transform 0.2s ease;
         }
 
-        .master-primary-cta:hover .cta-arrow-icon {
-          transform: translateX(3px);
+        .hero-primary-btn:hover .btn-arrow-motion {
+          transform: translateX(4px);
         }
 
-        .master-secondary-cta {
+        .hero-secondary-btn {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
-          padding: 15px 30px;
+          padding: 14px 28px;
           border-radius: 9999px;
-          background: rgba(255, 255, 255, 0.85);
+          background: rgba(255, 255, 255, 0.9);
           backdrop-filter: blur(8px);
           color: #111111;
-          font-family: var(--font-heading);
-          font-size: 1rem;
+          font-family: var(--font-body);
+          font-size: 0.96rem;
           font-weight: 600;
           border: 1.5px solid rgba(17, 17, 17, 0.25);
           cursor: pointer;
           transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
         }
 
-        .master-secondary-cta:hover {
+        .hero-secondary-btn:hover {
           background: #FFFFFF;
           border-color: #111111;
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
         }
 
-        .play-circle-icon {
+        .play-circle-bubble {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 22px;
-          height: 22px;
+          width: 20px;
+          height: 20px;
           border-radius: 50%;
           border: 1.5px solid #111111;
           margin-left: 2px;
         }
 
-        /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
-        .hero-curved-bottom-separator {
+        /* Decorative Diamond Kolam under CTAs */
+        .hero-accent-kolam {
+          margin-top: 36px;
+          margin-left: 140px;
+          opacity: 0.85;
+          animation: floatGently 6s ease-in-out infinite;
+        }
+
+        @keyframes floatGently {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-6px); }
+        }
+
+        /* ── RIGHT COLUMN: ARTWORK ── */
+        .hero-artwork-column {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+
+        .painterly-scene-container {
+          position: relative;
+          width: 100%;
+          max-width: 660px;
+          border-radius: 36px;
+          overflow: visible;
+        }
+
+        .scene-artwork-wrapper {
+          position: relative;
+          width: 100%;
+          height: auto;
+          border-radius: 28px;
+          overflow: hidden;
+          box-shadow: 0 20px 48px rgba(88, 48, 10, 0.14);
+          border: 2px solid rgba(245, 183, 0, 0.35);
+        }
+
+        .painterly-kitchen-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .scene-artwork-wrapper:hover .painterly-kitchen-img {
+          transform: scale(1.02);
+        }
+
+        .hero-right-kolam-spine {
+          position: absolute;
+          top: 10px;
+          right: -32px;
+          opacity: 0.9;
+          pointer-events: none;
+        }
+
+        /* ── ORGANIC CURVED BOTTOM TRANSITION ── */
+        .hero-organic-curved-bottom {
           position: absolute;
           bottom: -1px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 120px;
+          height: 130px;
           z-index: 4;
           pointer-events: none;
           line-height: 0;
         }
 
-        .curved-svg-canvas {
+        .curved-boundary-svg {
           width: 100%;
           height: 100%;
           display: block;
         }
 
-        .curve-center-kolam {
+        .wave-center-kolam {
           position: absolute;
-          bottom: 22px;
+          bottom: 18px;
           left: 50%;
           transform: translateX(-50%);
           z-index: 5;
           pointer-events: none;
         }
 
-        /* ── NEXT SECTION: FOOD DISCOVERY TEASER (CENTERED) ── */
-        .food-discovery-teaser-section {
+        /* ── PHASE 6: REGIONAL FOOD PREVIEW SECTION ── */
+        .regional-flavours-preview-section {
           position: relative;
-          background: linear-gradient(180deg, #FFF8E1 0%, #FEF4D1 60%, #FDF0C3 100%);
-          padding-top: 36px;
-          padding-bottom: 84px;
+          background-color: #FAFAFA;
+          padding-top: 24px;
+          padding-bottom: 80px;
           z-index: 5;
         }
 
-        .teaser-inner-container {
-          max-width: 1200px;
+        .regional-preview-container {
+          max-width: 1360px;
           margin: 0 auto;
           padding: 0 clamp(20px, 4vw, 48px);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
 
-        .teaser-header {
-          max-width: 680px;
-          margin: 0 auto 44px auto;
-          text-align: center;
+        .regional-preview-header {
+          max-width: 580px;
+          margin-bottom: 38px;
+          text-align: left;
         }
 
-        .teaser-eyebrow {
+        .regional-preview-eyebrow {
           display: block;
-          font-family: var(--font-heading);
+          font-family: var(--font-body);
           font-size: 0.82rem;
           font-weight: 700;
-          letter-spacing: 0.14em;
-          color: #9E6B00;
+          letter-spacing: 0.16em;
+          color: #B58400;
           text-transform: uppercase;
-          margin-bottom: 10px;
-          text-align: center;
+          margin-bottom: 8px;
         }
 
-        .teaser-title {
+        .regional-preview-heading {
           font-family: var(--font-heading);
           font-size: clamp(2rem, 3.2vw, 2.7rem);
           font-weight: 800;
-          color: #1A1103;
+          color: #111111;
           line-height: 1.2;
           letter-spacing: -0.025em;
           margin: 0 0 14px 0;
-          text-align: center;
         }
 
-        .teaser-description {
+        .regional-preview-copy {
           font-family: var(--font-body);
           font-size: 1.02rem;
-          color: #5C4522;
+          color: #555555;
           line-height: 1.65;
-          margin: 0 auto;
-          text-align: center;
+          margin: 0;
         }
 
-        /* 3 Food Dish Preview Cards - Clean Typography Cards */
-        .teaser-cards-grid {
+        /* 3 Carefully Aligned Food Cards */
+        .regional-preview-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 28px;
+          gap: clamp(20px, 2.8vw, 32px);
           width: 100%;
         }
 
-        .text-center-card {
+        .food-preview-card {
           background: #FFFFFF;
-          border-radius: 20px;
-          border: 1.5px solid rgba(245, 183, 0, 0.4);
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.08);
+          border-radius: 24px;
+          overflow: hidden;
+          border: 1.5px solid rgba(245, 183, 0, 0.28);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+          cursor: pointer;
           transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 16px;
         }
 
-        .text-center-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 16px 36px rgba(245, 183, 0, 0.25);
+        .food-preview-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 18px 38px rgba(245, 183, 0, 0.22);
           border-color: #F5B700;
         }
 
-        .text-center-card .dish-card-caption {
-          padding: 24px 20px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+        .food-image-frame {
+          position: relative;
+          width: 100%;
+          height: 220px;
+          overflow: hidden;
+          background-color: #F8F5EE;
         }
 
-        .dish-origin-tag {
+        .preview-dish-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .food-preview-card:hover .preview-dish-img {
+          transform: scale(1.05);
+        }
+
+        .food-card-caption {
+          padding: 22px 22px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          text-align: left;
+        }
+
+        .dish-region-tag {
           font-size: 0.78rem;
           font-weight: 700;
           color: #B58400;
           text-transform: uppercase;
           letter-spacing: 0.1em;
           display: block;
-          margin-bottom: 8px;
-          text-align: center;
+          margin-bottom: 6px;
         }
 
-        .dish-name-heading {
+        .dish-title {
           font-family: var(--font-heading);
           font-size: 1.25rem;
           font-weight: 700;
           color: #111111;
           line-height: 1.35;
-          margin: 0 0 10px 0;
-          text-align: center;
+          margin: 0 0 8px 0;
         }
 
-        .dish-name-desc {
+        .dish-snippet {
           font-family: var(--font-body);
           font-size: 0.92rem;
           color: #666666;
           line-height: 1.55;
           margin: 0;
-          text-align: center;
         }
 
         /* ── RESPONSIVE DESIGN ── */
-        @media (max-width: 1024px) {
-          .feazto-master-hero {
-            padding-bottom: 110px;
+        @media (max-width: 1080px) {
+          .hero-grid-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
           }
-          .hero-master-headline {
-            font-size: clamp(2.4rem, 5vw, 3.8rem);
+          .hero-artwork-column {
+            justify-content: center;
           }
-          .teaser-cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-          .teaser-cards-grid .text-center-card:last-child {
+          .hero-right-kolam-spine {
             display: none;
+          }
+          .hero-accent-kolam {
+            margin-left: 0;
           }
         }
 
         @media (max-width: 768px) {
-          .feazto-master-hero {
-            padding-top: 48px;
-            padding-bottom: 96px;
+          .feazto-hero-section {
+            padding-top: 36px;
+            padding-bottom: 90px;
           }
-          .hero-content-wrapper {
-            padding-left: 16px;
-            padding-right: 16px;
+          .hero-display-headline {
+            font-size: 2.3rem;
+            line-height: 1.15;
           }
-          .eyebrow-text {
-            font-size: 0.76rem;
-            letter-spacing: 0.1em;
-          }
-          .hero-master-headline {
-            font-size: 2.2rem;
-            line-height: 1.2;
-          }
-          .hero-master-subcopy {
+          .hero-subparagraph {
             font-size: 0.98rem;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
           }
-          .hero-cta-buttons-row {
+          .hero-cta-group {
             flex-direction: column;
             width: 100%;
             gap: 12px;
           }
-          .master-primary-cta, .master-secondary-cta {
+          .hero-primary-btn, .hero-secondary-btn {
             width: 100%;
-            max-width: 280px;
+            max-width: 320px;
           }
-          .teaser-cards-grid {
+          .regional-preview-grid {
             grid-template-columns: 1fr;
           }
-          .teaser-cards-grid .text-center-card:last-child {
-            display: flex;
-          }
-          .hero-curved-bottom-separator {
-            height: 80px;
+          .floating-ingredients-layer {
+            display: none;
           }
         }
       `}</style>

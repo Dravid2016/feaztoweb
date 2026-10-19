@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 8-petaled Kolam floral star -->
+  <g stroke="#F5B700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="24" cy="24" r="5" fill="#F5B700" fill-opacity="0.15" />
+    <!-- 4 Cardinal Petals -->
+    <path d="M24 19 C21 12, 27 12, 24 6 C21 12, 27 12, 24 19 Z" />
+    <path d="M24 29 C21 36, 27 36, 24 42 C21 36, 27 36, 24 29 Z" />
+    <path d="M19 24 C12 21, 12 27, 6 24 C12 21, 12 27, 19 24 Z" />
+    <path d="M29 24 C36 21, 36 27, 42 24 C36 21, 36 27, 29 24 Z" />
+    <!-- 4 Diagonal Petals -->
+    <path d="M20.5 20.5 C16 14, 21 11, 12 12 C13 21, 10 16, 20.5 20.5 Z" />
+    <path d="M27.5 20.5 C32 14, 27 11, 36 12 C35 21, 38 16, 27.5 20.5 Z" />
+    <path d="M20.5 27.5 C16 34, 21 37, 12 36 C13 27, 10 32, 20.5 27.5 Z" />
+    <path d="M27.5 27.5 C32 34, 27 37, 36 36 C35 27, 38 32, 27.5 27.5 Z" />
+  </g>
+  <circle cx="24" cy="24" r="3" fill="#F5B700" />
+</svg>

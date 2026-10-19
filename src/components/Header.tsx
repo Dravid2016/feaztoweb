@@ -138,11 +138,10 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           position: sticky;
           top: 0;
           z-index: 1000;
-          background: rgba(255, 210, 51, 0.94);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border-bottom: 1.5px solid rgba(135, 71, 0, 0.22);
-          box-shadow: 0 4px 20px rgba(135, 71, 0, 0.08);
+          background: rgba(248, 245, 238, 0.94);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border-bottom: 1px solid rgba(245, 183, 0, 0.2);
           transition: var(--transition-smooth);
         }
 
@@ -150,8 +149,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 74px;
-          max-width: 1320px;
+          height: 78px;
+          max-width: 1360px;
+          padding: 0 clamp(20px, 3.5vw, 40px);
         }
 
         .brand-logo-link {
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         .header-logo-img {
-          height: 44px;
+          height: 48px;
           width: auto;
           object-fit: contain;
           transition: transform 0.2s ease;
@@ -179,17 +179,17 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .nav-list {
           display: flex;
           align-items: center;
-          gap: 26px;
+          gap: 28px;
           list-style: none;
         }
 
         .nav-link {
           position: relative;
           font-family: var(--font-body);
-          font-size: 0.92rem;
+          font-size: 0.94rem;
           font-weight: 500;
-          color: #222222;
-          padding: 8px 2px;
+          color: #333333;
+          padding: 8px 4px;
           transition: color 0.2s ease;
           display: inline-flex;
           flex-direction: column;
@@ -208,12 +208,12 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         .active-underline {
           position: absolute;
-          bottom: 2px;
-          left: 0;
-          right: 0;
-          height: 2px;
+          bottom: 0px;
+          left: 4px;
+          right: 4px;
+          height: 2.5px;
           background-color: #F5B700;
-          border-radius: 2px;
+          border-radius: 9999px;
         }
 
         .header-actions {
@@ -226,15 +226,15 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 10px 24px;
+          padding: 11px 26px;
           border-radius: 9999px;
           background-color: #F5B700;
           color: #111111;
-          font-family: var(--font-heading);
-          font-size: 0.88rem;
-          font-weight: 700;
+          font-family: var(--font-body);
+          font-size: 0.92rem;
+          font-weight: 600;
           border: 1px solid #E5AA00;
-          box-shadow: 0 4px 14px rgba(245, 183, 0, 0.3);
+          box-shadow: 0 4px 14px rgba(245, 183, 0, 0.28);
           transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
           cursor: pointer;
         }
@@ -242,7 +242,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .header-turmeric-cta:hover {
           background-color: #E6A700;
           transform: translateY(-1.5px);
-          box-shadow: 0 6px 18px rgba(245, 183, 0, 0.4);
+          box-shadow: 0 6px 18px rgba(245, 183, 0, 0.38);
         }
 
         .mobile-toggle-btn {
