@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
 
 interface HeaderProps {
@@ -8,8 +8,22 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // Matched to target reference and real website routes
+  useEffect(() => {
+    const handleScroll = () => {
+      // Trigger floating / merged pill state when scrolling past 40px
+      if (window.scrollY > 40) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navLinks = [
     { label: 'Home', route: '/' },
     { label: 'Our Story', route: '/our-story' },
@@ -28,59 +42,77 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   };
 
   return (
-    <header className="feazto-header">
-      <div className="container header-container">
-        {/* Brand Logo with exact proportions */}
+    <header className={`feazto-header-outer ${scrolled ? 'is-scrolled' : 'at-top'}`}>
+      <div className="header-island-wrapper">
+        {/* Left Pill: Official Brand Logo */}
         <a 
           href="#home" 
           onClick={(e) => { e.preventDefault(); handleNavClick('/'); }} 
-          className="brand-logo-link"
+          className="brand-pill-island"
           aria-label="FEAzTO Home"
         >
           <img 
             src="/brand/feazto-logo.svg" 
             alt="FEAzTO — Food • Culture • Connect" 
-            className="header-logo-img"
+            className="brand-logo-img"
           />
         </a>
 
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav" aria-label="Main Navigation">
-          <ul className="nav-list">
+        {/* Center Pill: Navigation Menu */}
+        <nav className="nav-pill-island" aria-label="Main Navigation">
+          <ul className="nav-pill-list">
             {navLinks.map((item) => (
               <li key={item.route}>
                 <button
                   type="button"
                   onClick={() => handleNavClick(item.route)}
-                  className={`nav-link ${currentRoute === item.route ? 'active' : ''}`}
+                  className={`nav-pill-link ${currentRoute === item.route ? 'active' : ''}`}
                 >
-                  {item.label}
-                  {currentRoute === item.route && <span className="active-underline" />}
+                  <span>{item.label}</span>
+                  {currentRoute === item.route && <span className="active-pill-dot" />}
                 </button>
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Primary CTA Button: "Explore feazto" in Turmeric Yellow */}
-        <div className="header-actions">
-          <button 
-            type="button"
-            onClick={() => handleNavClick('/discover')}
-            className="header-turmeric-cta"
-          >
-            <span>Explore feazto</span>
-          </button>
-
-          {/* Mobile Hamburger Button */}
+        {/* Right Pill: App Store / Play Store Badges & Actions */}
+        <div className="actions-pill-island">
+          {/* iOS App Store Icon Button */}
           <button
             type="button"
-            className="mobile-toggle-btn"
+            onClick={() => handleNavClick('/download')}
+            className="store-quick-badge"
+            title="Download on Apple App Store"
+            aria-label="Apple App Store"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-.07 1.73.05 2.76 1.01.08 2.04-.51 2.66-1.26z"/>
+            </svg>
+          </button>
+
+          {/* Google Play Store Icon Button */}
+          <button
+            type="button"
+            onClick={() => handleNavClick('/download')}
+            className="store-quick-badge"
+            title="Get it on Google Play"
+            aria-label="Google Play Store"
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.346-.61-.84-.61-1.402V3.216c0-.562.243-1.056.61-1.402zM15.207 13.414l2.586 2.586-12.06 6.94 9.474-9.526zm2.586-5.414L15.207 10.586 5.733 1.06l12.06 6.94zm1.414 1.414l3.18 1.83c.78.45.78 1.18 0 1.63l-3.18 1.83-2.293-2.646 2.293-2.644z"/>
+            </svg>
+          </button>
+
+          {/* Mobile Toggle Button */}
+          <button
+            type="button"
+            className="mobile-pill-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
           >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -121,10 +153,10 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             <div className="mobile-drawer-footer">
               <button
                 type="button"
-                onClick={() => handleNavClick('/discover')}
+                onClick={() => handleNavClick('/download')}
                 className="btn btn-yellow btn-full-width"
               >
-                <span>Explore feazto</span>
+                <span>Get FEAzTO App</span>
                 <ArrowRight size={16} />
               </button>
               <p className="mobile-copy-tagline">The taste of home, wherever life takes you.</p>
@@ -134,153 +166,218 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
       )}
 
       <style>{`
-        .feazto-header {
+        /* ── OUTER HEADER CONTAINER ── */
+        .feazto-header-outer {
           position: sticky;
           top: 0;
+          left: 0;
+          right: 0;
           z-index: 1000;
-          background: rgba(255, 210, 51, 0.94);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border-bottom: 1.5px solid rgba(135, 71, 0, 0.22);
-          box-shadow: 0 4px 20px rgba(135, 71, 0, 0.08);
-          transition: var(--transition-smooth);
+          padding: 18px 24px 10px 24px;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          pointer-events: none; /* Allows click-through outside pills */
         }
 
-        .header-container {
+        .feazto-header-outer.is-scrolled {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* ── 3-PILL ISLAND ROW ── */
+        .header-island-wrapper {
+          max-width: 1360px;
+          margin: 0 auto;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 74px;
-          max-width: 1320px;
-        }
-
-        .brand-logo-link {
-          display: flex;
-          align-items: center;
-          outline: none;
-        }
-
-        .header-logo-img {
-          height: 44px;
-          width: auto;
-          object-fit: contain;
-          transition: transform 0.2s ease;
-        }
-
-        .brand-logo-link:hover .header-logo-img {
-          transform: scale(1.02);
-        }
-
-        .desktop-nav {
-          display: flex;
-          align-items: center;
-        }
-
-        .nav-list {
-          display: flex;
-          align-items: center;
-          gap: 26px;
-          list-style: none;
-        }
-
-        .nav-link {
-          position: relative;
-          font-family: var(--font-body);
-          font-size: 0.92rem;
-          font-weight: 500;
-          color: #222222;
-          padding: 8px 2px;
-          transition: color 0.2s ease;
-          display: inline-flex;
-          flex-direction: column;
-          align-items: center;
-          cursor: pointer;
-        }
-
-        .nav-link:hover {
-          color: #111111;
-        }
-
-        .nav-link.active {
-          font-weight: 600;
-          color: #111111;
-        }
-
-        .active-underline {
-          position: absolute;
-          bottom: 2px;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background-color: #F5B700;
-          border-radius: 2px;
-        }
-
-        .header-actions {
-          display: flex;
-          align-items: center;
           gap: 16px;
+          pointer-events: auto;
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .header-turmeric-cta {
+        /* When scrolled, the islands gently pull toward each other and gain polished glassmorphic elevation */
+        .feazto-header-outer.is-scrolled .header-island-wrapper {
+          max-width: 1220px;
+          gap: 12px;
+        }
+
+        /* ── 1. LEFT PILL: BRAND LOGO ── */
+        .brand-pill-island {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 10px 24px;
+          background: #FFFFFF;
+          padding: 7px 18px;
           border-radius: 9999px;
-          background-color: #F5B700;
-          color: #111111;
-          font-family: var(--font-heading);
-          font-size: 0.88rem;
-          font-weight: 700;
-          border: 1px solid #E5AA00;
-          box-shadow: 0 4px 14px rgba(245, 183, 0, 0.3);
-          transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
+          flex-shrink: 0;
         }
 
-        .header-turmeric-cta:hover {
-          background-color: #E6A700;
-          transform: translateY(-1.5px);
-          box-shadow: 0 6px 18px rgba(245, 183, 0, 0.4);
+        .brand-pill-island:hover {
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 12px 28px rgba(135, 71, 0, 0.18);
         }
 
-        .mobile-toggle-btn {
+        .brand-logo-img {
+          height: 38px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+        }
+
+        /* ── 2. CENTER PILL: NAVIGATION MENU ── */
+        .nav-pill-island {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #FFFFFF;
+          padding: 6px 18px;
+          border-radius: 9999px;
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-grow: 0;
+        }
+
+        /* Scroll Interaction: The nav pill extends smoothly and displays rich glassmorphic contrast */
+        .feazto-header-outer.is-scrolled .nav-pill-island {
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          padding: 8px 24px;
+          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.06);
+          border-color: rgba(245, 183, 0, 0.35);
+        }
+
+        .nav-pill-list {
+          display: flex;
+          align-items: center;
+          gap: clamp(8px, 1.4vw, 22px);
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .nav-pill-link {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 7px 12px;
+          border-radius: 9999px;
+          font-family: var(--font-body);
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #2D2214;
+          cursor: pointer;
+          transition: all 0.22s ease;
+          white-space: nowrap;
+        }
+
+        .nav-pill-link:hover {
+          color: #111111;
+          background-color: rgba(245, 183, 0, 0.14);
+        }
+
+        .nav-pill-link.active {
+          color: #111111;
+          font-weight: 700;
+          background-color: rgba(245, 183, 0, 0.2);
+        }
+
+        .active-pill-dot {
+          display: inline-block;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #E26D2D;
+        }
+
+        /* ── 3. RIGHT PILL: STORE BUTTONS & ACTIONS ── */
+        .actions-pill-island {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #FFFFFF;
+          padding: 6px 10px;
+          border-radius: 9999px;
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-shrink: 0;
+        }
+
+        .feazto-header-outer.is-scrolled .actions-pill-island {
+          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.16);
+          border-color: rgba(245, 183, 0, 0.35);
+        }
+
+        .store-quick-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background-color: #F1ECE0;
+          color: #111111;
+          border: none;
+          cursor: pointer;
+          transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .store-quick-badge:hover {
+          background-color: #111111;
+          color: #FFFFFF;
+          transform: translateY(-2px) scale(1.06);
+        }
+
+        .mobile-pill-toggle {
           display: none;
           align-items: center;
           justify-content: center;
-          width: 42px;
-          height: 42px;
+          width: 38px;
+          height: 38px;
           border-radius: 50%;
-          background: rgba(0, 0, 0, 0.05);
+          background-color: #F1ECE0;
           color: #111111;
+          border: none;
+          cursor: pointer;
           transition: background 0.2s ease;
         }
 
-        .mobile-toggle-btn:hover {
-          background: rgba(0, 0, 0, 0.1);
+        .mobile-pill-toggle:hover {
+          background-color: #E2DAC8;
         }
 
-        /* Mobile Drawer */
+        /* ── MOBILE DRAWER ── */
         .mobile-nav-drawer {
           position: fixed;
-          top: 74px;
+          top: 80px;
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(17, 17, 17, 0.6);
-          backdrop-filter: blur(8px);
+          background: rgba(17, 17, 17, 0.65);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           z-index: 999;
           display: flex;
           flex-direction: column;
+          pointer-events: auto;
         }
 
         .mobile-nav-inner {
           background: #FFFFFF;
           padding: 24px 20px;
+          border-radius: 0 0 24px 24px;
           border-bottom: 3px solid #F5B700;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-          max-height: 85vh;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+          max-height: 80vh;
           overflow-y: auto;
         }
 
@@ -288,9 +385,9 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-bottom: 20px;
+          margin-bottom: 18px;
           padding-bottom: 12px;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .close-drawer-btn {
@@ -302,6 +399,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: flex;
           flex-direction: column;
           gap: 8px;
+          margin: 0;
+          padding: 0;
         }
 
         .mobile-nav-link {
@@ -310,7 +409,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           align-items: center;
           justify-content: space-between;
           padding: 12px 14px;
-          border-radius: 10px;
+          border-radius: 12px;
           font-size: 1.05rem;
           font-weight: 600;
           color: #111111;
@@ -319,7 +418,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         .mobile-nav-link:hover, .mobile-nav-link.active {
-          background: var(--color-cream-surface);
+          background: #FDF6E2;
         }
 
         .mobile-active-pill {
@@ -350,15 +449,16 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           text-align: center;
         }
 
-        @media (max-width: 1080px) {
-          .desktop-nav {
+        /* ── RESPONSIVE MEDIA QUERIES ── */
+        @media (max-width: 1100px) {
+          .nav-pill-island {
             display: none;
           }
-          .mobile-toggle-btn {
-            display: flex;
+          .mobile-pill-toggle {
+            display: inline-flex;
           }
-          .header-turmeric-cta {
-            display: none;
+          .feazto-header-outer {
+            padding: 12px 16px;
           }
         }
       `}</style>
