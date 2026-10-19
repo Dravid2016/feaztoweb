@@ -8,6 +8,9 @@ export interface FoodItem {
   storyNote: string;
   image: string;
   tags: string[];
+  prepTime?: string;
+  calories?: string;
+  protein?: string;
 }
 
 export interface KitchenStory {
