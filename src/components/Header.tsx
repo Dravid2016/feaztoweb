@@ -166,23 +166,23 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
       )}
 
       <style>{`
-        /* ── OUTER HEADER CONTAINER ── */
+        /* ── OUTER HEADER CONTAINER (Fully Transparent) ── */
         .feazto-header-outer {
           position: sticky;
           top: 0;
           left: 0;
           right: 0;
           z-index: 1000;
-          padding: 18px 24px 10px 24px;
+          padding: 16px 24px 8px 24px;
+          background: transparent !important;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          pointer-events: none; /* Allows click-through outside pills */
+          pointer-events: none; /* Allows click-through outside floating pills */
         }
 
         .feazto-header-outer.is-scrolled {
           padding-top: 10px;
-          padding-bottom: 10px;
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          padding-bottom: 8px;
+          background: transparent !important;
         }
 
         /* ── 3-PILL ISLAND ROW ── */
@@ -197,22 +197,22 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* When scrolled, the islands gently pull toward each other and gain polished glassmorphic elevation */
+        /* When scrolled, the islands gently pull toward each other */
         .feazto-header-outer.is-scrolled .header-island-wrapper {
           max-width: 1220px;
           gap: 12px;
         }
 
-        /* ── 1. LEFT PILL: BRAND LOGO ── */
+        /* ── 1. LEFT PILL: BRAND LOGO (Full Button Yellow as in screenshot) ── */
         .brand-pill-island {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: #FFFFFF;
+          background: #F8B504;
           padding: 7px 18px;
           border-radius: 9999px;
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
+          border: 2px solid rgba(255, 255, 255, 0.95);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
           flex-shrink: 0;
@@ -220,7 +220,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         .brand-pill-island:hover {
           transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 12px 28px rgba(135, 71, 0, 0.18);
+          box-shadow: 0 12px 28px rgba(135, 71, 0, 0.25);
+          background: #E8A800;
         }
 
         .brand-logo-img {
@@ -239,19 +240,19 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           padding: 6px 18px;
           border-radius: 9999px;
           box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          border: 1.5px solid rgba(255, 255, 255, 0.95);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           flex-grow: 0;
         }
 
-        /* Scroll Interaction: The nav pill extends smoothly and displays rich glassmorphic contrast */
+        /* Scroll Interaction: The nav pill extends smoothly with rich contrast */
         .feazto-header-outer.is-scrolled .nav-pill-island {
-          background: rgba(255, 255, 255, 0.95);
+          background: rgba(255, 255, 255, 0.96);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
           padding: 8px 24px;
           box-shadow: 0 12px 32px rgba(135, 71, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.06);
-          border-color: rgba(245, 183, 0, 0.35);
+          border-color: rgba(248, 181, 4, 0.4);
         }
 
         .nav-pill-list {
@@ -281,13 +282,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         .nav-pill-link:hover {
           color: #111111;
-          background-color: rgba(245, 183, 0, 0.14);
+          background-color: rgba(248, 181, 4, 0.16);
         }
 
         .nav-pill-link.active {
           color: #111111;
           font-weight: 700;
-          background-color: rgba(245, 183, 0, 0.2);
+          background-color: rgba(248, 181, 4, 0.24);
         }
 
         .active-pill-dot {
@@ -298,23 +299,23 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           background-color: #E26D2D;
         }
 
-        /* ── 3. RIGHT PILL: STORE BUTTONS & ACTIONS ── */
+        /* ── 3. RIGHT PILL: STORE BUTTONS & ACTIONS (With Brand Yellow) ── */
         .actions-pill-island {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #FFFFFF;
-          padding: 6px 10px;
+          background: #F8B504;
+          padding: 6px 12px;
           border-radius: 9999px;
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 2px solid rgba(255, 255, 255, 0.95);
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           flex-shrink: 0;
         }
 
         .feazto-header-outer.is-scrolled .actions-pill-island {
-          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.16);
-          border-color: rgba(245, 183, 0, 0.35);
+          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.22);
+          border-color: rgba(255, 255, 255, 1);
         }
 
         .store-quick-badge {
@@ -324,17 +325,19 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background-color: #F1ECE0;
+          background-color: #FFFFFF;
           color: #111111;
           border: none;
           cursor: pointer;
           transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .store-quick-badge:hover {
           background-color: #111111;
           color: #FFFFFF;
-          transform: translateY(-2px) scale(1.06);
+          transform: translateY(-2px) scale(1.08);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .mobile-pill-toggle {
@@ -344,7 +347,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background-color: #F1ECE0;
+          background-color: #FFFFFF;
           color: #111111;
           border: none;
           cursor: pointer;
@@ -352,7 +355,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         .mobile-pill-toggle:hover {
-          background-color: #E2DAC8;
+          background-color: #111111;
+          color: #FFFFFF;
         }
 
         /* ── MOBILE DRAWER ── */
