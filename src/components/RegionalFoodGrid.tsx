@@ -61,116 +61,82 @@ const InteractivePlateCard: React.FC<InteractivePlateCardProps> = ({ dish }) => 
       onMouseLeave={handleMouseLeave}
       style={{
         transform: isHovered 
-          ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-8px)` 
+          ? `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-6px)` 
           : 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)'
       }}
     >
-      {/* Kolam Corner Accent Linework */}
-      <div className="card-kolam-corner top-left" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4,28 C4,16 16,4 28,4" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
-          <circle cx="16" cy="16" r="2" fill="#E5B81C" />
-        </svg>
-      </div>
-      <div className="card-kolam-corner top-right" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M28,28 C28,16 16,4 4,4" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
-          <circle cx="16" cy="16" r="2" fill="#E5B81C" />
-        </svg>
-      </div>
-
-      <div className="food-card-image-wrap">
-        {/* Traditional Kolam halo behind the plate */}
-        <div 
-          className="plate-kolam-halo" 
-          aria-hidden="true"
-          style={{
-            transform: `rotate(${rotation * 0.5}deg)`,
-            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.5s ease-out'
-          }}
-        >
-          <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="90" cy="90" r="78" stroke="#FFD233" strokeWidth="1.2" strokeDasharray="5 3" opacity="0.65" />
-            <circle cx="90" cy="90" r="62" stroke="#E5B81C" strokeWidth="1" strokeDasharray="2 4" opacity="0.45" />
-            <circle cx="90" cy="12" r="3" fill="#E5B81C" />
-            <circle cx="90" cy="168" r="3" fill="#E5B81C" />
-            <circle cx="12" cy="90" r="3" fill="#E5B81C" />
-            <circle cx="168" cy="90" r="3" fill="#E5B81C" />
-          </svg>
+      {/* Left Details Box */}
+      <div className="card-info-side">
+        <div className="card-top-tag-row">
+          <span className="pill-category-badge">{dish.category}</span>
+          <span className="pill-state-origin"><MapPin size={11} /> {dish.originState}</span>
         </div>
 
-        {/* Rotating Plate Image with responsive cursor physics */}
+        <h3 className="card-plate-title">{dish.name}</h3>
+
+        <p className="card-plate-desc">{dish.description}</p>
+
+        {/* Nutrition and Timing Badges with modern dark capsule icons */}
+        <div className="card-metrics-row">
+          {dish.prepTime && (
+            <div className="metric-pill">
+              <Clock size={14} className="metric-icon clock-icon" />
+              <div className="metric-text-group">
+                <span className="metric-val">{dish.prepTime.replace(/[^0-9]/g, '')}</span>
+                <span className="metric-lbl">min</span>
+              </div>
+            </div>
+          )}
+          {dish.calories && (
+            <div className="metric-pill">
+              <Flame size={14} className="metric-icon flame-icon" />
+              <div className="metric-text-group">
+                <span className="metric-val">{dish.calories.replace(/[^0-9]/g, '')}</span>
+                <span className="metric-lbl">kcal</span>
+              </div>
+            </div>
+          )}
+          {dish.protein && (
+            <div className="metric-pill">
+              <Leaf size={14} className="metric-icon leaf-icon" />
+              <div className="metric-text-group">
+                <span className="metric-val">{dish.protein.replace(/[^0-9]/g, '')}</span>
+                <span className="metric-lbl">protein</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="card-tradition-snippet">
+          <span className="snippet-lead">✦ Tradition:</span> {dish.storyNote}
+        </div>
+      </div>
+
+      {/* Right Circular Plate Viewport with Overflow Rotation */}
+      <div className="card-plate-side">
         <div 
-          className="plate-interactive-stage"
+          className="plate-circular-frame"
           style={{
-            transform: `rotate(${rotation}deg) scale(${isHovered ? 1.12 : 1})`,
-            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)'
+            transform: `rotate(${rotation}deg) scale(${isHovered ? 1.08 : 1})`,
+            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1)'
           }}
         >
           <img 
             src={dish.image} 
             alt={dish.name} 
-            className="food-card-img" 
+            className="card-round-plate-img" 
             loading="lazy"
           />
         </div>
-
-        <div className="food-region-pill">
-          <MapPin size={12} />
-          <span>{dish.originState}</span>
-        </div>
-      </div>
-
-      {/* Kolam border trim between image and content */}
-      <div className="card-kolam-border-trim" aria-hidden="true">
-        <svg viewBox="0 0 300 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="4" x2="300" y2="4" stroke="#FFD233" strokeWidth="1" strokeDasharray="6 3" />
-          <circle cx="150" cy="4" r="3" fill="#E5B81C" />
-        </svg>
-      </div>
-
-      <div className="food-card-body">
-        <div className="food-card-top-meta">
-          <span className="food-heritage-zone">{dish.region}</span>
-          <span className="food-category-tag">{dish.category}</span>
-        </div>
-
-        <h3 className="food-dish-title">{dish.name}</h3>
-        <p className="food-dish-desc">{dish.description}</p>
-
-        {/* Nutrition and Timing Badges like modern luxury food cards */}
-        <div className="dish-stats-pill-row">
-          {dish.prepTime && (
-            <div className="dish-stat-item">
-              <Clock size={13} className="stat-icon time-icon" />
-              <span>{dish.prepTime}</span>
-            </div>
-          )}
-          {dish.calories && (
-            <div className="dish-stat-item">
-              <Flame size={13} className="stat-icon flame-icon" />
-              <span>{dish.calories}</span>
-            </div>
-          )}
-          {dish.protein && (
-            <div className="dish-stat-item">
-              <Leaf size={13} className="stat-icon protein-icon" />
-              <span>{dish.protein}</span>
-            </div>
-          )}
-        </div>
-
-        <div className="food-story-bubble">
-          <span className="bubble-label">Tradition:</span> {dish.storyNote}
-        </div>
-
-        <div className="food-tags-row">
-          {dish.tags.map((tag) => (
-            <span key={tag} className="food-spec-tag">
-              #{tag}
-            </span>
-          ))}
-        </div>
+        
+        {/* Subtle decorative glow ring */}
+        <div 
+          className="plate-aura-ring"
+          style={{
+            transform: `rotate(${-rotation * 0.4}deg)`,
+            transition: isHovered ? 'transform 0.08s ease-out' : 'transform 0.5s ease-out'
+          }}
+        />
       </div>
     </div>
   );
@@ -244,242 +210,221 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
 
         .food-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 32px;
-          margin-bottom: 48px;
+          grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+          gap: 28px;
+          margin-bottom: 52px;
         }
 
         .cultural-food-card {
           position: relative;
-          background: #FFFFFF;
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          border: 1.5px solid rgba(255, 210, 51, 0.45);
-          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
-          transition: box-shadow 0.28s ease, border-color 0.28s ease;
+          background: #111111;
+          border-radius: 24px;
+          border: 1.5px solid rgba(255, 210, 51, 0.25);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          align-items: center;
+          overflow: hidden;
+          padding: 22px 24px;
+          gap: 20px;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.15s ease-out;
           transform-style: preserve-3d;
           will-change: transform;
+          cursor: default;
         }
 
         .cultural-food-card.card-active {
-          box-shadow: 0 24px 48px rgba(229, 184, 28, 0.22), 0 12px 24px rgba(0, 0, 0, 0.08);
           border-color: rgba(255, 210, 51, 0.95);
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 210, 51, 0.18);
         }
 
-        .card-kolam-corner {
-          position: absolute;
-          width: 32px;
-          height: 32px;
-          z-index: 4;
-          pointer-events: none;
-        }
-        .card-kolam-corner.top-left {
-          top: 8px;
-          left: 8px;
-        }
-        .card-kolam-corner.top-right {
-          top: 8px;
-          right: 8px;
-        }
-        .card-kolam-corner svg {
-          width: 100%;
-          height: 100%;
-        }
-
-        .food-card-image-wrap {
-          position: relative;
-          background: linear-gradient(180deg, #FFFDF5 0%, #FFF8E1 100%);
-          padding: 30px;
+        /* Left Information Column */
+        .card-info-side {
+          flex: 1;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          min-height: 230px;
-          overflow: hidden;
-          perspective: 600px;
-        }
-
-        .plate-kolam-halo {
-          position: absolute;
-          width: 180px;
-          height: 180px;
-          pointer-events: none;
-          z-index: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          will-change: transform;
-        }
-        .plate-kolam-halo svg {
-          width: 100%;
-          height: 100%;
-        }
-
-        .plate-interactive-stage {
-          position: relative;
+          flex-direction: column;
+          align-items: flex-start;
           z-index: 2;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          will-change: transform;
-          cursor: grab;
+          min-width: 0;
         }
 
-        .food-card-img {
-          position: relative;
-          width: 78%;
-          max-height: 175px;
-          object-fit: contain;
-          filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.18));
-          pointer-events: none;
-          user-select: none;
-        }
-
-        .food-region-pill {
-          position: absolute;
-          top: 16px;
-          left: 16px;
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(8px);
-          border-radius: var(--radius-capsule);
-          padding: 5px 12px;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 0.74rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-          border: 1px solid rgba(255, 210, 51, 0.3);
-          z-index: 3;
-        }
-
-        .dish-stats-pill-row {
+        .card-top-tag-row {
           display: flex;
           align-items: center;
           gap: 8px;
+          margin-bottom: 12px;
           flex-wrap: wrap;
-          margin-bottom: 14px;
         }
 
-        .dish-stat-item {
+        .pill-category-badge {
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          color: rgba(255, 255, 255, 0.88);
+          font-size: 0.72rem;
+          font-weight: 600;
+          padding: 3px 10px;
+          border-radius: 9999px;
+          letter-spacing: 0.02em;
+        }
+
+        .pill-state-origin {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
-          background: #FFF9E6;
-          border: 1px solid rgba(255, 210, 51, 0.35);
-          padding: 4px 9px;
-          border-radius: 6px;
-          font-size: 0.74rem;
-          font-weight: 700;
-          color: #262626;
+          gap: 4px;
+          color: var(--color-brand-yellow);
+          font-size: 0.72rem;
+          font-weight: 600;
         }
 
-        .stat-icon.time-icon {
-          color: #B58400;
+        .card-plate-title {
+          font-size: 1.25rem;
+          font-weight: 800;
+          color: #FFFFFF;
+          line-height: 1.3;
+          margin-bottom: 8px;
+          letter-spacing: -0.01em;
         }
 
-        .stat-icon.flame-icon {
-          color: #E65100;
+        .card-plate-desc {
+          font-size: 0.84rem;
+          color: rgba(255, 255, 255, 0.65);
+          line-height: 1.5;
+          margin-bottom: 16px;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
-        .stat-icon.protein-icon {
-          color: #2E7D32;
-        }
-
-        .card-kolam-border-trim {
-          width: 100%;
-          line-height: 0;
-          padding: 0 20px;
-          background: #FFF8E1;
-        }
-        .card-kolam-border-trim svg {
-          width: 100%;
-          height: 8px;
-        }
-
-        .food-card-body {
-          padding: 24px;
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
-        }
-
-        .food-card-top-meta {
+        /* Metrics row like the reference screenshot */
+        .card-metrics-row {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          margin-bottom: 10px;
-        }
-
-        .food-heritage-zone {
-          font-size: 0.76rem;
-          font-weight: 700;
-          color: #B58400;
-          text-transform: uppercase;
-          letter-spacing: 0.06em;
-        }
-
-        .food-category-tag {
-          font-size: 0.75rem;
-          color: var(--color-text-muted);
-          background: rgba(0, 0, 0, 0.04);
-          padding: 3px 8px;
-          border-radius: 4px;
-        }
-
-        .food-dish-title {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-          margin-bottom: 8px;
-          line-height: 1.3;
-        }
-
-        .food-dish-desc {
-          font-size: 0.9rem;
-          color: var(--color-text-secondary);
-          line-height: 1.55;
+          gap: 16px;
           margin-bottom: 14px;
         }
 
-        .food-story-bubble {
-          background: #FAFAFA;
-          border-left: 3px solid var(--color-brand-yellow);
-          padding: 10px 12px;
-          border-radius: 4px;
-          font-size: 0.82rem;
-          color: #444444;
-          line-height: 1.45;
-          margin-bottom: 16px;
-        }
-
-        .bubble-label {
-          font-weight: 700;
-          color: var(--color-ink-black);
-        }
-
-        .food-tags-row {
-          display: flex;
-          flex-wrap: wrap;
+        .metric-pill {
+          display: inline-flex;
+          align-items: center;
           gap: 6px;
-          margin-top: auto;
+          color: #FFFFFF;
         }
 
-        .food-spec-tag {
-          font-size: 0.74rem;
-          background: var(--color-warm-white);
-          color: var(--color-text-secondary);
-          padding: 3px 8px;
+        .metric-icon {
+          flex-shrink: 0;
+        }
+
+        .metric-icon.clock-icon {
+          color: #E0E0E0;
+        }
+
+        .metric-icon.flame-icon {
+          color: #FF7A00;
+        }
+
+        .metric-icon.leaf-icon {
+          color: #4CAF50;
+        }
+
+        .metric-text-group {
+          display: flex;
+          align-items: baseline;
+          gap: 3px;
+        }
+
+        .metric-val {
+          font-size: 0.92rem;
+          font-weight: 800;
+          color: #FFFFFF;
+        }
+
+        .metric-lbl {
+          font-size: 0.72rem;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.6);
+        }
+
+        .card-tradition-snippet {
+          font-size: 0.75rem;
+          color: rgba(255, 210, 51, 0.9);
+          background: rgba(255, 210, 51, 0.08);
+          border-left: 2px solid var(--color-brand-yellow);
+          padding: 6px 10px;
           border-radius: 4px;
-          border: 1px solid rgba(0, 0, 0, 0.05);
+          line-height: 1.4;
+          width: 100%;
+        }
+
+        .snippet-lead {
+          font-weight: 700;
+          color: #FFFFFF;
+          margin-right: 4px;
+        }
+
+        /* Right Circular Plate Viewport */
+        .card-plate-side {
+          width: 170px;
+          height: 170px;
+          min-width: 170px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .plate-aura-ring {
+          position: absolute;
+          inset: 4px;
+          border-radius: 50%;
+          border: 1px dashed rgba(255, 210, 51, 0.35);
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .plate-circular-frame {
+          width: 156px;
+          height: 156px;
+          border-radius: 50%;
+          overflow: hidden;
+          background: #1A1A1A;
+          border: 2px solid rgba(255, 210, 51, 0.4);
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), inset 0 0 16px rgba(0, 0, 0, 0.4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          cursor: grab;
+        }
+
+        .card-round-plate-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          user-select: none;
+          pointer-events: none;
         }
 
         .food-cta-row {
           display: flex;
           justify-content: center;
+        }
+
+        @media (max-width: 600px) {
+          .food-grid {
+            grid-template-columns: 1fr;
+          }
+          .cultural-food-card {
+            flex-direction: column-reverse;
+            padding: 20px;
+          }
+          .card-plate-side {
+            width: 150px;
+            height: 150px;
+            min-width: 150px;
+            margin-bottom: 12px;
+          }
         }
       `}</style>
     </section>
