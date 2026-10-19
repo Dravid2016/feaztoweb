@@ -113,15 +113,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             />
           </svg>
 
-          {/* Authentic South Indian Kolam art in brown resting on the curve */}
+          {/* Authentic South Indian Kolam art in dark brown - linework only directly on the curve (no button/border) */}
           <div className="curve-center-kolam" aria-hidden="true">
-            <div className="kolam-brown-emblem">
-              <img 
-                src="/brand/kolam-brown-hd.png" 
-                alt="Traditional South Indian Kolam Art in Brown" 
-                className="kolam-brown-artwork-img"
-              />
-            </div>
+            <img 
+              src="/brand/kolam-dark-brown-pure.png" 
+              alt="Traditional South Indian Kolam Art" 
+              className="kolam-dark-brown-lines"
+            />
           </div>
         </div>
       </section>
@@ -418,27 +416,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
         }
 
-        .kolam-brown-emblem {
+        .kolam-dark-brown-lines {
           width: 58px;
           height: 58px;
-          border-radius: 50%;
-          background: #FFFFFF;
-          border: 2px solid rgba(92, 51, 10, 0.4);
-          box-shadow: 0 4px 16px rgba(92, 51, 10, 0.18), 0 2px 6px rgba(0, 0, 0, 0.08);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 6px;
-          box-sizing: border-box;
-          transition: transform 0.25s ease;
-        }
-
-        .kolam-brown-artwork-img {
-          width: 100%;
-          height: 100%;
           object-fit: contain;
           display: block;
-          filter: drop-shadow(0 1px 2px rgba(92, 51, 10, 0.2));
+          filter: drop-shadow(0 2px 4px rgba(48, 23, 4, 0.28));
+          transition: transform 0.25s ease;
         }
 
         /* ── NEXT SECTION: FOOD DISCOVERY TEASER (CENTERED) ── */
