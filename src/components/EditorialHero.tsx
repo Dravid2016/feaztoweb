@@ -164,7 +164,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* Overall Wrapper */
         .feazto-hero-and-discovery-wrapper {
           position: relative;
-          background-color: #F8F5EE;
+          background: transparent !important;
           overflow: hidden;
         }
 
@@ -172,7 +172,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .feazto-master-hero {
           position: relative;
           min-height: 560px;
-          background: linear-gradient(180deg, #FFF6D6 0%, #FEEDB3 50%, #FDE496 100%);
+          background: transparent !important;
           display: flex;
           flex-direction: column;
           align-items: center;

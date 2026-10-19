@@ -166,27 +166,24 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
       )}
 
       <style>{`
-        /* ── OUTER HEADER CONTAINER (Seamless with Homepage Warm Yellow Background) ── */
+        /* ── OUTER HEADER CONTAINER (100% Identical Background with Homepage) ── */
         .feazto-header-outer {
           position: sticky;
           top: 0;
           left: 0;
           right: 0;
           z-index: 1000;
-          padding: 16px 24px 8px 24px;
-          background: transparent;
+          padding: 18px 24px 10px 24px;
+          background: transparent !important;
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none; /* Allows click-through outside floating pills */
         }
 
-        /* When scrolling, subtly blend with the homepage yellow gradient and soft blur */
+        /* When scrolling, keep the background transparent and let the pills float over the page smoothly */
         .feazto-header-outer.is-scrolled {
           padding-top: 10px;
           padding-bottom: 8px;
-          background: rgba(255, 210, 51, 0.88) !important;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(135, 71, 0, 0.12);
+          background: transparent !important;
         }
 
         /* ── 3-PILL ISLAND ROW ── */
