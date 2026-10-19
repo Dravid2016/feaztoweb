@@ -12,7 +12,8 @@ export const REGIONAL_FOODS: FoodItem[] = [
     tags: ['Dum Cooked', 'Slow Food', 'Aromatic Spices'],
     prepTime: '45 min',
     calories: '580 kcal',
-    protein: '24g protein'
+    protein: '24g protein',
+    image: '/brand/plate-biryani-new.png'
   },
   {
     id: 'thali-traditional',
@@ -25,7 +26,8 @@ export const REGIONAL_FOODS: FoodItem[] = [
     tags: ['Six Tastes', 'Zero Preservatives', 'Heritage Grains'],
     prepTime: '30 min',
     calories: '520 kcal',
-    protein: '18g protein'
+    protein: '18g protein',
+    image: '/brand/plate-thali-new.png'
   },
   {
     id: 'idli-vada-combo',
@@ -38,7 +40,8 @@ export const REGIONAL_FOODS: FoodItem[] = [
     tags: ['Naturally Fermented', 'Stone Ground', 'Steamed'],
     prepTime: '20 min',
     calories: '340 kcal',
-    protein: '14g protein'
+    protein: '14g protein',
+    image: '/brand/plate-idli-new.png'
   },
   {
     id: 'samosa-potli',
@@ -51,7 +54,8 @@ export const REGIONAL_FOODS: FoodItem[] = [
     tags: ['Hand Rolled', 'Fresh Tamarind', 'Evening Tradition'],
     prepTime: '25 min',
     calories: '390 kcal',
-    protein: '9g protein'
+    protein: '9g protein',
+    image: '/brand/plate-samosa-new.png'
   }
 ];
 
