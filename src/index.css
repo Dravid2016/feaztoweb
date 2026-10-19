@@ -1,37 +1,35 @@
 /* FEAzTO Global Design Tokens & Typography */
 :root {
-  /* Approved Brand Colours */
-  --color-brand-yellow: #F5B700;
-  --color-brand-yellow-hover: #E2A600;
-  --color-brand-yellow-subtle: #FFF4D1;
-  --color-brand-yellow-glow: rgba(245, 183, 0, 0.28);
+  /* Brand Colours */
+  --color-brand-yellow: #FFD233;
+  --color-brand-yellow-hover: #F0C418;
+  --color-brand-yellow-subtle: #FFF4CC;
+  --color-brand-yellow-glow: rgba(255, 210, 51, 0.28);
   --color-ink-black: #111111;
   --color-ink-light: #222222;
   --color-pure-white: #FFFFFF;
-  --color-warm-ivory: #FAFAFA;
-  --color-parchment: #F8F5EE;
-  --color-parchment-gold: #FFF6DB;
-  --color-cream-surface: #FDF7E7;
-  --color-text-primary: #111111;
-  --color-text-secondary: #555555;
-  --color-text-muted: #777777;
-  --color-border-subtle: rgba(245, 183, 0, 0.25);
+  --color-warm-white: #FFFDF7;
+  --color-cream-surface: #FDF6E2;
+  --color-warm-gold-bg: #FEF7DE;
+  --color-warm-sand-bg: #FAF1D4;
+  --color-text-primary: #181204;
+  --color-text-secondary: #584422;
+  --color-text-muted: #8E7A5A;
+  --color-border-subtle: rgba(135, 71, 0, 0.12);
   --color-border-dark: rgba(255, 255, 255, 0.12);
 
-  /* Spice & Earthy Accents */
+  /* Spice Accents */
   --color-spice-saffron: #E26D2D;
   --color-spice-cardamom: #3B7A57;
   --color-spice-chili: #C93B2B;
-  --color-earth-terracotta: #A45A2A;
 
   /* Typography */
   --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display-italic: 'Kanit', sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Layout & Spacing */
-  --max-width: 1280px;
+  --max-width: 1240px;
   --radius-capsule: 9999px;
   --radius-lg: 24px;
   --radius-md: 16px;
@@ -57,11 +55,30 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-parchment);
-  color: var(--color-text-primary);
+  background-color: #FFD233;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(255, 235, 140, 0.7) 0%, transparent 80%),
+    radial-gradient(circle 800px at 100% 40%, rgba(240, 180, 0, 0.4) 0%, transparent 70%),
+    radial-gradient(circle 700px at 0% 70%, rgba(255, 210, 51, 0.5) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: #2D1A02;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+}
+
+/* Authentic Brown Kolam Art Background Pattern Layer */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/brand/kolam-brown-hd.png');
+  background-repeat: repeat;
+  background-size: 280px 280px;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
 }
 
 #root, .feazto-app-root {
