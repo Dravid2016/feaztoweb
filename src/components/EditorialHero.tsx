@@ -111,18 +111,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
               fill="#FFFDF7" 
             />
-            {/* Authentic South Indian Kolam linework embedded directly onto the curve sweep */}
-            <g transform="translate(720, 195) rotate(-16)">
-              <image 
-                href="/brand/kolam-dark-brown-pure.png" 
-                x="-46" 
-                y="-45" 
-                width="92" 
-                height="90" 
-                preserveAspectRatio="xMidYMid meet"
-                style={{ filter: 'drop-shadow(0px 2px 5px rgba(48, 23, 4, 0.35))' }}
-              />
-            </g>
           </svg>
         </div>
       </section>
