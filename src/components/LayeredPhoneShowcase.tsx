@@ -79,20 +79,11 @@ const StreamCulturalFoodCard: React.FC<{ dish: FoodItem }> = ({ dish }) => {
 };
 
 export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
-  // Use the full 4 regional foods from image 1 repeated for continuous seamless stream
-  const foodsRow1 = [
-    REGIONAL_FOODS[0], // Dum Biryani with Mirchi ka Salan
-    REGIONAL_FOODS[1], // Sattvic Maharashtrian & South Thali
-    REGIONAL_FOODS[2], // Malli Poo Idli & Medu Vada
-    REGIONAL_FOODS[3], // Spiced Potato & Pea Potli Samosa
-  ];
+  // Top Layer: 10 Distinct Cultural Dish Varieties
+  const topLayerDishes = REGIONAL_FOODS.slice(0, 10);
 
-  const foodsRow2 = [
-    REGIONAL_FOODS[2], // Malli Poo Idli & Medu Vada
-    REGIONAL_FOODS[3], // Spiced Potato & Pea Potli Samosa
-    REGIONAL_FOODS[0], // Dum Biryani with Mirchi ka Salan
-    REGIONAL_FOODS[1], // Sattvic Maharashtrian & South Thali
-  ];
+  // Bottom Layer: 10 Completely Separate Cultural Dish Varieties
+  const bottomLayerDishes = REGIONAL_FOODS.slice(10, 20);
 
   return (
     <section className="plenti-feazto-showcase-section">
@@ -136,11 +127,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
       {/* Showcase with Running Yellow Heritage Cards Stream Flanking the FEAzTO Mobile Banner */}
       <div className="plenti-stage-showcase-wrapper">
-        {/* Upper Scrolling Carousel (running left behind phone) */}
+        {/* Upper Scrolling Carousel (10 distinct dish varieties running left behind phone) */}
         <div className="plenti-cards-stream stream-top">
           <div className="plenti-cards-track scroll-stream-left">
-            {[...foodsRow1, ...foodsRow1, ...foodsRow1].map((dish, idx) => (
-              <StreamCulturalFoodCard key={`row1-${dish.id}-${idx}`} dish={dish} />
+            {[...topLayerDishes, ...topLayerDishes].map((dish, idx) => (
+              <StreamCulturalFoodCard key={`top-${dish.id}-${idx}`} dish={dish} />
             ))}
           </div>
         </div>
@@ -158,11 +149,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           </div>
         </div>
 
-        {/* Lower Scrolling Carousel (running right behind phone) */}
+        {/* Lower Scrolling Carousel (10 completely separate dish varieties running right behind phone) */}
         <div className="plenti-cards-stream stream-bottom">
           <div className="plenti-cards-track scroll-stream-right">
-            {[...foodsRow2, ...foodsRow2, ...foodsRow2].map((dish, idx) => (
-              <StreamCulturalFoodCard key={`row2-${dish.id}-${idx}`} dish={dish} />
+            {[...bottomLayerDishes, ...bottomLayerDishes].map((dish, idx) => (
+              <StreamCulturalFoodCard key={`bottom-${dish.id}-${idx}`} dish={dish} />
             ))}
           </div>
         </div>
@@ -297,11 +288,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
         }
 
         .scroll-stream-left {
-          animation: marqueeLeft 42s linear infinite;
+          animation: marqueeLeft 52s linear infinite;
         }
 
         .scroll-stream-right {
-          animation: marqueeRight 42s linear infinite;
+          animation: marqueeRight 52s linear infinite;
         }
 
         .plenti-cards-track:hover {
@@ -310,11 +301,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
         @keyframes marqueeLeft {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
+          100% { transform: translateX(-50%); }
         }
 
         @keyframes marqueeRight {
-          0% { transform: translateX(-33.333%); }
+          0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
         }
 
