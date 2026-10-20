@@ -56,18 +56,28 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
     };
 
     const handleScroll = () => {
-      // START IN HIDE STATE -> HIDE OUT SLOWLY -> HIDE IN CYCLE:
-      // Cycle distance: 600px of scroll
-      // - scrollY = 0 (at the start / fresh open):
-      //   progress = 0 -> sin(0) = 0 -> targetHide = 1.0 (Completely in HIDE STATE behind phone)
-      // - scrollY = 300 (scrolling down into hero view):
-      //   progress = 0.5 -> sin(0.5 * PI) = 1.0 -> targetHide = 0.0 (Slowly HIDE OUT into full peeked view!)
-      // - scrollY >= 600 (scrolling further down past hero):
-      //   progress = 1.0 -> sin(1.0 * PI) = 0 -> targetHide = 1.0 (Glide back behind phone to HIDE IN!)
+      // START IN HIDE STATE -> HIDE OUT SLOWLY -> STAY PEEKED -> HIDE IN SLOWLY AS YOU CROSS THE PAGE:
+      // - At the start (scrollY = 0 to ~350px):
+      //   Grandma and Fezu emerge gracefully and HIDE OUT slowly to the sides, peeking into full view!
+      // - During hero view (scrollY = 350px to 850px):
+      //   They remain proudly and vibrantly peeked out flanking the phone without vanishing prematurely.
+      // - Crossing the page (scrollY = 850px to 1400px):
+      //   As user scrolls past the hero into the next sections, they slowly and smoothly glide back
+      //   behind the phone banner (HIDE IN), completing their tuck when the user has crossed the page.
       const scrollY = window.scrollY || window.pageYOffset || 0;
-      const cycleProgress = Math.min(Math.max(scrollY / 600, 0), 1);
-      const peekAmount = Math.sin(cycleProgress * Math.PI);
-      targetHide = 1 - peekAmount;
+
+      if (scrollY <= 350) {
+        // Slow, graceful emergence: 1.0 down to 0.0
+        const p = scrollY / 350;
+        targetHide = 0.5 * (1 + Math.cos(p * Math.PI));
+      } else if (scrollY <= 850) {
+        // Full hero visibility plateau
+        targetHide = 0.0;
+      } else {
+        // Slow, gradual retraction as user crosses past the hero: 0.0 up to 1.0 over 550px
+        const p = Math.min((scrollY - 850) / 550, 1.0);
+        targetHide = 0.5 * (1 - Math.cos(p * Math.PI));
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
