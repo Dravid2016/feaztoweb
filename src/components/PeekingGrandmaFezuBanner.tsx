@@ -7,67 +7,70 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
   const phoneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let targetProgress = 0.5;
-    let currentProgress = 0.5;
+    // Current scroll offset tracker for direct, responsive 60fps lerp
+    let targetHide = 0; // 0 = at top (fully peeked out), 1 = scrolled down (fully hidden behind phone)
+    let currentHide = 0;
     let animFrameId: number;
 
     const updateAnimation = () => {
-      // Silky 60fps damped spring/lerp (factor 0.08)
-      currentProgress += (targetProgress - currentProgress) * 0.08;
+      // Smooth dampening towards target scroll (lerp factor 0.08)
+      currentHide += (targetHide - currentHide) * 0.08;
 
-      // Peak factor (0 when scrolled away, 1 when banner is in middle of hero view)
-      const peekAmount = Math.max(Math.sin(currentProgress * Math.PI), 0); // 0 -> 1 -> 0
-      const hideFactor = 1 - peekAmount; // 1 = fully tucked in behind phone, 0 = fully peeked out
+      // HIDE IN BEHIND MOBILE BANNER AS USER SCROLLS DOWN:
+      // - At top of page (scrollY = 0, currentHide = 0):
+      //   Grandma and Fezu are fully peeked out in their vibrant hero positions!
+      // - As user scrolls down past the hero (currentHide -> 1):
+      //   Grandma glides smoothly +260px directly to the right, sliding completely behind the phone!
+      //   Fezu glides smoothly -270px directly to the left, sliding completely behind the phone!
+      //   Both characters dip slightly downward (+35px) and inward (rotate +/-7deg), tucking cleanly away.
+      const grandmaTransX = currentHide * 260;
+      const grandmaTransY = currentHide * 35;
+      const grandmaTilt = currentHide * 7;
+      const grandmaOpacity = Math.max(1 - currentHide * 0.9, 0.1);
 
-      // HIDE IN & HIDE OUT PROCESS BEHIND THE MOBILE BANNER:
-      // When hideFactor = 1 (banner out of focus):
-      // - Grandma tucks COMPLETELY behind the phone (moves +210px rightwards into phone center, +30px down, tilts 10deg)
-      // - Fezu tucks COMPLETELY behind the phone (moves -210px leftwards into phone center, +30px down, tilts -10deg)
-      // When hideFactor = 0 (banner in focus):
-      // - Grandma emerges proudly to (0px, 0px, 0deg) with hands gripping the phone left edge
-      // - Fezu emerges joyfully to (0px, 0px, 0deg) with chef paw gripping the phone right edge
-      const grandmaTransX = hideFactor * 210;
-      const grandmaTransY = hideFactor * 30;
-      const grandmaTilt = hideFactor * 9;
+      const fezuTransX = -currentHide * 270;
+      const fezuTransY = currentHide * 35;
+      const fezuTilt = -currentHide * 7;
+      const fezuOpacity = Math.max(1 - currentHide * 0.9, 0.1);
 
-      const fezuTransX = -hideFactor * 210;
-      const fezuTransY = hideFactor * 30;
-      const fezuTilt = -hideFactor * 9;
-
-      // Grandma Complete Character (Body, Arms, Hands, Head - z-index: 10 BEHIND PHONE)
+      // Grandma Complete Character (z-index: 10 - BEHIND PHONE)
       if (grandmaRef.current) {
         grandmaRef.current.style.transform = `translate3d(${grandmaTransX}px, ${grandmaTransY}px, 0) rotate(${grandmaTilt}deg)`;
+        grandmaRef.current.style.opacity = `${grandmaOpacity}`;
       }
 
-      // Fezu Complete Mascot (Body, Head, Chef Hat, Paw - z-index: 10 BEHIND PHONE)
+      // Fezu Complete Mascot (z-index: 10 - BEHIND PHONE)
       if (fezuRef.current) {
         fezuRef.current.style.transform = `translate3d(${fezuTransX}px, ${fezuTransY}px, 0) rotate(${fezuTilt}deg)`;
+        fezuRef.current.style.opacity = `${fezuOpacity}`;
       }
 
-      // Central Mobile Phone (z-index: 20 IN FRONT OF GRANDMA & FEZU):
-      // Stays elevated with gentle perspective tilt, seamlessly masking the characters as they hide in
+      // Central Mobile Phone (z-index: 20 - IN FRONT OF GRANDMA & FEZU)
+      // Stays anchored in front, effortlessly masking characters as they hide in
       if (phoneRef.current) {
-        const scrollFactor = (currentProgress - 0.5) * 2;
-        const phoneRotX = scrollFactor * -4;
-        const phoneTransY = scrollFactor * -6;
-        phoneRef.current.style.transform = `perspective(1000px) rotateX(${phoneRotX}deg) translateY(${phoneTransY}px)`;
+        const phoneTilt = currentHide * -4;
+        const phoneY = currentHide * -10;
+        phoneRef.current.style.transform = `perspective(1000px) rotateX(${phoneTilt}deg) translateY(${phoneY}px)`;
       }
 
       animFrameId = requestAnimationFrame(updateAnimation);
     };
 
     const handleScroll = () => {
-      if (!stageRef.current) return;
-      const rect = stageRef.current.getBoundingClientRect();
-      const winHeight = window.innerHeight;
+      // Measure how far user has scrolled down from the top of the page
+      const scrollY = window.scrollY || window.pageYOffset || 0;
 
-      // Viewport coverage progress (0 = entering bottom, 0.5 = centered, 1 = leaving top)
-      targetProgress = Math.min(Math.max((winHeight - rect.top) / (winHeight + rect.height), 0), 1);
+      // When scrollY = 0 to 60px (at hero): targetHide = 0 (fully peeked out)
+      // When scrollY goes from 60px to 420px: targetHide goes smoothly from 0 to 1 (hides behind phone)
+      const hideDistance = 380;
+      const scrollThreshold = 40;
+      const effectiveScroll = Math.max(scrollY - scrollThreshold, 0);
+      targetHide = Math.min(Math.max(effectiveScroll / hideDistance, 0), 1);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    currentProgress = targetProgress;
+    currentHide = targetHide;
     animFrameId = requestAnimationFrame(updateAnimation);
 
     return () => {
@@ -107,7 +110,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           width: 100%;
           height: 100%;
           pointer-events: none;
-          will-change: transform;
+          will-change: transform, opacity;
           transform-style: preserve-3d;
         }
 
