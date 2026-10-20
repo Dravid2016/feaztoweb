@@ -68,11 +68,20 @@ const StreamCulturalFoodCard: React.FC<{ dish: FoodItem }> = ({ dish }) => {
         )}
       </div>
 
-      {/* Right-corner oversized anchored plate */}
+      {/* Right Corner Oversized Half-Visible Rotating Plate (Exact layout from Image 1) */}
       <div className="stream-plate-anchor">
-        <div className="stream-plate-frame">
-          <img src={dish.image} alt={dish.name} className="stream-plate-img" loading="lazy" />
+        <div className="stream-plate-circular-frame">
+          <div className="stream-plate-spinning-wrapper">
+            <img 
+              src={dish.image || '/brand/plate-biryani-new.png'} 
+              alt={dish.name} 
+              className="stream-round-plate-img" 
+              loading="lazy" 
+            />
+          </div>
         </div>
+        {/* Cultural Dashed Orbit Aura Ring around plate edge */}
+        <div className="stream-plate-aura-ring" />
       </div>
     </div>
   );
@@ -313,17 +322,17 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
         .stream-cultural-card {
           position: relative;
           background: linear-gradient(135deg, #FFD233 0%, #F5C618 60%, #E8B90E 100%);
-          border-radius: 24px;
+          border-radius: 26px;
           border: 2px solid rgba(135, 71, 0, 0.22);
-          box-shadow: 0 14px 32px rgba(135, 71, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 16px 36px rgba(135, 71, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
           display: flex;
           flex-direction: row;
           align-items: center;
           overflow: hidden;
-          padding: 20px 22px;
-          min-width: 440px;
-          max-width: 440px;
-          height: 195px;
+          padding: 22px 24px;
+          min-width: 450px;
+          max-width: 450px;
+          height: 205px;
           pointer-events: auto;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           box-sizing: border-box;
@@ -331,7 +340,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
         .stream-cultural-card:hover {
           transform: translateY(-4px) scale(1.02);
-          box-shadow: 0 20px 42px rgba(135, 71, 0, 0.25);
+          box-shadow: 0 22px 46px rgba(135, 71, 0, 0.28);
         }
 
         /* Doodle watermark layer */
@@ -377,7 +386,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           align-items: flex-start;
           z-index: 2;
           min-width: 0;
-          padding-right: 95px; /* Keeps clean space so text does not overlap anchored plate */
+          padding-right: 110px; /* Space reserved so text never touches the right-anchored half-plate */
         }
 
         .stream-tag-row {
@@ -482,14 +491,14 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           color: #874700;
         }
 
-        /* Right Corner Oversized Half Plate from Image 1 */
+        /* Right Corner Oversized Half-Visible Rotating Plate (Exact Form Factor from Reference Image) */
         .stream-plate-anchor {
           position: absolute;
-          right: -60px;
+          right: -95px; /* Extends halfway outside right border like reference image */
           top: 50%;
           transform: translateY(-50%);
-          width: 200px;
-          height: 200px;
+          width: 220px;
+          height: 220px;
           z-index: 3;
           display: flex;
           align-items: center;
@@ -497,21 +506,57 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           pointer-events: none;
         }
 
-        .stream-plate-frame {
-          width: 100%;
-          height: 100%;
+        .stream-plate-circular-frame {
+          width: 205px;
+          height: 205px;
           border-radius: 50%;
+          overflow: hidden;
+          background: #1A1103;
+          border: 3.5px solid #FFFFFF;
+          box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(135, 71, 0, 0.35);
           display: flex;
           align-items: center;
           justify-content: center;
+          z-index: 2;
           position: relative;
         }
 
-        .stream-plate-img {
+        .stream-plate-spinning-wrapper {
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          filter: drop-shadow(-8px 10px 18px rgba(135, 71, 0, 0.35));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: slowSpinPlate 35s linear infinite;
+          transform-origin: center center;
+          will-change: transform;
+        }
+
+        .stream-round-plate-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .stream-plate-aura-ring {
+          position: absolute;
+          inset: -9px;
+          border-radius: 50%;
+          border: 2px dashed rgba(135, 71, 0, 0.38);
+          pointer-events: none;
+          z-index: 1;
+          animation: spinAuraReverse 48s linear infinite;
+        }
+
+        @keyframes slowSpinPlate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spinAuraReverse {
+          0% { transform: rotate(360deg); }
+          100% { transform: rotate(0deg); }
         }
 
         /* Central Anchored FEAzTO Mobile Phone */
