@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
+import { PeekingGrandmaFezuBanner } from './PeekingGrandmaFezuBanner';
 
 interface EditorialHeroProps {
   navigate: (route: string) => void;
@@ -93,7 +94,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <span className="hero-city-pill">Chennai</span>
           </div>
 
-          {/* Plenti-Style Mobile Device Model Placement */}
+          {/* Interactive Scroll-Driven Peeking Grandma & Fezu Banner */}
           <div className="hero-plenti-phone-wrapper">
             <div className="hero-plenti-phone-container">
               {/* Authentic Kolam Art Motif in Background */}
@@ -105,11 +106,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
                 />
               </div>
 
-              <img 
-                src="/brand/feazto-kozhikode-phone.png" 
-                alt="FEAzTO Mobile App - Kozhikode, Taste Real India" 
-                className="hero-feazto-phone-device-img" 
-              />
+              {/* Peeking Grandma & Fezu Multi-Layer Stage */}
+              <PeekingGrandmaFezuBanner />
+
               {/* Soft warm/golden ambient glow tailored to the hero palette */}
               <div className="hero-phone-ambient-glow" />
             </div>
@@ -450,21 +449,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           box-shadow: 0 2px 8px rgba(245, 183, 0, 0.3);
         }
 
-        /* ── PLENTI-STYLE HERO MOBILE DEVICE PLACEMENT (60% visible, 40% behind curve border) ── */
+        /* ── HERO MOBILE DEVICE PLACEMENT (Scroll-Driven Peeking Grandma & Fezu Banner) ── */
         .hero-plenti-phone-wrapper {
           position: relative;
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-top: 16px;
-          margin-bottom: -240px; /* Perfectly proportioned overlap into curved separator */
+          margin-top: 12px;
+          margin-bottom: -220px; /* Perfectly proportioned overlap into curved separator */
           z-index: 3; /* Behind .hero-curved-bottom-separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 410px;
+          max-width: 960px;
           display: flex;
           justify-content: center;
         }
