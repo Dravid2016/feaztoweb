@@ -497,7 +497,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0.92; /* Rich, dark, distinct visibility */
+          opacity: 1.0; /* Full opacity, thick and dark */
           animation: slowSpinKolam 120s linear infinite;
         }
 
@@ -510,7 +510,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          filter: drop-shadow(0 6px 20px rgba(180, 100, 0, 0.45));
+          filter: drop-shadow(0 6px 20px rgba(120, 60, 5, 0.4));
         }
 
         .hero-phone-ambient-glow {
