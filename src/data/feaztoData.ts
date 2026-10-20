@@ -212,7 +212,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '30 min',
     calories: '460 kcal',
     protein: '25g protein',
-    image: '/dish-coastal-curry.jpg'
+    image: '/brand/plate-goan-prawn.png'
   },
   {
     id: 'hyderabadi-haleem',
@@ -226,7 +226,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '60 min',
     calories: '620 kcal',
     protein: '34g protein',
-    image: '/brand/plate-biryani-new.png'
+    image: '/brand/plate-nizami-haleem.png'
   },
   {
     id: 'appam-stew-kerala',
@@ -240,7 +240,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '20 min',
     calories: '310 kcal',
     protein: '8g protein',
-    image: '/brand/plate-idli-new.png'
+    image: '/brand/plate-palappam-stew.png'
   },
   {
     id: 'gongura-pappu-charu',
@@ -254,7 +254,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '35 min',
     calories: '490 kcal',
     protein: '22g protein',
-    image: '/dish-capsule-curry.jpg'
+    image: '/brand/plate-gongura-mamsam.png'
   },
   {
     id: 'kheema-ghotala-irani',
@@ -268,7 +268,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '25 min',
     calories: '520 kcal',
     protein: '26g protein',
-    image: '/brand/plate-samosa-new.png'
+    image: '/brand/plate-irani-kheema.png'
   },
   {
     id: 'payasam-palada-kerala',
