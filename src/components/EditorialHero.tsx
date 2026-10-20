@@ -456,15 +456,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-top: 20px;
-          margin-bottom: -290px; /* 40% of the phone sinks cleanly behind the bottom curved border */
+          margin-top: 16px;
+          margin-bottom: -240px; /* Perfectly proportioned overlap into curved separator */
           z-index: 3; /* Behind .hero-curved-bottom-separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 440px;
+          max-width: 410px;
           display: flex;
           justify-content: center;
         }
