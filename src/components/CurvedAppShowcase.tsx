@@ -1,5 +1,4 @@
 import React from 'react';
-import { Sparkles, ArrowRight, ShieldCheck, Clock, MapPin } from 'lucide-react';
 
 interface CurvedAppShowcaseProps {
   navigate: (route: string) => void;
@@ -8,435 +7,329 @@ interface CurvedAppShowcaseProps {
 export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }) => {
   return (
     <section className="curved-showcase-section">
-      {/* Curved Background Arc at top */}
-      <div className="curved-boundary-shape">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,0 C480,110 960,110 1440,0 L1440,120 L0,120 Z" fill="#111111" />
-        </svg>
-      </div>
-
-      <div className="dark-showcase-content">
-        <div className="container showcase-grid-container">
-          {/* Left Text Column */}
-          <div className="showcase-info-col">
-            <div className="badge-tag badge-tag-dark">
-              <Sparkles size={13} />
-              <span>FEAzTO Customer & Kitchen Apps</span>
-            </div>
-
-            <h2 className="showcase-headline">
-              A bespoke digital experience designed for food discovery.
-            </h2>
-
-            <p className="showcase-body">
-              Designed according to the FEAzTO UI/UX Architecture. Customers explore rich visual dish stories and transparent origins, while cloud kitchens manage live order transitions with sub-second responsiveness.
-            </p>
-
-            <div className="app-highlights-list">
-              <div className="highlight-pill">
-                <Clock size={16} />
-                <span>Live Kitchen Preparation Timers</span>
-              </div>
-              <div className="highlight-pill">
-                <MapPin size={16} />
-                <span>Regional Provenance & Dish Heritage</span>
-              </div>
-              <div className="highlight-pill">
-                <ShieldCheck size={16} />
-                <span>Direct FSSAI Hygiene Audit Scores</span>
-              </div>
-            </div>
-
-            <div className="showcase-actions">
-              <button 
-                type="button" 
-                onClick={() => navigate('/download')}
-                className="btn btn-yellow"
-              >
-                <span>Download Early Access</span>
-                <ArrowRight size={16} />
-              </button>
-            </div>
+      <div className="curved-showcase-container">
+        {/* Plenti-Style Centered Header Section */}
+        <div className="plenti-hero-header">
+          <div className="plenti-badge-pill">
+            <span className="pulsing-green-dot" />
+            <span>Trusted by 2.5 Lakh Food Lovers • Live in 6 Cities</span>
           </div>
 
-          {/* Central Phone Mockup Overlapping the boundary (Reference E) */}
-          <div className="central-phone-col">
-            <div className="phone-mockup-wrapper">
-              <div className="phone-device-frame">
-                <div className="phone-notch">
-                  <span className="notch-camera" />
-                  <span className="notch-speaker" />
-                </div>
+          <h2 className="plenti-master-headline">
+            FEAzTO, India's First Home-Kitchen & Regional Food Ecosystem
+          </h2>
 
-                {/* In-app screen simulation based on UI/UX documentation */}
-                <div className="phone-screen-content">
-                  {/* App Header */}
-                  <div className="app-screen-header">
-                    <div className="app-screen-greeting">
-                      <span className="user-greeting-label">Deliver to</span>
-                      <strong className="user-delivery-loc">Bengaluru Central • 560001</strong>
-                    </div>
-                    <div className="app-screen-avatar">
-                      <img src="/brand/feazto-logo.svg" alt="FEAzTO" />
-                    </div>
-                  </div>
+          <p className="plenti-master-subcopy">
+            Discover authentic generational recipes, comforting home-cooked meals, and verified cloud kitchens with transparent hygiene scores.
+          </p>
 
-                  {/* Active Order Card */}
-                  <div className="app-screen-hero-card">
-                    <div className="screen-badge">PREPARING FRESH</div>
-                    <h5 className="screen-dish-name">Dum Biryani Handi</h5>
-                    <p className="screen-dish-cook">by Padmavathi Rao (BTM Kitchen)</p>
-                    <div className="screen-progress-bar">
-                      <div className="screen-progress-fill" style={{ width: '68%' }} />
-                    </div>
-                    <div className="screen-timer-row">
-                      <span>Slow dum cooking (12 mins left)</span>
-                      <strong>68% Ready</strong>
-                    </div>
-                  </div>
+          {/* Regional Cities Filter Pills */}
+          <div className="plenti-cities-pill-row">
+            <span className="city-pill">Trivandrum</span>
+            <span className="city-pill">Kochi</span>
+            <span className="city-pill active">Kozhikode</span>
+            <span className="city-pill">Bengaluru</span>
+            <span className="city-pill">Chennai</span>
+          </div>
 
-                  {/* Curated Recommendations */}
-                  <div className="app-screen-feed">
-                    <div className="feed-heading-row">
-                      <span>Curated For You</span>
-                      <small>View All</small>
-                    </div>
-
-                    <div className="feed-mini-card">
-                      <div className="feed-mini-img">
-                        <img src="/brand/plate-idli.png" alt="Malli Poo Idli" />
-                      </div>
-                      <div className="feed-mini-info">
-                        <h6>Malli Poo Idli & Medu Vada</h6>
-                        <p>Kongu Nadu Heritage • Fresh Coconut Chutney</p>
-                        <span className="feed-rating">★ 4.9 • 100% Home Fermented</span>
-                      </div>
-                    </div>
-
-                    <div className="feed-mini-card">
-                      <div className="feed-mini-img">
-                        <img src="/brand/plate-samosa.png" alt="Potli Samosa" />
-                      </div>
-                      <div className="feed-mini-info">
-                        <h6>Old Delhi Ajwain Samosa</h6>
-                        <p>Awadhi Potli • Saunth Tamarind Dip</p>
-                        <span className="feed-rating">★ 4.8 • Groundnut Oil Fried</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Soft glow behind phone */}
-              <div className="phone-ambient-glow" />
-            </div>
+          {/* Action CTAs */}
+          <div className="plenti-hero-actions">
+            <button 
+              type="button" 
+              onClick={() => navigate('/download')}
+              className="plenti-primary-btn"
+            >
+              <span>Download Now</span>
+            </button>
+            <button 
+              type="button" 
+              onClick={() => navigate('/our-story')}
+              className="plenti-secondary-btn"
+            >
+              <span className="plenti-play-icon">▶</span>
+              <span>Watch Story</span>
+            </button>
           </div>
         </div>
+
+        {/* Real FEAzTO Mobile Model Placed Overlapping the Curved Boundary */}
+        <div className="plenti-phone-wrapper">
+          <div className="plenti-phone-model-container">
+            <img 
+              src="/brand/feazto-mobile-banner.png" 
+              alt="FEAzTO Mobile App - Taste Real India" 
+              className="feazto-phone-device-img" 
+            />
+            {/* Soft Ambient Glow matching the Plenti hero lighting */}
+            <div className="plenti-ambient-glow" />
+          </div>
+        </div>
+      </div>
+
+      {/* Curved White Bottom Arc into next section */}
+      <div className="plenti-curved-boundary">
+        <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,80 Q720,0 1440,80 L1440,160 L0,160 Z" fill="#FFFDF7" />
+        </svg>
       </div>
 
       <style>{`
         .curved-showcase-section {
           position: relative;
-          background-color: #111111;
+          background: radial-gradient(circle at 50% 35%, #591ab8 0%, #300d75 35%, #18053d 70%, #0e0224 100%);
           color: #FAFAFA;
-          padding-bottom: 110px;
+          padding-top: 80px;
+          padding-bottom: 0px;
           overflow: hidden;
         }
 
-        .curved-boundary-shape {
-          width: 100%;
-          line-height: 0;
+        .curved-showcase-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 24px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
           position: relative;
-          top: -1px;
+          z-index: 2;
+        }
+
+        /* Plenti Hero Centered Content */
+        .plenti-hero-header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          max-width: 900px;
+          margin: 0 auto 36px auto;
+        }
+
+        .plenti-badge-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 7px 18px;
+          border-radius: 9999px;
+          font-size: 0.86rem;
+          font-weight: 500;
+          color: #F0EDF9;
+          margin-bottom: 22px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .pulsing-green-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #22C55E;
+          box-shadow: 0 0 10px #22C55E;
+          animation: pulseGreen 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseGreen {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.7; }
+        }
+
+        .plenti-master-headline {
+          font-size: clamp(2.3rem, 5vw, 4rem);
+          font-weight: 800;
+          line-height: 1.14;
+          letter-spacing: -0.03em;
+          color: #FFFFFF;
+          margin: 0 0 18px 0;
+          max-width: 920px;
+          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .plenti-master-subcopy {
+          font-size: clamp(1rem, 1.8vw, 1.2rem);
+          color: #D3CCE8;
+          line-height: 1.6;
+          max-width: 680px;
+          margin: 0 0 24px 0;
+          font-weight: 400;
+        }
+
+        /* City filter pills matching Plenti capsule bar */
+        .plenti-cities-pill-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 6px;
+          background: rgba(255, 255, 255, 0.08);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          padding: 5px 8px;
+          border-radius: 9999px;
+          margin-bottom: 28px;
+        }
+
+        .city-pill {
+          font-size: 0.8rem;
+          font-weight: 500;
+          color: #E2DAF5;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .city-pill:hover {
+          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.12);
+        }
+
+        .city-pill.active {
+          background: rgba(255, 255, 255, 0.24);
+          color: #FFFFFF;
+          font-weight: 700;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Action Buttons */
+        .plenti-hero-actions {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+          flex-wrap: wrap;
+        }
+
+        .plenti-primary-btn {
+          background: #FFFFFF;
+          color: #1A083B;
+          border: none;
+          font-size: 0.96rem;
+          font-weight: 700;
+          padding: 12px 28px;
+          border-radius: 9999px;
+          cursor: pointer;
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+          transition: all 0.25s ease;
+        }
+
+        .plenti-primary-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
           background: #FFFDF7;
         }
 
-        .curved-boundary-shape svg {
-          width: 100%;
-          height: 80px;
-          display: block;
-        }
-
-        .dark-showcase-content {
-          padding-top: 40px;
-        }
-
-        .showcase-grid-container {
-          display: grid;
-          grid-template-columns: 1.1fr 1fr;
-          gap: 60px;
-          align-items: center;
-        }
-
-        .showcase-info-col {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .showcase-headline {
-          font-size: clamp(2rem, 3.8vw, 3.2rem);
-          font-weight: 800;
+        .plenti-secondary-btn {
+          background: rgba(255, 255, 255, 0.14);
           color: #FFFFFF;
-          margin-top: 18px;
-          margin-bottom: 20px;
-          line-height: 1.2;
-          letter-spacing: -0.025em;
-        }
-
-        .showcase-body {
-          font-size: 1.08rem;
-          color: #B5B5B5;
-          line-height: 1.7;
-          margin-bottom: 32px;
-        }
-
-        .app-highlights-list {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-          margin-bottom: 40px;
-          width: 100%;
-        }
-
-        .highlight-pill {
-          display: flex;
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          font-size: 0.96rem;
+          font-weight: 600;
+          padding: 12px 26px;
+          border-radius: 9999px;
+          cursor: pointer;
+          display: inline-flex;
           align-items: center;
-          gap: 12px;
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          padding: 12px 18px;
-          border-radius: var(--radius-md);
-          font-size: 0.92rem;
-          color: #E0E0E0;
-          font-weight: 500;
+          gap: 8px;
+          transition: all 0.25s ease;
         }
 
-        .highlight-pill svg {
-          color: var(--color-brand-yellow);
+        .plenti-secondary-btn:hover {
+          background: rgba(255, 255, 255, 0.22);
+          transform: translateY(-2px);
         }
 
-        /* Phone Device Styling */
-        .central-phone-col {
+        .plenti-play-icon {
+          font-size: 0.76rem;
+          display: inline-block;
+        }
+
+        /* Plenti Phone Model Wrapper - Overlaps curved boundary */
+        .plenti-phone-wrapper {
+          position: relative;
+          width: 100%;
           display: flex;
           justify-content: center;
-          position: relative;
+          margin-top: 10px;
+          margin-bottom: -100px; /* Key Plenti overlap into bottom arc */
+          z-index: 5;
         }
 
-        .phone-mockup-wrapper {
+        .plenti-phone-model-container {
           position: relative;
-          width: 320px;
-          max-width: 100%;
+          width: 100%;
+          max-width: 440px;
+          display: flex;
+          justify-content: center;
         }
 
-        .phone-device-frame {
+        .feazto-phone-device-img {
+          width: 100%;
+          height: auto;
+          display: block;
+          filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.55));
           position: relative;
           z-index: 2;
-          background: #1A1A1A;
-          border-radius: 44px;
-          padding: 12px;
-          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.15);
-          border: 4px solid #333333;
+          transition: transform 0.4s ease;
         }
 
-        .phone-notch {
-          height: 22px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin-bottom: 8px;
+        .feazto-phone-device-img:hover {
+          transform: translateY(-4px) scale(1.01);
         }
 
-        .notch-camera {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          background: #0D0D0D;
-        }
-
-        .notch-speaker {
-          width: 48px;
-          height: 4px;
-          border-radius: 9999px;
-          background: #0D0D0D;
-        }
-
-        .phone-screen-content {
-          background: #FAFAFA;
-          border-radius: 32px;
-          padding: 18px;
-          min-height: 520px;
-          display: flex;
-          flex-direction: column;
-          color: var(--color-ink-black);
-          overflow: hidden;
-        }
-
-        .app-screen-header {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 16px;
-        }
-
-        .app-screen-greeting {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .user-greeting-label {
-          font-size: 0.7rem;
-          color: #777777;
-          text-transform: uppercase;
-        }
-
-        .user-delivery-loc {
-          font-size: 0.8rem;
-          color: var(--color-ink-black);
-        }
-
-        .app-screen-avatar img {
-          width: 44px;
-          height: auto;
-          border-radius: 6px;
-        }
-
-        .app-screen-hero-card {
-          background: #111111;
-          color: #FFFFFF;
-          border-radius: 18px;
-          padding: 16px;
-          margin-bottom: 16px;
-          box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-        }
-
-        .screen-badge {
-          display: inline-block;
-          font-size: 0.65rem;
-          font-weight: 800;
-          color: #111111;
-          background: var(--color-brand-yellow);
-          padding: 3px 8px;
-          border-radius: 9999px;
-          margin-bottom: 8px;
-        }
-
-        .screen-dish-name {
-          font-size: 1.05rem;
-          font-weight: 700;
-          margin-bottom: 2px;
-        }
-
-        .screen-dish-cook {
-          font-size: 0.74rem;
-          color: #A0A0A0;
-          margin-bottom: 12px;
-        }
-
-        .screen-progress-bar {
-          height: 6px;
-          background: rgba(255, 255, 255, 0.15);
-          border-radius: 9999px;
-          overflow: hidden;
-          margin-bottom: 8px;
-        }
-
-        .screen-progress-fill {
-          height: 100%;
-          background: var(--color-brand-yellow);
-          border-radius: 9999px;
-        }
-
-        .screen-timer-row {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.72rem;
-          color: #CCCCCC;
-        }
-
-        .app-screen-feed {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .feed-heading-row {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.82rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-          margin-bottom: 4px;
-        }
-
-        .feed-heading-row small {
-          color: #8C6500;
-          cursor: pointer;
-        }
-
-        .feed-mini-card {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: #FFFFFF;
-          padding: 10px;
-          border-radius: 14px;
-          border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .feed-mini-img {
-          width: 44px;
-          height: 44px;
-          border-radius: 10px;
-          background: #FFF9E6;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .feed-mini-img img {
-          width: 80%;
-          height: 80%;
-          object-fit: contain;
-        }
-
-        .feed-mini-info h6 {
-          font-size: 0.82rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-          line-height: 1.2;
-        }
-
-        .feed-mini-info p {
-          font-size: 0.68rem;
-          color: #666666;
-          margin: 2px 0;
-        }
-
-        .feed-rating {
-          font-size: 0.68rem;
-          font-weight: 700;
-          color: #B58400;
-        }
-
-        .phone-ambient-glow {
+        /* Plenti Ambient Glow behind phone */
+        .plenti-ambient-glow {
           position: absolute;
-          top: 50%;
+          top: 35%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 380px;
-          height: 520px;
-          background: radial-gradient(circle, rgba(255, 210, 51, 0.22) 0%, transparent 70%);
-          filter: blur(40px);
+          width: 500px;
+          height: 500px;
+          background: radial-gradient(circle, rgba(138, 75, 255, 0.45) 0%, rgba(93, 31, 219, 0.18) 50%, transparent 75%);
+          filter: blur(60px);
           z-index: 1;
           pointer-events: none;
         }
 
-        @media (max-width: 960px) {
-          .showcase-grid-container {
-            grid-template-columns: 1fr;
+        /* Curved White Bottom Arc into Next Section */
+        .plenti-curved-boundary {
+          position: relative;
+          width: 100%;
+          line-height: 0;
+          margin-top: -30px;
+          z-index: 3;
+          pointer-events: none;
+        }
+
+        .plenti-curved-boundary svg {
+          width: 100%;
+          height: 140px;
+          display: block;
+        }
+
+        @media (max-width: 768px) {
+          .curved-showcase-section {
+            padding-top: 50px;
+          }
+
+          .plenti-master-headline {
+            font-size: 2rem;
+          }
+
+          .plenti-phone-wrapper {
+            margin-bottom: -60px;
+          }
+
+          .plenti-phone-model-container {
+            max-width: 320px;
+          }
+
+          .plenti-curved-boundary svg {
+            height: 90px;
           }
         }
       `}</style>
