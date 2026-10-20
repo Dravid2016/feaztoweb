@@ -441,21 +441,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           box-shadow: 0 2px 8px rgba(245, 183, 0, 0.3);
         }
 
-        /* ── PLENTI-STYLE HERO MOBILE DEVICE PLACEMENT ── */
+        /* ── PLENTI-STYLE HERO MOBILE DEVICE PLACEMENT (60% visible, 40% behind curve border) ── */
         .hero-plenti-phone-wrapper {
           position: relative;
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-top: 16px;
-          margin-bottom: -150px; /* Overlaps bottom wave curve seamlessly */
-          z-index: 6;
+          margin-top: 20px;
+          margin-bottom: -290px; /* 40% of the phone sinks cleanly behind the bottom curved border */
+          z-index: 3; /* Behind .hero-curved-bottom-separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 450px;
+          max-width: 440px;
           display: flex;
           justify-content: center;
         }
@@ -464,7 +464,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           height: auto;
           display: block;
-          filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.35));
+          filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.28));
           position: relative;
           z-index: 2;
           transition: transform 0.35s ease;
@@ -476,12 +476,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .hero-phone-ambient-glow {
           position: absolute;
-          top: 40%;
+          top: 35%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 480px;
           height: 480px;
-          background: radial-gradient(circle, rgba(245, 183, 0, 0.3) 0%, rgba(245, 183, 0, 0.1) 45%, transparent 72%);
+          background: radial-gradient(circle, rgba(245, 183, 0, 0.28) 0%, rgba(245, 183, 0, 0.08) 45%, transparent 70%);
           filter: blur(50px);
           z-index: 1;
           pointer-events: none;
@@ -510,7 +510,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .food-discovery-teaser-section {
           position: relative;
           background: linear-gradient(180deg, #FFF8E1 0%, #FEF4D1 60%, #FDF0C3 100%);
-          padding-top: 80px;
+          padding-top: 40px;
           padding-bottom: 84px;
           z-index: 5;
         }
