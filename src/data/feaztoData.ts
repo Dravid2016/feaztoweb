@@ -70,7 +70,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '40 min',
     calories: '510 kcal',
     protein: '28g protein',
-    image: '/dish-coastal-curry.jpg'
+    image: '/brand/plate-chettinad-curry.png'
   },
   {
     id: 'amritsari-chole-kulche',
@@ -84,7 +84,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '35 min',
     calories: '560 kcal',
     protein: '19g protein',
-    image: '/brand/plate-thali.png'
+    image: '/brand/plate-pindi-chole.png'
   },
   {
     id: 'malabar-fish-curry',
@@ -98,7 +98,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '30 min',
     calories: '440 kcal',
     protein: '26g protein',
-    image: '/dish-coastal-curry.jpg'
+    image: '/brand/plate-malabar-fish.png'
   },
   {
     id: 'litti-chokha-bihar',
@@ -112,7 +112,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '30 min',
     calories: '480 kcal',
     protein: '16g protein',
-    image: '/brand/plate-samosa.png'
+    image: '/brand/plate-litti-chokha.png'
   },
   {
     id: 'daal-baati-churma',
@@ -126,7 +126,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '45 min',
     calories: '610 kcal',
     protein: '21g protein',
-    image: '/brand/plate-thali-new.png'
+    image: '/brand/plate-daal-baati.png'
   },
   {
     id: 'kashmiri-rogan-josh',

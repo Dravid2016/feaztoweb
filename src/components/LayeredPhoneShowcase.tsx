@@ -527,7 +527,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          animation: slowSpinPlate 35s linear infinite;
+          animation: slowSpinPlate 80s linear infinite; /* Spin very very slowly */
           transform-origin: center center;
           will-change: transform;
         }
@@ -546,7 +546,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           border: 2px dashed rgba(135, 71, 0, 0.38);
           pointer-events: none;
           z-index: 1;
-          animation: spinAuraReverse 48s linear infinite;
+          animation: spinAuraReverse 100s linear infinite; /* Counter-rotates very slowly */
         }
 
         @keyframes slowSpinPlate {
