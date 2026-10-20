@@ -17,20 +17,21 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       currentHide += (targetHide - currentHide) * 0.08;
 
       // HIDE IN BEHIND MOBILE BANNER AS USER SCROLLS DOWN:
-      // - When banner is fully on screen (hero in view):
+      // - When banner is comfortably on screen:
       //   Grandma and Fezu are fully peeked out in their vibrant hero positions (0px translation)!
-      // - As user scrolls past the hero:
+      // - As user scrolls past:
       //   Grandma glides smoothly +260px directly to the right, sliding completely behind the phone!
-      //   Fezu glides smoothly -270px directly to the left, sliding completely behind the phone!
+      //   Fezu glides smoothly -295px directly to the left, sliding completely behind the phone!
+      // - Characters fade out to 0 as they complete their tuck behind the phone, ensuring 100% disappearance.
       const grandmaTransX = currentHide * 260;
-      const grandmaTransY = currentHide * 35;
-      const grandmaTilt = currentHide * 7;
-      const grandmaOpacity = Math.max(1 - currentHide * 0.9, 0.1);
+      const grandmaTransY = currentHide * 25;
+      const grandmaTilt = currentHide * 4;
+      const grandmaOpacity = Math.max(1 - currentHide * 1.25, 0);
 
-      const fezuTransX = -currentHide * 270;
-      const fezuTransY = currentHide * 35;
-      const fezuTilt = -currentHide * 7;
-      const fezuOpacity = Math.max(1 - currentHide * 0.9, 0.1);
+      const fezuTransX = -currentHide * 295;
+      const fezuTransY = currentHide * 25;
+      const fezuTilt = -currentHide * 4;
+      const fezuOpacity = Math.max(1 - currentHide * 1.25, 0);
 
       // Grandma Complete Character (z-index: 10 - BEHIND PHONE)
       if (grandmaRef.current) {
@@ -45,10 +46,10 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       }
 
       // Central Mobile Phone (z-index: 20 - IN FRONT OF GRANDMA & FEZU)
+      // Phone stays perfectly level, upright, and even
       if (phoneRef.current) {
-        const phoneTilt = currentHide * -4;
-        const phoneY = currentHide * -10;
-        phoneRef.current.style.transform = `perspective(1000px) rotateX(${phoneTilt}deg) translateY(${phoneY}px)`;
+        const phoneY = currentHide * -6;
+        phoneRef.current.style.transform = `translate3d(0, ${phoneY}px, 0)`;
       }
 
       animFrameId = requestAnimationFrame(updateAnimation);
@@ -59,10 +60,9 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       const rect = stageRef.current.getBoundingClientRect();
       const winHeight = window.innerHeight;
 
-      // Calculate how far stage has scrolled upward relative to the viewport:
-      // When rect.top is comfortable on screen (e.g. > 150px): targetHide is 0 (fully visible!)
-      // As user scrolls and stage approaches top of screen (rect.top drops from 200px to -300px):
-      // targetHide goes smoothly from 0 to 1 (Grandma and Fezu hide behind the phone)
+      // When banner is nicely visible in upper-mid viewport: targetHide is 0 (characters fully peeking)
+      // As user scrolls and stage approaches top of screen:
+      // targetHide goes smoothly from 0 to 1 (characters hide completely behind the phone)
       const visibleThreshold = winHeight * 0.25;
       const scrollProgress = (visibleThreshold - rect.top) / 450;
       targetHide = Math.min(Math.max(scrollProgress, 0), 1);
@@ -100,8 +100,6 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           margin: 0 auto;
           background: transparent !important;
           user-select: none;
-          perspective: 1200px;
-          transform-style: preserve-3d;
         }
 
         .feazto-layer {
@@ -111,7 +109,6 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           height: 100%;
           pointer-events: none;
           will-change: transform, opacity;
-          transform-style: preserve-3d;
         }
 
         .feazto-layer img {
@@ -138,7 +135,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .layer-phone {
           z-index: 20;
           transform-origin: 50% 50%;
-          filter: drop-shadow(0 24px 44px rgba(15, 23, 42, 0.28));
+          filter: drop-shadow(0 20px 42px rgba(15, 23, 42, 0.24));
         }
 
         @media (max-width: 768px) {
