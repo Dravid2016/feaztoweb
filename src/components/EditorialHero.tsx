@@ -483,11 +483,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (SLIGHTLY LEFT & LESS DARK) ── */
         .hero-kolam-art-bg {
           position: absolute;
           top: 36%;
-          left: 50%;
+          left: 48%; /* Moved slightly to the left as requested */
           transform: translate(-50%, -50%);
           width: 580px;
           height: 580px;
@@ -497,7 +497,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 1.0; /* Full opacity, thick and dark */
+          opacity: 0.78; /* Less dark, soft warm golden aesthetic */
           animation: slowSpinKolam 120s linear infinite;
         }
 
@@ -510,7 +510,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          filter: drop-shadow(0 6px 20px rgba(120, 60, 5, 0.4));
+          filter: drop-shadow(0 4px 16px rgba(215, 145, 20, 0.3));
         }
 
         .hero-phone-ambient-glow {
