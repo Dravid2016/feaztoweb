@@ -16,14 +16,13 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       // Smooth dampening towards target scroll (lerp factor 0.08)
       currentHide += (targetHide - currentHide) * 0.08;
 
-      // HIDE-OUT -> HIDE-IN -> HIDE-OUT DYNAMIC SCROLL CYCLE:
-      // - Freshly opened website (top of hero, scrollY = 0):
-      //   Grandma and Fezu start fully peeked out in their vibrant hero positions (hide-out)!
-      // - As user scrolls down through the hero:
-      //   Grandma and Fezu glide behind the mobile banner and tuck completely inside (hiding from hide-out)!
-      // - As user continues scrolling and crosses past the section:
-      //   Grandma and Fezu glide back out to the sides and peek out triumphantly (hide-out from hide-in)!
-      // - Scrolling back up reverses the cycle smoothly in 60fps lerp.
+      // START IN HIDE STATE -> HIDE OUT SLOWLY -> HIDE IN CYCLE:
+      // - At the start (scrollY = 0, initial page load):
+      //   Grandma and Fezu are tucked inside in HIDE STATE behind the mobile banner!
+      // - As you start scrolling down:
+      //   Grandma and Fezu emerge and HIDE OUT slowly to the sides, peeking into full view!
+      // - As you scroll further down past the hero:
+      //   Grandma and Fezu glide back behind the banner to HIDE IN completely!
       const grandmaTransX = currentHide * 255;
       const grandmaTransY = currentHide * 20;
       const grandmaTilt = currentHide * 3.5;
@@ -49,7 +48,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       // Central Mobile Phone (z-index: 20 - IN FRONT OF GRANDMA & FEZU)
       // Phone stays perfectly level, upright, and even
       if (phoneRef.current) {
-        const phoneY = currentHide * -6;
+        const phoneY = (1 - currentHide) * -6;
         phoneRef.current.style.transform = `translate3d(0, ${phoneY}px, 0)`;
       }
 
@@ -57,14 +56,18 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
     };
 
     const handleScroll = () => {
-      // Natural scroll-driven hide-in and hide-out cycle:
-      // Cycle distance: 540px
-      // - scrollY = 0 (landing on hero): progress = 0 -> sin(0) = 0 (Fully Peeked Out / hide-out)
-      // - scrollY = 270 (scrolling through hero): progress = 0.5 -> sin(0.5 * PI) = 1 (Completely Hidden Behind Banner / hide-in)
-      // - scrollY >= 540 (crossing page past hero): progress = 1.0 -> sin(1.0 * PI) = 0 (Peeks back out / hide-out)
+      // START IN HIDE STATE -> HIDE OUT SLOWLY -> HIDE IN CYCLE:
+      // Cycle distance: 600px of scroll
+      // - scrollY = 0 (at the start / fresh open):
+      //   progress = 0 -> sin(0) = 0 -> targetHide = 1.0 (Completely in HIDE STATE behind phone)
+      // - scrollY = 300 (scrolling down into hero view):
+      //   progress = 0.5 -> sin(0.5 * PI) = 1.0 -> targetHide = 0.0 (Slowly HIDE OUT into full peeked view!)
+      // - scrollY >= 600 (scrolling further down past hero):
+      //   progress = 1.0 -> sin(1.0 * PI) = 0 -> targetHide = 1.0 (Glide back behind phone to HIDE IN!)
       const scrollY = window.scrollY || window.pageYOffset || 0;
-      const cycleProgress = Math.min(Math.max(scrollY / 540, 0), 1);
-      targetHide = Math.sin(cycleProgress * Math.PI);
+      const cycleProgress = Math.min(Math.max(scrollY / 600, 0), 1);
+      const peekAmount = Math.sin(cycleProgress * Math.PI);
+      targetHide = 1 - peekAmount;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
