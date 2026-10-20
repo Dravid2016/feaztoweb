@@ -64,43 +64,12 @@ export const SpoonKolamCanvas: React.FC = () => {
       return { x, y };
     };
 
-    // Calculate Brahma Dots (Pulli) that form the traditional Kolam matrix
-    const getPulliDots = () => {
-      const dots: { x: number; y: number }[] = [];
-      const cx = width * 0.5;
-      const cy = height * 0.5;
-      const step = Math.min(width, height) * 0.085;
-      const gridSize = 3;
 
-      for (let i = -gridSize; i <= gridSize; i++) {
-        for (let j = -gridSize; j <= gridSize; j++) {
-          if (Math.abs(i) + Math.abs(j) <= gridSize + 1) {
-            dots.push({ x: cx + i * step, y: cy + j * step });
-          }
-        }
-      }
-      return dots;
-    };
 
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // ── 0. DRAW TRADITIONAL PULLI (RICE POWDER DOT MATRIX) ──
-      const pulliDots = getPulliDots();
-      ctx.save();
-      for (const dot of pulliDots) {
-        // Soft golden sacred dots
-        ctx.fillStyle = 'rgba(248, 181, 4, 0.28)';
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, 2.5, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
-        ctx.beginPath();
-        ctx.arc(dot.x, dot.y, 1.2, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      ctx.restore();
+      // ── 0. TRADITIONAL PULLI DOTS REMOVED ──
 
       // Compute current spoon tip position on the big Kolam path
       const currentPt = getBigKolamPoint(t);
