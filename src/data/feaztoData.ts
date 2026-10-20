@@ -140,7 +140,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '50 min',
     calories: '590 kcal',
     protein: '31g protein',
-    image: '/brand/plate-biryani-new.png'
+    image: '/brand/plate-rogan-josh.png'
   },
 
   // --- Bottom Layer Varieties (10 Distinct Dishes) ---
@@ -156,7 +156,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '15 min',
     calories: '420 kcal',
     protein: '11g protein',
-    image: '/dish-ghee-dosa.jpg'
+    image: '/brand/plate-benne-dosa.png'
   },
   {
     id: 'kolhapuri-tambda-pandhra',
@@ -170,7 +170,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '40 min',
     calories: '530 kcal',
     protein: '27g protein',
-    image: '/dish-capsule-curry.jpg'
+    image: '/brand/plate-kolhapuri-rassa.png'
   },
   {
     id: 'dhokla-khandvi-gujarat',
@@ -184,7 +184,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '20 min',
     calories: '280 kcal',
     protein: '12g protein',
-    image: '/brand/plate-idli.png'
+    image: '/brand/plate-surati-dhokla.png'
   },
   {
     id: 'lucchi-kosha-mangsho',
@@ -198,7 +198,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '55 min',
     calories: '640 kcal',
     protein: '29g protein',
-    image: '/brand/plate-biryani.png'
+    image: '/brand/plate-kosha-mangsho.png'
   },
   {
     id: 'goan-prawn-balchao',
