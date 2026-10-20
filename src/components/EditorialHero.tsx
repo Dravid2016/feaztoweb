@@ -204,8 +204,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding-top: 80px;
-          padding-bottom: 220px;
+          padding-top: 60px;
+          padding-bottom: 20px;
           box-sizing: border-box;
           text-align: center;
         }
@@ -455,9 +455,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           display: flex;
           justify-content: center;
-          margin-top: 12px;
-          margin-bottom: -220px; /* Perfectly proportioned overlap into curved separator */
-          z-index: 3; /* Behind .hero-curved-bottom-separator (z-index: 4) */
+          margin-top: 16px;
+          margin-bottom: 20px;
+          z-index: 3;
         }
 
         .hero-plenti-phone-container {
