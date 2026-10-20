@@ -1,99 +1,77 @@
 const sharp = require('sharp');
-const fs = require('fs');
+const path = require('path');
 
-async function processDish(srcPath, outPath, cx, cy, r, size = 600) {
-  console.log(`Processing: ${srcPath} -> ${outPath}`);
-  const img = sharp(srcPath);
-  const meta = await img.metadata();
-  const { data, info } = await img.raw().toBuffer({ resolveWithObject: true });
+const srcDir = 'C:\\Users\\USER\\.gemini\\antigravity-ide\\brain\\63a3ca16-fb8e-4065-bb5e-8e9b6405febf\\.user_uploaded';
+const outDir = 'c:\\Users\\USER\\Documents\\feazto\\feaztoweb\\public\\brand';
 
-  const channels = info.channels;
-  const w = info.width;
-  const h = info.height;
+async function process2Dishes() {
+  const dishes = [
+    {
+      name: 'Kolkata Lucchi with Kosha Mangsho',
+      input: path.join(srcDir, 'media_1792500510891.jpg'),
+      output: path.join(outDir, 'plate-kosha-mangsho.png'),
+      cx: 516.5,
+      cy: 421.5,
+      r: 412
+    },
+    {
+      name: 'Ambalapuzha Palada Pradhaman',
+      input: path.join(srcDir, 'media_1792500511036.png'),
+      output: path.join(outDir, 'plate-palada-pradhaman.png'),
+      cx: 496,
+      cy: 343.5,
+      r: 310
+    }
+  ];
 
-  // New buffer with RGBA (4 channels)
-  const outBuf = Buffer.alloc(w * h * 4);
+  for (const d of dishes) {
+    const img = sharp(d.input);
+    const { data, info } = await img.raw().toBuffer({ resolveWithObject: true });
 
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      const srcIdx = (y * w + x) * channels;
-      const dstIdx = (y * w + x) * 4;
+    const width = info.width;
+    const height = info.height;
+    const channels = info.channels;
+    const outBuf = Buffer.alloc(width * height * 4);
 
-      const rVal = data[srcIdx];
-      const gVal = data[srcIdx + 1];
-      const bVal = data[srcIdx + 2];
-      const aVal = channels === 4 ? data[srcIdx + 3] : 255;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        const inIdx = (y * width + x) * channels;
+        const outIdx = (y * width + x) * 4;
 
-      const dx = x - cx;
-      const dy = y - cy;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+        outBuf[outIdx] = data[inIdx];
+        outBuf[outIdx + 1] = data[inIdx + 1];
+        outBuf[outIdx + 2] = data[inIdx + 2];
 
-      // Feather / anti-alias the circular border
-      let circleAlpha = 1;
-      if (dist > r) {
-        circleAlpha = 0;
-      } else if (dist > r - 1.5) {
-        circleAlpha = (r - dist) / 1.5;
+        const dx = x - d.cx;
+        const dy = y - d.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist <= d.r - 2) {
+          outBuf[outIdx + 3] = channels === 4 ? data[inIdx + 3] : 255;
+        } else if (dist <= d.r) {
+          const factor = (d.r - dist) / 2;
+          const origA = channels === 4 ? data[inIdx + 3] / 255 : 1;
+          outBuf[outIdx + 3] = Math.round(origA * factor * 255);
+        } else {
+          outBuf[outIdx + 3] = 0;
+        }
       }
-
-      outBuf[dstIdx] = rVal;
-      outBuf[dstIdx + 1] = gVal;
-      outBuf[dstIdx + 2] = bVal;
-      outBuf[dstIdx + 3] = Math.round(aVal * circleAlpha);
     }
+
+    // Crop precisely to the circular plate diameter with 8px margin
+    const size = Math.ceil(d.r * 2) + 16;
+    const left = Math.max(0, Math.round(d.cx - d.r - 8));
+    const top = Math.max(0, Math.round(d.cy - d.r - 8));
+    const extractW = Math.min(width - left, size);
+    const extractH = Math.min(height - top, size);
+
+    await sharp(outBuf, { raw: { width, height, channels: 4 } })
+      .extract({ left, top, width: extractW, height: extractH })
+      .png({ quality: 100, compressionLevel: 9 })
+      .toFile(d.output);
+
+    console.log(`Saved clean circular plate: ${path.basename(d.output)} (${d.name})`);
   }
-
-  // Crop to square bounding box around the circle [cx - r, cy - r, 2r, 2r]
-  const cropLeft = Math.max(0, Math.floor(cx - r));
-  const cropTop = Math.max(0, Math.floor(cy - r));
-  const cropSize = Math.min(
-    w - cropLeft,
-    h - cropTop,
-    Math.ceil(r * 2)
-  );
-
-  await sharp(outBuf, {
-    raw: {
-      width: w,
-      height: h,
-      channels: 4
-    }
-  })
-  .extract({
-    left: cropLeft,
-    top: cropTop,
-    width: cropSize,
-    height: cropSize
-  })
-  .resize(size, size, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
-  .png({ quality: 95 })
-  .toFile(outPath);
-
-  console.log(`Saved clean circular plate: ${outPath}`);
 }
 
-async function main() {
-  const baseUploads = 'C:/Users/USER/.gemini/antigravity-ide/brain/63a3ca16-fb8e-4065-bb5e-8e9b6405febf/.user_uploaded/';
-  
-  // 1. Kolkata Lucchi with Kosha Mangsho
-  await processDish(
-    baseUploads + 'media_1792498747584.jpg',
-    'public/brand/plate-kosha-mangsho.png',
-    511,
-    409,
-    388,
-    600
-  );
-
-  // 2. Ambalapuzha Palada Pradhaman
-  await processDish(
-    baseUploads + 'media_1792499256057.png',
-    'public/brand/plate-palada-pradhaman.png',
-    496,
-    344,
-    304,
-    600
-  );
-}
-
-main().catch(console.error);
+process2Dishes().catch(console.error);
