@@ -17,21 +17,22 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       currentHide += (targetHide - currentHide) * 0.08;
 
       // HIDE IN BEHIND MOBILE BANNER AS USER SCROLLS DOWN:
-      // - When banner is comfortably on screen:
+      // - Freshly opened website (scrollY == 0, hero in view):
       //   Grandma and Fezu are fully peeked out in their vibrant hero positions (0px translation)!
-      // - As user scrolls past:
-      //   Grandma glides smoothly +260px directly to the right, sliding completely behind the phone!
-      //   Fezu glides smoothly -295px directly to the left, sliding completely behind the phone!
-      // - Characters fade out to 0 as they complete their tuck behind the phone, ensuring 100% disappearance.
-      const grandmaTransX = currentHide * 260;
-      const grandmaTransY = currentHide * 25;
-      const grandmaTilt = currentHide * 4;
-      const grandmaOpacity = Math.max(1 - currentHide * 1.25, 0);
+      // - As user scrolls down past the hero:
+      //   Grandma glides smoothly +255px directly to the right, sliding completely behind the phone!
+      //   Fezu glides smoothly -280px directly to the left, sliding completely behind the phone!
+      // - When user scrolls back up / crosses back to page:
+      //   Grandma and Fezu peek back out smoothly from behind the phone!
+      const grandmaTransX = currentHide * 255;
+      const grandmaTransY = currentHide * 20;
+      const grandmaTilt = currentHide * 3.5;
+      const grandmaOpacity = Math.max(1 - currentHide * 1.3, 0);
 
-      const fezuTransX = -currentHide * 295;
-      const fezuTransY = currentHide * 25;
-      const fezuTilt = -currentHide * 4;
-      const fezuOpacity = Math.max(1 - currentHide * 1.25, 0);
+      const fezuTransX = -currentHide * 280;
+      const fezuTransY = currentHide * 20;
+      const fezuTilt = -currentHide * 3.5;
+      const fezuOpacity = Math.max(1 - currentHide * 1.3, 0);
 
       // Grandma Complete Character (z-index: 10 - BEHIND PHONE)
       if (grandmaRef.current) {
@@ -56,15 +57,14 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
     };
 
     const handleScroll = () => {
-      if (!stageRef.current) return;
-      const rect = stageRef.current.getBoundingClientRect();
-      const winHeight = window.innerHeight;
-
-      // When banner is nicely visible in upper-mid viewport: targetHide is 0 (characters fully peeking)
-      // As user scrolls and stage approaches top of screen:
-      // targetHide goes smoothly from 0 to 1 (characters hide completely behind the phone)
-      const visibleThreshold = winHeight * 0.25;
-      const scrollProgress = (visibleThreshold - rect.top) / 450;
+      // Calculate scroll progress from top of the page:
+      // When user freshly opens the website (window.scrollY == 0):
+      // targetHide is 0 (Grandma and Fezu are fully peeked out / hide-out).
+      // As user scrolls down past the hero (0px to 420px of scroll):
+      // targetHide smoothly increases from 0 to 1 (Grandma and Fezu glide behind the phone / hide-in).
+      // If user scrolls back up, targetHide returns smoothly from 1 to 0 (peeking back out / hide-out).
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const scrollProgress = scrollY / 380;
       targetHide = Math.min(Math.max(scrollProgress, 0), 1);
     };
 
@@ -95,7 +95,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .feazto-stage {
           position: relative;
           width: 100%;
-          max-width: 960px;
+          max-width: 1040px;
           aspect-ratio: 1024 / 682;
           margin: 0 auto;
           background: transparent !important;

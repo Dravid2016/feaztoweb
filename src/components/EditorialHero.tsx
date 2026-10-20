@@ -463,7 +463,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 960px;
+          max-width: 1040px;
           display: flex;
           justify-content: center;
         }
