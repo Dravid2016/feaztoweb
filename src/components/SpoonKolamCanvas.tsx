@@ -110,10 +110,10 @@ export const SpoonKolamCanvas: React.FC = () => {
           const p2 = trail[i];
           const progress = i / trail.length; // 0 to 1
 
-          // Dual-layer stroke: Rich turmeric gold core with bright white highlights
-          const alpha = 0.15 + progress * 0.55;
-          ctx.strokeStyle = `rgba(248, 181, 4, ${alpha})`;
-          ctx.lineWidth = 2.2 + progress * 1.8;
+          // Dual-layer stroke: Rich deeper golden ochre tone
+          const alpha = 0.28 + progress * 0.62;
+          ctx.strokeStyle = `rgba(195, 120, 0, ${alpha})`;
+          ctx.lineWidth = 2.5 + progress * 2.0;
 
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
