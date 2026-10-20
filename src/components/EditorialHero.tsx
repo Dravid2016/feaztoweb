@@ -168,14 +168,14 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── HERO MAIN SECTION ── */
         .feazto-master-hero {
           position: relative;
-          min-height: 560px;
+          min-height: 640px;
           background: transparent !important;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding-top: 72px;
-          padding-bottom: 120px;
+          padding-top: 80px;
+          padding-bottom: 220px;
           box-sizing: border-box;
           text-align: center;
         }
@@ -537,8 +537,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         @media (max-width: 768px) {
           .feazto-master-hero {
-            padding-top: 48px;
-            padding-bottom: 96px;
+            padding-top: 56px;
+            padding-bottom: 160px;
           }
           .hero-content-wrapper {
             padding-left: 16px;
