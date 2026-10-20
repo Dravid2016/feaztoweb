@@ -107,7 +107,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .feazto-stage {
           position: relative;
           width: 100%;
-          max-width: 1040px;
+          max-width: 1140px;
           aspect-ratio: 1024 / 682;
           margin: 0 auto;
           background: transparent !important;

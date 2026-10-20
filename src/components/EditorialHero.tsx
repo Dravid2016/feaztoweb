@@ -93,25 +93,25 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <span className="hero-city-pill">Bengaluru</span>
             <span className="hero-city-pill">Chennai</span>
           </div>
+        </div>
 
-          {/* Interactive Scroll-Driven Peeking Grandma & Fezu Banner */}
-          <div className="hero-plenti-phone-wrapper">
-            <div className="hero-plenti-phone-container">
-              {/* Authentic Kolam Art Motif in Background */}
-              <div className="hero-kolam-art-bg" aria-hidden="true">
-                <img 
-                  src="/brand/hero-kolam-bg.png" 
-                  alt="" 
-                  className="kolam-motif-img"
-                />
-              </div>
-
-              {/* Peeking Grandma & Fezu Multi-Layer Stage */}
-              <PeekingGrandmaFezuBanner />
-
-              {/* Soft warm/golden ambient glow tailored to the hero palette */}
-              <div className="hero-phone-ambient-glow" />
+        {/* Interactive Scroll-Driven Peeking Grandma & Fezu Banner */}
+        <div className="hero-plenti-phone-wrapper">
+          <div className="hero-plenti-phone-container">
+            {/* Authentic Kolam Art Motif in Background */}
+            <div className="hero-kolam-art-bg" aria-hidden="true">
+              <img 
+                src="/brand/hero-kolam-bg.png" 
+                alt="" 
+                className="kolam-motif-img"
+              />
             </div>
+
+            {/* Peeking Grandma & Fezu Multi-Layer Stage */}
+            <PeekingGrandmaFezuBanner />
+
+            {/* Soft warm/golden ambient glow tailored to the hero palette */}
+            <div className="hero-phone-ambient-glow" />
           </div>
         </div>
 
@@ -456,14 +456,14 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           justify-content: center;
           margin-top: 16px;
-          margin-bottom: 20px;
-          z-index: 3;
+          margin-bottom: -95px; /* ~15% tucks behind the organic curved border */
+          z-index: 3; /* Tucks cleanly behind the curved separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 1040px;
+          max-width: 1140px;
           display: flex;
           justify-content: center;
         }
