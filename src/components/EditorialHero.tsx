@@ -456,14 +456,14 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           justify-content: center;
           margin-top: 16px;
-          margin-bottom: -60px; /* ~10% tucks cleanly behind the organic curved border */
+          margin-bottom: -52px; /* ~10% tucks cleanly behind the organic curved border */
           z-index: 3; /* Tucks cleanly behind the curved separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
           position: relative;
           width: 100%;
-          max-width: 1140px;
+          max-width: 1020px;
           display: flex;
           justify-content: center;
         }
@@ -482,21 +482,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (WAY BIGGER & GRAND: 1450px) ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (WAY BIGGER & GRAND: 1250px) ── */
         .hero-kolam-art-bg {
           position: absolute;
           top: 40%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 1450px;
-          height: 1450px;
-          max-width: 180vw;
+          width: 1250px;
+          height: 1250px;
+          max-width: 165vw;
           z-index: 1;
           pointer-events: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0.72;
+          opacity: 0.70;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
@@ -517,10 +517,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           top: 38%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 1050px;
-          height: 1050px;
+          width: 920px;
+          height: 920px;
           background: radial-gradient(circle, rgba(245, 183, 0, 0.35) 0%, rgba(245, 183, 0, 0.14) 48%, transparent 72%);
-          filter: blur(80px);
+          filter: blur(75px);
           z-index: 0;
           pointer-events: none;
         }
