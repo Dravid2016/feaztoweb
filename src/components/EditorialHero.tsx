@@ -83,6 +83,28 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </span>
             </button>
           </div>
+
+          {/* Regional Cities Availability Filter Pills (Plenti-Style) */}
+          <div className="hero-cities-pill-row">
+            <span className="hero-city-pill">Trivandrum</span>
+            <span className="hero-city-pill">Kochi</span>
+            <span className="hero-city-pill active">Kozhikode</span>
+            <span className="hero-city-pill">Bengaluru</span>
+            <span className="hero-city-pill">Chennai</span>
+          </div>
+
+          {/* Plenti-Style Mobile Device Model Placement */}
+          <div className="hero-plenti-phone-wrapper">
+            <div className="hero-plenti-phone-container">
+              <img 
+                src="/brand/feazto-mobile-banner.png" 
+                alt="FEAzTO Mobile App - Taste Real India" 
+                className="hero-feazto-phone-device-img" 
+              />
+              {/* Soft warm/golden ambient glow tailored to the hero palette */}
+              <div className="hero-phone-ambient-glow" />
+            </div>
+          </div>
         </div>
 
         {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION ── */}
@@ -379,6 +401,92 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-left: 2px;
         }
 
+        /* ── PLENTI-STYLE REGIONAL CITIES PILL ROW IN HERO ── */
+        .hero-cities-pill-row {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 6px;
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid rgba(245, 183, 0, 0.35);
+          padding: 6px 10px;
+          border-radius: 9999px;
+          margin-top: 28px;
+          margin-bottom: 24px;
+          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+        }
+
+        .hero-city-pill {
+          font-size: 0.82rem;
+          font-weight: 500;
+          color: #555555;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .hero-city-pill:hover {
+          color: #111111;
+          background: rgba(245, 183, 0, 0.15);
+        }
+
+        .hero-city-pill.active {
+          background: #F5B700;
+          color: #111111;
+          font-weight: 700;
+          box-shadow: 0 2px 8px rgba(245, 183, 0, 0.3);
+        }
+
+        /* ── PLENTI-STYLE HERO MOBILE DEVICE PLACEMENT ── */
+        .hero-plenti-phone-wrapper {
+          position: relative;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 16px;
+          margin-bottom: -150px; /* Overlaps bottom wave curve seamlessly */
+          z-index: 6;
+        }
+
+        .hero-plenti-phone-container {
+          position: relative;
+          width: 100%;
+          max-width: 450px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .hero-feazto-phone-device-img {
+          width: 100%;
+          height: auto;
+          display: block;
+          filter: drop-shadow(0 28px 56px rgba(0, 0, 0, 0.35));
+          position: relative;
+          z-index: 2;
+          transition: transform 0.35s ease;
+        }
+
+        .hero-feazto-phone-device-img:hover {
+          transform: translateY(-4px) scale(1.015);
+        }
+
+        .hero-phone-ambient-glow {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 480px;
+          height: 480px;
+          background: radial-gradient(circle, rgba(245, 183, 0, 0.3) 0%, rgba(245, 183, 0, 0.1) 45%, transparent 72%);
+          filter: blur(50px);
+          z-index: 1;
+          pointer-events: none;
+        }
+
         /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
         .hero-curved-bottom-separator {
           position: absolute;
@@ -402,7 +510,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .food-discovery-teaser-section {
           position: relative;
           background: linear-gradient(180deg, #FFF8E1 0%, #FEF4D1 60%, #FDF0C3 100%);
-          padding-top: 36px;
+          padding-top: 80px;
           padding-bottom: 84px;
           z-index: 5;
         }

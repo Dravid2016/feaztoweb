@@ -7,7 +7,6 @@ import { NarrativeTransitionBand } from '../components/NarrativeTransitionBand';
 import { HomeKitchensSection } from '../components/HomeKitchensSection';
 import { BrandPillarsSection } from '../components/BrandPillarsSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
-import { CurvedAppShowcase } from '../components/CurvedAppShowcase';
 import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { BookACookSection } from '../components/BookACookSection';
 import { FoodStoriesSection } from '../components/FoodStoriesSection';
@@ -47,8 +46,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       {/* 7. How feazto works (Documented flow) */}
       <HowItWorksSection />
 
-      {/* 8. Curved app-showcase section with central phone (Reference E) */}
-      <CurvedAppShowcase navigate={navigate} />
+
 
       {/* 9. Layered phone and opposing moving image cards (Reference F) */}
       <LayeredPhoneShowcase navigate={navigate} />
