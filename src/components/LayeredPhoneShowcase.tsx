@@ -1,114 +1,113 @@
 import React from 'react';
-import { Sparkles, ArrowRight, Smartphone } from 'lucide-react';
 
 interface LayeredPhoneShowcaseProps {
-  navigate: (route: string) => void;
+  navigate?: (route: string) => void;
 }
 
-export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navigate }) => {
-  const topRowCards = [
-    { title: 'Hyderabadi Dum Handi', state: 'Telangana', img: '/brand/plate-biryani.png' },
-    { title: 'Sattvic Maharashtrian Thali', state: 'Maharashtra', img: '/brand/plate-thali.png' },
-    { title: 'Kongu Malli Poo Idli', state: 'Tamil Nadu', img: '/brand/plate-idli.png' },
-    { title: 'Awadhi Ajwain Samosa', state: 'Uttar Pradesh', img: '/brand/plate-samosa.png' },
-    { title: 'Hyderabadi Dum Handi', state: 'Telangana', img: '/brand/plate-biryani.png' },
-    { title: 'Sattvic Maharashtrian Thali', state: 'Maharashtra', img: '/brand/plate-thali.png' },
+export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
+  const streamCardsRow1 = [
+    { title: 'Anna Kitchen Dosa', label: 'Home Kitchen • Tanjore', img: '/brand/plate-idli.png', iconBg: '#FFF3D6', badge: 'Verified 98%' },
+    { title: 'Hyderabadi Dum Handi', label: 'Slow Cooked Handi', img: '/brand/plate-biryani.png', iconBg: '#FFEAD4', badge: 'Regional Classic' },
+    { title: 'Malli Poo Podi Idli', label: 'Cast-Iron Batter', img: '/brand/plate-idli.png', iconBg: '#FFF9E6', badge: 'Breakfast Favorite' },
+    { title: 'Sattvic Festive Thali', label: 'Generational Recipe', img: '/brand/plate-thali.png', iconBg: '#EAF8EA', badge: '100% Home Cooked' },
+    { title: 'Awadhi Ajwain Samosa', label: 'Heritage Spice Crust', img: '/brand/plate-samosa.png', iconBg: '#FFF4E0', badge: 'Tea-time Must' },
+    { title: 'Clay Pot Filter Kaapi', label: 'Coorg Bean Decoction', img: '/brand/doodle-chai.png', iconBg: '#FFF0D4', badge: 'Signature Brew' },
   ];
 
-  const bottomRowCards = [
-    { title: 'Clay Pot Filter Kaapi', state: 'Karnataka', img: '/brand/doodle-chai.png' },
-    { title: 'Old Delhi Ajwain Crust', state: 'Delhi NCR', img: '/brand/plate-samosa.png' },
-    { title: 'Tiffin Podi Dosa & Chutney', state: 'Tamil Nadu', img: '/brand/plate-idli.png' },
-    { title: 'Gongura Mamsam Heritage', state: 'Andhra Pradesh', img: '/brand/plate-biryani.png' },
-    { title: 'Clay Pot Filter Kaapi', state: 'Karnataka', img: '/brand/doodle-chai.png' },
-    { title: 'Old Delhi Ajwain Crust', state: 'Delhi NCR', img: '/brand/plate-samosa.png' },
+  const streamCardsRow2 = [
+    { title: 'Book a Verified Cook', label: 'Authentic Regional Chefs', icon: '👨‍🍳', iconBg: '#E8F5E9', badge: 'Hourly / Monthly' },
+    { title: 'Clean Kitchen Guarantee', label: 'Transparent Hygiene Score', icon: '🛡️', iconBg: '#E3F2FD', badge: 'FSSAI Certified' },
+    { title: 'Generational Batches', label: 'Small-Batch Home Food', icon: '🍲', iconBg: '#FFF3E0', badge: 'Limited Plates' },
+    { title: 'Direct FoodPreneurs', label: 'Zero Middleman Markups', icon: '❤️', iconBg: '#FCE4EC', badge: 'Fair Community' },
+    { title: 'Pre-Order Traditions', label: 'Delivered Hot & Fresh', icon: '⏰', iconBg: '#F3E5F5', badge: 'Same Day' },
+    { title: 'Authentic Spice Blends', label: 'No Commercial Preservatives', icon: '🌿', iconBg: '#E0F2F1', badge: 'Pure Ingredients' },
   ];
 
   return (
-    <section className="layered-showcase-section">
-      <div className="container text-center-header">
-        <div className="badge-tag">
-          <Sparkles size={13} />
-          <span>Interactive Culinary Carousel</span>
-        </div>
-        <h2 className="layered-headline">Opposing Flavours, One Central Heart</h2>
-        <p className="layered-subheadline">
-          Hundreds of regional micro-cuisines converging into an intuitive mobile interface.
+    <section className="plenti-feazto-showcase-section">
+      {/* Plenti-Style Grand Editorial Statement Header */}
+      <div className="plenti-statement-container">
+        <h2 className="plenti-statement-title">
+          Every day authentic home chefs,{' '}
+          <span className="statement-dish-capsule" title="Crispy Golden Ghee Podi Masala Dosa">
+            <img 
+              src="/brand/plate-idli.png" 
+              alt="Crispy Podi Dosa" 
+              className="statement-inline-img"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = '/dish-capsule-curry.jpg';
+              }}
+            />
+          </span>
+          <br />
+          regional foodpreneurs and cloud kitchens
+          <br />
+          prepare fresh generational recipes
+          <br />
+          as daily curated batches — and you enjoy real India
+          <br />
+          delivered straight to your table.
+        </h2>
+
+        <p className="plenti-statement-tagline">
+          Good for your family. Better for authentic food culture.
         </p>
+
+        {/* Plenti-Style Rounded Hashtag Pills Row */}
+        <div className="plenti-tags-row">
+          <span className="plenti-tag-pill">#Feazto</span>
+          <span className="plenti-tag-pill">#HomeKitchens</span>
+          <span className="plenti-tag-pill">#RegionalFood</span>
+          <span className="plenti-tag-pill">#TasteRealIndia</span>
+          <span className="plenti-tag-pill">#BookACook</span>
+        </div>
       </div>
 
-      {/* Reference F: Central Phone with Opposing-Direction Image Cards */}
-      <div className="layered-stage-wrapper">
-        {/* Upper Moving Row (translates to the left) */}
-        <div className="cards-stream stream-top">
-          <div className="cards-track animate-scroll-left">
-            {topRowCards.map((card, idx) => (
-              <div key={idx} className="floating-plate-card">
-                <div className="card-plate-box">
+      {/* Plenti-Style Centered Phone Mockup with Opposing Horizontal Flanking Rows */}
+      <div className="plenti-stage-showcase-wrapper">
+        {/* Upper Scrolling Carousel (scrolls left behind phone) */}
+        <div className="plenti-cards-stream stream-top">
+          <div className="plenti-cards-track scroll-stream-left">
+            {[...streamCardsRow1, ...streamCardsRow1, ...streamCardsRow1].map((card, idx) => (
+              <div key={idx} className="plenti-floating-feature-card">
+                <div className="feature-card-avatar" style={{ background: card.iconBg }}>
                   <img src={card.img} alt={card.title} />
                 </div>
-                <div className="card-plate-info">
+                <div className="feature-card-text">
+                  <span className="feature-badge-tiny">{card.badge}</span>
                   <strong>{card.title}</strong>
-                  <span>{card.state}</span>
+                  <p>{card.label}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Anchored Central Phone */}
-        <div className="anchored-phone-device">
-          <div className="anchored-device-frame">
-            <div className="anchored-screen-header">
-              <span className="app-name-tag">FEAzTO Live</span>
-              <span className="battery-indicator">100%</span>
-            </div>
-
-            <div className="anchored-screen-body">
-              <div className="center-app-logo">
-                <img src="/brand/feazto-logo.svg" alt="FEAzTO" />
-              </div>
-              <h5 className="anchored-app-title">Discover Regional Kitchens</h5>
-              <p className="anchored-app-sub">Fresh home batches ready in your neighborhood.</p>
-
-              <div className="app-status-badge">
-                <span className="status-live-pulse" />
-                <span>8 Active Kitchen Batches Today</span>
-              </div>
-
-              <div className="app-mini-feature-box">
-                <div className="mini-box-icon">
-                  <Smartphone size={18} />
-                </div>
-                <div className="mini-box-text">
-                  <strong>One-Tap Heritage Order</strong>
-                  <p>Direct FoodPreneur connection</p>
-                </div>
-              </div>
-
-              <button 
-                type="button" 
-                onClick={() => navigate('/download')}
-                className="btn btn-yellow btn-screen-cta"
-              >
-                <span>Get Pilot Access</span>
-                <ArrowRight size={14} />
-              </button>
-            </div>
+        {/* Hero Anchored FEAzTO Mobile Phone Banner (Exact Ghee Podi Dosa Model) */}
+        <div className="plenti-central-device-container">
+          <div className="device-banner-card">
+            <img 
+              src="/brand/feazto-dosa-mobile-banner.png" 
+              alt="FEAzTO Mobile App - Ghee Podi Masala Dosa & Book a Cook" 
+              className="feazto-dosa-device-img" 
+            />
+            {/* Ambient golden warmth backing the phone */}
+            <div className="device-backdrop-glow" />
           </div>
         </div>
 
-        {/* Lower Moving Row (translates to the right) */}
-        <div className="cards-stream stream-bottom">
-          <div className="cards-track animate-scroll-right">
-            {bottomRowCards.map((card, idx) => (
-              <div key={idx} className="floating-plate-card">
-                <div className="card-plate-box">
-                  <img src={card.img} alt={card.title} />
+        {/* Lower Scrolling Carousel (scrolls right behind phone) */}
+        <div className="plenti-cards-stream stream-bottom">
+          <div className="plenti-cards-track scroll-stream-right">
+            {[...streamCardsRow2, ...streamCardsRow2, ...streamCardsRow2].map((card, idx) => (
+              <div key={idx} className="plenti-floating-feature-card">
+                <div className="feature-card-avatar icon-avatar" style={{ background: card.iconBg }}>
+                  <span>{card.icon}</span>
                 </div>
-                <div className="card-plate-info">
+                <div className="feature-card-text">
+                  <span className="feature-badge-tiny">{card.badge}</span>
                   <strong>{card.title}</strong>
-                  <span>{card.state}</span>
+                  <p>{card.label}</p>
                 </div>
               </div>
             ))}
@@ -117,262 +116,297 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
       </div>
 
       <style>{`
-        .layered-showcase-section {
-          padding-top: 100px;
-          padding-bottom: 120px;
-          background: linear-gradient(180deg, #FEF5D6 0%, #FEF8E3 50%, #FFFDF7 100%);
+        .plenti-feazto-showcase-section {
+          padding: 90px 20px 100px 20px;
+          background: #FFFFFF;
           overflow: hidden;
           position: relative;
-        }
-
-        .text-center-header {
-          text-align: center;
-          max-width: 680px;
-          margin: 0 auto 50px auto;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
 
-        .layered-headline {
-          font-size: clamp(2rem, 3.4vw, 2.8rem);
-          font-weight: 800;
-          color: var(--color-ink-black);
-          margin-top: 18px;
-          margin-bottom: 14px;
-        }
-
-        .layered-subheadline {
-          font-size: 1.05rem;
-          color: var(--color-text-secondary);
-        }
-
-        .layered-stage-wrapper {
-          position: relative;
-          height: 560px;
+        .plenti-statement-container {
+          max-width: 960px;
+          margin: 0 auto 56px auto;
+          text-align: center;
           display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .plenti-statement-title {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+          font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+          font-weight: 800;
+          color: #1A1A1A;
+          line-height: 1.34;
+          letter-spacing: -0.025em;
+          margin: 0 0 20px 0;
+        }
+
+        .statement-dish-capsule {
+          display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 100%;
+          vertical-align: middle;
+          margin: 0 8px;
+          width: 76px;
+          height: 40px;
+          border-radius: 9999px;
+          background: #111111;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+          overflow: hidden;
+          border: 2px solid #222222;
+          transform: translateY(-2px);
+          transition: transform 0.2s ease;
         }
 
-        /* Stream Rows */
-        .cards-stream {
-          position: absolute;
+        .statement-dish-capsule:hover {
+          transform: translateY(-2px) scale(1.08);
+        }
+
+        .statement-inline-img {
           width: 100%;
-          left: 0;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .plenti-statement-tagline {
+          font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+          font-weight: 500;
+          color: #666666;
+          margin: 0 0 24px 0;
+        }
+
+        .plenti-tags-row {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        }
+
+        .plenti-tag-pill {
+          background: #F1F3F5;
+          color: #333333;
+          font-size: 0.88rem;
+          font-weight: 600;
+          padding: 7px 18px;
+          border-radius: 9999px;
+          letter-spacing: -0.01em;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .plenti-tag-pill:hover {
+          background: #E5E8EC;
+          transform: translateY(-1px);
+        }
+
+        /* Phone & Streaming Tracks Showcase */
+        .plenti-stage-showcase-wrapper {
+          position: relative;
+          width: 100%;
+          max-width: 1400px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 640px;
+          overflow: visible;
+        }
+
+        .plenti-cards-stream {
+          position: absolute;
+          width: 100vw;
+          left: 50%;
+          transform: translateX(-50%);
           overflow: hidden;
-          z-index: 1;
           pointer-events: none;
+          z-index: 1;
+          mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
 
         .stream-top {
-          top: 30px;
+          top: 15%;
         }
 
         .stream-bottom {
-          bottom: 30px;
+          bottom: 12%;
         }
 
-        .cards-track {
+        .plenti-cards-track {
           display: flex;
           gap: 24px;
           width: max-content;
         }
 
-        .animate-scroll-left {
-          animation: scrollLeft 28s linear infinite;
+        .scroll-stream-left {
+          animation: marqueeLeft 34s linear infinite;
         }
 
-        .animate-scroll-right {
-          animation: scrollRight 28s linear infinite;
+        .scroll-stream-right {
+          animation: marqueeRight 34s linear infinite;
         }
 
-        @keyframes scrollLeft {
+        .plenti-cards-track:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes marqueeLeft {
           0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          100% { transform: translateX(-33.333%); }
         }
 
-        @keyframes scrollRight {
-          0% { transform: translateX(-50%); }
+        @keyframes marqueeRight {
+          0% { transform: translateX(-33.333%); }
           100% { transform: translateX(0); }
         }
 
-        .floating-plate-card {
+        /* Floating Feature Card */
+        .plenti-floating-feature-card {
           background: #FFFFFF;
-          border-radius: var(--radius-capsule);
-          padding: 8px 24px 8px 10px;
+          border-radius: 20px;
+          padding: 12px 20px 12px 14px;
           display: flex;
           align-items: center;
           gap: 14px;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-          border: 1px solid rgba(0, 0, 0, 0.06);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+          border: 1px solid rgba(0, 0, 0, 0.05);
           pointer-events: auto;
-          transition: transform 0.2s ease;
+          min-width: 260px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .floating-plate-card:hover {
-          transform: scale(1.05);
+        .plenti-floating-feature-card:hover {
+          transform: translateY(-4px) scale(1.03);
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
         }
 
-        .card-plate-box {
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          background: #FFF9E6;
+        .feature-card-avatar {
+          width: 52px;
+          height: 52px;
+          border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border: 1.5px solid var(--color-brand-yellow);
           overflow: hidden;
+          flex-shrink: 0;
         }
 
-        .card-plate-box img {
-          width: 80%;
-          height: 80%;
+        .feature-card-avatar img {
+          width: 85%;
+          height: 85%;
           object-fit: contain;
         }
 
-        .card-plate-info {
-          display: flex;
-          flex-direction: column;
+        .icon-avatar span {
+          font-size: 1.6rem;
         }
 
-        .card-plate-info strong {
-          font-size: 0.88rem;
-          color: var(--color-ink-black);
+        .feature-card-text {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+
+        .feature-badge-tiny {
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: #B25E00;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+        }
+
+        .feature-card-text strong {
+          font-size: 0.92rem;
+          font-weight: 700;
+          color: #1A1A1A;
           white-space: nowrap;
         }
 
-        .card-plate-info span {
-          font-size: 0.74rem;
-          color: #8C6500;
-          font-weight: 600;
+        .feature-card-text p {
+          font-size: 0.78rem;
+          color: #777777;
+          margin: 0;
+          white-space: nowrap;
         }
 
-        /* Central Anchored Phone */
-        .anchored-phone-device {
+        /* Central Anchored FEAzTO Mobile Phone */
+        .plenti-central-device-container {
           position: relative;
           z-index: 5;
-          width: 300px;
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.22);
-          border-radius: 40px;
-          padding: 10px;
-          background: #111111;
-          border: 3px solid #333333;
-        }
-
-        .anchored-device-frame {
-          background: #FFFFFF;
-          border-radius: 32px;
-          padding: 20px;
           display: flex;
-          flex-direction: column;
+          justify-content: center;
           align-items: center;
-          text-align: center;
-          min-height: 440px;
+          pointer-events: auto;
         }
 
-        .anchored-screen-header {
+        .device-banner-card {
+          position: relative;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
+          align-items: center;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .device-banner-card:hover {
+          transform: translateY(-6px) scale(1.02);
+        }
+
+        .feazto-dosa-device-img {
           width: 100%;
-          font-size: 0.72rem;
-          font-weight: 700;
-          color: #777777;
-          margin-bottom: 24px;
-        }
-
-        .anchored-screen-body {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          width: 100%;
-        }
-
-        .center-app-logo img {
-          height: 44px;
-          width: auto;
-          margin-bottom: 16px;
-        }
-
-        .anchored-app-title {
-          font-size: 1.15rem;
-          font-weight: 800;
-          color: var(--color-ink-black);
-          margin-bottom: 6px;
-        }
-
-        .anchored-app-sub {
-          font-size: 0.82rem;
-          color: var(--color-text-secondary);
-          margin-bottom: 20px;
-          line-height: 1.4;
-        }
-
-        .app-status-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: var(--color-warm-white);
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          padding: 6px 12px;
-          border-radius: 9999px;
-          font-size: 0.74rem;
-          font-weight: 600;
-          color: var(--color-ink-black);
-          margin-bottom: 24px;
-        }
-
-        .status-live-pulse {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #2E7D32;
-          box-shadow: 0 0 6px rgba(46, 125, 50, 0.6);
-        }
-
-        .app-mini-feature-box {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: var(--color-warm-white);
-          padding: 10px 14px;
-          border-radius: 12px;
-          width: 100%;
-          margin-bottom: 24px;
-          text-align: left;
-        }
-
-        .mini-box-icon {
-          color: #8C6500;
-        }
-
-        .mini-box-text strong {
+          max-width: 390px;
+          height: auto;
           display: block;
-          font-size: 0.78rem;
-          color: var(--color-ink-black);
+          filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.28)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+          z-index: 2;
+          position: relative;
         }
 
-        .mini-box-text p {
-          font-size: 0.7rem;
-          color: var(--color-text-secondary);
+        .device-backdrop-glow {
+          position: absolute;
+          width: 320px;
+          height: 520px;
+          background: radial-gradient(circle, rgba(254, 209, 54, 0.35) 0%, rgba(255, 153, 0, 0.15) 50%, transparent 75%);
+          filter: blur(40px);
+          z-index: 1;
+          pointer-events: none;
         }
 
-        .btn-screen-cta {
-          width: 100%;
-          font-size: 0.88rem;
-          padding: 12px;
-        }
-
-        @media (max-width: 600px) {
-          .layered-stage-wrapper {
-            height: auto;
-            flex-direction: column;
-            gap: 24px;
+        @media (max-width: 768px) {
+          .plenti-feazto-showcase-section {
+            padding: 60px 16px 70px 16px;
           }
-          .cards-stream {
+
+          .plenti-statement-title {
+            font-size: 1.55rem;
+            line-height: 1.35;
+          }
+
+          .statement-dish-capsule {
+            width: 58px;
+            height: 32px;
+          }
+
+          .plenti-stage-showcase-wrapper {
+            min-height: auto;
+            flex-direction: column;
+            gap: 32px;
+          }
+
+          .feazto-dosa-device-img {
+            max-width: 310px;
+          }
+
+          .plenti-cards-stream {
             position: relative;
+            left: 0;
+            transform: none;
+            width: 100%;
+          }
+
+          .stream-top, .stream-bottom {
             top: auto;
             bottom: auto;
           }
