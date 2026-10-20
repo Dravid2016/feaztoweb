@@ -482,21 +482,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (CENTERED & DOWNWARDS) ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (WAY BIGGER & GRAND) ── */
         .hero-kolam-art-bg {
           position: absolute;
-          top: 42%; /* Moved slightly downwards */
-          left: 50%; /* Exactly centered according to the mobile model banner */
+          top: 40%;
+          left: 50%;
           transform: translate(-50%, -50%);
-          width: 580px;
-          height: 580px;
-          max-width: 140vw;
+          width: 980px;
+          height: 980px;
+          max-width: 160vw;
           z-index: 1;
           pointer-events: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0.60; /* Lighter, subtle warm golden presence */
+          opacity: 0.68;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
@@ -509,18 +509,18 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          filter: drop-shadow(0 4px 16px rgba(225, 160, 20, 0.22));
+          filter: drop-shadow(0 6px 24px rgba(225, 160, 20, 0.28));
         }
 
         .hero-phone-ambient-glow {
           position: absolute;
-          top: 35%;
+          top: 38%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 480px;
-          height: 480px;
-          background: radial-gradient(circle, rgba(245, 183, 0, 0.28) 0%, rgba(245, 183, 0, 0.08) 45%, transparent 70%);
-          filter: blur(50px);
+          width: 780px;
+          height: 780px;
+          background: radial-gradient(circle, rgba(245, 183, 0, 0.32) 0%, rgba(245, 183, 0, 0.12) 48%, transparent 72%);
+          filter: blur(65px);
           z-index: 0;
           pointer-events: none;
         }
