@@ -1,26 +1,97 @@
 import React from 'react';
+import { REGIONAL_FOODS } from '../data/feaztoData';
+import { Clock, Flame, Leaf, MapPin } from 'lucide-react';
+import type { FoodItem } from '../types';
 
 interface LayeredPhoneShowcaseProps {
   navigate?: (route: string) => void;
 }
 
+// Mini Heritage Card styled exactly like the 1st image's yellow cultural cards
+const StreamCulturalFoodCard: React.FC<{ dish: FoodItem }> = ({ dish }) => {
+  return (
+    <div className="stream-cultural-card">
+      {/* Cultural Themed Kolam & Heritage Line-art Doodles Background */}
+      <div className="stream-card-doodle-layer" aria-hidden="true">
+        <svg className="stream-doodle-svg" viewBox="0 0 360 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.16" stroke="#874700" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M20 20 C40 10, 50 40, 20 50 C10 35, 15 15, 35 15 C55 15, 65 45, 35 55" />
+            <circle cx="28" cy="28" r="3" fill="#874700" />
+            <circle cx="50" cy="50" r="2.5" fill="#874700" />
+            <path d="M120 18 C145 10, 165 30, 155 55 C145 78, 115 82, 108 58 Z" />
+            <path d="M190 25 Q210 5, 230 25 T270 25" />
+            <path d="M190 32 Q210 16, 230 32 T270 32" strokeDasharray="3 3" />
+          </g>
+        </svg>
+        <div className="stream-card-top-border" />
+      </div>
+
+      {/* Info Column */}
+      <div className="stream-card-info">
+        <div className="stream-tag-row">
+          <span className="stream-category-badge">{dish.category}</span>
+          <span className="stream-origin-badge">
+            <MapPin size={10} /> {dish.originState}
+          </span>
+        </div>
+
+        <h4 className="stream-card-title">{dish.name}</h4>
+        <p className="stream-card-desc">{dish.description}</p>
+
+        {/* Nutritional & Time Metrics Row */}
+        <div className="stream-metrics-row">
+          {dish.prepTime && (
+            <div className="stream-metric-pill">
+              <Clock size={12} className="metric-icon clock" />
+              <span><strong>{dish.prepTime.replace(/[^0-9]/g, '')}</strong> min</span>
+            </div>
+          )}
+          {dish.calories && (
+            <div className="stream-metric-pill">
+              <Flame size={12} className="metric-icon flame" />
+              <span><strong>{dish.calories.replace(/[^0-9]/g, '')}</strong> kcal</span>
+            </div>
+          )}
+          {dish.protein && (
+            <div className="stream-metric-pill">
+              <Leaf size={12} className="metric-icon leaf" />
+              <span><strong>{dish.protein.replace(/[^0-9]/g, '')}</strong> protein</span>
+            </div>
+          )}
+        </div>
+
+        {/* Tradition Ribbon */}
+        {dish.storyNote && (
+          <div className="stream-tradition-box">
+            <span className="tradition-spark">✦ Tradition:</span> {dish.storyNote}
+          </div>
+        )}
+      </div>
+
+      {/* Right-corner oversized anchored plate */}
+      <div className="stream-plate-anchor">
+        <div className="stream-plate-frame">
+          <img src={dish.image} alt={dish.name} className="stream-plate-img" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
-  const streamCardsRow1 = [
-    { title: 'Anna Kitchen Dosa', label: 'Home Kitchen • Tanjore', img: '/brand/plate-idli.png', iconBg: '#FFF3D6', badge: 'Verified 98%' },
-    { title: 'Hyderabadi Dum Handi', label: 'Slow Cooked Handi', img: '/brand/plate-biryani.png', iconBg: '#FFEAD4', badge: 'Regional Classic' },
-    { title: 'Malli Poo Podi Idli', label: 'Cast-Iron Batter', img: '/brand/plate-idli.png', iconBg: '#FFF9E6', badge: 'Breakfast Favorite' },
-    { title: 'Sattvic Festive Thali', label: 'Generational Recipe', img: '/brand/plate-thali.png', iconBg: '#EAF8EA', badge: '100% Home Cooked' },
-    { title: 'Awadhi Ajwain Samosa', label: 'Heritage Spice Crust', img: '/brand/plate-samosa.png', iconBg: '#FFF4E0', badge: 'Tea-time Must' },
-    { title: 'Clay Pot Filter Kaapi', label: 'Coorg Bean Decoction', img: '/brand/doodle-chai.png', iconBg: '#FFF0D4', badge: 'Signature Brew' },
+  // Use the full 4 regional foods from image 1 repeated for continuous seamless stream
+  const foodsRow1 = [
+    REGIONAL_FOODS[0], // Dum Biryani with Mirchi ka Salan
+    REGIONAL_FOODS[1], // Sattvic Maharashtrian & South Thali
+    REGIONAL_FOODS[2], // Malli Poo Idli & Medu Vada
+    REGIONAL_FOODS[3], // Spiced Potato & Pea Potli Samosa
   ];
 
-  const streamCardsRow2 = [
-    { title: 'Book a Verified Cook', label: 'Authentic Regional Chefs', icon: '👨‍🍳', iconBg: '#E8F5E9', badge: 'Hourly / Monthly' },
-    { title: 'Clean Kitchen Guarantee', label: 'Transparent Hygiene Score', icon: '🛡️', iconBg: '#E3F2FD', badge: 'FSSAI Certified' },
-    { title: 'Generational Batches', label: 'Small-Batch Home Food', icon: '🍲', iconBg: '#FFF3E0', badge: 'Limited Plates' },
-    { title: 'Direct FoodPreneurs', label: 'Zero Middleman Markups', icon: '❤️', iconBg: '#FCE4EC', badge: 'Fair Community' },
-    { title: 'Pre-Order Traditions', label: 'Delivered Hot & Fresh', icon: '⏰', iconBg: '#F3E5F5', badge: 'Same Day' },
-    { title: 'Authentic Spice Blends', label: 'No Commercial Preservatives', icon: '🌿', iconBg: '#E0F2F1', badge: 'Pure Ingredients' },
+  const foodsRow2 = [
+    REGIONAL_FOODS[2], // Malli Poo Idli & Medu Vada
+    REGIONAL_FOODS[3], // Spiced Potato & Pea Potli Samosa
+    REGIONAL_FOODS[0], // Dum Biryani with Mirchi ka Salan
+    REGIONAL_FOODS[1], // Sattvic Maharashtrian & South Thali
   ];
 
   return (
@@ -63,27 +134,18 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
         </div>
       </div>
 
-      {/* Plenti-Style Centered Phone Mockup with Opposing Horizontal Flanking Rows */}
+      {/* Showcase with Running Yellow Heritage Cards Stream Flanking the FEAzTO Mobile Banner */}
       <div className="plenti-stage-showcase-wrapper">
-        {/* Upper Scrolling Carousel (scrolls left behind phone) */}
+        {/* Upper Scrolling Carousel (running left behind phone) */}
         <div className="plenti-cards-stream stream-top">
           <div className="plenti-cards-track scroll-stream-left">
-            {[...streamCardsRow1, ...streamCardsRow1, ...streamCardsRow1].map((card, idx) => (
-              <div key={idx} className="plenti-floating-feature-card">
-                <div className="feature-card-avatar" style={{ background: card.iconBg }}>
-                  <img src={card.img} alt={card.title} />
-                </div>
-                <div className="feature-card-text">
-                  <span className="feature-badge-tiny">{card.badge}</span>
-                  <strong>{card.title}</strong>
-                  <p>{card.label}</p>
-                </div>
-              </div>
+            {[...foodsRow1, ...foodsRow1, ...foodsRow1].map((dish, idx) => (
+              <StreamCulturalFoodCard key={`row1-${dish.id}-${idx}`} dish={dish} />
             ))}
           </div>
         </div>
 
-        {/* Hero Anchored FEAzTO Mobile Phone Banner (Exact Ghee Podi Dosa Model) */}
+        {/* Hero Anchored FEAzTO Mobile Phone Banner (Ghee Podi Masala Dosa Model) */}
         <div className="plenti-central-device-container">
           <div className="device-banner-card">
             <img 
@@ -96,20 +158,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           </div>
         </div>
 
-        {/* Lower Scrolling Carousel (scrolls right behind phone) */}
+        {/* Lower Scrolling Carousel (running right behind phone) */}
         <div className="plenti-cards-stream stream-bottom">
           <div className="plenti-cards-track scroll-stream-right">
-            {[...streamCardsRow2, ...streamCardsRow2, ...streamCardsRow2].map((card, idx) => (
-              <div key={idx} className="plenti-floating-feature-card">
-                <div className="feature-card-avatar icon-avatar" style={{ background: card.iconBg }}>
-                  <span>{card.icon}</span>
-                </div>
-                <div className="feature-card-text">
-                  <span className="feature-badge-tiny">{card.badge}</span>
-                  <strong>{card.title}</strong>
-                  <p>{card.label}</p>
-                </div>
-              </div>
+            {[...foodsRow2, ...foodsRow2, ...foodsRow2].map((dish, idx) => (
+              <StreamCulturalFoodCard key={`row2-${dish.id}-${idx}`} dish={dish} />
             ))}
           </div>
         </div>
@@ -235,18 +288,20 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           bottom: 12%;
         }
 
+        /* Running Stream Cards Track */
         .plenti-cards-track {
           display: flex;
-          gap: 24px;
+          gap: 28px;
           width: max-content;
+          align-items: center;
         }
 
         .scroll-stream-left {
-          animation: marqueeLeft 34s linear infinite;
+          animation: marqueeLeft 42s linear infinite;
         }
 
         .scroll-stream-right {
-          animation: marqueeRight 34s linear infinite;
+          animation: marqueeRight 42s linear infinite;
         }
 
         .plenti-cards-track:hover {
@@ -263,73 +318,209 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           100% { transform: translateX(0); }
         }
 
-        /* Floating Feature Card */
-        .plenti-floating-feature-card {
-          background: #FFFFFF;
-          border-radius: 20px;
-          padding: 12px 20px 12px 14px;
+        /* Running Stream Cultural Food Card (Exact layout & aesthetic from Image 1) */
+        .stream-cultural-card {
+          position: relative;
+          background: linear-gradient(135deg, #FFD233 0%, #F5C618 60%, #E8B90E 100%);
+          border-radius: 24px;
+          border: 2px solid rgba(135, 71, 0, 0.22);
+          box-shadow: 0 14px 32px rgba(135, 71, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          overflow: hidden;
+          padding: 20px 22px;
+          min-width: 440px;
+          max-width: 440px;
+          height: 195px;
+          pointer-events: auto;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          box-sizing: border-box;
+        }
+
+        .stream-cultural-card:hover {
+          transform: translateY(-4px) scale(1.02);
+          box-shadow: 0 20px 42px rgba(135, 71, 0, 0.25);
+        }
+
+        /* Doodle watermark layer */
+        .stream-card-doodle-layer {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          overflow: hidden;
+          z-index: 1;
+        }
+
+        .stream-doodle-svg {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+        }
+
+        .stream-card-top-border {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: repeating-linear-gradient(
+            90deg,
+            #874700 0,
+            #874700 8px,
+            transparent 8px,
+            transparent 14px
+          );
+          opacity: 0.28;
+        }
+
+        /* Information Column */
+        .stream-card-info {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          z-index: 2;
+          min-width: 0;
+          padding-right: 95px; /* Keeps clean space so text does not overlap anchored plate */
+        }
+
+        .stream-tag-row {
           display: flex;
           align-items: center;
-          gap: 14px;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-          border: 1px solid rgba(0, 0, 0, 0.05);
-          pointer-events: auto;
-          min-width: 260px;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          gap: 8px;
+          margin-bottom: 8px;
         }
 
-        .plenti-floating-feature-card:hover {
-          transform: translateY(-4px) scale(1.03);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+        .stream-category-badge {
+          background: rgba(17, 17, 17, 0.92);
+          color: #FFD233;
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 3px 10px;
+          border-radius: 9999px;
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
         }
 
-        .feature-card-avatar {
-          width: 52px;
-          height: 52px;
-          border-radius: 14px;
+        .stream-origin-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 3px;
+          color: #4A2800;
+          font-size: 0.72rem;
+          font-weight: 800;
+        }
+
+        .stream-card-title {
+          font-size: 1.08rem;
+          font-weight: 900;
+          color: #1A1103;
+          line-height: 1.25;
+          margin: 0 0 6px 0;
+          letter-spacing: -0.015em;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        }
+
+        .stream-card-desc {
+          font-size: 0.74rem;
+          color: #4E3205;
+          line-height: 1.38;
+          margin: 0 0 10px 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-weight: 500;
+        }
+
+        .stream-metrics-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+          flex-wrap: wrap;
+        }
+
+        .stream-metric-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background: rgba(255, 255, 255, 0.65);
+          backdrop-filter: blur(4px);
+          padding: 3px 8px;
+          border-radius: 6px;
+          border: 1px solid rgba(135, 71, 0, 0.15);
+          font-size: 0.68rem;
+          color: #4A2800;
+        }
+
+        .stream-metric-pill strong {
+          color: #1A1103;
+          font-size: 0.76rem;
+        }
+
+        .stream-metric-pill .clock { color: #2D2418; }
+        .stream-metric-pill .flame { color: #D32F2F; }
+        .stream-metric-pill .leaf { color: #1B5E20; }
+
+        .stream-tradition-box {
+          font-size: 0.68rem;
+          color: #382103;
+          background: rgba(255, 255, 255, 0.55);
+          border-left: 2.5px solid #874700;
+          padding: 4px 8px;
+          border-radius: 4px;
+          line-height: 1.35;
+          width: 100%;
+          font-weight: 500;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .tradition-spark {
+          font-weight: 800;
+          color: #874700;
+        }
+
+        /* Right Corner Oversized Half Plate from Image 1 */
+        .stream-plate-anchor {
+          position: absolute;
+          right: -60px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 200px;
+          height: 200px;
+          z-index: 3;
           display: flex;
           align-items: center;
           justify-content: center;
-          overflow: hidden;
-          flex-shrink: 0;
+          pointer-events: none;
         }
 
-        .feature-card-avatar img {
-          width: 85%;
-          height: 85%;
-          object-fit: contain;
-        }
-
-        .icon-avatar span {
-          font-size: 1.6rem;
-        }
-
-        .feature-card-text {
+        .stream-plate-frame {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
           display: flex;
-          flex-direction: column;
-          gap: 2px;
+          align-items: center;
+          justify-content: center;
+          position: relative;
         }
 
-        .feature-badge-tiny {
-          font-size: 0.68rem;
-          font-weight: 700;
-          color: #B25E00;
-          text-transform: uppercase;
-          letter-spacing: 0.04em;
-        }
-
-        .feature-card-text strong {
-          font-size: 0.92rem;
-          font-weight: 700;
-          color: #1A1A1A;
-          white-space: nowrap;
-        }
-
-        .feature-card-text p {
-          font-size: 0.78rem;
-          color: #777777;
-          margin: 0;
-          white-space: nowrap;
+        .stream-plate-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(-8px 10px 18px rgba(135, 71, 0, 0.35));
         }
 
         /* Central Anchored FEAzTO Mobile Phone */
@@ -356,7 +547,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
         .feazto-dosa-device-img {
           width: 100%;
-          max-width: 390px;
+          max-width: 400px;
           height: auto;
           display: block;
           filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.28)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
