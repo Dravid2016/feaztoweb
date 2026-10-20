@@ -2,10 +2,12 @@ import React, { useEffect, useRef } from 'react';
 
 export const PeekingGrandmaFezuBanner: React.FC = () => {
   const stageRef = useRef<HTMLDivElement>(null);
-  const grandmaHeadRef = useRef<HTMLDivElement>(null);
   const grandmaGroupRef = useRef<HTMLDivElement>(null);
-  const fezuHeadRef = useRef<HTMLDivElement>(null);
+  const grandmaHeadRef = useRef<HTMLDivElement>(null);
+  const grandmaHandsRef = useRef<HTMLDivElement>(null);
   const fezuGroupRef = useRef<HTMLDivElement>(null);
+  const fezuHeadRef = useRef<HTMLDivElement>(null);
+  const fezuPawRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -18,42 +20,75 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           const rect = stageRef.current.getBoundingClientRect();
           const winHeight = window.innerHeight;
 
-          // Progress from 0 (approaching view) to 1 (passed view)
-          // Centered around 0.5
+          // Viewport coverage progress:
+          // progress = 0: stage is just entering bottom of screen
+          // progress = 0.5: stage is centered in screen
+          // progress = 1: stage is exiting top of screen
           const progress = Math.min(Math.max((winHeight - rect.top) / (winHeight + rect.height), 0), 1);
-          const scrollFactor = (progress - 0.5) * 2; // -1 to +1
 
-          // Gentle parallax & turning effect
-          // Grandma looks/turns toward the central phone as user scrolls
-          if (grandmaHeadRef.current) {
-            const rotY = Math.sin(progress * Math.PI) * 12; // leans in
-            const rotZ = scrollFactor * 4;
-            grandmaHeadRef.current.style.transform = `rotateY(${rotY}deg) rotateZ(${rotZ}deg)`;
-          }
+          // Peek factor:
+          // We want Grandma and Fezu to HIDE IN behind the phone when user hasn't scrolled to them or scrolls past,
+          // and PEEK FULLY OUT when the banner is in comfortable viewing range (progress around 0.35 to 0.65).
+          // Normalized peek amount (0 = completely hidden behind phone, 1 = fully peeked out)
+          // Using a smooth sine curve peaking when stage is in view:
+          const peekAmount = Math.sin(progress * Math.PI); // 0 -> 1 -> 0
 
+          // Hidden offsets:
+          // Grandma hides to the right (translateX: +160px behind phone), scale down slightly, opacity fades when deep behind
+          // Fezu hides to the left (translateX: -160px behind phone)
+          const grandmaHideX = (1 - peekAmount) * 165; // pixels hidden behind phone
+          const grandmaHideY = (1 - peekAmount) * 35;
+          const grandmaRot = (1 - peekAmount) * 12; // tilt inward behind phone
+
+          const fezuHideX = -(1 - peekAmount) * 165; // pixels hidden behind phone
+          const fezuHideY = (1 - peekAmount) * 35;
+          const fezuRot = -(1 - peekAmount) * 14;
+
+          // Opacity also dips to 0 when completely out of view (<0.08 or >0.92)
+          const charOpacity = Math.min(Math.max(peekAmount * 1.5, 0), 1);
+
+          // Apply to Grandma Group (Body + Head)
           if (grandmaGroupRef.current) {
-            const transX = Math.sin(progress * Math.PI) * 8; // peeks out from left
-            const transY = scrollFactor * 10;
-            grandmaGroupRef.current.style.transform = `translateX(${transX}px) translateY(${transY}px)`;
+            grandmaGroupRef.current.style.transform = `translate3d(${grandmaHideX}px, ${grandmaHideY}px, 0) rotate(${grandmaRot}deg)`;
+            grandmaGroupRef.current.style.opacity = `${charOpacity}`;
           }
 
-          // Fezu mascot looks/turns excitedly toward the central phone
-          if (fezuHeadRef.current) {
-            const fRotY = -Math.sin(progress * Math.PI) * 14; // leans in from right
-            const fRotZ = -scrollFactor * 5;
-            fezuHeadRef.current.style.transform = `rotateY(${fRotY}deg) rotateZ(${fRotZ}deg)`;
+          // Dynamic head turning:
+          if (grandmaHeadRef.current) {
+            const headTurn = Math.sin(progress * Math.PI) * 16;
+            grandmaHeadRef.current.style.transform = `rotateY(${headTurn}deg) rotateZ(${(progress - 0.5) * 6}deg)`;
           }
 
+          // Grandma's hands gripping phone: slide and fade smoothly with Grandma
+          if (grandmaHandsRef.current) {
+            // Hands grip the phone bezel when she is peeked out, retreat when hidden
+            grandmaHandsRef.current.style.transform = `translate3d(${grandmaHideX * 0.75}px, ${grandmaHideY * 0.5}px, 0)`;
+            grandmaHandsRef.current.style.opacity = `${charOpacity}`;
+          }
+
+          // Apply to Fezu Group (Body + Head)
           if (fezuGroupRef.current) {
-            const fTransX = -Math.sin(progress * Math.PI) * 10; // peeks out from right
-            const fTransY = scrollFactor * 8;
-            fezuGroupRef.current.style.transform = `translateX(${fTransX}px) translateY(${fTransY}px)`;
+            fezuGroupRef.current.style.transform = `translate3d(${fezuHideX}px, ${fezuHideY}px, 0) rotate(${fezuRot}deg)`;
+            fezuGroupRef.current.style.opacity = `${charOpacity}`;
           }
 
-          // Subtle floating tilt for the central phone
+          // Dynamic Fezu head tilting
+          if (fezuHeadRef.current) {
+            const fHeadTurn = -Math.sin(progress * Math.PI) * 18;
+            fezuHeadRef.current.style.transform = `rotateY(${fHeadTurn}deg) rotateZ(${-(progress - 0.5) * 6}deg)`;
+          }
+
+          // Fezu paw gripping phone
+          if (fezuPawRef.current) {
+            fezuPawRef.current.style.transform = `translate3d(${fezuHideX * 0.75}px, ${fezuHideY * 0.5}px, 0)`;
+            fezuPawRef.current.style.opacity = `${charOpacity}`;
+          }
+
+          // Gentle 3D floating effect on the central phone
           if (phoneRef.current) {
-            const phoneRotX = scrollFactor * -6;
-            const phoneTransY = scrollFactor * -8;
+            const scrollFactor = (progress - 0.5) * 2;
+            const phoneRotX = scrollFactor * -5;
+            const phoneTransY = scrollFactor * -6;
             phoneRef.current.style.transform = `perspective(1000px) rotateX(${phoneRotX}deg) translateY(${phoneTransY}px)`;
           }
 
@@ -104,7 +139,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           pointer-events: none;
           will-change: transform, opacity;
           transform-style: preserve-3d;
-          transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+          transition: transform 0.12s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.12s ease-out;
         }
 
         .feazto-layer img {
@@ -115,10 +150,10 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           background: transparent !important;
         }
 
-        /* 1. GRANDMA GROUP */
+        /* 1. GRANDMA GROUP (Behind Phone: z-index 11 & 12) */
         .layer-grandma-group {
           z-index: 11;
-          transform-origin: 24% 52%;
+          transform-origin: 34% 56%;
         }
 
         .layer-grandma-body {
@@ -128,12 +163,13 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .layer-grandma-head {
           z-index: 12;
           transform-origin: 23.63% 36.95%;
+          transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
         }
 
-        /* 2. FEZU MASCOT GROUP */
+        /* 2. FEZU MASCOT GROUP (Behind Phone: z-index 11 & 12) */
         .layer-fezu-group {
           z-index: 11;
-          transform-origin: 75% 58%;
+          transform-origin: 66% 60%;
         }
 
         .layer-fezu-body {
@@ -143,16 +179,17 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .layer-fezu-head {
           z-index: 12;
           transform-origin: 74.71% 60.85%;
+          transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
         }
 
-        /* 3. CENTRAL PHONE BANNER */
+        /* 3. CENTRAL PHONE BANNER (Middle Layer: z-index 20) */
         .layer-phone {
           z-index: 20;
           transform-origin: 50% 50%;
-          filter: drop-shadow(0 22px 38px rgba(15, 23, 42, 0.22));
+          filter: drop-shadow(0 24px 44px rgba(15, 23, 42, 0.25));
         }
 
-        /* 4. FOREGROUND HANDS & PAWS (Overlapping Phone Edges) */
+        /* 4. FOREGROUND HANDS & PAWS (Overlapping Phone Edges: z-index 30) */
         .layer-grandma-hands {
           z-index: 30;
           transform-origin: 33.01% 41.06%;
@@ -200,13 +237,13 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         </div>
 
         {/* 4. FOREGROUND OVERLAY: GRANDMA'S HANDS (z-index 30) */}
-        <div id="grandma-hands" className="feazto-layer layer-grandma-hands">
-          <img src="/brand/peeking/grandma-hands.webp" alt="Grandma Hands Gripping Phone" />
+        <div id="grandma-hands" ref={grandmaHandsRef} className="feazto-layer layer-grandma-hands">
+          <img src="/brand/peeking/grandma-hands-clean.webp" alt="Grandma Hands Gripping Phone" />
         </div>
 
         {/* 5. FOREGROUND OVERLAY: FEZU'S CHEF PAW (z-index 30) */}
-        <div id="fezu-paw" className="feazto-layer layer-fezu-paw">
-          <img src="/brand/peeking/fezu-paw.webp" alt="Fezu Chef Paw Gripping Phone" />
+        <div id="fezu-paw" ref={fezuPawRef} className="feazto-layer layer-fezu-paw">
+          <img src="/brand/peeking/fezu-paw-clean.webp" alt="Fezu Chef Paw Gripping Phone" />
         </div>
       </div>
     </div>
