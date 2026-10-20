@@ -88,8 +88,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           <div className="hero-cities-pill-row">
             <span className="hero-city-pill">Trivandrum</span>
             <span className="hero-city-pill">Kochi</span>
-            <span className="hero-city-pill active">Kozhikode</span>
-            <span className="hero-city-pill">Bengaluru</span>
+            <span className="hero-city-pill">Kozhikode</span>
+            <span className="hero-city-pill active">Bengaluru</span>
             <span className="hero-city-pill">Chennai</span>
           </div>
 
