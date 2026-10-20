@@ -483,11 +483,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (LIGHTER & SLOWER ROTATION) ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (CENTERED & DOWNWARDS) ── */
         .hero-kolam-art-bg {
           position: absolute;
-          top: 36%;
-          left: 48%; /* Positioned slightly to the left */
+          top: 42%; /* Moved slightly downwards */
+          left: 50%; /* Exactly centered according to the mobile model banner */
           transform: translate(-50%, -50%);
           width: 580px;
           height: 580px;
@@ -498,7 +498,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           align-items: center;
           justify-content: center;
           opacity: 0.60; /* Lighter, subtle warm golden presence */
-          animation: slowSpinKolam 240s linear infinite; /* Much slower, calming rotation */
+          animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
         @keyframes slowSpinKolam {
