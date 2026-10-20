@@ -282,7 +282,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     prepTime: '40 min',
     calories: '360 kcal',
     protein: '9g protein',
-    image: '/brand/plate-thali-new.png'
+    image: '/brand/plate-palada-pradhaman.png'
   }
 ];
 
