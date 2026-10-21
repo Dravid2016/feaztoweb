@@ -212,11 +212,15 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           </div>
         </div>
 
-        {/* 3. Hero Anchored FEAzTO Mobile Phone Banner (Ghee Podi Masala Dosa Model) */}
+        {/* 3. Hero Showcase Split: Left Blank Rectangular Card + Right Anchored Phone Banner */}
         <div className="plenti-central-device-container">
+          {/* Rectangular Blank White Card on Left Side */}
+          <div className="showcase-left-blank-card" aria-hidden="true">
+            <div className="blank-card-inner-frame" />
+          </div>
+
+          {/* Right Mobile Phone Device */}
           <div className="device-banner-card">
-            {/* Blank Curved White Card backing the phone device */}
-            <div className="device-blank-curved-card" aria-hidden="true" />
             <img 
               src="/brand/feazto-dosa-mobile-banner.png" 
               alt="FEAzTO Mobile App - Ghee Podi Masala Dosa & Book a Cook" 
@@ -737,18 +741,52 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           100% { transform: rotate(0deg); }
         }
 
-        /* Right-Aligned FEAzTO Mobile Phone */
+        /* Split Layout: Left Blank Rectangular Card + Right Anchored Phone Banner */
         .plenti-central-device-container {
           position: relative;
           z-index: 5;
           width: 100%;
-          max-width: 1280px;
+          max-width: 1320px;
+          margin: 0 auto;
           display: flex;
-          justify-content: flex-end;
+          justify-content: space-between;
           align-items: center;
-          padding-right: clamp(24px, 6vw, 90px);
+          padding: 0 clamp(20px, 4vw, 60px);
           pointer-events: auto;
           box-sizing: border-box;
+          gap: 40px;
+        }
+
+        /* Rectangular Blank Curved White Card on the Left Side of the page */
+        .showcase-left-blank-card {
+          flex: 1;
+          max-width: 620px;
+          min-height: 480px;
+          background: #FFFFFF;
+          border-radius: 28px;
+          border: 1.5px solid rgba(0, 0, 0, 0.08);
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.04);
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 36px;
+          box-sizing: border-box;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .showcase-left-blank-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 30px 70px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .blank-card-inner-frame {
+          width: 100%;
+          height: 100%;
+          min-height: 400px;
+          border: 2px dashed rgba(245, 183, 0, 0.28);
+          border-radius: 20px;
+          background: rgba(255, 253, 247, 0.65);
         }
 
         .device-banner-card {
@@ -756,23 +794,12 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           display: flex;
           justify-content: center;
           align-items: center;
+          flex-shrink: 0;
           transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .device-banner-card:hover {
           transform: translateY(-6px) scale(1.02);
-        }
-
-        /* Blank Curved White Card backing the Phone Device */
-        .device-blank-curved-card {
-          position: absolute;
-          inset: -14px -18px -18px -18px;
-          background: #FFFFFF;
-          border-radius: 46px;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16), 0 4px 14px rgba(0, 0, 0, 0.08);
-          border: 1.5px solid rgba(0, 0, 0, 0.06);
-          z-index: 1;
-          pointer-events: none;
         }
 
         .feazto-dosa-device-img {
@@ -828,9 +855,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
             width: 100%;
           }
 
-          .stream-top, .stream-middle, .stream-bottom {
-            top: auto;
-            bottom: auto;
+          .plenti-central-device-container {
+            flex-direction: column;
+            gap: 28px;
+            padding: 0 16px;
+          }
+
+          .showcase-left-blank-card {
+            width: 100%;
+            max-width: 100%;
+            min-height: 280px;
+            padding: 20px;
+          }
+
+          .blank-card-inner-frame {
+            min-height: 240px;
           }
         }
       `}</style>
