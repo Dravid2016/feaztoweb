@@ -720,14 +720,18 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           100% { transform: rotate(0deg); }
         }
 
-        /* Central Anchored FEAzTO Mobile Phone */
+        /* Right-Aligned FEAzTO Mobile Phone */
         .plenti-central-device-container {
           position: relative;
           z-index: 5;
+          width: 100%;
+          max-width: 1280px;
           display: flex;
-          justify-content: center;
+          justify-content: flex-end;
           align-items: center;
+          padding-right: clamp(24px, 6vw, 90px);
           pointer-events: auto;
+          box-sizing: border-box;
         }
 
         .device-banner-card {
