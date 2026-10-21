@@ -1,5 +1,4 @@
 import React from 'react';
-import { SpoonKolamCanvas } from '../components/SpoonKolamCanvas';
 import { EditorialHero } from '../components/EditorialHero';
 import { StorySection } from '../components/StorySection';
 import { RegionalFoodGrid } from '../components/RegionalFoodGrid';
@@ -21,8 +20,6 @@ interface HomePageProps {
 export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
   return (
     <main className="feazto-homepage">
-      {/* Dynamic Animated Spoon drawing Kolam art across the background */}
-      <SpoonKolamCanvas />
 
       {/* 1. Editorial hero with inline food imagery (Reference C) */}
       <EditorialHero navigate={navigate} />
