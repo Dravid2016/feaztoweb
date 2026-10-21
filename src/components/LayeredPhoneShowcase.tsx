@@ -136,6 +136,9 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
       {/* Showcase with Running Yellow Heritage Cards Stream Flanking the FEAzTO Mobile Banner */}
       <div className="plenti-stage-showcase-wrapper">
+        {/* Curved Blank White Card Backdrop behind streams and phone */}
+        <div className="plenti-blank-curved-card" aria-hidden="true" />
+
         {/* 1. Upper Scrolling Carousel (10 distinct dish varieties running left behind phone) */}
         <div className="plenti-cards-stream stream-top">
           <div className="plenti-cards-track scroll-stream-left">
@@ -212,6 +215,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
         {/* 3. Hero Anchored FEAzTO Mobile Phone Banner (Ghee Podi Masala Dosa Model) */}
         <div className="plenti-central-device-container">
           <div className="device-banner-card">
+            {/* Blank Curved White Card backing the phone device */}
+            <div className="device-blank-curved-card" aria-hidden="true" />
             <img 
               src="/brand/feazto-dosa-mobile-banner.png" 
               alt="FEAzTO Mobile App - Ghee Podi Masala Dosa & Book a Cook" 
@@ -330,6 +335,18 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           align-items: center;
           min-height: 640px;
           overflow: visible;
+        }
+
+        /* Blank Curved White Card Backdrop (Rounded organic card holding the showcase stage) */
+        .plenti-blank-curved-card {
+          position: absolute;
+          inset: -36px -48px -36px -48px;
+          background: #FFFFFF;
+          border-radius: 44px;
+          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06), 0 4px 18px rgba(0, 0, 0, 0.03);
+          border: 1.5px solid rgba(0, 0, 0, 0.06);
+          z-index: 0;
+          pointer-events: none;
         }
 
         .plenti-cards-stream {
@@ -744,6 +761,18 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
         .device-banner-card:hover {
           transform: translateY(-6px) scale(1.02);
+        }
+
+        /* Blank Curved White Card backing the Phone Device */
+        .device-blank-curved-card {
+          position: absolute;
+          inset: -14px -18px -18px -18px;
+          background: #FFFFFF;
+          border-radius: 46px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16), 0 4px 14px rgba(0, 0, 0, 0.08);
+          border: 1.5px solid rgba(0, 0, 0, 0.06);
+          z-index: 1;
+          pointer-events: none;
         }
 
         .feazto-dosa-device-img {
