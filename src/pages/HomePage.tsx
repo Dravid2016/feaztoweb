@@ -9,7 +9,6 @@ import { BrandPillarsSection } from '../components/BrandPillarsSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
 import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { BookACookSection } from '../components/BookACookSection';
-import { FoodStoriesSection } from '../components/FoodStoriesSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
 import { AppDownloadSection } from '../components/AppDownloadSection';
 import { FAQSection } from '../components/FAQSection';
@@ -53,9 +52,6 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
 
       {/* 10. Book a Cook (Transparent Pilot Presentation) */}
       <BookACookSection navigate={navigate} />
-
-      {/* 11. Food stories and cultural heritage */}
-      <FoodStoriesSection navigate={navigate} />
 
       {/* 12. Partner and kitchen invitation */}
       <PartnerInvitation navigate={navigate} />
