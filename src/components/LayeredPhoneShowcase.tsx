@@ -136,7 +136,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
 
       {/* Showcase with Running Yellow Heritage Cards Stream Flanking the FEAzTO Mobile Banner */}
       <div className="plenti-stage-showcase-wrapper">
-        {/* Upper Scrolling Carousel (10 distinct dish varieties running left behind phone) */}
+        {/* 1. Upper Scrolling Carousel (10 distinct dish varieties running left behind phone) */}
         <div className="plenti-cards-stream stream-top">
           <div className="plenti-cards-track scroll-stream-left">
             {[...topLayerDishes, ...topLayerDishes].map((dish, idx) => (
@@ -145,7 +145,71 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           </div>
         </div>
 
-        {/* Hero Anchored FEAzTO Mobile Phone Banner (Ghee Podi Masala Dosa Model) */}
+        {/* 2. Middle Interstitial Buttons Loop (All 20 Button-Style Dishes running continuously between the card streams) */}
+        <div className="plenti-buttons-stream stream-middle">
+          <div className="plenti-buttons-track scroll-buttons-right">
+            {[
+              { title: 'Dum Biryani Handi', subtitle: 'Slow Dum Cooking', img: '/brand/plate-biryani.png' },
+              { title: 'Sattvic Thali', subtitle: 'Balanced Shadrasa', img: '/brand/plate-thali.png' },
+              { title: 'Jasmine Idli & Sambar', subtitle: 'Stone Ground Batter', img: '/brand/plate-idli.png' },
+              { title: 'Potli Samosa', subtitle: 'Hand-Rolled Ajwain Crust', img: '/brand/plate-samosa.png' },
+              { title: 'Filter Kaapi & Chai', subtitle: 'Clay Pot Infusion', img: '/brand/doodle-chai.png' },
+              { title: 'Davangere Benne Dosa', subtitle: 'Fresh Makkhan Roast', img: '/brand/plate-benne-dosa.png' },
+              { title: 'Chettinad Kozhi Curry', subtitle: 'Stone-Pounded Spices', img: '/brand/plate-chettinad-curry.png' },
+              { title: 'Dal Baati Churma', subtitle: 'Pure Ghee Baati', img: '/brand/plate-daal-baati.png' },
+              { title: 'Malabar Fish Curry', subtitle: 'Kodampuli & Coconut', img: '/brand/plate-malabar-fish.png' },
+              { title: 'Nizami Shahi Haleem', subtitle: '12-Hour Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
+              { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
+              { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
+              { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
+              { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
+              { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
+              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
+              { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
+              { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
+              { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
+              { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
+              { title: 'Dum Biryani Handi', subtitle: 'Slow Dum Cooking', img: '/brand/plate-biryani.png' },
+              { title: 'Sattvic Thali', subtitle: 'Balanced Shadrasa', img: '/brand/plate-thali.png' },
+              { title: 'Jasmine Idli & Sambar', subtitle: 'Stone Ground Batter', img: '/brand/plate-idli.png' },
+              { title: 'Potli Samosa', subtitle: 'Hand-Rolled Ajwain Crust', img: '/brand/plate-samosa.png' },
+              { title: 'Filter Kaapi & Chai', subtitle: 'Clay Pot Infusion', img: '/brand/doodle-chai.png' },
+              { title: 'Davangere Benne Dosa', subtitle: 'Fresh Makkhan Roast', img: '/brand/plate-benne-dosa.png' },
+              { title: 'Chettinad Kozhi Curry', subtitle: 'Stone-Pounded Spices', img: '/brand/plate-chettinad-curry.png' },
+              { title: 'Dal Baati Churma', subtitle: 'Pure Ghee Baati', img: '/brand/plate-daal-baati.png' },
+              { title: 'Malabar Fish Curry', subtitle: 'Kodampuli & Coconut', img: '/brand/plate-malabar-fish.png' },
+              { title: 'Nizami Shahi Haleem', subtitle: '12-Hour Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
+              { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
+              { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
+              { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
+              { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
+              { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
+              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
+              { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
+              { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
+              { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
+              { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
+            ].map((btn, idx) => (
+              <div key={`mid-btn-${idx}`} className="stream-dish-button-pill">
+                <div className="stream-btn-img-box">
+                  <img 
+                    src={btn.img} 
+                    alt={btn.title} 
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                    }}
+                  />
+                </div>
+                <div className="stream-btn-text">
+                  <span className="stream-btn-name">{btn.title}</span>
+                  <span className="stream-btn-desc">{btn.subtitle}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3. Hero Anchored FEAzTO Mobile Phone Banner (Ghee Podi Masala Dosa Model) */}
         <div className="plenti-central-device-container">
           <div className="device-banner-card">
             <img 
@@ -158,7 +222,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
           </div>
         </div>
 
-        {/* Lower Scrolling Carousel (10 completely separate dish varieties running right behind phone) */}
+        {/* 4. Lower Scrolling Carousel (10 completely separate dish varieties running right behind phone) */}
         <div className="plenti-cards-stream stream-bottom">
           <div className="plenti-cards-track scroll-stream-right">
             {[...bottomLayerDishes, ...bottomLayerDishes].map((dish, idx) => (
@@ -281,11 +345,108 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
         }
 
         .stream-top {
-          top: 15%;
+          top: 10%;
         }
 
         .stream-bottom {
-          bottom: 12%;
+          bottom: 8%;
+        }
+
+        /* ── INTERSTITIAL BUTTONS STREAM (Between the 2 card loops) ── */
+        .plenti-buttons-stream {
+          position: absolute;
+          width: 100vw;
+          left: 50%;
+          transform: translateX(-50%);
+          overflow: hidden;
+          pointer-events: none;
+          z-index: 2; /* Sits right between the background cards and phone */
+          top: 48%;
+          mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+        }
+
+        .plenti-buttons-track {
+          display: flex;
+          gap: 18px;
+          width: max-content;
+          align-items: center;
+        }
+
+        .scroll-buttons-right {
+          animation: marqueeRight 68s linear infinite;
+        }
+
+        .plenti-buttons-track:hover {
+          animation-play-state: paused;
+        }
+
+        /* Button-Style Dish Pill (Exact Aesthetic from Image 1) */
+        .stream-dish-button-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 12px;
+          background: #FFFFFF;
+          padding: 8px 22px 8px 10px;
+          border-radius: 9999px;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 1.5px solid rgba(245, 183, 0, 0.4);
+          pointer-events: auto;
+          transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+          cursor: pointer;
+          white-space: nowrap;
+          flex-shrink: 0;
+          user-select: none;
+        }
+
+        .stream-dish-button-pill:hover {
+          transform: translateY(-3px) scale(1.04);
+          box-shadow: 0 12px 30px rgba(245, 183, 0, 0.45);
+          border-color: #F5B700;
+        }
+
+        .stream-btn-img-box {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #FFF9E6;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
+          border: 2px solid #F5B700;
+          box-shadow: 0 2px 8px rgba(245, 183, 0, 0.3);
+        }
+
+        .stream-btn-img-box img {
+          width: 82%;
+          height: 82%;
+          object-fit: contain;
+          transition: transform 0.3s ease;
+        }
+
+        .stream-dish-button-pill:hover .stream-btn-img-box img {
+          transform: scale(1.12);
+        }
+
+        .stream-btn-text {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .stream-btn-name {
+          font-family: inherit;
+          font-size: 0.88rem;
+          font-weight: 800;
+          color: #111111;
+          line-height: 1.25;
+        }
+
+        .stream-btn-desc {
+          font-size: 0.72rem;
+          font-weight: 600;
+          color: #777777;
         }
 
         /* Running Stream Cards Track */
@@ -626,14 +787,15 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = () => {
             max-width: 310px;
           }
 
-          .plenti-cards-stream {
+          .plenti-cards-stream,
+          .plenti-buttons-stream {
             position: relative;
             left: 0;
             transform: none;
             width: 100%;
           }
 
-          .stream-top, .stream-bottom {
+          .stream-top, .stream-middle, .stream-bottom {
             top: auto;
             bottom: auto;
           }
