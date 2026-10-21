@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, MapPin } from 'lucide-react';
 import { PeekingGrandmaFezuBanner } from './PeekingGrandmaFezuBanner';
 
 interface EditorialHeroProps {
@@ -62,7 +62,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             Discover the regional flavours, home kitchens and food traditions that bring people closer to what feels like home.
           </p>
 
-          {/* Dual CTAs - Center Aligned */}
+          {/* Dual CTAs - Center Aligned Solid Buttons */}
           <div className="hero-cta-buttons-row">
             <button 
               type="button" 
@@ -85,13 +85,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </button>
           </div>
 
-          {/* Regional Cities Availability Filter Pills (Plenti-Style) */}
-          <div className="hero-cities-pill-row">
-            <span className="hero-city-pill">Trivandrum</span>
-            <span className="hero-city-pill">Kochi</span>
-            <span className="hero-city-pill active">Kozhikode</span>
-            <span className="hero-city-pill">Bengaluru</span>
-            <span className="hero-city-pill">Chennai</span>
+          {/* Exclusive Bengaluru Launch Indicator Badge */}
+          <div className="hero-bengaluru-launch-badge" role="status" aria-label="Now serving in Bengaluru">
+            <span className="bengaluru-live-pulse" aria-hidden="true" />
+            <MapPin size={15} className="bengaluru-pin-icon" />
+            <span className="bengaluru-city-label">Now Live in</span>
+            <span className="bengaluru-city-name">Bengaluru</span>
+            <span className="bengaluru-tag-pill">Only</span>
           </div>
         </div>
 
@@ -348,21 +348,22 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           gap: 10px;
           padding: 16px 36px;
           border-radius: 9999px;
-          background-color: #F5B700;
+          background: #F5B700 !important;
           color: #111111;
           font-family: var(--font-heading);
           font-size: 1rem;
           font-weight: 700;
-          border: 1px solid #E5AA00;
-          box-shadow: 0 6px 20px rgba(245, 183, 0, 0.35);
+          border: 2px solid #E5AA00;
+          box-shadow: 0 8px 24px rgba(245, 183, 0, 0.40);
           cursor: pointer;
           transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
         }
 
         .master-primary-cta:hover {
-          background-color: #E6A700;
+          background: #E8A800 !important;
+          border-color: #D69600;
           transform: translateY(-2px);
-          box-shadow: 0 10px 26px rgba(245, 183, 0, 0.45);
+          box-shadow: 0 12px 30px rgba(245, 183, 0, 0.50);
         }
 
         .cta-arrow-icon {
@@ -378,24 +379,23 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           align-items: center;
           justify-content: center;
           gap: 10px;
-          padding: 15px 30px;
+          padding: 16px 34px;
           border-radius: 9999px;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(8px);
+          background: #FFFFFF !important;
           color: #111111;
           font-family: var(--font-heading);
           font-size: 1rem;
-          font-weight: 600;
-          border: 1.5px solid rgba(17, 17, 17, 0.25);
+          font-weight: 700;
+          border: 2px solid #111111;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
           cursor: pointer;
-          transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+          transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
         }
 
         .master-secondary-cta:hover {
-          background: #FFFFFF;
-          border-color: #111111;
+          background: #F7F5EE !important;
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
         }
 
         .play-circle-icon {
@@ -405,48 +405,83 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           width: 22px;
           height: 22px;
           border-radius: 50%;
-          border: 1.5px solid #111111;
+          background: #F5B700;
           margin-left: 2px;
         }
 
-        /* ── PLENTI-STYLE REGIONAL CITIES PILL ROW IN HERO ── */
-        .hero-cities-pill-row {
-          display: flex;
+        /* ── EXCLUSIVE BENGALURU LAUNCH BADGE IN HERO ── */
+        .hero-bengaluru-launch-badge {
+          display: inline-flex;
           align-items: center;
           justify-content: center;
-          flex-wrap: wrap;
-          gap: 6px;
-          background: rgba(255, 255, 255, 0.7);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border: 1px solid rgba(245, 183, 0, 0.35);
-          padding: 6px 10px;
+          gap: 9px;
+          background: #FFFFFF !important;
+          border: 1.5px solid #F5B700;
+          padding: 8px 18px 8px 14px;
           border-radius: 9999px;
-          margin-top: 28px;
-          margin-bottom: 24px;
-          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+          margin-top: 26px;
+          margin-bottom: 22px;
+          box-shadow: 0 6px 22px rgba(245, 183, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.04);
+          transition: transform 0.22s ease, box-shadow 0.22s ease;
         }
 
-        .hero-city-pill {
-          font-size: 0.82rem;
+        .hero-bengaluru-launch-badge:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 28px rgba(245, 183, 0, 0.35);
+        }
+
+        .bengaluru-live-pulse {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background-color: #10B981;
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          animation: bengaluruPulse 2s infinite;
+          flex-shrink: 0;
+        }
+
+        @keyframes bengaluruPulse {
+          0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          }
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+          }
+          100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+          }
+        }
+
+        .bengaluru-pin-icon {
+          color: #F5B700;
+          flex-shrink: 0;
+        }
+
+        .bengaluru-city-label {
+          font-size: 0.84rem;
           font-weight: 500;
-          color: #555555;
-          padding: 6px 14px;
-          border-radius: 9999px;
-          cursor: pointer;
-          transition: all 0.2s ease;
+          color: #666666;
         }
 
-        .hero-city-pill:hover {
+        .bengaluru-city-name {
+          font-size: 0.92rem;
+          font-weight: 800;
           color: #111111;
-          background: rgba(245, 183, 0, 0.15);
+          letter-spacing: -0.01em;
         }
 
-        .hero-city-pill.active {
+        .bengaluru-tag-pill {
+          font-size: 0.70rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
           background: #F5B700;
           color: #111111;
-          font-weight: 700;
-          box-shadow: 0 2px 8px rgba(245, 183, 0, 0.3);
+          padding: 2px 7px;
+          border-radius: 9999px;
         }
 
         /* ── HERO MOBILE DEVICE PLACEMENT (Scroll-Driven Peeking Grandma & Fezu Banner) ── */
