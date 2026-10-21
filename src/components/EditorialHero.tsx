@@ -215,10 +215,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: none;
         }
 
-        /* Hero Content Center Column */
+        /* Hero Content Center Column - High z-index (10) to stay strictly above background Kolam art */
         .hero-content-wrapper {
           position: relative;
-          z-index: 3;
+          z-index: 10;
           max-width: 860px;
           width: 100%;
           margin: 0 auto;
@@ -334,6 +334,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         /* CTA Buttons Row - Centered */
         .hero-cta-buttons-row {
+          position: relative;
+          z-index: 12;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -342,6 +344,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .master-primary-cta {
+          position: relative;
+          z-index: 12;
+          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -349,21 +354,23 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           padding: 16px 36px;
           border-radius: 9999px;
           background: #F5B700 !important;
-          color: #111111;
+          background-color: #F5B700 !important;
+          color: #111111 !important;
           font-family: var(--font-heading);
           font-size: 1rem;
           font-weight: 700;
-          border: 2px solid #E5AA00;
-          box-shadow: 0 8px 24px rgba(245, 183, 0, 0.40);
+          border: 2px solid #E5AA00 !important;
+          box-shadow: 0 8px 24px rgba(245, 183, 0, 0.45);
           cursor: pointer;
           transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
         }
 
         .master-primary-cta:hover {
           background: #E8A800 !important;
-          border-color: #D69600;
+          background-color: #E8A800 !important;
+          border-color: #D69600 !important;
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(245, 183, 0, 0.50);
+          box-shadow: 0 12px 30px rgba(245, 183, 0, 0.55);
         }
 
         .cta-arrow-icon {
@@ -375,6 +382,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .master-secondary-cta {
+          position: relative;
+          z-index: 12;
+          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -382,20 +392,22 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           padding: 16px 34px;
           border-radius: 9999px;
           background: #FFFFFF !important;
-          color: #111111;
+          background-color: #FFFFFF !important;
+          color: #111111 !important;
           font-family: var(--font-heading);
           font-size: 1rem;
           font-weight: 700;
-          border: 2px solid #111111;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+          border: 2px solid #111111 !important;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
           cursor: pointer;
           transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
         }
 
         .master-secondary-cta:hover {
           background: #F7F5EE !important;
+          background-color: #F7F5EE !important;
           transform: translateY(-2px);
-          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
         }
 
         .play-circle-icon {
@@ -409,14 +421,18 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-left: 2px;
         }
 
-        /* ── EXCLUSIVE BENGALURU LAUNCH BADGE IN HERO ── */
+        /* ── EXCLUSIVE BENGALURU LAUNCH BADGE IN HERO (100% Solid & Opaque) ── */
         .hero-bengaluru-launch-badge {
+          position: relative;
+          z-index: 12;
+          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 9px;
           background: #FFFFFF !important;
-          border: 1.5px solid #F5B700;
+          background-color: #FFFFFF !important;
+          border: 1.5px solid #F5B700 !important;
           padding: 8px 18px 8px 14px;
           border-radius: 9999px;
           margin-top: 26px;
