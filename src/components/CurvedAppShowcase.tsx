@@ -69,7 +69,7 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
       {/* Curved White Bottom Arc into next section */}
       <div className="plenti-curved-boundary">
         <svg viewBox="0 0 1440 160" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,80 Q720,0 1440,80 L1440,160 L0,160 Z" fill="#FFFDF7" />
+          <path d="M0,80 Q720,0 1440,80 L1440,160 L0,160 Z" fill="#FFF8D6" />
         </svg>
       </div>
 
@@ -218,7 +218,7 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
         .plenti-primary-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
-          background: #FFFDF7;
+          background: #FFF8D6;
         }
 
         .plenti-secondary-btn {

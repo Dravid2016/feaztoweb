@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 interface HeaderProps {
   currentRoute: string;
@@ -25,14 +25,12 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   }, []);
 
   const navLinks = [
-    { label: 'Home', route: '/' },
     { label: 'Our Story', route: '/our-story' },
-    { label: 'Discover Food', route: '/discover' },
-    { label: 'Home Kitchens', route: '/home-kitchens' },
-    { label: 'Partners', route: '/partners' },
     { label: 'Download', route: '/download' },
-    { label: 'FAQ', route: '/faq' },
-    { label: 'Contact', route: '/contact' },
+    { label: 'Blog', route: '/blog' },
+    { label: 'Business Sign Up', route: '/business-signup' },
+    { label: 'Careers', route: '/careers' },
+    { label: 'Contact Us', route: '/contact' },
   ];
 
   const handleNavClick = (route: string) => {
@@ -44,10 +42,10 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   return (
     <header className={`feazto-header-outer ${scrolled ? 'is-scrolled' : 'at-top'}`}>
       <div className="header-island-wrapper">
-        {/* Left Pill: Official Brand Logo */}
-        <a 
-          href="#home" 
-          onClick={(e) => { e.preventDefault(); handleNavClick('/'); }} 
+        {/* Left Pill: Official Brand Logo - Navigates to Home */}
+        <button 
+          type="button"
+          onClick={() => handleNavClick('/')} 
           className="brand-pill-island"
           aria-label="FEAzTO Home"
         >
@@ -56,7 +54,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             alt="FEAzTO — Food • Culture • Connect" 
             className="brand-logo-img"
           />
-        </a>
+        </button>
 
         {/* Center Pill: Navigation Menu */}
         <nav className="nav-pill-island" aria-label="Main Navigation">
@@ -122,9 +120,18 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         <div className="mobile-nav-drawer" role="dialog" aria-modal="true">
           <div className="mobile-nav-inner">
             <div className="mobile-brand-row">
-              <span className="badge-tag">
-                <Sparkles size={12} /> Food • Culture • Connect
-              </span>
+              <button
+                type="button"
+                onClick={() => handleNavClick('/')}
+                className="mobile-drawer-brand-btn"
+                aria-label="FEAzTO Home"
+              >
+                <img 
+                  src="/brand/feazto-logo.svg" 
+                  alt="FEAzTO Logo" 
+                  style={{ height: '32px', width: 'auto' }} 
+                />
+              </button>
               <button 
                 type="button"
                 className="close-drawer-btn" 
@@ -209,20 +216,27 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: #F8B504;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.72) 0%, rgba(250, 201, 33, 0.55) 60%, rgba(229, 168, 0, 0.65) 100%) !important;
+          backdrop-filter: blur(24px) saturate(190%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
           padding: 7px 18px;
           border-radius: 9999px;
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.06);
-          border: 2px solid rgba(255, 255, 255, 0.95);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          border: none !important;
+          box-shadow: 0 12px 32px rgba(250, 201, 33, 0.32), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.6), 
+                      inset 0 -2px 4px rgba(180, 130, 0, 0.2);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           cursor: pointer;
           flex-shrink: 0;
         }
 
         .brand-pill-island:hover {
           transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 12px 28px rgba(135, 71, 0, 0.25);
-          background: #E8A800;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.85) 0%, rgba(250, 201, 33, 0.72) 60%, rgba(229, 168, 0, 0.8) 100%) !important;
+          box-shadow: 0 16px 40px rgba(250, 201, 33, 0.45), 
+                      inset 0 2px 4px rgba(255, 255, 255, 0.85), 
+                      inset 0 -2px 5px rgba(180, 130, 0, 0.25);
+          border: none !important;
         }
 
         .brand-logo-img {
@@ -237,23 +251,28 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          background: #FFFFFF;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%) !important;
+          backdrop-filter: blur(26px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
           padding: 6px 18px;
           border-radius: 9999px;
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 1.5px solid rgba(255, 255, 255, 0.95);
+          border: 1px solid rgba(255, 255, 255, 0.6) !important;
+          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.85), 
+                      inset 0 -1.5px 3px rgba(0, 0, 0, 0.03);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           flex-grow: 0;
         }
 
         /* Scroll Interaction: The nav pill extends smoothly with rich contrast */
         .feazto-header-outer.is-scrolled .nav-pill-island {
-          background: rgba(255, 255, 255, 0.96);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.58) 100%) !important;
+          backdrop-filter: blur(28px) saturate(200%) !important;
+          -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
           padding: 8px 24px;
-          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.06);
-          border-color: rgba(248, 181, 4, 0.4);
+          box-shadow: 0 16px 42px rgba(0, 0, 0, 0.09), 
+                      inset 0 1.5px 3px #FFFFFF;
+          border-color: rgba(255, 255, 255, 0.85) !important;
         }
 
         .nav-pill-list {
@@ -283,13 +302,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         .nav-pill-link:hover {
           color: #111111;
-          background-color: rgba(248, 181, 4, 0.16);
+          background-color: rgba(250, 201, 33, 0.18);
         }
 
         .nav-pill-link.active {
           color: #111111;
           font-weight: 700;
-          background-color: rgba(248, 181, 4, 0.24);
+          background-color: rgba(250, 201, 33, 0.28);
         }
 
         .active-pill-dot {
@@ -305,18 +324,34 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #F8B504;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.72) 0%, rgba(250, 201, 33, 0.55) 60%, rgba(229, 168, 0, 0.65) 100%) !important;
+          backdrop-filter: blur(24px) saturate(190%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
           padding: 6px 12px;
           border-radius: 9999px;
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 2px solid rgba(255, 255, 255, 0.95);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          border: none !important;
+          box-shadow: 0 12px 32px rgba(250, 201, 33, 0.32), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.6), 
+                      inset 0 -2px 4px rgba(180, 130, 0, 0.2);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           flex-shrink: 0;
         }
 
         .feazto-header-outer.is-scrolled .actions-pill-island {
-          box-shadow: 0 12px 32px rgba(135, 71, 0, 0.22);
-          border-color: rgba(255, 255, 255, 1);
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.72) 0%, rgba(250, 201, 33, 0.55) 60%, rgba(229, 168, 0, 0.65) 100%) !important;
+          backdrop-filter: blur(24px) saturate(190%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+          padding: 6px 12px;
+          border-radius: 9999px;
+          border: none !important;
+          box-shadow: 0 12px 32px rgba(250, 201, 33, 0.32), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.6), 
+                      inset 0 -2px 4px rgba(180, 130, 0, 0.2);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-shrink: 0;
         }
 
         .store-quick-badge {
@@ -326,12 +361,14 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background-color: #FFFFFF;
-          color: #111111;
-          border: none;
+          background: rgba(255, 255, 255, 0.85) !important;
+          color: #181B20;
+          border: none !important;
           cursor: pointer;
-          transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px #FFFFFF;
         }
 
         .store-quick-badge:hover {
@@ -393,6 +430,16 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           margin-bottom: 18px;
           padding-bottom: 12px;
           border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .mobile-drawer-brand-btn {
+          display: inline-flex;
+          align-items: center;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          background: #FAC921;
+          border: none;
+          cursor: pointer;
         }
 
         .close-drawer-btn {
@@ -457,8 +504,21 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         /* ── RESPONSIVE MEDIA QUERIES ── */
         @media (max-width: 1100px) {
           .nav-pill-island {
-            display: none;
-          }
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%) !important;
+          backdrop-filter: blur(26px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+          padding: 6px 18px;
+          border-radius: 9999px;
+          border: 1px solid rgba(255, 255, 255, 0.6) !important;
+          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.85), 
+                      inset 0 -1.5px 3px rgba(0, 0, 0, 0.03);
+          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-grow: 0;
+        }
           .mobile-pill-toggle {
             display: inline-flex;
           }

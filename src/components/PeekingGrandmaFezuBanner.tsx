@@ -163,7 +163,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       <div id="feazto-animated-banner" ref={stageRef} className="feazto-stage">
         {/* 1. GRANDMA (Entire character including body, arms, hands, head: z-index 10 BEHIND PHONE) */}
         <div id="grandma-character" ref={grandmaRef} className="feazto-layer layer-grandma-character">
-          <img src="/brand/peeking/grandma-character.webp" alt="Grandma peeking from behind mobile phone" />
+          <img src="/brand/peeking/grandma-character-full.png" alt="Grandma peeking from behind mobile phone" />
         </div>
 
         {/* 2. FEZU MASCOT (Entire character including body, arm, paw, head: z-index 10 BEHIND PHONE) */}

@@ -1,12 +1,11 @@
 import React from 'react';
-import { KITCHEN_STORIES } from '../data/feaztoData';
-import { Sparkles, Award, MapPin, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Utensils, HeartHandshake, ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface HomeKitchensPageProps {
   navigate?: (route: string) => void;
 }
 
-export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
+export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = ({ navigate }) => {
   return (
     <div className="secondary-page home-kitchens-page">
       <section className="page-hero-banner">
@@ -31,7 +30,7 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
               <p>Every home kitchen partner undergoes rigorous surface sterilization, water filtration, and food handling certifications.</p>
             </div>
             <div className="intro-card">
-              <Award size={28} className="intro-icon" />
+              <Utensils size={28} className="intro-icon" />
               <h3>Preserved Heirloom Standards</h3>
               <p>We do not alter secret family spice ratios or demand industrial speed. We calibrate technology around traditional slow cooking.</p>
             </div>
@@ -42,48 +41,70 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
             </div>
           </div>
 
-          <h2 className="section-subheading">Featured Culinary Custodians</h2>
+          {/* Yellow Gradient Info Card */}
+          <div className="kitchens-info-gradient-card">
+            <div className="glow-circle glow-circle-tr" />
+            <div className="glow-circle glow-circle-bl" />
 
-          <div className="kitchens-full-list">
-            {KITCHEN_STORIES.map((cook) => (
-              <div key={cook.id} className="detailed-cook-card">
-                <div className="cook-media-box">
-                  {cook.image ? (
-                    <img src={cook.image} alt={cook.cookName} />
-                  ) : (
-                    <div className="cook-media-placeholder">
-                      <Award size={48} className="placeholder-award-icon" />
-                      <span className="placeholder-region">{cook.regionSpecialty}</span>
-                    </div>
-                  )}
-                  <div className="cook-badge-strip">
-                    <span>{cook.experienceYears} Years Traditional Mastery</span>
-                  </div>
+            <div className="card-top-pill">
+              <Sparkles size={14} style={{ fill: '#FFFFFF' }} />
+              <span>Pilot Network In Progress</span>
+            </div>
+
+            <h2 className="card-headline">
+              We Don't Have Commercial Cloud Kitchens Right Now
+            </h2>
+
+            <p className="card-description">
+              FEAzTO is pioneering an authentic home-chef ecosystem rather than run-of-the-mill industrial dark kitchens. We are actively conducting kitchen audits, recipe documentation, and onboarding master regional custodians. Kitchen pods will go live progressively across pilot zones.
+            </p>
+
+            <div className="card-pillars-grid">
+              <div className="inner-feature-box">
+                <div className="feature-icon-bubble">
+                  <Utensils size={20} />
                 </div>
-
-                <div className="cook-text-box">
-                  <div className="cook-header-row">
-                    <div>
-                      <span className="cook-loc"><MapPin size={14} /> {cook.locationArea}</span>
-                      <h3 className="cook-title-big">{cook.title}</h3>
-                      <h4 className="cook-real-name">Master Cook: {cook.cookName}</h4>
-                    </div>
-                    <span className="specialty-capsule">{cook.regionSpecialty}</span>
-                  </div>
-
-                  <blockquote className="cook-philosophic-quote">
-                    “{cook.quote}”
-                  </blockquote>
-
-                  <p className="cook-biography">{cook.story}</p>
-
-                  <div className="signature-showcase-box">
-                    <span className="sig-label">Signature Heritage Recipe:</span>
-                    <strong className="sig-val">{cook.signatureDish}</strong>
-                  </div>
-                </div>
+                <h4>Preserving Hand-Crafted Recipes</h4>
+                <p>Ensuring stone-ground textures and authentic dum cooking remain 100% intact.</p>
               </div>
-            ))}
+
+              <div className="inner-feature-box">
+                <div className="feature-icon-bubble">
+                  <ShieldCheck size={20} />
+                </div>
+                <h4>Zero Chemical Premixes</h4>
+                <p>Never substituting authentic slow processes with commercial additives or food colors.</p>
+              </div>
+
+              <div className="inner-feature-box">
+                <div className="feature-icon-bubble">
+                  <HeartHandshake size={20} />
+                </div>
+                <h4>Empowering Recipe Custodians</h4>
+                <p>Enabling home cooks to build sustainable businesses with commercial-grade support.</p>
+              </div>
+            </div>
+
+            {navigate && (
+              <div className="card-action-buttons">
+                <button 
+                  type="button" 
+                  onClick={() => navigate('/partners')}
+                  className="btn-card-white"
+                >
+                  <span>Apply as a FoodPreneur Partner</span>
+                  <ArrowRight size={16} />
+                </button>
+
+                <button 
+                  type="button" 
+                  onClick={() => navigate('/')}
+                  className="btn-card-translucent"
+                >
+                  <span>Return to Home</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -98,7 +119,7 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 24px;
-          margin-bottom: 64px;
+          margin-bottom: 60px;
         }
 
         .intro-card {
@@ -125,173 +146,195 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = () => {
           line-height: 1.6;
         }
 
-        .section-subheading {
-          font-size: 2rem;
-          font-weight: 800;
-          color: var(--color-ink-black);
-          margin-bottom: 36px;
-        }
-
-        .kitchens-full-list {
-          display: flex;
-          flex-direction: column;
-          gap: 40px;
-        }
-
-        .detailed-cook-card {
-          display: grid;
-          grid-template-columns: 1fr 1.4fr;
-          gap: 40px;
-          background: var(--color-warm-white);
-          border-radius: var(--radius-lg);
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          overflow: hidden;
-          padding: 32px;
-        }
-
-        .cook-media-box {
-          position: relative;
-          border-radius: 18px;
-          overflow: hidden;
-          min-height: 280px;
-        }
-
-        .cook-media-placeholder {
+        .kitchens-info-gradient-card {
           width: 100%;
-          min-height: 280px;
-          height: 100%;
-          background: linear-gradient(135deg, #27211B 0%, #171512 100%);
+          border-radius: 36px;
+          background: linear-gradient(135deg, #FFDE59 0%, #FAC921 50%, #E5A800 100%);
+          color: #FFFFFF;
+          padding: 60px 40px;
+          box-shadow: 0 24px 60px rgba(250, 201, 33, 0.35);
+          position: relative;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
-          gap: 12px;
-          color: #FFFFFF;
-          padding: 24px;
           text-align: center;
+          box-sizing: border-box;
         }
 
-        .placeholder-award-icon {
-          color: var(--color-brand-yellow);
-        }
-
-        .placeholder-region {
-          font-size: 1rem;
-          font-weight: 700;
-          color: rgba(255, 255, 255, 0.9);
-          letter-spacing: 0.02em;
-        }
-
-        .cook-media-box img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .cook-badge-strip {
+        .glow-circle {
           position: absolute;
-          bottom: 14px;
-          left: 14px;
-          background: rgba(17, 17, 17, 0.85);
-          backdrop-filter: blur(8px);
-          color: var(--color-brand-yellow);
-          padding: 6px 14px;
-          border-radius: 9999px;
-          font-size: 0.76rem;
-          font-weight: 700;
+          border-radius: 50%;
+          pointer-events: none;
         }
 
-        .cook-text-box {
-          display: flex;
-          flex-direction: column;
+        .glow-circle-tr {
+          top: -20%;
+          right: -10%;
+          width: 420px;
+          height: 420px;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.32) 0%, transparent 70%);
         }
 
-        .cook-header-row {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          gap: 16px;
-          margin-bottom: 16px;
-          flex-wrap: wrap;
+        .glow-circle-bl {
+          bottom: -20%;
+          left: -10%;
+          width: 380px;
+          height: 380px;
+          background: radial-gradient(circle, rgba(0, 0, 0, 0.18) 0%, transparent 70%);
         }
 
-        .cook-loc {
+        .card-top-pill {
           display: inline-flex;
           align-items: center;
-          gap: 4px;
+          gap: 8px;
+          padding: 7px 20px;
+          border-radius: 9999px;
+          background: rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          color: #FFFFFF;
           font-size: 0.78rem;
-          font-weight: 600;
-          color: #8C6500;
-          margin-bottom: 4px;
-        }
-
-        .cook-title-big {
-          font-size: 1.4rem;
           font-weight: 800;
-          color: var(--color-ink-black);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 20px;
         }
 
-        .cook-real-name {
-          font-size: 0.95rem;
-          color: var(--color-text-secondary);
+        .card-headline {
+          font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+          font-weight: 900;
+          color: #181B20;
+          margin: 0 0 16px 0;
+          line-height: 1.15;
+          letter-spacing: -0.035em;
+        }
+
+        .card-description {
+          font-size: clamp(0.98rem, 1.6vw, 1.12rem);
+          color: rgba(24, 27, 32, 0.88);
+          max-width: 760px;
+          margin: 0 auto 36px auto;
+          line-height: 1.7;
           font-weight: 500;
         }
 
-        .specialty-capsule {
-          background: var(--color-brand-yellow-subtle);
-          color: #7A5B00;
-          padding: 6px 14px;
-          border-radius: var(--radius-capsule);
-          font-size: 0.78rem;
-          font-weight: 700;
-          border: 1px solid rgba(255, 210, 51, 0.4);
+        .card-pillars-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 20px;
+          width: 100%;
+          margin-bottom: 36px;
+          position: relative;
+          z-index: 1;
         }
 
-        .cook-philosophic-quote {
-          background: #FFFFFF;
-          padding: 14px 18px;
-          border-left: 3px solid var(--color-brand-yellow);
-          border-radius: 6px;
-          font-style: italic;
-          font-size: 0.92rem;
-          color: #333333;
-          margin-bottom: 16px;
-          line-height: 1.5;
+        .inner-feature-box {
+          background: rgba(255, 255, 255, 0.28);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.45);
+          border-radius: 20px;
+          padding: 26px 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          transition: transform 0.25s ease, background 0.25s ease;
         }
 
-        .cook-biography {
-          font-size: 0.95rem;
-          color: var(--color-text-secondary);
-          line-height: 1.65;
-          margin-bottom: 24px;
+        .inner-feature-box:hover {
+          transform: translateY(-4px);
+          background: rgba(255, 255, 255, 0.40);
         }
 
-        .signature-showcase-box {
-          margin-top: auto;
+        .feature-icon-bubble {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.92);
+          color: #7A5500;
           display: flex;
           align-items: center;
-          gap: 10px;
-          padding: 12px 16px;
+          justify-content: center;
+          margin-bottom: 14px;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .inner-feature-box h4 {
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: #181B20;
+          margin: 0 0 8px 0;
+        }
+
+        .inner-feature-box p {
+          font-size: 0.88rem;
+          color: rgba(24, 27, 32, 0.82);
+          line-height: 1.55;
+          margin: 0;
+        }
+
+        .card-action-buttons {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+          position: relative;
+          z-index: 1;
+        }
+
+        .btn-card-white {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
           background: #FFFFFF;
-          border-radius: 8px;
-          border: 1px solid rgba(0, 0, 0, 0.06);
+          color: #7A5500;
+          padding: 14px 30px;
+          border-radius: 9999px;
+          font-size: 0.95rem;
+          font-weight: 800;
+          border: none;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
-        .sig-label {
-          font-size: 0.8rem;
+        .btn-card-white:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+          background: #FFFDF5;
+        }
+
+        .btn-card-translucent {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(0, 0, 0, 0.18);
+          color: #FFFFFF;
+          padding: 14px 28px;
+          border-radius: 9999px;
+          font-size: 0.95rem;
           font-weight: 700;
-          color: var(--color-ink-black);
+          border: 1.5px solid rgba(255, 255, 255, 0.4);
+          cursor: pointer;
+          backdrop-filter: blur(8px);
+          transition: all 0.25s ease;
         }
 
-        .sig-val {
-          font-size: 0.85rem;
-          color: #8C6500;
+        .btn-card-translucent:hover {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: #FFFFFF;
+          transform: translateY(-2px);
         }
 
-        @media (max-width: 860px) {
-          .detailed-cook-card {
+        @media (max-width: 768px) {
+          .kitchens-info-gradient-card {
+            padding: 40px 22px;
+            border-radius: 28px;
+          }
+          .card-pillars-grid {
             grid-template-columns: 1fr;
-            padding: 20px;
           }
         }
       `}</style>

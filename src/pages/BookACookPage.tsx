@@ -183,7 +183,7 @@ export const BookACookPage: React.FC = () => {
           align-items: center;
           gap: 12px;
           background: #FFF9E6;
-          border: 1px solid rgba(255, 210, 51, 0.6);
+          border: 1px solid rgba(250, 201, 33, 0.6);
           padding: 16px 20px;
           border-radius: var(--radius-md);
           font-size: 0.92rem;

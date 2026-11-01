@@ -32,7 +32,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ navigate }) => {
           <div className="suite-grid">
             <div className="suite-card">
               <div className="suite-icon-box">
-                <Smartphone size={24} />
+                <Smartphone size={24} fill="currentColor" />
               </div>
               <h3>Customer App</h3>
               <p>Regional dish storytelling, live kitchen preparation progress bar, transparent ingredient provenance, and scheduled feast booking.</p>
@@ -41,7 +41,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ navigate }) => {
 
             <div className="suite-card">
               <div className="suite-icon-box">
-                <Cpu size={24} />
+                <Cpu size={24} fill="currentColor" />
               </div>
               <h3>Cloud Kitchen OS</h3>
               <p>Built with React Native & Expo. Kitchen order queue, batch timing management, dynamic menu stock toggle, and instant earnings audit.</p>
@@ -50,7 +50,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ navigate }) => {
 
             <div className="suite-card">
               <div className="suite-icon-box">
-                <ShieldCheck size={24} />
+                <ShieldCheck size={24} fill="currentColor" />
               </div>
               <h3>Rider Dispatch App</h3>
               <p>Thermal box pickup confirmation, optimized regional route guidance, tamper-seal verification, and instant delivery earnings.</p>
@@ -126,7 +126,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ navigate }) => {
           background: var(--color-brand-yellow-subtle);
           padding: 4px 12px;
           border-radius: 9999px;
-          border: 1px solid rgba(255, 210, 51, 0.4);
+          border: 1px solid rgba(250, 201, 33, 0.4);
           width: fit-content;
         }
       `}</style>

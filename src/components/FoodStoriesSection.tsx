@@ -51,8 +51,8 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
               {/* Kolam Corner Motif */}
               <div className="story-kolam-corner" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2,22 C2,10 10,2 22,2" stroke="#E5B81C" strokeWidth="1.5" strokeDasharray="3 2" />
-                  <circle cx="12" cy="12" r="2" fill="#E5B81C" />
+                  <path d="M2,22 C2,10 10,2 22,2" stroke="#FAC921" strokeWidth="1.5" strokeDasharray="3 2" />
+                  <circle cx="12" cy="12" r="2" fill="#FAC921" />
                 </svg>
               </div>
 
@@ -81,7 +81,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
         .food-stories-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background: linear-gradient(180deg, #FFFDF7 0%, #FEF7DE 50%, #FEF1CD 100%);
+          background: linear-gradient(180deg, #FFF8D6 0%, #FFF3C4 50%, #FEEAA2 100%);
         }
 
         .stories-header {
@@ -117,7 +117,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           position: relative;
           background: var(--color-warm-white);
           border-radius: var(--radius-lg);
-          border: 1.5px solid rgba(255, 210, 51, 0.4);
+          border: 1.5px solid rgba(250, 201, 33, 0.4);
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
           overflow: hidden;
           cursor: pointer;
@@ -128,8 +128,8 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
 
         .cultural-story-card:hover {
           transform: translateY(-6px);
-          box-shadow: 0 18px 40px rgba(255, 210, 51, 0.16);
-          border-color: rgba(255, 210, 51, 0.9);
+          box-shadow: 0 18px 40px rgba(250, 201, 33, 0.16);
+          border-color: rgba(250, 201, 33, 0.9);
         }
 
         .story-kolam-corner {
@@ -177,7 +177,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           font-size: 0.72rem;
           font-weight: 700;
           color: #8C6500;
-          border: 1px solid rgba(255, 210, 51, 0.35);
+          border: 1px solid rgba(250, 201, 33, 0.35);
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }
 

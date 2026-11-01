@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Sparkles, Mail, MapPin, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { FAQSection } from '../components/FAQSection';
 
 export const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -19,10 +20,6 @@ export const ContactPage: React.FC = () => {
     <div className="secondary-page contact-page">
       <section className="page-hero-banner">
         <div className="container">
-          <div className="badge-tag">
-            <Sparkles size={13} />
-            <span>Connect with Us</span>
-          </div>
           <h1 className="page-hero-title">Contact the FEAzTO Team</h1>
           <p className="page-hero-subtitle">
             Have questions about our culinary heritage, pilot kitchen rollout, or enterprise catering? We are here to help.
@@ -136,6 +133,9 @@ export const ContactPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Frequently Asked Questions moved from Home Page */}
+      <FAQSection />
 
       <style>{`
         .contact-detail-section {

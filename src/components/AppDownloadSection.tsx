@@ -160,9 +160,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                   <rect x="46" y="8" width="6" height="6" fill="#111111" />
                   <rect x="56" y="8" width="6" height="6" fill="#111111" />
                   <rect x="36" y="18" width="6" height="6" fill="#111111" />
-                  <rect x="48" y="22" width="8" height="8" fill="#FFD233" rx="1" />
+                  <rect x="48" y="22" width="8" height="8" fill="#FAC921" rx="1" />
                   <rect x="36" y="36" width="28" height="28" fill="#111111" rx="2" />
-                  <rect x="42" y="42" width="16" height="16" fill="#FFD233" rx="2" />
+                  <rect x="42" y="42" width="16" height="16" fill="#FAC921" rx="2" />
                   <rect x="8" y="36" width="6" height="6" fill="#111111" />
                   <rect x="18" y="46" width="6" height="6" fill="#111111" />
                   <rect x="69" y="40" width="6" height="6" fill="#111111" />

@@ -211,7 +211,7 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
         .regional-food-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background: linear-gradient(180deg, #FFFDF7 0%, #FEF5D8 40%, #FDF0C8 100%);
+          background: linear-gradient(180deg, #FFF8D6 0%, #FFF3C4 40%, #FEEAA2 100%);
           position: relative;
         }
 
@@ -248,7 +248,7 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
         /* Yellow Heritage Card with Cultural Doodles */
         .cultural-food-card {
           position: relative;
-          background: linear-gradient(135deg, #FFD233 0%, #F5C618 60%, #E8B90E 100%);
+          background: linear-gradient(135deg, #FFDE59 0%, #FAC921 50%, #E5A800 100%);
           border-radius: 28px;
           border: 2px solid rgba(135, 71, 0, 0.22);
           box-shadow: 0 16px 36px rgba(135, 71, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface KolamFrameProps {
-  variant?: 'turmeric' | 'light' | 'dark' | 'border-only';
+  variant?: 'turmeric' | 'light' | 'dark' | 'border-only' | 'gradient';
   children: React.ReactNode;
   className?: string;
   hasCorners?: boolean;
@@ -96,11 +96,21 @@ export const KolamFrame: React.FC<KolamFrameProps> = ({
           border: 2px solid #E5B81C;
         }
         .kolam-frame-turmeric .kolam-svg-border {
-          color: #FFFFFF;
+          color: #181B20;
+        }
+
+        .kolam-frame-gradient {
+          background: linear-gradient(135deg, #FFDE59 0%, #FAC921 50%, #E5A800 100%);
+          color: #181B20;
+          border: 1.5px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 24px 60px rgba(248, 181, 4, 0.35);
+        }
+        .kolam-frame-gradient .kolam-svg-border {
+          color: rgba(255, 255, 255, 0.7);
         }
 
         .kolam-frame-light {
-          background-color: #FFFFFF;
+          background-color: #181B20;
           color: var(--color-ink-black);
           border: 1.5px solid rgba(255, 210, 51, 0.4);
           box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
@@ -111,7 +121,7 @@ export const KolamFrame: React.FC<KolamFrameProps> = ({
 
         .kolam-frame-dark {
           background-color: #111111;
-          color: #FFFFFF;
+          color: #181B20;
           border: 1.5px solid rgba(255, 210, 51, 0.3);
           box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }

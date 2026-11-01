@@ -272,7 +272,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({ navigate }) => {
         /* Yellow Heritage Detailed Card with Cultural Doodles */
         .dish-detailed-card {
           position: relative;
-          background: linear-gradient(135deg, #FFD233 0%, #F5C618 60%, #E8B90E 100%);
+          background: linear-gradient(135deg, #FFDE59 0%, #FAC921 50%, #E5A800 100%);
           border-radius: 28px;
           border: 2px solid rgba(135, 71, 0, 0.22);
           box-shadow: 0 16px 36px rgba(135, 71, 0, 0.14), 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -349,7 +349,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({ navigate }) => {
         .pill-category-badge {
           background: rgba(17, 17, 17, 0.88);
           border: 1px solid rgba(17, 17, 17, 0.95);
-          color: #FFD233;
+          color: #FAC921;
           font-size: 0.72rem;
           font-weight: 700;
           padding: 4px 12px;
@@ -465,19 +465,23 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({ navigate }) => {
           padding: 9px 20px;
           font-size: 0.85rem;
           border-radius: 9999px;
-          background: #111111;
-          color: #FFD233;
-          border: none;
+          background: rgba(17, 17, 17, 0.82);
+          color: #FAC921;
+          border: 1.5px solid rgba(250, 201, 33, 0.45);
           font-weight: 700;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           cursor: pointer;
-          transition: transform 0.2s ease, background 0.2s ease;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+          transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
         }
 
         .btn-reserve-action:hover {
-          background: #000000;
+          background: rgba(0, 0, 0, 0.95);
+          border-color: #FAC921;
           transform: translateX(3px);
         }
 
@@ -571,7 +575,7 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({ navigate }) => {
         }
 
         .placeholder-dish-icon {
-          color: #FFD233;
+          color: #FAC921;
         }
 
         .placeholder-dish-lbl {

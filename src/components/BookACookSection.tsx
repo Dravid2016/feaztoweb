@@ -100,7 +100,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
         .book-cook-section {
           padding-top: 60px;
           padding-bottom: 100px;
-          background: linear-gradient(180deg, #FFFDF7 0%, #FEF4D3 50%, #FDECB9 100%);
+          background: linear-gradient(180deg, #FFF8D6 0%, #FFF3C4 50%, #FEEAA2 100%);
         }
 
         .book-cook-card {
@@ -130,7 +130,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
           gap: 6px;
           background: #FFF9E6;
           color: #8C6500;
-          border: 1px solid rgba(255, 210, 51, 0.5);
+          border: 1px solid rgba(250, 201, 33, 0.5);
           padding: 6px 14px;
           border-radius: 9999px;
           font-size: 0.76rem;
@@ -224,9 +224,9 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: rgba(255, 210, 51, 0.15);
+          background: rgba(250, 201, 33, 0.15);
           color: var(--color-brand-yellow);
-          border: 1px solid rgba(255, 210, 51, 0.3);
+          border: 1px solid rgba(250, 201, 33, 0.3);
           padding: 6px 14px;
           border-radius: 9999px;
           font-size: 0.76rem;

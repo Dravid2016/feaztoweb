@@ -40,7 +40,7 @@ export const PartnersPage: React.FC = () => {
           <div className="partner-tracks-grid">
             <div className="track-card">
               <div className="track-icon-badge">
-                <ChefHat size={24} />
+                <ChefHat size={24} fill="currentColor" />
               </div>
               <h3>For FoodPreneurs & Home Cooks</h3>
               <p>You bring the culinary passion and authentic generational techniques. We handle ingredient quality control, food safety auditing, cloud kitchen facility access, order dispatch, and customer service.</p>
@@ -53,7 +53,7 @@ export const PartnersPage: React.FC = () => {
 
             <div className="track-card">
               <div className="track-icon-badge">
-                <Building2 size={24} />
+                <Building2 size={24} fill="currentColor" />
               </div>
               <h3>For Cloud Kitchen Infrastructure Operators</h3>
               <p>Monetize underutilized commercial cooking space by hosting authenticated FEAzTO FoodPreneur batches during off-peak hours with standardized SOPs and telemetry.</p>
@@ -80,7 +80,7 @@ export const PartnersPage: React.FC = () => {
                   onClick={() => setPartnerType('cook')}
                   className={`toggle-btn ${partnerType === 'cook' ? 'active' : ''}`}
                 >
-                  <ChefHat size={16} />
+                  <ChefHat size={16} fill="currentColor" />
                   <span>I am a FoodPreneur / Home Cook</span>
                 </button>
                 <button
@@ -88,7 +88,7 @@ export const PartnersPage: React.FC = () => {
                   onClick={() => setPartnerType('kitchen')}
                   className={`toggle-btn ${partnerType === 'kitchen' ? 'active' : ''}`}
                 >
-                  <Building2 size={16} />
+                  <Building2 size={16} fill="currentColor" />
                   <span>I am a Cloud Kitchen Operator</span>
                 </button>
               </div>

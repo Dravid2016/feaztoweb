@@ -11,6 +11,8 @@ import { DownloadPage } from './pages/DownloadPage';
 import { FAQPage } from './pages/FAQPage';
 import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
+import { BlogPage } from './pages/BlogPage';
+import { CareersPage } from './pages/CareersPage';
 
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
@@ -29,9 +31,16 @@ export function App() {
   }, []);
 
   const navigate = (route: string) => {
-    window.location.hash = route;
-    setCurrentRoute(route);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (route === '/' || route === '') {
+      if (window.location.hash) {
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      }
+      setCurrentRoute('/');
+    } else {
+      window.location.hash = route;
+      setCurrentRoute(route);
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
   const renderCurrentPage = () => {
@@ -50,6 +59,12 @@ export function App() {
         return <PartnersPage />;
       case '/download':
         return <DownloadPage navigate={navigate} />;
+      case '/blog':
+        return <BlogPage navigate={navigate} />;
+      case '/business-signup':
+        return <PartnersPage />;
+      case '/careers':
+        return <CareersPage navigate={navigate} />;
       case '/faq':
         return <FAQPage navigate={navigate} />;
       case '/contact':

@@ -6,8 +6,8 @@
     </filter>
   </defs>
 
-  <!-- Golden Yellow Background Pill (#F8B504) -->
-  <rect width="394" height="116" rx="16" fill="#F8B504" />
+  <!-- Golden Yellow Background Pill (#FAC921) -->
+  <!-- transparent background pill -->
 
   <!-- Main Wordmark: FEA in WHITE, Z in BLACK, TO in WHITE -->
   <g id="feazto-wordmark" transform="translate(197, 72)" text-anchor="middle">

@@ -37,24 +37,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </span>
           </div>
 
-          {/* Master Headline - Centered with Food Image Capsule */}
+          {/* Master Headline - Centered */}
           <h1 className="hero-master-headline">
-            <span className="headline-line">The taste of</span>
+            <span className="headline-line">The taste of home,</span>
             <span className="headline-line with-capsule">
-              h
-              <span className="food-word-capsule" title="Traditional South Indian Curry Bowl">
-                <img 
-                  src="/dish-capsule-curry.jpg" 
-                  alt="Traditional South Indian Curry Bowl" 
-                  className="capsule-dish-img"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/plate-thali.png';
-                  }}
-                />
-              </span>
-              me, wherever
+              wherever life takes you.
             </span>
-            <span className="headline-line">life takes you.</span>
           </h1>
 
           {/* Supporting Copy - Center Aligned */}
@@ -87,7 +75,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
           {/* Exclusive Bengaluru Launch Indicator Badge */}
           <div className="hero-bengaluru-launch-badge" role="status" aria-label="Now serving in Bengaluru">
-            <span className="bengaluru-live-pulse" aria-hidden="true" />
+            {/* removed blinker */}
             <MapPin size={15} className="bengaluru-pin-icon" />
             <span className="bengaluru-city-label">Now Live in</span>
             <span className="bengaluru-city-name">Bengaluru</span>
@@ -139,7 +127,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             {/* Deep Curled Lower Boundary into Section Below */}
             <path 
               d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
-              fill="#FFFDF7" 
+              fill="#FFF8D6" 
             />
           </svg>
         </div>
@@ -157,29 +145,56 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </p>
           </div>
 
-          {/* 3 Regional Heritage Highlights - Clean Typography Cards without image clutter */}
+          {/* 3 Regional Heritage Highlights - Cards with transparent dishes positioned right side & settled on bottom */}
           <div className="teaser-cards-grid">
-            <div className="dish-preview-card text-center-card">
+            {/* Card 1: Coastal Heritage */}
+            <div className="dish-preview-card text-center-card teaser-heritage-card coastal-card-special">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">Coastal Heritage</span>
                 <h4 className="dish-name-heading">Fragrant Coastal Curries</h4>
                 <p className="dish-name-desc">Slow-simmered kokum, stone-ground coconut pastes, and fresh coastal temperings.</p>
               </div>
+              <div className="teaser-dish-bottom-anchor coastal-full-bottom-anchor">
+                <img 
+                  src="/brand/dish-coastal-curry-full-bottom.png" 
+                  alt="Fragrant Coastal Curries" 
+                  className="teaser-settled-dish-img coastal-full-dish-img" 
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            <div className="dish-preview-card text-center-card">
+            {/* Card 2: South Traditions */}
+            <div className="dish-preview-card text-center-card teaser-heritage-card">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">South Traditions</span>
                 <h4 className="dish-name-heading">Golden Crispy Dosas & Chutneys</h4>
                 <p className="dish-name-desc">Cast-iron seasoned crisps, fresh fermented batters, and roasted gram chutneys.</p>
               </div>
+              <div className="teaser-dish-bottom-anchor">
+                <img 
+                  src="/brand/dish-south-dosa.png" 
+                  alt="Golden Crispy Dosas & Chutneys" 
+                  className="teaser-settled-dish-img dosa-dish-img" 
+                  loading="lazy"
+                />
+              </div>
             </div>
 
-            <div className="dish-preview-card text-center-card">
+            {/* Card 3: Deccani Spice */}
+            <div className="dish-preview-card text-center-card teaser-heritage-card">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">Deccani Spice</span>
                 <h4 className="dish-name-heading">Slow-Fire Dum Biryani</h4>
                 <p className="dish-name-desc">Dough-sealed handis, saffron strands, aromatic spices, and tender long-grain rice.</p>
+              </div>
+              <div className="teaser-dish-bottom-anchor biryani-bottom-anchor">
+                <img 
+                  src="/brand/dish-deccani-biryani.png" 
+                  alt="Slow-Fire Dum Biryani" 
+                  className="teaser-settled-dish-img biryani-dish-img" 
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -289,35 +304,86 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           flex-wrap: nowrap;
         }
 
-        /* Transition Card / Capsule Image between the text */
+        /* Transition Card / Capsule Image between the text - Pure Crystal Liquid Glass (Zero Yellow Borders) */
         .food-word-capsule {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: clamp(56px, 7.8vw, 88px);
-          height: clamp(36px, 4.8vw, 56px);
-          margin: 0 5px;
+          width: clamp(62px, 8.4vw, 94px);
+          height: clamp(38px, 5.2vw, 58px);
+          margin: 0 7px;
           border-radius: 9999px;
-          background: #FFFFFF;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
-          border: 2.5px solid #F5B700;
+          background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 60%, rgba(255, 255, 255, 0.05) 100%);
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          border: 1.5px solid rgba(255, 255, 255, 0.65);
+          outline: none;
+          box-shadow: 
+            0 12px 28px rgba(0, 0, 0, 0.12),
+            0 4px 10px rgba(0, 0, 0, 0.06),
+            inset 0 2px 6px rgba(255, 255, 255, 0.8),
+            inset 0 -2px 6px rgba(0, 0, 0, 0.06);
           overflow: hidden;
           vertical-align: middle;
-          transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease;
+          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
           cursor: pointer;
           flex-shrink: 0;
+          position: relative;
+        }
+
+        /* Liquid Glass Specular Reflection Highlight (Upper Sheen Layer) */
+        .food-word-capsule::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 60%);
+          pointer-events: none;
+          z-index: 4;
+        }
+
+        /* Pure Crystal Inset Glass Refraction */
+        .food-word-capsule::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.45);
+          pointer-events: none;
+          z-index: 3;
         }
 
         .food-word-capsule:hover {
-          transform: scale(1.1) rotate(2deg);
-          box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+          transform: scale(1.12) rotate(2deg);
+          border-color: rgba(255, 255, 255, 0.95);
+          outline: none;
+          box-shadow: 
+            0 18px 36px rgba(0, 0, 0, 0.18),
+            0 6px 14px rgba(0, 0, 0, 0.08),
+            inset 0 3px 8px rgba(255, 255, 255, 0.95);
         }
 
         .capsule-dish-img {
+          position: absolute;
+          inset: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
+          transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .capsule-dish-img.is-active-dish {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+          z-index: 2;
+        }
+
+        .capsule-dish-img.is-hidden-dish {
+          opacity: 0;
+          transform: scale(0.85) rotate(-6deg);
+          z-index: 1;
+          pointer-events: none;
         }
 
         /* Supporting Copy - Centered */
@@ -346,23 +412,25 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .master-primary-cta {
           position: relative;
           z-index: 12;
-          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
           padding: 16px 36px;
           border-radius: 9999px;
-          background: #F5B700 !important;
-          background-color: #F5B700 !important;
-          color: #111111 !important;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.78) 0%, rgba(250, 201, 33, 0.58) 60%, rgba(229, 168, 0, 0.70) 100%) !important;
+          color: #181B20 !important;
           font-family: var(--font-heading);
           font-size: 1rem;
-          font-weight: 700;
-          border: 2px solid #E5AA00 !important;
-          box-shadow: 0 8px 24px rgba(245, 183, 0, 0.45);
+          font-weight: 800;
+          border: none !important;
+          backdrop-filter: blur(24px) saturate(190%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+          box-shadow: 0 12px 32px rgba(250, 201, 33, 0.32), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.75), 
+                      inset 0 -2px 4px rgba(180, 130, 0, 0.18);
           cursor: pointer;
-          transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+          transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
         }
 
         .master-primary-cta:hover {
@@ -384,23 +452,25 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .master-secondary-cta {
           position: relative;
           z-index: 12;
-          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 10px;
           padding: 16px 34px;
           border-radius: 9999px;
-          background: #FFFFFF !important;
-          background-color: #FFFFFF !important;
-          color: #111111 !important;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 251, 235, 0.45) 100%) !important;
+          color: #181B20 !important;
           font-family: var(--font-heading);
           font-size: 1rem;
           font-weight: 700;
-          border: 2px solid #111111 !important;
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+          border: none !important;
+          backdrop-filter: blur(24px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.95), 
+                      inset 0 -1.5px 3px rgba(0, 0, 0, 0.03);
           cursor: pointer;
-          transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+          transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
         }
 
         .master-secondary-cta:hover {
@@ -425,19 +495,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .hero-bengaluru-launch-badge {
           position: relative;
           z-index: 12;
-          opacity: 1 !important;
           display: inline-flex;
           align-items: center;
           justify-content: center;
           gap: 9px;
-          background: #FFFFFF !important;
-          background-color: #FFFFFF !important;
-          border: 1.5px solid #F5B700 !important;
-          padding: 8px 18px 8px 14px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 251, 235, 0.48) 100%) !important;
+          border: none !important;
+          padding: 8px 20px 8px 16px;
           border-radius: 9999px;
           margin-top: 26px;
           margin-bottom: 22px;
-          box-shadow: 0 6px 22px rgba(245, 183, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.04);
+          backdrop-filter: blur(20px) saturate(160%) !important;
+          -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+          box-shadow: 0 8px 26px rgba(180, 140, 30, 0.08), 
+                      inset 0 1.5px 2px rgba(255, 255, 255, 0.9), 
+                      inset 0 -1px 2px rgba(0, 0, 0, 0.03);
           transition: transform 0.22s ease, box-shadow 0.22s ease;
         }
 
@@ -651,69 +723,161 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           text-align: center;
         }
 
-        /* 3 Food Dish Preview Cards - Clean Typography Cards */
+        /* 3 Food Dish Preview Cards - Reference Clean White Rounded Cards */
         .teaser-cards-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 28px;
           width: 100%;
+          align-items: stretch;
         }
 
-        .text-center-card {
+        .teaser-heritage-card {
+          position: relative;
           background: #FFFFFF;
-          border-radius: 20px;
-          border: 1.5px solid rgba(245, 183, 0, 0.4);
-          box-shadow: 0 8px 24px rgba(135, 71, 0, 0.08);
-          transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+          border-radius: 28px;
+          border: 1px solid rgba(0, 0, 0, 0.04);
+          box-shadow: 0 16px 36px rgba(135, 71, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
-          padding: 16px;
+          align-items: flex-start;
+          text-align: left;
+          padding: 32px 28px 210px 28px; /* Room for the grand full-bottom dish display */
+          min-height: 420px;
+          overflow: hidden;
+          box-sizing: border-box;
+          cursor: default;
         }
 
-        .text-center-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 16px 36px rgba(245, 183, 0, 0.25);
-          border-color: #F5B700;
+        .teaser-heritage-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 24px 48px rgba(135, 71, 0, 0.12), 0 6px 16px rgba(0, 0, 0, 0.04);
         }
 
-        .text-center-card .dish-card-caption {
-          padding: 24px 20px;
+        .teaser-heritage-card .dish-card-caption {
+          position: relative;
+          z-index: 2;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
+          align-items: flex-start;
+          text-align: left;
+          width: 100%;
         }
 
         .dish-origin-tag {
+          font-family: var(--font-heading);
           font-size: 0.78rem;
-          font-weight: 700;
+          font-weight: 800;
           color: #B58400;
           text-transform: uppercase;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           display: block;
-          margin-bottom: 8px;
-          text-align: center;
+          margin-bottom: 12px;
+          text-align: left;
         }
 
         .dish-name-heading {
           font-family: var(--font-heading);
-          font-size: 1.25rem;
-          font-weight: 700;
+          font-size: clamp(1.22rem, 1.6vw, 1.45rem);
+          font-weight: 800;
           color: #111111;
-          line-height: 1.35;
-          margin: 0 0 10px 0;
-          text-align: center;
+          line-height: 1.3;
+          margin: 0 0 12px 0;
+          text-align: left;
+          letter-spacing: -0.015em;
         }
 
         .dish-name-desc {
           font-family: var(--font-body);
-          font-size: 0.92rem;
+          font-size: 0.94rem;
           color: #666666;
-          line-height: 1.55;
+          line-height: 1.58;
           margin: 0;
-          text-align: center;
+          text-align: left;
+          font-weight: 400;
+        }
+
+        /* ── FULL BOTTOM DISH PRESENTATION ── */
+        .teaser-dish-bottom-anchor {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 220px;
+          z-index: 3;
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          pointer-events: none;
+          overflow: hidden;
+          border-bottom-left-radius: 28px;
+          border-bottom-right-radius: 28px;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .teaser-heritage-card:hover .teaser-dish-bottom-anchor {
+          transform: translateY(-2px);
+        }
+
+        .teaser-settled-dish-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          object-position: right bottom;
+          display: block;
+          user-select: none;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .teaser-heritage-card:hover .teaser-settled-dish-img {
+          transform: scale(1.05);
+        }
+
+        /* Coastal fish handi platter stretches across the full bottom */
+        .coastal-full-bottom-anchor {
+          height: 200px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+        }
+
+        .coastal-full-dish-img {
+          object-fit: cover;
+          object-position: center bottom;
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+
+        /* Dosa and Biryani comfortably settled filling the bottom right corner */
+        .dosa-dish-img {
+          object-fit: contain;
+          object-position: right bottom;
+          width: 95%;
+          height: 195px;
+          filter: drop-shadow(0 14px 24px rgba(90, 40, 0, 0.35)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.20));
+        }
+
+        .biryani-bottom-anchor {
+          height: 275px;
+        }
+
+        .biryani-dish-img {
+          object-fit: contain;
+          object-position: right bottom;
+          width: 110%;
+          max-width: 320px;
+          height: 260px;
+          transform-origin: right bottom;
+          transform: scale(1.15) translate(4%, 3%);
+          filter: drop-shadow(0 16px 28px rgba(90, 40, 0, 0.40)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.22));
+        }
+
+        .teaser-heritage-card:hover .biryani-dish-img {
+          transform: scale(1.22) translate(3%, 2%);
         }
 
         /* ── RESPONSIVE DESIGN ── */
@@ -759,9 +923,28 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             gap: 12px;
           }
           .master-primary-cta, .master-secondary-cta {
-            width: 100%;
-            max-width: 280px;
-          }
+          position: relative;
+          z-index: 12;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 16px 34px;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 251, 235, 0.45) 100%) !important;
+          color: #181B20 !important;
+          font-family: var(--font-heading);
+          font-size: 1rem;
+          font-weight: 700;
+          border: none !important;
+          backdrop-filter: blur(24px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.95), 
+                      inset 0 -1.5px 3px rgba(0, 0, 0, 0.03);
+          cursor: pointer;
+          transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
           .teaser-cards-grid {
             grid-template-columns: 1fr;
           }
