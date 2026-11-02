@@ -17,7 +17,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           </div>
           <h2 className="kitchens-title">Home Kitchens & Certified Cooks</h2>
           <p className="kitchens-desc">
-            We partner with home-food custodians who have perfected their regional heritage over decades. FEAzTO provides food safety certifications, precision kitchen tech, and guaranteed hygiene.
+            We partner with home food custodians who have perfected their regional heritage over decades. FEAzTO provides food safety certifications, precision kitchen tech, and guaranteed hygiene.
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
 
             {/* Description */}
             <p className="card-description">
-              We do not operate commercial cloud kitchens right now. Instead, our team is directly partnering with master home cooks, elderly recipe custodians, and regional culinary creators—equipping them with FSSAI hygiene audits, temperature-calibrated packing, and commercial kitchen pods so their generational recipes can be shared authentically.
+              We do not operate commercial cloud kitchens right now. Instead, our team is directly partnering with master home cooks, elderly recipe custodians, and regional culinary creators—equipping them with FSSAI hygiene audits, temperature calibrated packing, and commercial kitchen pods so their generational recipes can be shared authentically.
             </p>
 
             {/* 3 Value Pillars inside the card */}
@@ -65,7 +65,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
                   <Utensils size={20} />
                 </div>
                 <h4>Zero Commercial Shortcuts</h4>
-                <p>Authentic stone-grinding, slow-fire dum, and generational spice blends preserved as family heirlooms.</p>
+                <p>Authentic stone grinding, slow fire dum, and generational spice blends preserved as family heirlooms.</p>
               </div>
 
               <div className="inner-feature-box">
@@ -81,7 +81,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
                   <HeartHandshake size={20} />
                 </div>
                 <h4>Empowering FoodPreneurs</h4>
-                <p>Dignified revenue-sharing and kitchen technology for home chefs and regional culinary custodians.</p>
+                <p>Dignified revenue sharing and kitchen technology for home chefs and regional culinary custodians.</p>
               </div>
             </div>
 

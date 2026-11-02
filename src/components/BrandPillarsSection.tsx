@@ -23,21 +23,21 @@ export const BrandPillarsSection: React.FC = () => {
       icon: <Flame size={26} fill="currentColor" />,
       title: 'Heirloom Techniques',
       tagline: 'Zero Industrial Pre-Mixes',
-      desc: 'No commercial shortcuts. We mandate slow-fire dum, stone-ground black gram fermentation, and natural cold-pressed oil tempering.'
+      desc: 'No commercial shortcuts. We mandate slow fire dum, stone ground black gram fermentation, and natural cold pressed oil tempering.'
     },
     {
       num: '03',
       icon: <ShieldCheck size={26} fill="currentColor" />,
       title: 'FSSAI Hygiene & Quality Audits',
       tagline: '100% Certified Clean Kitchens',
-      desc: 'Home cooking supported by commercial food safety rigor. Tamper-evident thermal packaging and regular certified kitchen cleanliness audits.'
+      desc: 'Home cooking supported by commercial food safety rigor. Tamper evident thermal packaging and regular certified kitchen cleanliness audits.'
     },
     {
       num: '04',
       icon: <Cpu size={26} fill="currentColor" />,
-      title: 'Cloud-Kitchen Precision',
+      title: 'Cloud Kitchen Precision',
       tagline: 'Sub-Minute Batch Dispatch',
-      desc: 'Real-time kitchen management, calibrated prep-times, and integrated dispatch so food reaches you at peak culinary temperature.'
+      desc: 'Real-time kitchen management, calibrated prep times, and integrated dispatch so food reaches you at peak culinary temperature.'
     },
     {
       num: '05',
@@ -152,7 +152,7 @@ export const BrandPillarsSection: React.FC = () => {
           </div>
           <h2 className="pillars-title">Eat Authentic, Support Home Cooks, Waste Nothing</h2>
           <p className="pillars-subtitle">
-            FEAzTO bridges the emotional warmth of home kitchens with cloud-kitchen operational precision. Here is how our ecosystem protects your food.
+            FEAzTO bridges the emotional warmth of home kitchens with cloud kitchen operational precision. Here is how our ecosystem protects your food.
           </p>
         </div>
 

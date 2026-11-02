@@ -35,7 +35,7 @@ export const HowItWorksSection: React.FC = () => {
       tabIcon: <ShoppingBag size={18} fill="currentColor" strokeWidth={1.5} />,
       badgeText: 'Live Order Placement',
       cardHeading: 'Browse neighborhood kitchens & order fresh heirloom meals.',
-      cardDescription: 'Customer selects authentic regional dishes prepared in limited daily home batches with zero palm oil and pure cold-pressed ingredients.',
+      cardDescription: 'Customer selects authentic regional dishes prepared in limited daily home batches with zero palm oil and pure cold pressed ingredients.',
       statValue: 'Instant',
       statLabel: 'order routed directly to certified local home kitchens',
       footerNote: 'Transparent ingredient transparency, zero artificial coloring, and verified home recipes.',
@@ -49,10 +49,10 @@ export const HowItWorksSection: React.FC = () => {
       tabLabel: 'Home Cook Assigned',
       tabIcon: <ChefHat size={18} fill="currentColor" strokeWidth={1.5} />,
       badgeText: 'Home Chef Preparation',
-      cardHeading: 'Assigned home cook accepts & begins authentic slow-cooking.',
-      cardDescription: 'The neighborhood FoodPreneur starts preparing the batch fresh with stone-ground masalas, cast-iron seasoning, or slow-fire dum handi techniques.',
+      cardHeading: 'Assigned home cook accepts & begins authentic slow cooking.',
+      cardDescription: 'The neighborhood FoodPreneur starts preparing the batch fresh with stone ground masalas, cast iron seasoning, or slow fire dum handi techniques.',
       statValue: 'Fresh to Order',
-      statLabel: 'small-batch home crafted with calibrated hygiene protocols',
+      statLabel: 'small batch home crafted with calibrated hygiene protocols',
       footerNote: 'Each verified home cook is certified for health safety, pristine sanitation, and clean oils.',
       activeAccent: '#FF9E1B',
       bgImage: '/brand/feazto-home-cook-kitchen-boxes.jpg',
@@ -64,11 +64,11 @@ export const HowItWorksSection: React.FC = () => {
       tabLabel: 'Rider Dispatched',
       tabIcon: <Bike size={18} fill="currentColor" strokeWidth={1.5} />,
       badgeText: 'Rider Pickup & Heat Seal',
-      cardHeading: 'Assigned Feazto rider arrives for thermal tamper-proof pickup.',
-      cardDescription: 'Freshly packed meals are sealed in eco-insulated thermal containers to lock in piping-hot steam, fragrant aroma, and crisp textures.',
+      cardHeading: 'Assigned Feazto rider arrives for thermal tamper proof pickup.',
+      cardDescription: 'Freshly packed meals are sealed in eco insulated thermal containers to lock in piping hot steam, fragrant aroma, and crisp textures.',
       statValue: '< 7 Mins',
       statLabel: 'average home pickup once the cook marks preparation ready',
-      footerNote: 'Dedicated temperature-preserving fleet keeping curries hot and dosas crisp.',
+      footerNote: 'Dedicated temperature preserving fleet keeping curries hot and dosas crisp.',
       activeAccent: '#10B981',
       bgImage: '/brand/feazto-rider-wide-hd.png',
       mediaUrl: '' // Add your Step 3 banner or GIF link here
@@ -79,10 +79,10 @@ export const HowItWorksSection: React.FC = () => {
       tabLabel: 'Doorstep Delivery',
       tabIcon: <PackageCheck size={18} fill="currentColor" strokeWidth={1.5} />,
       badgeText: 'Delivered Fresh & Hot',
-      cardHeading: 'Arrives piping-hot at your doorstep ready to nourish.',
+      cardHeading: 'Arrives piping hot at your doorstep ready to nourish.',
       cardDescription: 'Unpack authentic home comfort food with live delivery tracking, direct cook tips, and genuine cultural flavors that comfort your family.',
       statValue: 'Piping Hot',
-      statLabel: 'nourishing home-style meal ready for your dining table',
+      statLabel: 'nourishing home style meal ready for your dining table',
       footerNote: 'Empowering genuine home cooks while delivering nostalgic home flavours.',
       activeAccent: '#3B82F6',
       bgImage: '/brand/feazto-doorstep-handover-delivery.png',
@@ -113,7 +113,7 @@ export const HowItWorksSection: React.FC = () => {
         
         {/* Top Floating Capsule Tag */}
         <div className="how-pill-tag">
-          <span>Real-time journey: From local home kitchens straight to your doorstep.</span>
+          <span>Real time journey: From local home kitchens straight to your doorstep.</span>
         </div>
 
         {/* Master Headline */}
