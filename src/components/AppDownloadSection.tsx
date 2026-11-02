@@ -112,22 +112,12 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
           {/* Center Column: Prominent Phone Mockup */}
           <div className="download-col-center">
-            <div className="preview-phone-device">
-              <div className="preview-screen-inner">
-                <div className="preview-logo-badge">
-                  <img src="/brand/feazto-logo.svg" alt="feazto Logo" />
-                </div>
-                <div className="preview-dish-hero">
-                  <img src="/brand/plate-biryani.png" alt="Dum Biryani" />
-                </div>
-                <div className="preview-welcome-text">
-                  <h4>Food • Culture • Connect</h4>
-                  <p>Authentic Regional Food Discovery</p>
-                </div>
-                <div className="preview-status-pill">
-                  Staged Pilot Release v1.1
-                </div>
-              </div>
+            <div className="preview-phone-device-banner">
+              <img 
+                src="/brand/feazto-login-signup-phone.png" 
+                alt="feazto Mobile App Login and Signup" 
+                className="preview-real-mockup-img"
+              />
             </div>
           </div>
 
@@ -369,73 +359,29 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         .download-col-center {
           display: flex;
           justify-content: center;
-        }
-
-        .preview-phone-device {
-          width: 250px;
-          background: #111111;
-          border-radius: 36px;
-          padding: 10px;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-          border: 3px solid #333333;
-        }
-
-        .preview-screen-inner {
-          background: #FFFFFF;
-          border-radius: 28px;
-          padding: 24px 16px;
-          display: flex;
-          flex-direction: column;
           align-items: center;
-          text-align: center;
-          min-height: 380px;
         }
 
-        .preview-logo-badge img {
-          height: 38px;
-          width: auto;
-          margin-bottom: 24px;
-        }
-
-        .preview-dish-hero {
-          width: 130px;
-          height: 130px;
-          border-radius: 50%;
-          background: #FFF9E6;
+        .preview-phone-device-banner {
+          width: 100%;
+          max-width: 290px;
           display: flex;
-          align-items: center;
           justify-content: center;
-          margin-bottom: 20px;
-          border: 2px solid var(--color-brand-yellow);
+          align-items: center;
+          filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.22));
+          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .preview-dish-hero img {
-          width: 80%;
-          height: 80%;
+        .preview-phone-device-banner:hover {
+          transform: translateY(-6px) scale(1.02);
+        }
+
+        .preview-real-mockup-img {
+          width: 100%;
+          height: auto;
+          max-height: 520px;
           object-fit: contain;
-        }
-
-        .preview-welcome-text h4 {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: var(--color-ink-black);
-          margin-bottom: 4px;
-        }
-
-        .preview-welcome-text p {
-          font-size: 0.75rem;
-          color: var(--color-text-secondary);
-          margin-bottom: 20px;
-        }
-
-        .preview-status-pill {
-          font-size: 0.7rem;
-          font-weight: 700;
-          background: var(--color-brand-yellow-subtle);
-          color: #8C6500;
-          padding: 4px 12px;
-          border-radius: 9999px;
-          margin-top: auto;
+          display: block;
         }
 
         /* Right QR Panel */
