@@ -8,6 +8,7 @@ import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { BookACookSection } from '../components/BookACookSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
 import { AppDownloadSection } from '../components/AppDownloadSection';
+import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
 
 interface HomePageProps {
   navigate: (route: string) => void;
@@ -41,7 +42,10 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       {/* 12. Partner and kitchen invitation */}
       <PartnerInvitation navigate={navigate} />
 
-      {/* 13. Dedicated app-download section with QR (Reference G) */}
+      {/* 13. feazto Surplus & Zero Food Waste Engine (Regional Home Food Only) */}
+      <FeaztoSurplusSection navigate={navigate} />
+
+      {/* 14. Dedicated app-download section with QR (Reference G) */}
       <AppDownloadSection navigate={navigate} />
     </main>
   );
