@@ -148,11 +148,11 @@ export const BrandPillarsSection: React.FC = () => {
         <div className="pillars-header">
           <div className="badge-tag">
             <Sparkles size={13} />
-            <span>Why Choose FEAzTO</span>
+            <span>Why Choose feazto</span>
           </div>
           <h2 className="pillars-title">Eat Authentic, Support Home Cooks, Waste Nothing</h2>
           <p className="pillars-subtitle">
-            FEAzTO bridges the emotional warmth of home kitchens with cloud kitchen operational precision. Here is how our ecosystem protects your food.
+            feazto bridges the emotional warmth of home kitchens with cloud kitchen operational precision. Here is how our ecosystem protects your food.
           </p>
         </div>
 

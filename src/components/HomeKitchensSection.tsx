@@ -17,7 +17,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
           </div>
           <h2 className="kitchens-title">Home Kitchens & Certified Cooks</h2>
           <p className="kitchens-desc">
-            We partner with home food custodians who have perfected their regional heritage over decades. FEAzTO provides food safety certifications, precision kitchen tech, and guaranteed hygiene.
+            We partner with home food custodians who have perfected their regional heritage over decades. feazto provides food safety certifications, precision kitchen tech, and guaranteed hygiene.
           </p>
         </div>
 

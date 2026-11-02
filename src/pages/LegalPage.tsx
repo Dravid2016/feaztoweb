@@ -16,7 +16,7 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
             {isPrivacy ? 'Privacy & Data Protection Policy' : 'Terms & Conditions of Service'}
           </h1>
           <p className="page-hero-subtitle">
-            Last Updated: 16 October 2026 • Governing FEAzTO Technologies Pvt. Ltd. operations in India.
+            Last Updated: 16 October 2026 • Governing feazto Technologies Pvt. Ltd. operations in India.
           </p>
         </div>
       </section>
@@ -28,7 +28,7 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
               <>
                 <h2>1. Commitment to Privacy</h2>
                 <p>
-                  FEAzTO Technologies Pvt. Ltd. respects user confidentiality and digital integrity. This policy governs how customer contact information, delivery geolocation, and FoodPreneur profile metrics are collected and secured.
+                  feazto Technologies Pvt. Ltd. respects user confidentiality and digital integrity. This policy governs how customer contact information, delivery geolocation, and FoodPreneur profile metrics are collected and secured.
                 </p>
 
                 <h2>2. Information We Collect</h2>
@@ -55,12 +55,12 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
               <>
                 <h2>1. Acceptance of Terms</h2>
                 <p>
-                  By accessing the FEAzTO web portal, submitting waitlist interest, or interacting with our mobile applications, you agree to be bound by these Terms of Service.
+                  By accessing the feazto web portal, submitting waitlist interest, or interacting with our mobile applications, you agree to be bound by these Terms of Service.
                 </p>
 
                 <h2>2. Food Safety & Kitchen Standards</h2>
                 <p>
-                  FEAzTO acts as a food discovery and cloud kitchen enablement platform. All participating FoodPreneurs and cloud kitchen pods adhere to mandatory FSSAI food hygiene certifications. Ingredients are verified for absence of artificial chemical colors and unauthorized preservatives.
+                  feazto acts as a food discovery and cloud kitchen enablement platform. All participating FoodPreneurs and cloud kitchen pods adhere to mandatory FSSAI food hygiene certifications. Ingredients are verified for absence of artificial chemical colors and unauthorized preservatives.
                 </p>
 
                 <h2>3. Pilot Scope & Availability</h2>
@@ -70,7 +70,7 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
 
                 <h2>4. Intellectual Property</h2>
                 <p>
-                  The FEAzTO brand, official logo artwork, "FOOD • CULTURE • CONNECT" tagline, custom cultural imagery, and platform code are proprietary assets of FEAzTO Technologies Pvt. Ltd.
+                  The feazto brand, official logo artwork, "FOOD • CULTURE • CONNECT" tagline, custom cultural imagery, and platform code are proprietary assets of feazto Technologies Pvt. Ltd.
                 </p>
               </>
             )}

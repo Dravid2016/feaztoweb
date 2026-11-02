@@ -19,11 +19,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           <div className="footer-brand-column">
             <img 
               src="/brand/feazto-logo.svg" 
-              alt="FEAzTO — Food • Culture • Connect" 
+              alt="feazto — Food • Culture • Connect" 
               className="footer-logo-img"
             />
             <p className="footer-brand-mission">
-              FEAzTO is a food discovery and home kitchen ecosystem connecting passionate FoodPreneurs with customers seeking authentic regional culinary provenance, crafted with cloud kitchen precision.
+              feazto is a food discovery and home kitchen ecosystem connecting passionate FoodPreneurs with customers seeking authentic regional culinary provenance, crafted with cloud kitchen precision.
             </p>
             <div className="footer-tagline-badge">
               <Sparkles size={14} className="sparkle-icon" />
@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             <div className="footer-col">
               <h4 className="footer-col-title">Community & Tech</h4>
               <ul className="footer-col-list">
-                <li><button type="button" onClick={() => handleNavClick('/partners')} className="footer-link">Partner With FEAzTO</button></li>
+                <li><button type="button" onClick={() => handleNavClick('/partners')} className="footer-link">Partner With feazto</button></li>
                 <li><button type="button" onClick={() => handleNavClick('/partners')} className="footer-link">Become a FoodPreneur</button></li>
                 <li><button type="button" onClick={() => handleNavClick('/download')} className="footer-link">Download Customer App</button></li>
                 <li><button type="button" onClick={() => handleNavClick('/download')} className="footer-link">Cloud Kitchen Partner App</button></li>
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         {/* Bottom Legal Row */}
         <div className="footer-bottom-row">
           <div className="footer-copy-left">
-            <p>© {new Date().getFullYear()} FEAzTO Technologies Pvt. Ltd. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} feazto Technologies Pvt. Ltd. All rights reserved.</p>
             <p className="footer-subtext">Brand positioning: Home food with cloud kitchen precision.</p>
           </div>
 

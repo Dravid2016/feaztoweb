@@ -20,7 +20,7 @@ export const ContactPage: React.FC = () => {
     <div className="secondary-page contact-page">
       <section className="page-hero-banner">
         <div className="container">
-          <h1 className="page-hero-title">Contact the FEAzTO Team</h1>
+          <h1 className="page-hero-title">Contact the feazto Team</h1>
           <p className="page-hero-subtitle">
             Have questions about our culinary heritage, pilot kitchen rollout, or enterprise catering? We are here to help.
           </p>
@@ -33,7 +33,7 @@ export const ContactPage: React.FC = () => {
           <div className="contact-info-pane">
             <h2 className="contact-subhead">Headquarters & Operations</h2>
             <p className="contact-lead-text">
-              FEAzTO Technologies operates regional culinary hubs with central food safety and quality testing facilities.
+              feazto Technologies operates regional culinary hubs with central food safety and quality testing facilities.
             </p>
 
             <div className="contact-channels-list">
@@ -41,7 +41,7 @@ export const ContactPage: React.FC = () => {
                 <MapPin size={22} className="ch-icon" />
                 <div>
                   <strong>Registered Office</strong>
-                  <p>FEAzTO Technologies Pvt. Ltd.<br />Bengaluru Central, Karnataka 560001, India</p>
+                  <p>feazto Technologies Pvt. Ltd.<br />Bengaluru Central, Karnataka 560001, India</p>
                 </div>
               </div>
 

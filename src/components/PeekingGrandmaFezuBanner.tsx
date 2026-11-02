@@ -173,7 +173,7 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
 
         {/* 3. CENTRAL PHONE BANNER (z-index 20 IN FRONT OF GRANDMA & FEZU - Completely covers them when they hide in) */}
         <div id="phone-banner" ref={phoneRef} className="feazto-layer layer-phone">
-          <img src="/brand/peeking/phone-banner.webp" alt="FEAzTO Mobile App - Taste Real India" />
+          <img src="/brand/peeking/phone-banner.webp" alt="feazto Mobile App - Taste Real India" />
         </div>
       </div>
     </div>

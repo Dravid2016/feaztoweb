@@ -15,7 +15,7 @@ export const DownloadPage: React.FC<DownloadPageProps> = ({ navigate }) => {
             <Sparkles size={13} />
             <span>Staged Mobile Suite</span>
           </div>
-          <h1 className="page-hero-title">FEAzTO Mobile Applications</h1>
+          <h1 className="page-hero-title">feazto Mobile Applications</h1>
           <p className="page-hero-subtitle">
             An integrated four-part ecosystem: Customer Food Discovery, Cloud Kitchen Kitchen-OS, Delivery Partner, and Operations Dispatch.
           </p>

@@ -54,8 +54,8 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       department: 'Sales & Expansion',
       location: 'Bengaluru / Kochi / Chennai',
       type: 'On-Field & Hybrid',
-      tagline: 'Lead the 0 to 1 launch of FEAzTO neighborhood home kitchen clusters across new cities.',
-      description: 'We are looking for a relentless operator and ground launcher who thrives on turning unknown territories into vibrant FEAzTO ecosystems. Launching a new city is an intense, high impact mission — and you will own it end to end.',
+      tagline: 'Lead the 0 to 1 launch of feazto neighborhood home kitchen clusters across new cities.',
+      description: 'We are looking for a relentless operator and ground launcher who thrives on turning unknown territories into vibrant feazto ecosystems. Launching a new city is an intense, high impact mission — and you will own it end to end.',
       whatYoullDo: [
         'Map out high-density residential and culinary zones to identify verified home cook clusters.',
         'Onboard anchor home chefs and certified FoodPreneurs with customized kitchen setup assistance.',
@@ -103,7 +103,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       department: 'Marketing',
       location: 'Bengaluru / Remote',
       type: 'Hybrid',
-      tagline: 'Tell heartwarming food stories and make FEAzTO a culturally beloved household name.',
+      tagline: 'Tell heartwarming food stories and make feazto a culturally beloved household name.',
       description: 'You are 50% creative storyteller and 50% analytical growth hacker. From shooting behind-the-scenes handi simmering videos to writing viral WhatsApp copy and running high-ROI localized ads.',
       whatYoullDo: [
         'Visit neighborhood home kitchens to capture cinematic, mouth-watering reels and cook stories.',
@@ -129,7 +129,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       tagline: 'Engineer hyper-responsive real time dispatch, live tracking, and cook portals.',
       description: 'Build the foundational technology connecting hungry customers with verified home kitchens and temperature-controlled delivery riders in real time.',
       whatYoullDo: [
-        'Architect responsive web and mobile interfaces for the FEAzTO customer and partner apps.',
+        'Architect responsive web and mobile interfaces for the feazto customer and partner apps.',
         'Implement real time order routing, rider dispatch telemetry, and cook preparation timers.',
         'Optimize Core Web Vitals, app bundle sizes, and offline-first capabilities for low-bandwidth areas.'
       ],
@@ -827,7 +827,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
 
               <div>
                 <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#374151', marginBottom: '8px' }}>
-                  Why do you want to join FEAzTO? *
+                  Why do you want to join feazto? *
                 </label>
                 <textarea 
                   rows={4}

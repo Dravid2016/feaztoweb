@@ -47,11 +47,11 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           type="button"
           onClick={() => handleNavClick('/')} 
           className="brand-pill-island"
-          aria-label="FEAzTO Home"
+          aria-label="feazto Home"
         >
           <img 
             src="/brand/feazto-logo.svg" 
-            alt="FEAzTO — Food • Culture • Connect" 
+            alt="feazto — Food • Culture • Connect" 
             className="brand-logo-img"
           />
         </button>
@@ -124,11 +124,11 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
                 type="button"
                 onClick={() => handleNavClick('/')}
                 className="mobile-drawer-brand-btn"
-                aria-label="FEAzTO Home"
+                aria-label="feazto Home"
               >
                 <img 
                   src="/brand/feazto-logo.svg" 
-                  alt="FEAzTO Logo" 
+                  alt="feazto Logo" 
                   style={{ height: '32px', width: 'auto' }} 
                 />
               </button>
@@ -163,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
                 onClick={() => handleNavClick('/download')}
                 className="btn btn-yellow btn-full-width"
               >
-                <span>Get FEAzTO App</span>
+                <span>Get feazto App</span>
                 <ArrowRight size={16} />
               </button>
               <p className="mobile-copy-tagline">The taste of home, wherever life takes you.</p>

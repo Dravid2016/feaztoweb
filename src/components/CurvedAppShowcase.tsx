@@ -16,7 +16,7 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
           </div>
 
           <h2 className="plenti-master-headline">
-            FEAzTO, India's First Home-Kitchen & Regional Food Ecosystem
+            feazto, India's First Home-Kitchen & Regional Food Ecosystem
           </h2>
 
           <p className="plenti-master-subcopy">
@@ -52,12 +52,12 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
           </div>
         </div>
 
-        {/* Real FEAzTO Mobile Model Placed Overlapping the Curved Boundary */}
+        {/* Real feazto Mobile Model Placed Overlapping the Curved Boundary */}
         <div className="plenti-phone-wrapper">
           <div className="plenti-phone-model-container">
             <img 
               src="/brand/feazto-mobile-banner.png" 
-              alt="FEAzTO Mobile App - Taste Real India" 
+              alt="feazto Mobile App - Taste Real India" 
               className="feazto-phone-device-img" 
             />
             {/* Soft Ambient Glow matching the Plenti hero lighting */}

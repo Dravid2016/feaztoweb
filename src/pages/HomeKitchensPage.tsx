@@ -16,7 +16,7 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = ({ navigate }) 
           </div>
           <h1 className="page-hero-title">The FoodPreneur Ecosystem</h1>
           <p className="page-hero-subtitle">
-            Meet the regional culinary custodians behind FEAzTO. We empower home cooks with commercial food safety protocols, state-of-the-art kitchen pods, and digital logistics.
+            Meet the regional culinary custodians behind feazto. We empower home cooks with commercial food safety protocols, state-of-the-art kitchen pods, and digital logistics.
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = ({ navigate }) 
             </h2>
 
             <p className="card-description">
-              FEAzTO is pioneering an authentic home-chef ecosystem rather than run-of-the-mill industrial dark kitchens. We are actively conducting kitchen audits, recipe documentation, and onboarding master regional custodians. Kitchen pods will go live progressively across pilot zones.
+              feazto is pioneering an authentic home-chef ecosystem rather than run-of-the-mill industrial dark kitchens. We are actively conducting kitchen audits, recipe documentation, and onboarding master regional custodians. Kitchen pods will go live progressively across pilot zones.
             </p>
 
             <div className="card-pillars-grid">

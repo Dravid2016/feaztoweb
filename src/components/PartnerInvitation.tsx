@@ -37,7 +37,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
               </div>
               <div className="benefit-badge">
                 <Cpu size={18} />
-                <span>FEAzTO Kitchen OS & Order Tablet</span>
+                <span>feazto Kitchen OS & Order Tablet</span>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
                 onClick={() => navigate('/partners')}
                 className="btn btn-primary"
               >
-                <span>Partner With FEAzTO</span>
+                <span>Partner With feazto</span>
                 <ArrowRight size={16} />
               </button>
             </div>

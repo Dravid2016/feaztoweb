@@ -26,7 +26,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           <div className="download-col-left">
             <div className="badge-tag">
               <Sparkles size={13} />
-              <span>FEAzTO Pilot Testing</span>
+              <span>feazto Pilot Testing</span>
             </div>
 
             <h2 className="download-title">
@@ -34,7 +34,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             </h2>
 
             <p className="download-lead">
-              The FEAzTO Customer App is currently in exclusive staged pilot rollout. Reserve your priority invitation to get early access to curated regional kitchens and seasonal feasts.
+              The feazto Customer App is currently in exclusive staged pilot rollout. Reserve your priority invitation to get early access to curated regional kitchens and seasonal feasts.
             </p>
 
             {!registered ? (
@@ -115,7 +115,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             <div className="preview-phone-device">
               <div className="preview-screen-inner">
                 <div className="preview-logo-badge">
-                  <img src="/brand/feazto-logo.svg" alt="FEAzTO Logo" />
+                  <img src="/brand/feazto-logo.svg" alt="feazto Logo" />
                 </div>
                 <div className="preview-dish-hero">
                   <img src="/brand/plate-biryani.png" alt="Dum Biryani" />
@@ -178,7 +178,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
               <h4 className="qr-title">Scan on Mobile</h4>
               <p className="qr-desc">
-                Open your smartphone camera to scan and open the FEAzTO pilot registration on your mobile browser instantly.
+                Open your smartphone camera to scan and open the feazto pilot registration on your mobile browser instantly.
               </p>
 
               <div className="qr-verified-tag">

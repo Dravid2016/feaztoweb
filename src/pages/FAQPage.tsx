@@ -26,7 +26,7 @@ export const FAQPage: React.FC<FAQPageProps> = ({ navigate }) => {
           </div>
           <h1 className="page-hero-title">Frequently Asked Questions</h1>
           <p className="page-hero-subtitle">
-            Grounded answers regarding FEAzTO’s mission, food discovery model, FoodPreneur standards, and app release roadmap.
+            Grounded answers regarding feazto’s mission, food discovery model, FoodPreneur standards, and app release roadmap.
           </p>
         </div>
       </section>

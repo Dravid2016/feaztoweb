@@ -40,7 +40,7 @@ export const FoodStoriesSection: React.FC<FoodStoriesSectionProps> = ({ navigate
           </div>
           <h2 className="stories-title">Food Stories from the Soil</h2>
           <p className="stories-subtitle">
-            Deep dive into regional culinary history, micro-seasonality, and the cultural traditions behind every FEAzTO recipe.
+            Deep dive into regional culinary history, micro-seasonality, and the cultural traditions behind every feazto recipe.
           </p>
         </div>
 

@@ -159,7 +159,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         </div>
       </div>
 
-      {/* Showcase with Running Yellow Heritage Cards Stream Flanking the FEAzTO Mobile Banner */}
+      {/* Showcase with Running Yellow Heritage Cards Stream Flanking the feazto Mobile Banner */}
       <div className="plenti-stage-showcase-wrapper">
 
         {/* 1. Upper Scrolling Carousel (10 distinct dish varieties running left behind phone) */}
@@ -447,21 +447,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             {/* 1. FEAZTO Mobile Banner (Ghee Podi Masala Dosa) */}
             <img 
               src="/brand/feazto-dosa-mobile-banner.png" 
-              alt="FEAzTO Mobile App - Ghee Podi Masala Dosa" 
+              alt="feazto Mobile App - Ghee Podi Masala Dosa" 
               className={`feazto-device-img feazto-dosa-banner ${activeTab === 'feazto' ? 'is-active-banner' : 'is-hidden-banner'}`}
             />
 
             {/* 2. Book a cook Mobile Banner (Chef Rajeshwari Ammsl - Tanjore Cuisine) */}
             <img 
               src="/brand/feazto-bookacook-mobile-banner.png" 
-              alt="FEAzTO Book a Cook Mobile App - Chef Rajeshwari Ammsl" 
+              alt="feazto Book a Cook Mobile App - Chef Rajeshwari Ammsl" 
               className={`feazto-device-img feazto-bookacook-banner ${activeTab === 'book' ? 'is-active-banner' : 'is-hidden-banner'}`}
             />
 
             {/* 3. Carefe Mobile Banner (Healthy Menu with Cold-Pressed Juice & Artisan Coffee) */}
             <img 
               src="/brand/feazto-carefe-mobile-banner.png" 
-              alt="FEAzTO Carefe Mobile App - Healthy Organic Juice & Artisanal Coffee" 
+              alt="feazto Carefe Mobile App - Healthy Organic Juice & Artisanal Coffee" 
               className={`feazto-device-img feazto-carefe-banner ${activeTab === 'carefe' ? 'is-active-banner' : 'is-hidden-banner'}`}
             />
 

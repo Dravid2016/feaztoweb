@@ -23,7 +23,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
               </h2>
 
               <p className="book-cook-lead">
-                Celebrate cultural festivals, family pujas, and private culinary gatherings with a vetted FEAzTO FoodPreneur preparing heritage dishes in your home kitchen.
+                Celebrate cultural festivals, family pujas, and private culinary gatherings with a vetted feazto FoodPreneur preparing heritage dishes in your home kitchen.
               </p>
 
               <div className="pilot-features-list">
@@ -75,7 +75,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
                   <div className="fallback-inner">
                     <div className="fallback-badge">
                       <Sparkles size={16} />
-                      <span>FEAzTO Private Feasts</span>
+                      <span>feazto Private Feasts</span>
                     </div>
                     <h3>Culinary Heritage in Your Home</h3>
                     <p>Experience the warmth of unhurried traditional cooking, slow ground spices, and generational wisdom brought straight to your dining table.</p>

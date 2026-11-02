@@ -27,9 +27,9 @@ export const PartnersPage: React.FC = () => {
             <Sparkles size={13} />
             <span>Co Create Culinary Wealth</span>
           </div>
-          <h1 className="page-hero-title">Partner with FEAzTO</h1>
+          <h1 className="page-hero-title">Partner with feazto</h1>
           <p className="page-hero-subtitle">
-            Whether you are a seasoned home cook with secret family recipes or a cloud kitchen operator seeking verified regional brands, FEAzTO provides the tools for lasting success.
+            Whether you are a seasoned home cook with secret family recipes or a cloud kitchen operator seeking verified regional brands, feazto provides the tools for lasting success.
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export const PartnersPage: React.FC = () => {
                 <Building2 size={24} fill="currentColor" />
               </div>
               <h3>For Cloud Kitchen Infrastructure Operators</h3>
-              <p>Monetize underutilized commercial cooking space by hosting authenticated FEAzTO FoodPreneur batches during off peak hours with standardized SOPs and telemetry.</p>
+              <p>Monetize underutilized commercial cooking space by hosting authenticated feazto FoodPreneur batches during off peak hours with standardized SOPs and telemetry.</p>
               <ul className="track-points">
                 <li><CheckCircle2 size={16} /> Predictable Guaranteed Utilization</li>
                 <li><CheckCircle2 size={16} /> High Hygiene Standards & Oversight</li>
@@ -176,7 +176,7 @@ export const PartnersPage: React.FC = () => {
                   <CheckCircle2 size={44} className="check-success-icon" />
                   <h3>Application Successfully Submitted!</h3>
                   <p>
-                    Thank you, {partnerForm.name}. Your partner interest profile for FEAzTO {partnerType === 'cook' ? 'FoodPreneur' : 'Cloud Kitchen'} has been recorded. Our regional operations team will reach out within 2 business days for document verification.
+                    Thank you, {partnerForm.name}. Your partner interest profile for feazto {partnerType === 'cook' ? 'FoodPreneur' : 'Cloud Kitchen'} has been recorded. Our regional operations team will reach out within 2 business days for document verification.
                   </p>
                 </div>
               )}

@@ -17,7 +17,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
             <div className="story-content-col-centered">
               <div className="badge-tag">
                 <Sparkles size={13} />
-                <span>The Soul of FEAzTO</span>
+                <span>The Soul of feazto</span>
               </div>
 
               <h2 className="story-headline">
@@ -30,7 +30,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
               </p>
 
               <p className="story-body-p">
-                FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
+                feazto was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
               </p>
 
               {/* Pillars List - Centered Grid */}

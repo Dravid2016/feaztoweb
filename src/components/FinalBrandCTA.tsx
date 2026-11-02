@@ -47,7 +47,7 @@ export const FinalBrandCTA: React.FC<FinalBrandCTAProps> = ({ navigate }) => {
           <KolamDivider color="#FFD233" variant="continuous" />
 
           <div className="final-brand-tagline-text">
-            <span>FEAzTO — Home food with cloud kitchen precision.</span>
+            <span>feazto — Home food with cloud kitchen precision.</span>
           </div>
         </div>
       </div>

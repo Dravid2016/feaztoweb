@@ -20,7 +20,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
             Preserving Regional Soul in a Fast-Moving World
           </h1>
           <p className="page-hero-subtitle">
-            FEAzTO was conceived to bridge the emotional divide between memories of home food and the realities of modern urban living.
+            feazto was conceived to bridge the emotional divide between memories of home food and the realities of modern urban living.
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                     }}
                   >
                     <Sparkles size={13} style={{ fill: '#FFFFFF' }} />
-                    <span>The Soul of FEAzTO</span>
+                    <span>The Soul of feazto</span>
                   </div>
 
                   <h2 style={{
@@ -90,7 +90,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                     maxWidth: '820px',
                     margin: '0 auto 36px auto'
                   }}>
-                    FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
+                    feazto was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
                   </p>
 
                   {/* 3 Pillars in frosted translucent cards */}
@@ -214,15 +214,15 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
 
             <div className="quote-callout-box">
               <p>“We don’t need faster food. We need deeper food. Recipes that remember where they came from.”</p>
-              <span>— FEAzTO Founding Principle</span>
+              <span>— feazto Founding Principle</span>
             </div>
 
-            <h2 className="article-section-title">The Birth of FEAzTO: Food • Culture • Connect</h2>
+            <h2 className="article-section-title">The Birth of feazto: Food • Culture • Connect</h2>
             <p className="article-p">
               We asked a foundational question: What if we could give master home cooks the precision, hygiene compliance, and technology of a world-class cloud kitchen, while keeping their recipes completely uncompromised?
             </p>
             <p className="article-p">
-              That is FEAzTO. We provide certified FoodPreneurs with audited cloud kitchen infrastructure, raw spice sourcing, and digital ordering platforms so they can focus on doing what they love: creating honest food.
+              That is feazto. We provide certified FoodPreneurs with audited cloud kitchen infrastructure, raw spice sourcing, and digital ordering platforms so they can focus on doing what they love: creating honest food.
             </p>
 
             <div className="values-grid">

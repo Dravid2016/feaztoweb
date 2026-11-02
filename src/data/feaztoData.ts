@@ -296,7 +296,7 @@ export const KITCHEN_STORIES: KitchenStory[] = [
     locationArea: 'BTM Layout, Bengaluru',
     signatureDish: 'Gongura Mamsam & Pappu Charu',
     quote: 'Cooking for others is not a business transaction; it is placing your heart on a banana leaf.',
-    story: 'For almost three decades, Padmavathi prepared recipes taught by her grandmother in rural Guntur. Through FEAzTO’s cloud kitchen ecosystem, her authentic spice blends now feed homes across the city without compromising the slow hand-grinding process.'
+    story: 'For almost three decades, Padmavathi prepared recipes taught by her grandmother in rural Guntur. Through feazto’s cloud kitchen ecosystem, her authentic spice blends now feed homes across the city without compromising the slow hand-grinding process.'
   },
   {
     id: 'kitchen-farida',
@@ -307,35 +307,35 @@ export const KITCHEN_STORIES: KitchenStory[] = [
     locationArea: 'Frazer Town, Bengaluru',
     signatureDish: 'Awadhi Yakhni Pulao & Shahi Tukda',
     quote: 'True aroma cannot be manufactured by speed. It needs patience, whole spices, and genuine intentions.',
-    story: 'Farida Begum brought century-old family heirloom spice ratios to Bengaluru. In FEAzTO, she found a tech-enabled partner that respects culinary heritage while providing state-of-the-art hygiene inspection and cold-chain precision.'
+    story: 'Farida Begum brought century-old family heirloom spice ratios to Bengaluru. In feazto, she found a tech-enabled partner that respects culinary heritage while providing state-of-the-art hygiene inspection and cold-chain precision.'
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     category: 'About',
-    question: 'What is FEAzTO and what does the name stand for?',
-    answer: 'FEAzTO is a regional food discovery and home kitchen ecosystem built on the pillars of FOOD • CULTURE • CONNECT. Our mission is to bridge authentic regional culinary traditions and talented FoodPreneurs with modern cloud kitchen precision, hygiene audits, and seamless delivery.'
+    question: 'What is feazto and what does the name stand for?',
+    answer: 'feazto is a regional food discovery and home kitchen ecosystem built on the pillars of FOOD • CULTURE • CONNECT. Our mission is to bridge authentic regional culinary traditions and talented FoodPreneurs with modern cloud kitchen precision, hygiene audits, and seamless delivery.'
   },
   {
     category: 'About',
-    question: 'How is FEAzTO different from conventional food delivery apps?',
-    answer: 'Unlike generic aggregator apps focused on industrial fast-food discounts, FEAzTO focuses on authentic regional provenance, heirloom home recipes, cultural storytelling, and certified FoodPreneurs. Every dish has a documented geographical and culinary origin.'
+    question: 'How is feazto different from conventional food delivery apps?',
+    answer: 'Unlike generic aggregator apps focused on industrial fast-food discounts, feazto focuses on authentic regional provenance, heirloom home recipes, cultural storytelling, and certified FoodPreneurs. Every dish has a documented geographical and culinary origin.'
   },
   {
     category: 'Kitchens',
-    question: 'Who are the FoodPreneurs in the FEAzTO ecosystem?',
-    answer: 'FoodPreneurs are seasoned home cooks, regional culinary custodians, and independent kitchen creators who partner with FEAzTO. We provide them with commercial-grade cloud infrastructure, hygiene compliance support, supply-chain logistics, and digital reach.'
+    question: 'Who are the FoodPreneurs in the feazto ecosystem?',
+    answer: 'FoodPreneurs are seasoned home cooks, regional culinary custodians, and independent kitchen creators who partner with feazto. We provide them with commercial-grade cloud infrastructure, hygiene compliance support, supply-chain logistics, and digital reach.'
   },
   {
     category: 'Kitchens',
-    question: 'How does FEAzTO ensure hygiene and food safety standards?',
+    question: 'How does feazto ensure hygiene and food safety standards?',
     answer: 'Every participating kitchen undergoes strict safety and hygiene audits adhering to FSSAI guidelines. We combine traditional home kitchen warmth with cloud kitchen precision—clean batch monitoring, tamper evident thermal packaging, and vetted ingredients.'
   },
   {
     category: 'App',
-    question: 'Where can I download the FEAzTO mobile application?',
-    answer: 'The FEAzTO Customer App, Cloud Kitchen App, and Rider ecosystem apps are currently in active pilot testing and staged rollout. You can register for early access and priority invitation on our Download page.'
+    question: 'Where can I download the feazto mobile application?',
+    answer: 'The feazto Customer App, Cloud Kitchen App, and Rider ecosystem apps are currently in active pilot testing and staged rollout. You can register for early access and priority invitation on our Download page.'
   },
   {
     category: 'App',

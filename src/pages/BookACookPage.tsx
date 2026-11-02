@@ -28,7 +28,7 @@ export const BookACookPage: React.FC = () => {
           </div>
           <h1 className="page-hero-title">Book a Cook Experience</h1>
           <p className="page-hero-subtitle">
-            An intimate private dining offering currently in controlled pilot phase. Invite an authenticated FEAzTO FoodPreneur to curate an authentic regional feast in your home.
+            An intimate private dining offering currently in controlled pilot phase. Invite an authenticated feazto FoodPreneur to curate an authentic regional feast in your home.
           </p>
         </div>
       </section>
