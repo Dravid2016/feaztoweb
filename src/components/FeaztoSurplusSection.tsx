@@ -213,7 +213,7 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
         .feazto-surplus-section {
           width: 100%;
           padding: 80px 24px 100px 24px;
-          background: #FFFFFF;
+          background: transparent;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -735,3 +735,4 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
 };
 
 export default FeaztoSurplusSection;
+

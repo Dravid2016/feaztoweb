@@ -267,7 +267,7 @@ export const BrandPillarsSection: React.FC = () => {
         .pillars-section {
           padding-top: 100px;
           padding-bottom: 110px;
-          background: linear-gradient(180deg, #FFF3C4 0%, #FEEAA2 50%, #FDE28A 100%);
+          background: transparent;
           position: relative;
           overflow: hidden;
         }
@@ -559,3 +559,4 @@ export const BrandPillarsSection: React.FC = () => {
     </section>
   );
 };
+

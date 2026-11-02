@@ -444,9 +444,7 @@ export const HowItWorksSection: React.FC = () => {
           position: relative;
           width: 100%;
           padding: 100px 24px 120px 24px;
-          background-color: #FAFAFB;
-          background-image: radial-gradient(circle, rgba(0, 0, 0, 0.22) 1.5px, transparent 1.5px);
-          background-size: 26px 26px;
+          background: transparent;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -1119,3 +1117,4 @@ export const HowItWorksSection: React.FC = () => {
 };
 
 export default HowItWorksSection;
+

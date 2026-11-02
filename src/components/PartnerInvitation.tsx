@@ -59,7 +59,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         .partner-invitation-section {
           padding-top: 60px;
           padding-bottom: 80px;
-          background-color: var(--color-warm-white);
+          background: transparent;
         }
 
         .partner-text-block {
@@ -120,3 +120,4 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
     </section>
   );
 };
+

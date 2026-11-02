@@ -531,7 +531,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
       <style>{`
         .plenti-feazto-showcase-section {
           padding: 90px 20px 100px 20px;
-          background: #FFFFFF;
+          background: transparent;
           overflow: hidden;
           position: relative;
           display: flex;
@@ -1927,3 +1927,4 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
     </section>
   );
 };
+

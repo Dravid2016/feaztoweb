@@ -670,7 +670,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── NEXT SECTION: FOOD DISCOVERY TEASER (CENTERED) ── */
         .food-discovery-teaser-section {
           position: relative;
-          background: linear-gradient(180deg, #FFF8E1 0%, #FEF4D1 60%, #FDF0C3 100%);
+          background: transparent;
           padding-top: 40px;
           padding-bottom: 84px;
           z-index: 5;
@@ -959,3 +959,4 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
     </div>
   );
 };
+

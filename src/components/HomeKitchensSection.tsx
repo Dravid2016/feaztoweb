@@ -112,7 +112,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
         .kitchens-section {
           padding-top: 100px;
           padding-bottom: 100px;
-          background: linear-gradient(180deg, #FEEAA2 0%, #FFF8D6 50%, #FFF3C4 100%);
+          background: transparent;
           position: relative;
         }
 
@@ -352,3 +352,4 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
     </section>
   );
 };
+
