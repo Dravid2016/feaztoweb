@@ -5,7 +5,6 @@ import { HomeKitchensSection } from '../components/HomeKitchensSection';
 import { BrandPillarsSection } from '../components/BrandPillarsSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
 import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
-import { BookACookSection } from '../components/BookACookSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
 import { AppDownloadSection } from '../components/AppDownloadSection';
 import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
@@ -35,9 +34,6 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
 
       {/* 8. How feazto works (Documented flow) */}
       <HowItWorksSection />
-
-      {/* 9. Book a Cook (Transparent Pilot Presentation) */}
-      <BookACookSection navigate={navigate} />
 
       {/* 12. Partner and kitchen invitation */}
       <PartnerInvitation navigate={navigate} />
