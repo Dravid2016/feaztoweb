@@ -124,7 +124,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           <div className="download-col-center">
             <div className="center-phone-hero-wrapper">
               <img 
-                src="/brand/feazto-login-signup-phone.png" 
+                src={`/brand/feazto-login-signup-phone.png?v=${Date.now()}`} 
                 alt="feazto Mobile App Login and Signup" 
                 className="center-phone-big-img"
               />
