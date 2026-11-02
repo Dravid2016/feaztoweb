@@ -8,7 +8,6 @@ import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { BookACookSection } from '../components/BookACookSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
 import { AppDownloadSection } from '../components/AppDownloadSection';
-import { FinalBrandCTA } from '../components/FinalBrandCTA';
 
 interface HomePageProps {
   navigate: (route: string) => void;
@@ -44,9 +43,6 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
 
       {/* 13. Dedicated app-download section with QR (Reference G) */}
       <AppDownloadSection navigate={navigate} />
-
-      {/* 14. Final brand CTA */}
-      <FinalBrandCTA navigate={navigate} />
     </main>
   );
 };
