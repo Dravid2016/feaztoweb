@@ -910,39 +910,59 @@ export const HowItWorksSection: React.FC = () => {
           display: flex;
           align-items: flex-start;
           gap: 14px;
-          padding: 18px 20px;
-          border-radius: 18px;
-          background: #FFFDF0;
-          border: 1px solid rgba(250, 201, 33, 0.4);
+          padding: 20px 22px;
+          border-radius: 24px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(254, 249, 215, 0.45) 50%, rgba(250, 201, 33, 0.18) 100%);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.75);
+          box-shadow: 0 10px 28px rgba(250, 201, 33, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(0, 0, 0, 0.04);
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .guarantee-box:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 14px 32px rgba(250, 201, 33, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.95);
         }
 
         .guarantee-sparkle {
           color: #E5A800;
           flex-shrink: 0;
           margin-top: 2px;
+          filter: drop-shadow(0 2px 6px rgba(229, 168, 0, 0.3));
         }
 
         .guarantee-box strong {
           display: block;
-          font-size: 0.9rem;
+          font-size: 0.95rem;
           color: #181B20;
           font-weight: 800;
           margin-bottom: 4px;
+          letter-spacing: -0.01em;
         }
 
         .guarantee-box p {
           margin: 0;
-          font-size: 0.86rem;
-          color: #6B7280;
+          font-size: 0.88rem;
+          color: #4B5563;
           line-height: 1.5;
         }
 
         .modal-stat-card {
-          padding: 22px 24px;
-          border-radius: 20px;
-          background: #F9FAFB;
-          border: 1px solid #E5E7EB;
+          padding: 24px 26px;
+          border-radius: 26px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.75) 0%, rgba(243, 244, 246, 0.5) 100%);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+          border: 1px solid rgba(255, 255, 255, 0.85);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06), inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 2px rgba(0, 0, 0, 0.03);
           margin-bottom: 24px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .modal-stat-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.09), inset 0 1px 2px rgba(255, 255, 255, 1);
         }
 
         .stat-big-val {
