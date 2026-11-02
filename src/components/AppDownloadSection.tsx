@@ -19,109 +19,119 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
   return (
     <section className="app-download-section" id="app-download">
-      <div className="container">
-        {/* Reference G 3-column layout: Left copy & buttons | Center phone | Right QR scan panel */}
-        <div className="download-stage-card">
-          {/* Left Column: Explanatory copy and direct app buttons */}
-          <div className="download-col-left">
-            <div className="badge-tag">
-              <Sparkles size={13} />
-              <span>feazto Pilot Testing</span>
-            </div>
-
-            <h2 className="download-title">
-              Experience Home Food with Cloud Precision.
-            </h2>
-
-            <p className="download-lead">
-              The feazto Customer App is currently in exclusive staged pilot rollout. Reserve your priority invitation to get early access to curated regional kitchens and seasonal feasts.
-            </p>
-
-            {!registered ? (
-              <form onSubmit={handleInterestSubmit} className="download-waitlist-form">
-                <div className="platform-toggle-row">
-                  <label className={`platform-pill ${platform === 'android' ? 'active' : ''}`}>
-                    <input 
-                      type="radio" 
-                      name="platform" 
-                      value="android" 
-                      checked={platform === 'android'}
-                      onChange={() => setPlatform('android')}
-                    />
-                    <span>Android (Play Store)</span>
-                  </label>
-                  <label className={`platform-pill ${platform === 'ios' ? 'active' : ''}`}>
-                    <input 
-                      type="radio" 
-                      name="platform" 
-                      value="ios" 
-                      checked={platform === 'ios'}
-                      onChange={() => setPlatform('ios')}
-                    />
-                    <span>iOS (App Store)</span>
-                  </label>
-                </div>
-
-                <div className="input-btn-group">
-                  <input 
-                    type="email" 
-                    required 
-                    placeholder="Enter your email for invite"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="waitlist-input"
-                  />
-                  <button type="submit" className="btn btn-yellow btn-waitlist-submit">
-                    <span>Reserve Invite</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-              </form>
-            ) : (
-              <div className="waitlist-success-banner">
-                <CheckCircle2 size={24} className="success-icon" />
-                <div>
-                  <strong>You're on the priority pilot list!</strong>
-                  <p>We will email your activation pass as soon as your neighborhood kitchen cluster goes live.</p>
-                </div>
-              </div>
-            )}
-
-            <div className="store-buttons-row">
-              <div className="store-btn-pending" title="Pilot Rollout in Progress">
-                <Play size={18} />
-                <div className="store-btn-text">
-                  <span>GET IT ON</span>
-                  <strong>Google Play (Pilot)</strong>
-                </div>
-              </div>
-
-              <div className="store-btn-pending" title="Pilot Rollout in Progress">
-                <Apple size={20} />
-                <div className="store-btn-text">
-                  <span>Download on the</span>
-                  <strong>App Store (Pilot)</strong>
-                </div>
-              </div>
-            </div>
-
-            <span className="store-status-note">
-              * Official store build undergoing phased internal staging. Staged invite is required for access.
-            </span>
+      <div className="download-full-container">
+        
+        {/* Top Header Row */}
+        <div className="download-header-center">
+          <div className="badge-tag">
+            <Sparkles size={13} />
+            <span>feazto Pilot Testing</span>
           </div>
 
-          {/* Center Column: Prominent Phone Mockup */}
+          <h2 className="download-title">
+            Experience Home Food with Cloud Precision.
+          </h2>
+
+          <p className="download-lead">
+            The feazto Customer App is currently in exclusive staged pilot rollout. Reserve your priority invitation to get early access to curated regional kitchens and seasonal feasts.
+          </p>
+        </div>
+
+        {/* Hero Showcase Area: Centered Big Phone Mockup Flanked by Actions and QR */}
+        <div className="download-showcase-stage">
+          
+          {/* Left Column: Direct store buttons and waitlist form */}
+          <div className="download-col-left">
+            <div className="waitlist-card-wrapper">
+              <h3 className="sub-box-title">Reserve Priority Access</h3>
+              <p className="sub-box-desc">Select your operating system and enter your email for the invitation pass.</p>
+
+              {!registered ? (
+                <form onSubmit={handleInterestSubmit} className="download-waitlist-form">
+                  <div className="platform-toggle-row">
+                    <label className={`platform-pill ${platform === 'android' ? 'active' : ''}`}>
+                      <input 
+                        type="radio" 
+                        name="platform" 
+                        value="android" 
+                        checked={platform === 'android'}
+                        onChange={() => setPlatform('android')}
+                      />
+                      <span>Android (Play Store)</span>
+                    </label>
+                    <label className={`platform-pill ${platform === 'ios' ? 'active' : ''}`}>
+                      <input 
+                        type="radio" 
+                        name="platform" 
+                        value="ios" 
+                        checked={platform === 'ios'}
+                        onChange={() => setPlatform('ios')}
+                      />
+                      <span>iOS (App Store)</span>
+                    </label>
+                  </div>
+
+                  <div className="input-btn-group">
+                    <input 
+                      type="email" 
+                      required 
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="waitlist-input"
+                    />
+                    <button type="submit" className="btn btn-yellow btn-waitlist-submit">
+                      <span>Reserve Invite</span>
+                      <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="waitlist-success-banner">
+                  <CheckCircle2 size={24} className="success-icon" />
+                  <div>
+                    <strong>You're on the priority pilot list!</strong>
+                    <p>We will email your activation pass as soon as your neighborhood kitchen cluster goes live.</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="store-buttons-row">
+                <div className="store-btn-pending" title="Pilot Rollout in Progress">
+                  <Play size={18} />
+                  <div className="store-btn-text">
+                    <span>GET IT ON</span>
+                    <strong>Google Play (Pilot)</strong>
+                  </div>
+                </div>
+
+                <div className="store-btn-pending" title="Pilot Rollout in Progress">
+                  <Apple size={20} />
+                  <div className="store-btn-text">
+                    <span>Download on the</span>
+                    <strong>App Store (Pilot)</strong>
+                  </div>
+                </div>
+              </div>
+
+              <span className="store-status-note">
+                * Official store build undergoing phased internal staging. Staged invite is required for access.
+              </span>
+            </div>
+          </div>
+
+          {/* Center Column: Prominent, Centered, Bigger Phone Banner with Transparent Background */}
           <div className="download-col-center">
-            <div className="preview-phone-device-banner">
+            <div className="center-phone-hero-wrapper">
               <img 
                 src="/brand/feazto-login-signup-phone.png" 
                 alt="feazto Mobile App Login and Signup" 
-                className="preview-real-mockup-img"
+                className="center-phone-big-img"
               />
             </div>
           </div>
 
-          {/* Right Column: QR Code Panel and Scanning Instructions */}
+          {/* Right Column: QR Code Direct Registration */}
           <div className="download-col-right">
             <div className="qr-code-card">
               <div className="qr-header-row">
@@ -129,10 +139,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 <span>Scan to Register</span>
               </div>
 
-              {/* Verified SVG QR Representation */}
               <div className="qr-visual-box">
                 <svg viewBox="0 0 100 100" className="qr-svg-graphic" xmlns="http://www.w3.org/2000/svg">
-                  {/* Position detection markers */}
                   <rect x="5" y="5" width="26" height="26" fill="#111111" rx="4" />
                   <rect x="9" y="9" width="18" height="18" fill="#FFFFFF" rx="2" />
                   <rect x="13" y="13" width="10" height="10" fill="#111111" rx="2" />
@@ -145,7 +153,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                   <rect x="9" y="73" width="18" height="18" fill="#FFFFFF" rx="2" />
                   <rect x="13" y="77" width="10" height="10" fill="#111111" rx="2" />
 
-                  {/* QR Data Matrix Dots */}
                   <rect x="36" y="8" width="6" height="6" fill="#111111" />
                   <rect x="46" y="8" width="6" height="6" fill="#111111" />
                   <rect x="56" y="8" width="6" height="6" fill="#111111" />
@@ -158,11 +165,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                   <rect x="69" y="40" width="6" height="6" fill="#111111" />
                   <rect x="79" y="46" width="6" height="6" fill="#111111" />
                   <rect x="89" y="38" width="6" height="6" fill="#111111" />
-                  <rect x="69" y="69" width="8" height="8" fill="#111111" />
-                  <rect x="83" y="75" width="10" height="6" fill="#111111" />
-                  <rect x="75" y="87" width="6" height="6" fill="#111111" />
-                  <rect x="38" y="72" width="6" height="6" fill="#111111" />
-                  <rect x="48" y="80" width="8" height="6" fill="#111111" />
                 </svg>
               </div>
 
@@ -177,48 +179,90 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               </div>
             </div>
           </div>
+
         </div>
+
       </div>
 
       <style>{`
         .app-download-section {
-          padding-top: 100px;
-          padding-bottom: 100px;
-          background-color: var(--color-pure-white);
+          padding-top: 80px;
+          padding-bottom: 110px;
+          background: transparent;
+          width: 100%;
+          display: flex;
+          justify-content: center;
         }
 
-        .download-stage-card {
-          background: #FAFAFA;
-          border-radius: var(--radius-lg);
-          padding: 64px 48px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
-          display: grid;
-          grid-template-columns: 1.3fr 1fr 1fr;
-          gap: 40px;
+        .download-full-container {
+          max-width: 1220px;
+          width: 100%;
+          padding: 0 24px;
+          display: flex;
+          flex-direction: column;
           align-items: center;
         }
 
+        /* Centered Header Area */
+        .download-header-center {
+          text-align: center;
+          max-width: 720px;
+          margin-bottom: 48px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .download-title {
+          font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+          font-weight: 900;
+          color: var(--color-ink-black);
+          line-height: 1.15;
+          letter-spacing: -0.03em;
+          margin-top: 14px;
+          margin-bottom: 14px;
+        }
+
+        .download-lead {
+          font-size: 1.05rem;
+          color: var(--color-text-secondary);
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        /* 3-Column Showcase Stage: Completely borderless and transparent (zero outer background card) */
+        .download-showcase-stage {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1.15fr 1.35fr 0.95fr;
+          gap: 36px;
+          align-items: center;
+        }
+
+        /* Left Column */
         .download-col-left {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
+          text-align: left;
         }
 
-        .download-title {
-          font-size: clamp(2rem, 3.2vw, 2.7rem);
+        .waitlist-card-wrapper {
+          width: 100%;
+        }
+
+        .sub-box-title {
+          font-size: 1.3rem;
           font-weight: 800;
           color: var(--color-ink-black);
-          line-height: 1.25;
-          margin-top: 18px;
-          margin-bottom: 16px;
+          margin-bottom: 6px;
         }
 
-        .download-lead {
-          font-size: 1rem;
+        .sub-box-desc {
+          font-size: 0.88rem;
           color: var(--color-text-secondary);
-          line-height: 1.6;
-          margin-bottom: 24px;
+          line-height: 1.5;
+          margin-bottom: 20px;
         }
 
         .download-waitlist-form {
@@ -236,11 +280,11 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          padding: 6px 12px;
+          padding: 8px 14px;
           border-radius: var(--radius-capsule);
           background: #FFFFFF;
-          border: 1px solid rgba(0, 0, 0, 0.1);
-          font-size: 0.78rem;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          font-size: 0.8rem;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.2s;
@@ -254,6 +298,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           background: #111111;
           color: #FFFFFF;
           border-color: #111111;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .input-btn-group {
@@ -270,6 +315,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           font-family: inherit;
           font-size: 0.92rem;
           outline: none;
+          background: #FFFFFF;
           transition: border-color 0.2s;
         }
 
@@ -278,8 +324,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         }
 
         .btn-waitlist-submit {
-          padding: 14px 24px;
+          padding: 14px 22px;
           font-size: 0.92rem;
+          white-space: nowrap;
         }
 
         .waitlist-success-banner {
@@ -289,7 +336,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           background: #E8F5E9;
           border: 1px solid #C8E6C9;
           padding: 16px 20px;
-          border-radius: 14px;
+          border-radius: 16px;
           margin-bottom: 24px;
           width: 100%;
         }
@@ -326,16 +373,18 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           gap: 10px;
           background: #111111;
           color: #FFFFFF;
-          padding: 10px 18px;
-          border-radius: 12px;
+          padding: 11px 18px;
+          border-radius: 14px;
           cursor: default;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .store-btn-text {
           display: flex;
           flex-direction: column;
           line-height: 1.1;
+          text-align: left;
         }
 
         .store-btn-text span {
@@ -350,36 +399,39 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         }
 
         .store-status-note {
-          font-size: 0.72rem;
+          display: block;
+          font-size: 0.74rem;
           color: var(--color-text-muted);
           font-style: italic;
+          margin-top: 6px;
         }
 
-        /* Center Phone */
+        /* Center Big Centered Phone */
         .download-col-center {
           display: flex;
           justify-content: center;
           align-items: center;
+          position: relative;
         }
 
-        .preview-phone-device-banner {
+        .center-phone-hero-wrapper {
           width: 100%;
-          max-width: 290px;
+          max-width: 440px;
           display: flex;
           justify-content: center;
           align-items: center;
-          filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.22));
-          transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          filter: drop-shadow(0 28px 65px rgba(0, 0, 0, 0.26));
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .preview-phone-device-banner:hover {
-          transform: translateY(-6px) scale(1.02);
+        .center-phone-hero-wrapper:hover {
+          transform: translateY(-8px) scale(1.03);
         }
 
-        .preview-real-mockup-img {
+        .center-phone-big-img {
           width: 100%;
           height: auto;
-          max-height: 520px;
+          max-height: 640px;
           object-fit: contain;
           display: block;
         }
@@ -392,34 +444,40 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         .qr-code-card {
           background: #FFFFFF;
-          border-radius: var(--radius-lg);
-          padding: 28px;
+          border-radius: 28px;
+          padding: 30px 24px;
           border: 1px solid rgba(0, 0, 0, 0.08);
-          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
           width: 100%;
           max-width: 290px;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .qr-code-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
         }
 
         .qr-header-row {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 0.8rem;
+          font-size: 0.84rem;
           font-weight: 700;
           color: #8C6500;
           margin-bottom: 18px;
         }
 
         .qr-visual-box {
-          width: 150px;
-          height: 150px;
+          width: 154px;
+          height: 154px;
           background: #FAFAFA;
           border: 2px solid rgba(0, 0, 0, 0.06);
-          border-radius: 16px;
+          border-radius: 18px;
           padding: 12px;
           margin-bottom: 16px;
           display: flex;
@@ -434,15 +492,15 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         .qr-title {
           font-size: 1.05rem;
-          font-weight: 700;
+          font-weight: 800;
           color: var(--color-ink-black);
           margin-bottom: 6px;
         }
 
         .qr-desc {
-          font-size: 0.78rem;
+          font-size: 0.8rem;
           color: var(--color-text-secondary);
-          line-height: 1.45;
+          line-height: 1.5;
           margin-bottom: 16px;
         }
 
@@ -450,7 +508,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          font-size: 0.72rem;
+          font-size: 0.74rem;
           font-weight: 600;
           color: #2E7D32;
         }
@@ -462,16 +520,22 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           background: #2E7D32;
         }
 
-        @media (max-width: 1024px) {
-          .download-stage-card {
+        @media (max-width: 1080px) {
+          .download-showcase-stage {
             grid-template-columns: 1fr;
-            padding: 40px 24px;
+            gap: 48px;
           }
           .download-col-center {
+            order: 1;
+          }
+          .download-col-left {
             order: 2;
           }
           .download-col-right {
             order: 3;
+          }
+          .center-phone-hero-wrapper {
+            max-width: 360px;
           }
         }
       `}</style>
