@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
               className="footer-logo-img"
             />
             <p className="footer-brand-mission">
-              FEAzTO is a food discovery and home-kitchen ecosystem connecting passionate FoodPreneurs with customers seeking authentic regional culinary provenance, crafted with cloud-kitchen precision.
+              FEAzTO is a food discovery and home kitchen ecosystem connecting passionate FoodPreneurs with customers seeking authentic regional culinary provenance, crafted with cloud kitchen precision.
             </p>
             <div className="footer-tagline-badge">
               <Sparkles size={14} className="sparkle-icon" />
@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div className="footer-bottom-row">
           <div className="footer-copy-left">
             <p>© {new Date().getFullYear()} FEAzTO Technologies Pvt. Ltd. All rights reserved.</p>
-            <p className="footer-subtext">Brand positioning: Home food with cloud-kitchen precision.</p>
+            <p className="footer-subtext">Brand positioning: Home food with cloud kitchen precision.</p>
           </div>
 
           <div className="footer-legal-links">

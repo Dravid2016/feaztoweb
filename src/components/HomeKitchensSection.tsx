@@ -55,7 +55,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
 
             {/* Description */}
             <p className="card-description">
-              We do not operate commercial cloud kitchens right now. Instead, our team is directly partnering with master home cooks, elderly recipe custodians, and regional culinary creators—equipping them with FSSAI hygiene audits, temperature calibrated packing, and commercial kitchen pods so their generational recipes can be shared authentically.
+              We do not operate commercial cloud kitchens right now. Instead, our team is directly partnering with master home cooks, elderly recipe custodians, and regional culinary creators, equipping them with FSSAI hygiene audits, temperature calibrated packing, and commercial kitchen pods so their generational recipes can be shared authentically.
             </p>
 
             {/* 3 Value Pillars inside the card */}

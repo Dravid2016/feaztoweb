@@ -141,7 +141,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <span className="teaser-eyebrow">EXPLORE REGIONAL FLAVORS</span>
             <h2 className="teaser-title">A world of authentic tastes</h2>
             <p className="teaser-description">
-              From fiery coastal curries to comforting home-style meals, explore the rich and diverse flavours of India — one region at a time.
+              From fiery coastal curries to comforting home style meals, explore the rich and diverse flavours of India — one region at a time.
             </p>
           </div>
 
@@ -152,7 +152,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">Coastal Heritage</span>
                 <h4 className="dish-name-heading">Fragrant Coastal Curries</h4>
-                <p className="dish-name-desc">Slow-simmered kokum, stone-ground coconut pastes, and fresh coastal temperings.</p>
+                <p className="dish-name-desc">Slow-simmered kokum, stone ground coconut pastes, and fresh coastal temperings.</p>
               </div>
               <div className="teaser-dish-bottom-anchor coastal-full-bottom-anchor">
                 <img 

@@ -31,7 +31,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
                   <Calendar size={18} />
                   <div>
                     <strong>Curated Festival Menus</strong>
-                    <p>Authentic multi-course traditional spreads cooked to customary rituals.</p>
+                    <p>Authentic multi course traditional spreads cooked to customary rituals.</p>
                   </div>
                 </div>
 
@@ -78,7 +78,7 @@ export const BookACookSection: React.FC<BookACookSectionProps> = ({ navigate }) 
                       <span>FEAzTO Private Feasts</span>
                     </div>
                     <h3>Culinary Heritage in Your Home</h3>
-                    <p>Experience the warmth of unhurried traditional cooking, slow-ground spices, and generational wisdom brought straight to your dining table.</p>
+                    <p>Experience the warmth of unhurried traditional cooking, slow ground spices, and generational wisdom brought straight to your dining table.</p>
                     <div className="fallback-points">
                       <div className="fb-point">✦ Tailored Regional Menus</div>
                       <div className="fb-point">✦ Handcrafted by Master Cooks</div>

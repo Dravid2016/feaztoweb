@@ -30,7 +30,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
         <div className="container article-container">
           <div className="article-body">
             <div className="article-lead-paragraph">
-              Food is cultural memory held together by smoke, earth, water, and intention. For generations across India, family recipes were never measured in grams; they were gauged by aroma, the hiss of hot cold-pressed mustard oil, and the intuitive touch of mothers and grandmothers.
+              Food is cultural memory held together by smoke, earth, water, and intention. For generations across India, family recipes were never measured in grams; they were gauged by aroma, the hiss of hot cold pressed mustard oil, and the intuitive touch of mothers and grandmothers.
             </div>
 
 
@@ -80,7 +80,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                     maxWidth: '820px',
                     margin: '0 auto 16px auto'
                   }}>
-                    In our rush toward fast urban lives and homogenized delivery portals, we started losing the taste of true home cooking—the slow-stirred lentils, the sun-dried spices ground by hand, the seasonal recipes guarded by generations.
+                    In our rush toward fast urban lives and homogenized delivery portals, we started losing the taste of true home cooking, the slow stirred lentils, the sun dried spices ground by hand, the seasonal recipes guarded by generations.
                   </p>
 
                   <p style={{
@@ -90,7 +90,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                     maxWidth: '820px',
                     margin: '0 auto 36px auto'
                   }}>
-                    FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks—our FoodPreneurs—possess centuries of culinary mastery waiting to be shared.
+                    FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
                   </p>
 
                   {/* 3 Pillars in frosted translucent cards */}
@@ -130,7 +130,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                         Heritage Dum & Stone-Grinding
                       </h4>
                       <p style={{ fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.55, margin: 0 }}>
-                        Preserving unhurried cooking methods without industrial shortcuts or pre-mixes.
+                        Preserving unhurried cooking methods without industrial shortcuts or pre mixes.
                       </p>
                     </div>
 
@@ -193,10 +193,10 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
                         <ShieldCheck size={22} fill="currentColor" />
                       </div>
                       <h4 style={{ fontSize: '1.05rem', fontWeight: 800, color: '#181B20', margin: '0 0 8px 0' }}>
-                        Cloud-Kitchen Precision
+                        Cloud Kitchen Precision
                       </h4>
                       <p style={{ fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: 1.55, margin: 0 }}>
-                        State-of-the-art hygiene compliance, temperature control, and tamper-proof delivery.
+                        State-of-the-art hygiene compliance, temperature control, and tamper proof delivery.
                       </p>
                     </div>
                   </div>
@@ -206,10 +206,10 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
 
             <h2 className="article-section-title">The Commercialization Paradox</h2>
             <p className="article-p">
-              Over the last decade, food delivery revolutionized urban convenience. However, convenience brought an unintended consequence: the industrial homogenization of flavor. Kitchens replaced slow dum cooking with commercial gravies, synthetic food enhancers, and frozen pre-mixes. The dishes had names, but they had lost their soul.
+              Over the last decade, food delivery revolutionized urban convenience. However, convenience brought an unintended consequence: the industrial homogenization of flavor. Kitchens replaced slow dum cooking with commercial gravies, synthetic food enhancers, and frozen pre mixes. The dishes had names, but they had lost their soul.
             </p>
             <p className="article-p">
-              Simultaneously, hundreds of thousands of extraordinarily talented home cooks—recipe custodians with thirty or forty years of unwritten knowledge—remained invisible in the modern digital food economy.
+              Simultaneously, hundreds of thousands of extraordinarily talented home cooks, recipe custodians with thirty or forty years of unwritten knowledge, remained invisible in the modern digital food economy.
             </p>
 
             <div className="quote-callout-box">
@@ -222,7 +222,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
               We asked a foundational question: What if we could give master home cooks the precision, hygiene compliance, and technology of a world-class cloud kitchen, while keeping their recipes completely uncompromised?
             </p>
             <p className="article-p">
-              That is FEAzTO. We provide certified FoodPreneurs with audited cloud-kitchen infrastructure, raw spice sourcing, and digital ordering platforms so they can focus on doing what they love: creating honest food.
+              That is FEAzTO. We provide certified FoodPreneurs with audited cloud kitchen infrastructure, raw spice sourcing, and digital ordering platforms so they can focus on doing what they love: creating honest food.
             </p>
 
             <div className="values-grid">

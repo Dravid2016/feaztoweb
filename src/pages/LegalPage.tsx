@@ -43,7 +43,7 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
 
                 <h2>3. How Information Is Handled</h2>
                 <p>
-                  We never sell customer or partner data to third-party ad brokers. Data is strictly utilized to coordinate food discovery, dispatch orders, maintain FSSAI food-safety records, and deliver pilot notifications.
+                  We never sell customer or partner data to third-party ad brokers. Data is strictly utilized to coordinate food discovery, dispatch orders, maintain FSSAI food safety records, and deliver pilot notifications.
                 </p>
 
                 <h2>4. Data Security & Storage</h2>
@@ -60,7 +60,7 @@ export const LegalPage: React.FC<{ type: 'privacy' | 'terms' }> = ({ type }) => 
 
                 <h2>2. Food Safety & Kitchen Standards</h2>
                 <p>
-                  FEAzTO acts as a food discovery and cloud-kitchen enablement platform. All participating FoodPreneurs and cloud kitchen pods adhere to mandatory FSSAI food hygiene certifications. Ingredients are verified for absence of artificial chemical colors and unauthorized preservatives.
+                  FEAzTO acts as a food discovery and cloud kitchen enablement platform. All participating FoodPreneurs and cloud kitchen pods adhere to mandatory FSSAI food hygiene certifications. Ingredients are verified for absence of artificial chemical colors and unauthorized preservatives.
                 </p>
 
                 <h2>3. Pilot Scope & Availability</h2>

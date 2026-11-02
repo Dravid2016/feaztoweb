@@ -54,8 +54,8 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       department: 'Sales & Expansion',
       location: 'Bengaluru / Kochi / Chennai',
       type: 'On-Field & Hybrid',
-      tagline: 'Lead the 0-to-1 launch of FEAzTO neighborhood home-kitchen clusters across new cities.',
-      description: 'We are looking for a relentless operator and ground launcher who thrives on turning unknown territories into vibrant FEAzTO ecosystems. Launching a new city is an intense, high-impact mission — and you will own it end-to-end.',
+      tagline: 'Lead the 0 to 1 launch of FEAzTO neighborhood home kitchen clusters across new cities.',
+      description: 'We are looking for a relentless operator and ground launcher who thrives on turning unknown territories into vibrant FEAzTO ecosystems. Launching a new city is an intense, high impact mission — and you will own it end to end.',
       whatYoullDo: [
         'Map out high-density residential and culinary zones to identify verified home cook clusters.',
         'Onboard anchor home chefs and certified FoodPreneurs with customized kitchen setup assistance.',
@@ -63,7 +63,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
         'Collaborate with local culinary influencers, WhatsApp community leads, and regional media.'
       ],
       whatYoullBring: [
-        '2–4 years of experience in 0-to-1 territory launches, hyperlocal delivery, or food-tech ops.',
+        '2–4 years of experience in 0 to 1 territory launches, hyperlocal delivery, or food tech ops.',
         'Exceptional persuasion, empathy with home cooks, and ground-level street smarts.',
         'Fluency in regional languages (Tamil, Malayalam, Kannada, or Telugu) alongside English.',
         'Comfort working with metrics, daily targets, and CRM pipeline tracking.'
@@ -84,8 +84,8 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       whatYoullDo: [
         'Conduct hygiene audits and assist home cooks with FSSAI licensing and food safety certifications.',
         'Taste and calibrate heirloom batches to preserve recipe provenance and authentic flavors.',
-        'Set up cold-pressed oil and stone-ground spice procurement channels for home kitchens.',
-        'Train home cooks on thermal tamper-evident packaging and delivery dispatch standards.'
+        'Set up cold pressed oil and stone ground spice procurement channels for home kitchens.',
+        'Train home cooks on thermal tamper evident packaging and delivery dispatch standards.'
       ],
       whatYoullBring: [
         'Degree in Culinary Arts, Food Technology, or 3+ years experience in commercial kitchen operations.',
@@ -126,11 +126,11 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       department: 'Engineering',
       location: 'Bengaluru / Remote',
       type: 'Full-time',
-      tagline: 'Engineer hyper-responsive real-time dispatch, live tracking, and cook portals.',
-      description: 'Build the foundational technology connecting hungry customers with verified home kitchens and temperature-controlled delivery riders in real-time.',
+      tagline: 'Engineer hyper-responsive real time dispatch, live tracking, and cook portals.',
+      description: 'Build the foundational technology connecting hungry customers with verified home kitchens and temperature-controlled delivery riders in real time.',
       whatYoullDo: [
         'Architect responsive web and mobile interfaces for the FEAzTO customer and partner apps.',
-        'Implement real-time order routing, rider dispatch telemetry, and cook preparation timers.',
+        'Implement real time order routing, rider dispatch telemetry, and cook preparation timers.',
         'Optimize Core Web Vitals, app bundle sizes, and offline-first capabilities for low-bandwidth areas.'
       ],
       whatYoullBring: [
@@ -161,7 +161,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
         'Reliable home workspace with stable internet connection.'
       ],
       niceToHave: [
-        'Prior customer support experience in e-commerce, food-tech, or quick-commerce.'
+        'Prior customer support experience in e-commerce, food tech, or quick-commerce.'
       ]
     }
   ];
@@ -185,7 +185,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
     },
     {
       icon: <Zap size={24} fill="currentColor" />,
-      title: 'Rapid 0-to-1 Ownership',
+      title: 'Rapid 0 to 1 Ownership',
       desc: 'No corporate bureaucracy. Run your experiments, test new launch models, and ship meaningful features fast.'
     },
     {

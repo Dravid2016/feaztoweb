@@ -26,11 +26,11 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
               </h2>
 
               <p className="story-lead-p">
-                In our rush toward fast urban lives and homogenized delivery portals, we started losing the taste of true home cooking—the slow-stirred lentils, the sun-dried spices ground by hand, the seasonal recipes guarded by generations.
+                In our rush toward fast urban lives and homogenized delivery portals, we started losing the taste of true home cooking, the slow stirred lentils, the sun dried spices ground by hand, the seasonal recipes guarded by generations.
               </p>
 
               <p className="story-body-p">
-                FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks—our FoodPreneurs—possess centuries of culinary mastery waiting to be shared.
+                FEAzTO was born out of a simple observation: across every city apartment, people crave the authentic taste of their hometowns, while brilliant home cooks, our FoodPreneurs, possess centuries of culinary mastery waiting to be shared.
               </p>
 
               {/* Pillars List - Centered Grid */}
@@ -41,7 +41,7 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
                   </div>
                   <div>
                     <h4 className="pillar-title">Heritage Dum & Stone-Grinding</h4>
-                    <p className="pillar-desc">Preserving unhurried cooking methods without industrial shortcuts or pre-mixes.</p>
+                    <p className="pillar-desc">Preserving unhurried cooking methods without industrial shortcuts or pre mixes.</p>
                   </div>
                 </div>
 
@@ -60,8 +60,8 @@ export const StorySection: React.FC<StorySectionProps> = ({ navigate }) => {
                     <ShieldCheck size={20} />
                   </div>
                   <div>
-                    <h4 className="pillar-title">Cloud-Kitchen Precision</h4>
-                    <p className="pillar-desc">State-of-the-art hygiene compliance, temperature control, and tamper-proof delivery.</p>
+                    <h4 className="pillar-title">Cloud Kitchen Precision</h4>
+                    <p className="pillar-desc">State-of-the-art hygiene compliance, temperature control, and tamper proof delivery.</p>
                   </div>
                 </div>
               </div>

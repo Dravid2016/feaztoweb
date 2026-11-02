@@ -20,7 +20,7 @@ export const CurvedAppShowcase: React.FC<CurvedAppShowcaseProps> = ({ navigate }
           </h2>
 
           <p className="plenti-master-subcopy">
-            Discover authentic generational recipes, comforting home-cooked meals, and verified cloud kitchens with transparent hygiene scores.
+            Discover authentic generational recipes, comforting home cooked meals, and verified cloud kitchens with transparent hygiene scores.
           </p>
 
           {/* Regional Cities Filter Pills */}

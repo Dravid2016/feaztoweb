@@ -491,7 +491,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         {/* Marketing Copy */}
         <p className="download-banner-headline">
-          Download the Feazto app today and unlock unbeatable deals on delicious meals. Great food, big savings—just a tap away! 🍽️📱
+          Download the Feazto app today and unlock unbeatable deals on delicious meals. Great food, big savings, just a tap away! 🍽️📱
         </p>
 
         {/* Dual Store Buttons: Download for iPhone + Get it on Android */}

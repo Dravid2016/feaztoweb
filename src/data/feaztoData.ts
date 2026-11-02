@@ -9,7 +9,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     originState: 'Telangana',
     category: 'Curry & Rice',
     description: 'Slow-cooked in dough-sealed handis with fragrant seeraga samba & long-grain rice, whole spices, and caramelized shallots.',
-    storyNote: 'Passed down through 3 generations of slow-fire dum specialists.',
+    storyNote: 'Passed down through 3 generations of slow fire dum specialists.',
     tags: ['Dum Cooked', 'Slow Food', 'Aromatic Spices'],
     prepTime: '45 min',
     calories: '580 kcal',
@@ -23,7 +23,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     originState: 'Maharashtra / Tamil Nadu',
     category: 'Curry & Rice',
     description: 'An elemental platter balancing six tastes (shadrasa): kootu, rasam, freshly pressed ghee, warm puran poli, and seasonal greens.',
-    storyNote: 'Cooked strictly with cold-pressed oils, mortar-pestle ground masalas, and zero artificial coloring.',
+    storyNote: 'Cooked strictly with cold pressed oils, mortar-pestle ground masalas, and zero artificial coloring.',
     tags: ['Six Tastes', 'Zero Preservatives', 'Heritage Grains'],
     prepTime: '30 min',
     calories: '520 kcal',
@@ -134,7 +134,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     region: 'Kashmir Valley',
     originState: 'Jammu & Kashmir',
     category: 'Curry & Rice',
-    description: 'Tender cuts slow-braised with Kashmiri cockscomb flower (maval), sun-dried ginger (saunth), fennel, and mild aromatic red chillies.',
+    description: 'Tender cuts slow-braised with Kashmiri cockscomb flower (maval), sun dried ginger (saunth), fennel, and mild aromatic red chillies.',
     storyNote: 'Prepared without onions or garlic, relying on pure yogurt and saffron infusions.',
     tags: ['Wazwan Heritage', 'Kashmiri Chillies', 'Maval Extract'],
     prepTime: '50 min',
@@ -150,7 +150,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     region: 'Central Karnataka',
     originState: 'Karnataka',
     category: 'Breakfast',
-    description: 'Golden fermented rice batter roasted on cast-iron tava with generous white farm butter, paired with spicy potato palya and coconut relish.',
+    description: 'Golden fermented rice batter roasted on cast iron tava with generous white farm butter, paired with spicy potato palya and coconut relish.',
     storyNote: 'Roasted over firewood stoves to develop a honeycomb crust and soft interior.',
     tags: ['White Butter', 'Firewood Roasted', 'Cast Iron'],
     prepTime: '15 min',
@@ -207,7 +207,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     originState: 'Goa',
     category: 'Curry & Rice',
     description: 'Juicy coastal prawns simmered in freshly extracted coconut milk, Kashmiri chillies, coriander seeds, and local fermented coconut vinegar.',
-    storyNote: 'Blended with stone-ground recheado paste and simmered in terracotta chatti.',
+    storyNote: 'Blended with stone ground recheado paste and simmered in terracotta chatti.',
     tags: ['Toddy Vinegar', 'Coastal Prawns', 'Terracotta Vessel'],
     prepTime: '30 min',
     calories: '460 kcal',
@@ -248,7 +248,7 @@ export const REGIONAL_FOODS: FoodItem[] = [
     region: 'Rayalaseema & Guntur',
     originState: 'Andhra Pradesh',
     category: 'Curry & Rice',
-    description: 'Sour red sorrel leaves stone-ground with fiery Guntur teja chillies, garlic, and cumin, served over piping hot steamed sona masoori rice.',
+    description: 'Sour red sorrel leaves stone ground with fiery Guntur teja chillies, garlic, and cumin, served over piping hot steamed sona masoori rice.',
     storyNote: 'Sorrel leaves harvested from non-irrigated black soil for intense natural tartness.',
     tags: ['Red Sorrel', 'Guntur Teja Chilly', 'Black Soil Harvest'],
     prepTime: '35 min',
@@ -315,7 +315,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'About',
     question: 'What is FEAzTO and what does the name stand for?',
-    answer: 'FEAzTO is a regional food discovery and home-kitchen ecosystem built on the pillars of FOOD • CULTURE • CONNECT. Our mission is to bridge authentic regional culinary traditions and talented FoodPreneurs with modern cloud-kitchen precision, hygiene audits, and seamless delivery.'
+    answer: 'FEAzTO is a regional food discovery and home kitchen ecosystem built on the pillars of FOOD • CULTURE • CONNECT. Our mission is to bridge authentic regional culinary traditions and talented FoodPreneurs with modern cloud kitchen precision, hygiene audits, and seamless delivery.'
   },
   {
     category: 'About',
@@ -330,7 +330,7 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Kitchens',
     question: 'How does FEAzTO ensure hygiene and food safety standards?',
-    answer: 'Every participating kitchen undergoes strict safety and hygiene audits adhering to FSSAI guidelines. We combine traditional home-kitchen warmth with cloud-kitchen precision—clean batch monitoring, tamper-evident thermal packaging, and vetted ingredients.'
+    answer: 'Every participating kitchen undergoes strict safety and hygiene audits adhering to FSSAI guidelines. We combine traditional home kitchen warmth with cloud kitchen precision—clean batch monitoring, tamper evident thermal packaging, and vetted ingredients.'
   },
   {
     category: 'App',

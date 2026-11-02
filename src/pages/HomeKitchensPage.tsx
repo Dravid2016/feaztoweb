@@ -65,7 +65,7 @@ export const HomeKitchensPage: React.FC<HomeKitchensPageProps> = ({ navigate }) 
                   <Utensils size={20} />
                 </div>
                 <h4>Preserving Hand-Crafted Recipes</h4>
-                <p>Ensuring stone-ground textures and authentic dum cooking remain 100% intact.</p>
+                <p>Ensuring stone ground textures and authentic dum cooking remain 100% intact.</p>
               </div>
 
               <div className="inner-feature-box">

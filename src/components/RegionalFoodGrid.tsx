@@ -183,7 +183,7 @@ export const RegionalFoodGrid: React.FC<RegionalFoodGridProps> = ({ navigate }) 
           </div>
           <h2 className="food-headline">Authentic Regional Flavours</h2>
           <p className="food-subheadline">
-            Explore carefully documented regional recipes, prepared with authentic ingredients, stone-ground masalas, and zero artificial coloring.
+            Explore carefully documented regional recipes, prepared with authentic ingredients, stone ground masalas, and zero artificial coloring.
           </p>
         </div>
 

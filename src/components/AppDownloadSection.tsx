@@ -131,7 +131,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             </div>
           </div>
 
-          {/* Right Column: QR-Code Panel and Scanning Instructions */}
+          {/* Right Column: QR Code Panel and Scanning Instructions */}
           <div className="download-col-right">
             <div className="qr-code-card">
               <div className="qr-header-row">

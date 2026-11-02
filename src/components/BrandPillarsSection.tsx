@@ -16,13 +16,13 @@ export const BrandPillarsSection: React.FC = () => {
       icon: <Compass size={26} fill="currentColor" />,
       title: 'Geographical Provenance',
       tagline: 'Track Every Spice Terroir',
-      desc: 'Every recipe is documented to its exact regional origin—be it Rayalaseema, Thanjavur, or Rampur—with origin tracking for pure authentic taste.'
+      desc: 'Every recipe is documented to its exact regional origin, be it Rayalaseema, Thanjavur, or Rampur, with origin tracking for pure authentic taste.'
     },
     {
       num: '02',
       icon: <Flame size={26} fill="currentColor" />,
       title: 'Heirloom Techniques',
-      tagline: 'Zero Industrial Pre-Mixes',
+      tagline: 'Zero Industrial Pre Mixes',
       desc: 'No commercial shortcuts. We mandate slow fire dum, stone ground black gram fermentation, and natural cold pressed oil tempering.'
     },
     {
@@ -36,8 +36,8 @@ export const BrandPillarsSection: React.FC = () => {
       num: '04',
       icon: <Cpu size={26} fill="currentColor" />,
       title: 'Cloud Kitchen Precision',
-      tagline: 'Sub-Minute Batch Dispatch',
-      desc: 'Real-time kitchen management, calibrated prep times, and integrated dispatch so food reaches you at peak culinary temperature.'
+      tagline: 'Sub Minute Batch Dispatch',
+      desc: 'Real time kitchen management, calibrated prep times, and integrated dispatch so food reaches you at peak culinary temperature.'
     },
     {
       num: '05',

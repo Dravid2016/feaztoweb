@@ -23,7 +23,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
             </h2>
 
             <p className="partner-desc">
-              Turn your heirloom recipes into a flourishing culinary brand. We provide fully equipped cloud-kitchen infrastructure, raw material procurement, FSSAI compliance auditing, digital ordering tech, and reliable delivery dispatch.
+              Turn your heirloom recipes into a flourishing culinary brand. We provide fully equipped cloud kitchen infrastructure, raw material procurement, FSSAI compliance auditing, digital ordering tech, and reliable delivery dispatch.
             </p>
 
             <div className="partner-benefits-row">

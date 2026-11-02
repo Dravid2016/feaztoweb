@@ -60,7 +60,7 @@ export const BookACookPage: React.FC = () => {
                   <Calendar size={22} className="bp-icon" />
                   <div>
                     <h4>Pre-Planned Ingredient Sourcing</h4>
-                    <p>The FoodPreneur brings freshly cold-pressed oils, stone-ground spice handis, and authenticated artisanal grains.</p>
+                    <p>The FoodPreneur brings freshly cold pressed oils, stone ground spice handis, and authenticated artisanal grains.</p>
                   </div>
                 </div>
 
@@ -68,7 +68,7 @@ export const BookACookPage: React.FC = () => {
                   <Users size={22} className="bp-icon" />
                   <div>
                     <h4>Focused on Intimate Gatherings</h4>
-                    <p>Specially calibrated for 8 to 25 guests—ideal for traditional griha pravesh, wedding feasts, Diwali, and family milestones.</p>
+                    <p>Specially calibrated for 8 to 25 guests, ideal for traditional griha pravesh, wedding feasts, Diwali, and family milestones.</p>
                   </div>
                 </div>
               </div>

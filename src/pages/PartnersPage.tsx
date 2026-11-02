@@ -25,7 +25,7 @@ export const PartnersPage: React.FC = () => {
         <div className="container">
           <div className="badge-tag">
             <Sparkles size={13} />
-            <span>Co-Create Culinary Wealth</span>
+            <span>Co Create Culinary Wealth</span>
           </div>
           <h1 className="page-hero-title">Partner with FEAzTO</h1>
           <p className="page-hero-subtitle">
@@ -56,7 +56,7 @@ export const PartnersPage: React.FC = () => {
                 <Building2 size={24} fill="currentColor" />
               </div>
               <h3>For Cloud Kitchen Infrastructure Operators</h3>
-              <p>Monetize underutilized commercial cooking space by hosting authenticated FEAzTO FoodPreneur batches during off-peak hours with standardized SOPs and telemetry.</p>
+              <p>Monetize underutilized commercial cooking space by hosting authenticated FEAzTO FoodPreneur batches during off peak hours with standardized SOPs and telemetry.</p>
               <ul className="track-points">
                 <li><CheckCircle2 size={16} /> Predictable Guaranteed Utilization</li>
                 <li><CheckCircle2 size={16} /> High Hygiene Standards & Oversight</li>
