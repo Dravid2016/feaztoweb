@@ -141,7 +141,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <span className="teaser-eyebrow">EXPLORE REGIONAL FLAVORS</span>
             <h2 className="teaser-title">A world of authentic tastes</h2>
             <p className="teaser-description">
-              From fiery coastal curries to comforting home style meals, explore the rich and diverse flavours of India — one region at a time.
+              From fiery coastal curries to comforting home style meals, explore the rich and diverse flavours of India, one region at a time.
             </p>
           </div>
 
@@ -649,17 +649,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
-        .hero-curved-bottom-separator {
-          position: absolute;
-          bottom: -1px;
-          left: 0;
-          right: 0;
-          width: 100%;
-          height: 180px;
-          z-index: 4;
-          pointer-events: none;
-          line-height: 0;
-        }
+        .hero-curved-bottom-separator { display: none !important; }
 
         .curved-svg-canvas {
           width: 100%;
@@ -959,4 +949,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
     </div>
   );
 };
+
+
+
+
 
