@@ -103,38 +103,31 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           </div>
         </div>
 
-        {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION (Delicate Outline / Ribbon Border) ── */}
+        {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION ── */}
         <div className="hero-curved-bottom-separator" aria-hidden="true">
           <svg 
-            viewBox="0 0 1440 180" 
+            viewBox="0 0 1440 280" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
             className="curved-svg-canvas"
           >
-            {/* Upper Flowing Warm Ribbon Stroke with Soft Feathered Glow */}
+            {/* Upper Flowing Yellow Ribbon Layer */}
             <path 
-              d="M0,50 C320,130 500,150 720,110 C980,60 1180,25 1440,95" 
-              stroke="#F5B700" 
-              strokeWidth="6" 
-              strokeLinecap="round"
-              opacity="0.45" 
+              d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 L1440,280 L0,280 Z" 
+              fill="#F8B504" 
+              opacity="0.38" 
             />
-            {/* Dynamic Accent Golden Wave Line */}
+            {/* Dynamic Accent Golden Wave Sweep */}
             <path 
-              d="M0,75 C340,150 520,170 720,130 C960,80 1160,45 1440,115" 
-              stroke="#F8B504" 
-              strokeWidth="4" 
-              strokeLinecap="round"
+              d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 L1440,280 L0,280 Z" 
+              fill="#F8B504" 
               opacity="0.75" 
             />
-            {/* Subtle Fine Harmonic Accent Trace */}
+            {/* Deep Curled Lower Boundary into Section Below */}
             <path 
-              d="M0,95 C350,165 530,185 720,145 C950,95 1150,60 1440,130" 
-              stroke="#F5B700" 
-              strokeWidth="2" 
-              strokeLinecap="round"
-              opacity="0.30" 
+              d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
+              fill="#FFF8D6" 
             />
           </svg>
         </div>
@@ -586,8 +579,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           justify-content: center;
           margin-top: 16px;
-          margin-bottom: -20px;
-          z-index: 3;
+          margin-bottom: -52px; /* ~10% tucks cleanly behind the organic curved border */
+          z-index: 3; /* Tucks cleanly behind the curved separator (z-index: 4) */
         }
 
         .hero-plenti-phone-container {
@@ -655,15 +648,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
         }
 
-        /* ── ORGANIC CURVED BOTTOM SEPARATOR (Floating Accent Waves) ── */
+        /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
         .hero-curved-bottom-separator {
           position: absolute;
-          bottom: -20px;
+          bottom: -1px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 140px;
-          z-index: 2; /* Sits naturally behind the phone & characters, above the background kolam */
+          height: 180px;
+          z-index: 4; /* Covers and hides bottom of phone, grandma, fezu and kolam cleanly */
           pointer-events: none;
           line-height: 0;
         }
