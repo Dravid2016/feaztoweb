@@ -14,6 +14,18 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* Subtle background texture overlay */}
         <div className="parchment-texture-layer" aria-hidden="true" />
 
+        {/* Authentic Kolam Art Motif in Background (Full Hero Scope, no container clipping) */}
+        <div className="hero-kolam-art-bg" aria-hidden="true">
+          <img 
+            src="/brand/hero-kolam-bg.png" 
+            alt="" 
+            className="kolam-motif-img"
+          />
+        </div>
+
+        {/* Soft warm/golden ambient glow tailored to the hero palette */}
+        <div className="hero-phone-ambient-glow" aria-hidden="true" />
+
         {/* Main Content Area - Center Aligned */}
         <div className="hero-content-wrapper">
           {/* Cultural Eyebrow with Kolam Motifs - Center Aligned */}
@@ -86,20 +98,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* Interactive Scroll-Driven Peeking Grandma & Fezu Banner */}
         <div className="hero-plenti-phone-wrapper">
           <div className="hero-plenti-phone-container">
-            {/* Authentic Kolam Art Motif in Background */}
-            <div className="hero-kolam-art-bg" aria-hidden="true">
-              <img 
-                src="/brand/hero-kolam-bg.png" 
-                alt="" 
-                className="kolam-motif-img"
-              />
-            </div>
-
             {/* Peeking Grandma & Fezu Multi-Layer Stage */}
             <PeekingGrandmaFezuBanner />
-
-            {/* Soft warm/golden ambient glow tailored to the hero palette */}
-            <div className="hero-phone-ambient-glow" />
           </div>
         </div>
 
@@ -610,7 +610,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (WAY BIGGER & GRAND: 1250px) ── */
         .hero-kolam-art-bg {
           position: absolute;
-          top: 40%;
+          top: 60%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 1250px;
@@ -620,8 +620,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
           display: flex;
           align-items: center;
-          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
+          /* Smooth radial fade on all outer edges so it blends organically in 360 degrees without any linear cuts */
+          mask-image: radial-gradient(circle, black 52%, rgba(0, 0, 0, 0.75) 68%, transparent 88%);
+          -webkit-mask-image: radial-gradient(circle, black 52%, rgba(0, 0, 0, 0.75) 68%, transparent 88%);
           justify-content: center;
           opacity: 0.70;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
@@ -641,7 +642,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .hero-phone-ambient-glow {
           position: absolute;
-          top: 38%;
+          top: 60%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 920px;
