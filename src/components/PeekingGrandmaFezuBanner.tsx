@@ -131,6 +131,61 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
           background: transparent !important;
         }
 
+        /* 0. AUTHENTIC KOLAM ART IN BACKGROUND (Anchored behind Mobile, Grandma & Fezu: z-index 1) */
+        .layer-kolam-art {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        .kolam-spin-wrapper {
+          position: absolute;
+          top: 48%;
+          left: 50%;
+          width: 980px;
+          height: 980px;
+          max-width: 140vw;
+          max-height: 140vw;
+          transform: translate(-50%, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          /* Smooth radial edge feathering so it blends seamlessly into the hero background */
+          mask-image: radial-gradient(circle, black 48%, rgba(0, 0, 0, 0.75) 65%, transparent 84%);
+          -webkit-mask-image: radial-gradient(circle, black 48%, rgba(0, 0, 0, 0.75) 65%, transparent 84%);
+          opacity: 0.75;
+          animation: slowSpinKolam 240s linear infinite;
+        }
+
+        @keyframes slowSpinKolam {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .kolam-motif-img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 6px 24px rgba(225, 160, 20, 0.28));
+        }
+
+        .kolam-stage-ambient-glow {
+          position: absolute;
+          top: 48%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 760px;
+          height: 760px;
+          background: radial-gradient(circle, rgba(245, 183, 0, 0.32) 0%, rgba(245, 183, 0, 0.12) 48%, transparent 72%);
+          filter: blur(65px);
+          z-index: 0;
+          pointer-events: none;
+        }
+
         /* 1. GRANDMA CHARACTER (Behind Phone: z-index 10) */
         .layer-grandma-character {
           z-index: 10;
@@ -161,6 +216,17 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       `}</style>
 
       <div id="feazto-animated-banner" ref={stageRef} className="feazto-stage">
+        {/* 0. AUTHENTIC KOLAM ART (Fixed directly behind mobile, Grandma & Fezu: z-index 1) */}
+        <div className="layer-kolam-art" aria-hidden="true">
+          <div className="kolam-spin-wrapper">
+            <img 
+              src="/brand/hero-kolam-bg.png" 
+              alt="" 
+              className="kolam-motif-img"
+            />
+          </div>
+          <div className="kolam-stage-ambient-glow" />
+        </div>
         {/* 1. GRANDMA (Entire character including body, arms, hands, head: z-index 10 BEHIND PHONE) */}
         <div id="grandma-character" ref={grandmaRef} className="feazto-layer layer-grandma-character">
           <img src="/brand/peeking/grandma-character-full.png" alt="Grandma peeking from behind mobile phone" />
