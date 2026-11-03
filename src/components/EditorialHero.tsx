@@ -116,9 +116,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               {/* White fade in the border extended way down: starts vibrant white and sustains deep down before gently diffusing */}
               <linearGradient id="whiteBorderBottomFadeGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1.0" />
-                <stop offset="60%" stopColor="#FFFFFF" stopOpacity="1.0" />
-                <stop offset="82%" stopColor="#FFFDF2" stopOpacity="0.95" />
-                <stop offset="94%" stopColor="#FFF9E6" stopOpacity="0.70" />
+                <stop offset="50%" stopColor="#FFFFFF" stopOpacity="1.0" />
+                <stop offset="70%" stopColor="#FFFFFF" stopOpacity="0.92" />
+                <stop offset="85%" stopColor="#FFFDF2" stopOpacity="0.65" />
+                <stop offset="93%" stopColor="#FFF9E6" stopOpacity="0.32" />
                 <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
               </linearGradient>
             </defs>
