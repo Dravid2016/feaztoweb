@@ -113,11 +113,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             className="curved-svg-canvas"
           >
             <defs>
-              {/* White/cream boundary gradient: solid at top wave crest, then smoothly fading to 0% transparent at bottom */}
+              {/* White fade in the border extended way down: starts vibrant white and sustains deep down before gently diffusing */}
               <linearGradient id="whiteBorderBottomFadeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
-                <stop offset="35%" stopColor="#FFF9E6" stopOpacity="0.80" />
-                <stop offset="65%" stopColor="#FFF3C4" stopOpacity="0.45" />
+                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
+                <stop offset="30%" stopColor="#FFFFFF" stopOpacity="0.90" />
+                <stop offset="60%" stopColor="#FFFDF0" stopOpacity="0.75" />
+                <stop offset="85%" stopColor="#FFF9E6" stopOpacity="0.45" />
                 <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
               </linearGradient>
             </defs>
@@ -661,15 +662,15 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
         }
 
-        /* ── ORGANIC CURVED BOTTOM SEPARATOR (100% Solid & Opaque) ── */
+        /* ── ORGANIC CURVED BOTTOM SEPARATOR (White Fade Extended Way Down) ── */
         .hero-curved-bottom-separator {
           position: absolute;
-          bottom: -1px;
+          bottom: -50px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 180px;
-          z-index: 4; /* 100% solid & opaque: completely conceals phone, grandma, fezu, and kolam behind it */
+          height: 250px;
+          z-index: 4; /* Completely conceals phone, grandma, fezu, and kolam behind it */
           pointer-events: none;
           line-height: 0;
         }
