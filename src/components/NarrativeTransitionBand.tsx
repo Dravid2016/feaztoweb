@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+
 
 export const NarrativeTransitionBand: React.FC = () => {
   const transitionCapsules = [
@@ -27,16 +27,7 @@ export const NarrativeTransitionBand: React.FC = () => {
 
   return (
     <div className="narrative-transition-wrapper">
-      <div className="container">
-        <div className="narrative-divider-lead">
-          <span className="narrative-line" />
-          <div className="narrative-tag">
-            <Sparkles size={12} />
-            <span>The Culinary Thread • 20 Authentic Traditions</span>
-          </div>
-          <span className="narrative-line" />
-        </div>
-      </div>
+
 
       {/* Infinite Seamless Two-Pass Marquee Track */}
       <div className="capsules-marquee-container">
