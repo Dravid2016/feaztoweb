@@ -14,6 +14,18 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* Subtle background texture overlay */}
         <div className="parchment-texture-layer" aria-hidden="true" />
 
+        {/* Authentic Kolam Art Motif in Background (Full hero scope, 100% full, zero top cutting) */}
+        <div className="hero-kolam-art-bg" aria-hidden="true">
+          <img 
+            src="/brand/hero-kolam-bg.png" 
+            alt="" 
+            className="kolam-motif-img"
+          />
+        </div>
+
+        {/* Soft warm/golden ambient glow */}
+        <div className="hero-phone-ambient-glow" aria-hidden="true" />
+
         {/* Main Content Area - Center Aligned */}
         <div className="hero-content-wrapper">
           {/* Cultural Eyebrow with Kolam Motifs - Center Aligned */}
@@ -86,20 +98,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* Interactive Scroll-Driven Peeking Grandma & Fezu Banner */}
         <div className="hero-plenti-phone-wrapper">
           <div className="hero-plenti-phone-container">
-            {/* Authentic Kolam Art Motif in Background */}
-            <div className="hero-kolam-art-bg" aria-hidden="true">
-              <img 
-                src="/brand/hero-kolam-bg.png" 
-                alt="" 
-                className="kolam-motif-img"
-              />
-            </div>
-
             {/* Peeking Grandma & Fezu Multi-Layer Stage */}
             <PeekingGrandmaFezuBanner />
-
-            {/* Soft warm/golden ambient glow tailored to the hero palette */}
-            <div className="hero-phone-ambient-glow" />
           </div>
         </div>
 
@@ -591,9 +591,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-top: 16px;
           margin-bottom: -45px;
           z-index: 3;
-          /* Fade ONLY the very bottom 10% of the phone/character container so no harsh edges or stray corners ever poke through beneath the wave */
-          mask-image: linear-gradient(to bottom, black 0%, black 86%, transparent 97%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 86%, transparent 97%);
         }
 
         .hero-plenti-phone-container {
@@ -618,24 +615,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (WAY BIGGER & GRAND: 1250px) ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (FULL, UNCLIPPED & GRAND: 1300px) ── */
         .hero-kolam-art-bg {
           position: absolute;
-          top: 40%;
+          top: 56%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 1250px;
-          height: 1250px;
-          max-width: 165vw;
+          width: 1300px;
+          height: 1300px;
+          max-width: 175vw;
           z-index: 1;
           pointer-events: none;
           display: flex;
           align-items: center;
           justify-content: center;
-          opacity: 0.70;
-          /* Leaves top and middle 100% unmasked, while softly fading out lower tail before the border */
-          mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+          opacity: 0.75;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
@@ -653,11 +647,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .hero-phone-ambient-glow {
           position: absolute;
-          top: 38%;
+          top: 56%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 920px;
-          height: 920px;
+          width: 960px;
+          height: 960px;
           background: radial-gradient(circle, rgba(245, 183, 0, 0.35) 0%, rgba(245, 183, 0, 0.14) 48%, transparent 72%);
           filter: blur(75px);
           z-index: 0;
