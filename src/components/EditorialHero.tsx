@@ -122,22 +122,23 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </linearGradient>
             </defs>
 
-            {/* Upper Flowing Golden Ribbon Layer (Richer deep golden amber) */}
+            {/* Upper Flowing Golden Ribbon Layer (100% Solid Rich Ochre Gold) */}
             <path 
               d="M-60,75 C280,180 480,220 720,160 C980,90 1200,40 1500,120 L1500,165 C1200,85 980,135 720,205 C480,265 280,225 -60,125 Z" 
               fill="#E5A300" 
-              opacity="0.85" 
+              opacity="1.0" 
             />
-            {/* Dynamic Accent Golden Wave Sweep (Darker, richer caramel amber gold #D48800) */}
+            {/* Dynamic Accent Golden Wave Sweep (100% Solid Caramel Amber Gold) */}
             <path 
               d="M-60,110 C300,210 500,245 720,185 C960,115 1180,65 1500,150 L1500,195 C1180,110 960,160 720,230 C500,290 300,250 -60,155 Z" 
               fill="#D48800" 
               opacity="1.0" 
             />
-            {/* Lower Wave Boundary: Curvilinear shield that flows completely off-screen and softly blends into page bg */}
+            {/* Lower Wave Boundary: 100% Solid Page Background Shield - completely blocks and conceals everything behind it */}
             <path 
-              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,230 C1170,145 950,195 720,260 C510,315 320,275 -60,185 Z" 
+              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,280 L-60,280 Z" 
               fill="#FFF3C4" 
+              opacity="1.0"
             />
           </svg>
         </div>
@@ -618,10 +619,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           transform: translateY(-4px) scale(1.015);
         }
 
-        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (FULL, UNCLIPPED & GRAND: 1300px) ── */
+        /* ── AUTHENTIC KOLAM ART IN BACKGROUND BEHIND MOBILE (LOWERED & GRAND: 1300px) ── */
         .hero-kolam-art-bg {
           position: absolute;
-          top: 56%;
+          top: 62%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 1300px;
@@ -653,7 +654,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
         .hero-phone-ambient-glow {
           position: absolute;
-          top: 56%;
+          top: 62%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 960px;
@@ -664,30 +665,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
         }
 
-        /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
+        /* ── ORGANIC CURVED BOTTOM SEPARATOR (100% Solid & Opaque) ── */
         .hero-curved-bottom-separator {
           position: absolute;
-          bottom: -20px;
+          bottom: -1px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 220px;
-          z-index: 4; /* Covers and hides bottom of phone, grandma, fezu and kolam cleanly */
+          height: 180px;
+          z-index: 4; /* 100% solid & opaque: completely conceals phone, grandma, fezu, and kolam behind it */
           pointer-events: none;
           line-height: 0;
-          /* Clear, seamless progressive gradient fade from crest to bottom */
-          mask-image: linear-gradient(to bottom, 
-            rgba(0, 0, 0, 1) 0%, 
-            rgba(0, 0, 0, 0.95) 25%, 
-            rgba(0, 0, 0, 0.70) 50%, 
-            rgba(0, 0, 0, 0.35) 75%, 
-            transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, 
-            rgba(0, 0, 0, 1) 0%, 
-            rgba(0, 0, 0, 0.95) 25%, 
-            rgba(0, 0, 0, 0.70) 50%, 
-            rgba(0, 0, 0, 0.35) 75%, 
-            transparent 100%);
         }
 
         .curved-svg-canvas {
