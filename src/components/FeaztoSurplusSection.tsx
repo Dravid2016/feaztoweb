@@ -5,7 +5,6 @@ import {
   TrendingUp, 
   Star, 
   ShoppingBag, 
-  UtensilsCrossed, 
   CheckCircle2 
 } from 'lucide-react';
 
@@ -91,8 +90,11 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
                 {/* Dashboard Header Bar */}
                 <div className="dashboard-app-header">
                   <div className="app-brand-pill">
-                    <UtensilsCrossed size={16} />
-                    <span>feazto kitchen</span>
+                    <img 
+                      src="/brand/feazto-brand-logo-yellow.jpg" 
+                      alt="FEAZTO" 
+                      className="dashboard-header-brand-logo" 
+                    />
                   </div>
                   <div className="app-greeting-pill">
                     <span>Active Lunch Batch</span>
@@ -408,15 +410,27 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
         .feazto-dashboard-phone {
           width: 100%;
           background: #FFFFFF;
-          border-radius: 44px 44px 0 0;
-          border: 9px solid #181B20;
+          border-radius: 50px 50px 0 0;
+          border: 11px solid #1C1D21;
           border-bottom: none;
-          box-shadow: -16px 24px 60px rgba(0, 0, 0, 0.28), 0 4px 16px rgba(0, 0, 0, 0.15);
-          transform: rotate(-4deg) translateY(10px);
-          transition: transform 0.3s ease;
+          box-shadow: -18px 28px 70px rgba(0, 0, 0, 0.32), 0 0 0 1.5px rgba(255, 255, 255, 0.18) inset, 0 8px 24px rgba(0, 0, 0, 0.2);
+          transform: rotate(-3.5deg) translateY(8px);
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          position: relative;
+        }
+
+        /* Realistic iPhone outer antenna & matte bevel accents */
+        .feazto-dashboard-phone::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 39px 39px 0 0;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          pointer-events: none;
+          z-index: 10;
         }
 
         .feazto-dashboard-phone:hover {
@@ -434,10 +448,24 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
         }
 
         .island-camera {
-          width: 86px;
-          height: 22px;
-          background: #111827;
+          width: 98px;
+          height: 25px;
+          background: #000000;
           border-radius: 9999px;
+          box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 1px 3px rgba(255, 255, 255, 0.15);
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          padding-right: 14px;
+        }
+
+        .island-camera::after {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #101c38 40%, #050b14 100%);
+          box-shadow: 0 0 2px rgba(45, 90, 180, 0.6);
         }
 
         /* Status Bar */
@@ -464,18 +492,24 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 12px 20px;
+          padding: 8px 18px;
           background: #FAC921;
           color: #181B20;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .app-brand-pill {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          font-size: 0.82rem;
-          font-weight: 800;
-          letter-spacing: -0.01em;
+          height: 32px;
+        }
+
+        .dashboard-header-brand-logo {
+          height: 24px;
+          width: auto;
+          max-width: 115px;
+          object-fit: contain;
+          border-radius: 3px;
         }
 
         .app-greeting-pill {
