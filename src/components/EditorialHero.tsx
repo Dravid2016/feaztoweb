@@ -137,7 +137,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             {/* Lower Wave Boundary: Curvilinear shield that flows completely off-screen and softly blends into page bg */}
             <path 
               d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,230 C1170,145 950,195 720,260 C510,315 320,275 -60,185 Z" 
-              fill="url(#waveBottomBlendGrad)" 
+              fill="#FFF3C4" 
             />
           </svg>
         </div>
@@ -671,13 +671,23 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           left: 0;
           right: 0;
           width: 100%;
-          height: 200px;
+          height: 220px;
           z-index: 4; /* Covers and hides bottom of phone, grandma, fezu and kolam cleanly */
           pointer-events: none;
           line-height: 0;
-          /* Smoothly fade the bottom of the separator so no straight boundary is ever visible */
-          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
+          /* Clear, seamless progressive gradient fade from crest to bottom */
+          mask-image: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 1) 0%, 
+            rgba(0, 0, 0, 0.95) 25%, 
+            rgba(0, 0, 0, 0.70) 50%, 
+            rgba(0, 0, 0, 0.35) 75%, 
+            transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, 
+            rgba(0, 0, 0, 1) 0%, 
+            rgba(0, 0, 0, 0.95) 25%, 
+            rgba(0, 0, 0, 0.70) 50%, 
+            rgba(0, 0, 0, 0.35) 75%, 
+            transparent 100%);
         }
 
         .curved-svg-canvas {
