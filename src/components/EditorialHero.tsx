@@ -112,22 +112,23 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             preserveAspectRatio="none"
             className="curved-svg-canvas"
           >
-            {/* Upper Flowing Yellow Ribbon Layer */}
+            {/* Upper Decorative Golden Ribbon Layer */}
             <path 
               d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 L1440,280 L0,280 Z" 
               fill="#F8B504" 
-              opacity="0.38" 
+              opacity="0.55" 
             />
             {/* Dynamic Accent Golden Wave Sweep */}
             <path 
               d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 L1440,280 L0,280 Z" 
-              fill="#F8B504" 
-              opacity="0.75" 
+              fill="#F5B700" 
+              opacity="0.85" 
             />
-            {/* Deep Curled Lower Boundary into Section Below */}
+            {/* Solid Opaque Lower Boundary: 100% covers and conceals all underneath phone, characters, and kolam edges */}
             <path 
-              d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
-              fill="#FFF8D6" 
+              d="M0,140 C350,230 530,260 720,205 C950,140 1150,90 1440,190 L1440,280 L0,280 Z" 
+              fill="#FFF3C4" 
+              opacity="1" 
             />
           </svg>
         </div>
@@ -620,6 +621,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           align-items: center;
           justify-content: center;
           opacity: 0.70;
+          /* Fade ONLY the very bottom tail so it never peeks beneath the border, while keeping top 100% unmasked */
+          mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 92%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 92%);
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
