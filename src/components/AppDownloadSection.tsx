@@ -96,7 +96,41 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 </div>
               )}
 
-              
+              {/* Liquid Morphism App Store & Play Store Quick Badges Island */}
+              <div className="download-store-badges-container">
+                <span className="download-store-lead-text">Get Pilot Access</span>
+                <div className="download-store-liquid-island">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById('app-download');
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="download-store-circle-badge"
+                    title="Download on Apple App Store"
+                    aria-label="Apple App Store"
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.38c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-.07 1.73.05 2.76 1.01.08 2.04-.51 2.66-1.26z"/>
+                    </svg>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById('app-download');
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="download-store-circle-badge"
+                    title="Get it on Google Play"
+                    aria-label="Google Play Store"
+                  >
+                    <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3.609 1.814L13.793 12 3.61 22.186c-.367-.346-.61-.84-.61-1.402V3.216c0-.562.243-1.056.61-1.402zM15.207 13.414l2.586 2.586-12.06 6.94 9.474-9.526zm2.586-5.414L15.207 10.586 5.733 1.06l12.06 6.94zm1.414 1.414l3.18 1.83c.78.45.78 1.18 0 1.63l-3.18 1.83-2.293-2.646 2.293-2.644z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -338,6 +372,61 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           color: #2E7D32;
           font-size: 0.82rem;
           line-height: 1.4;
+        }
+
+        .download-store-badges-container {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-top: 24px;
+          flex-wrap: wrap;
+        }
+
+        .download-store-lead-text {
+          font-family: var(--font-heading, inherit);
+          font-size: 0.96rem;
+          font-weight: 800;
+          color: #7A5B00;
+          letter-spacing: -0.01em;
+        }
+
+        .download-store-liquid-island {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: linear-gradient(135deg, rgba(255, 222, 89, 0.72) 0%, rgba(250, 201, 33, 0.55) 60%, rgba(229, 168, 0, 0.65) 100%);
+          backdrop-filter: blur(24px) saturate(190%);
+          -webkit-backdrop-filter: blur(24px) saturate(190%);
+          padding: 6px 12px;
+          border-radius: 9999px;
+          box-shadow: 0 10px 28px rgba(250, 201, 33, 0.32), 
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.6), 
+                      inset 0 -2px 4px rgba(180, 130, 0, 0.2);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .download-store-circle-badge {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.95);
+          color: #181B20;
+          border: none;
+          cursor: pointer;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px #FFFFFF;
+        }
+
+        .download-store-circle-badge:hover {
+          background-color: #111111;
+          color: #FFFFFF;
+          transform: translateY(-2px) scale(1.08);
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
         }
 
         .store-buttons-row {
