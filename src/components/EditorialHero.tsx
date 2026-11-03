@@ -113,30 +113,30 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             className="curved-svg-canvas"
           >
             <defs>
-              {/* Vertical blend gradient: starts with solid page color at wave crest to cover underneath elements, then fades out transparently */}
+              {/* Soft vertical fade gradient so the wave naturally dissipates with no harsh bottom line */}
               <linearGradient id="waveBottomBlendGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#FFF3C4" stopOpacity="1" />
-                <stop offset="42%" stopColor="#FFF3C4" stopOpacity="0.95" />
-                <stop offset="78%" stopColor="#FFF3C4" stopOpacity="0.45" />
+                <stop offset="45%" stopColor="#FFF3C4" stopOpacity="0.92" />
+                <stop offset="75%" stopColor="#FFF3C4" stopOpacity="0.40" />
                 <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
               </linearGradient>
             </defs>
 
-            {/* Upper Flowing Yellow Ribbon Layer */}
+            {/* Upper Flowing Yellow Ribbon Layer (Closed with an organic curved bottom, zero straight box lines) */}
             <path 
-              d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 L1440,280 L0,280 Z" 
+              d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 C1180,105 980,145 720,215 C500,270 320,230 0,135 Z" 
               fill="#F8B504" 
               opacity="0.40" 
             />
-            {/* Dynamic Accent Golden Wave Sweep */}
+            {/* Dynamic Accent Golden Wave Sweep (Flowing organic ribbon wave, completely curved on both top and bottom) */}
             <path 
-              d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 L1440,280 L0,280 Z" 
+              d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 C1160,130 960,175 720,240 C520,295 340,255 0,165 Z" 
               fill="#F5B700" 
               opacity="0.80" 
             />
-            {/* Lower Wave Boundary: Solid at crest to cover phone, Grandma & Fezu, then gracefully fades transparent to blend into page bg */}
+            {/* Lower Wave Boundary: Curvilinear shield that covers bottom elements and blends into the background with zero straight edges */}
             <path 
-              d="M0,140 C350,230 530,260 720,205 C950,140 1150,90 1440,190 L1440,280 L0,280 Z" 
+              d="M0,140 C350,230 530,260 720,205 C950,140 1150,90 1440,190 C1150,160 950,205 720,265 C530,315 350,275 0,190 Z" 
               fill="url(#waveBottomBlendGrad)" 
             />
           </svg>
@@ -667,14 +667,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── ORGANIC CURVED BOTTOM SEPARATOR ── */
         .hero-curved-bottom-separator {
           position: absolute;
-          bottom: -1px;
+          bottom: -20px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 180px;
+          height: 200px;
           z-index: 4; /* Covers and hides bottom of phone, grandma, fezu and kolam cleanly */
           pointer-events: none;
           line-height: 0;
+          /* Smoothly fade the bottom of the separator so no straight boundary is ever visible */
+          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 95%);
         }
 
         .curved-svg-canvas {
