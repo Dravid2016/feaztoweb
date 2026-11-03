@@ -592,9 +592,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-top: 16px;
           margin-bottom: -45px;
           z-index: 3;
-          /* Fade ONLY the lower bottom edge so Grandma's lower sari, Fezu's paw, and phone base do not poke out underneath the border */
-          mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0, 0, 0, 0.4) 89%, transparent 95%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 80%, rgba(0, 0, 0, 0.4) 89%, transparent 95%);
         }
 
         .hero-plenti-phone-container {
