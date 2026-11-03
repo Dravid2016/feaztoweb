@@ -122,16 +122,16 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </linearGradient>
             </defs>
 
-            {/* Upper Flowing Yellow Ribbon Layer (Brighter golden radiance) */}
+            {/* Upper Flowing Golden Ribbon Layer (Richer deep golden amber) */}
             <path 
               d="M-60,75 C280,180 480,220 720,160 C980,90 1200,40 1500,120 L1500,165 C1200,85 980,135 720,205 C480,265 280,225 -60,125 Z" 
-              fill="#FFD233" 
-              opacity="0.75" 
+              fill="#E5A300" 
+              opacity="0.85" 
             />
-            {/* Dynamic Accent Golden Wave Sweep (Official vibrant electric brand yellow #FAC921) */}
+            {/* Dynamic Accent Golden Wave Sweep (Darker, richer caramel amber gold #D48800) */}
             <path 
               d="M-60,110 C300,210 500,245 720,185 C960,115 1180,65 1500,150 L1500,195 C1180,110 960,160 720,230 C500,290 300,250 -60,155 Z" 
-              fill="#FAC921" 
+              fill="#D48800" 
               opacity="1.0" 
             />
             {/* Lower Wave Boundary: Curvilinear shield that flows completely off-screen and softly blends into page bg */}
