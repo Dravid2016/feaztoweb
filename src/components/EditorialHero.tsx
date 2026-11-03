@@ -581,9 +581,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-top: 16px;
           margin-bottom: -52px;
           z-index: 3;
-          /* Mask only the bottom edge so the mobile banner base blends gracefully into the wave border without cutting the top kolam */
-          mask-image: linear-gradient(to bottom, black 0%, black 82%, rgba(0, 0, 0, 0.5) 94%, transparent 100%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, rgba(0, 0, 0, 0.5) 94%, transparent 100%);
         }
 
         .hero-plenti-phone-container {
