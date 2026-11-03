@@ -106,7 +106,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION ── */}
         <div className="hero-curved-bottom-separator" aria-hidden="true">
           <svg 
-            viewBox="-60 0 1560 280" 
+            viewBox="-60 0 1560 450" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -115,10 +115,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <defs>
               {/* White fade in the border extended way down: starts vibrant white and sustains deep down before gently diffusing */}
               <linearGradient id="whiteBorderBottomFadeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.95" />
-                <stop offset="30%" stopColor="#FFFFFF" stopOpacity="0.90" />
-                <stop offset="60%" stopColor="#FFFDF0" stopOpacity="0.75" />
-                <stop offset="85%" stopColor="#FFF9E6" stopOpacity="0.45" />
+                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.96" />
+                <stop offset="25%" stopColor="#FFFFFF" stopOpacity="0.92" />
+                <stop offset="55%" stopColor="#FFFDF2" stopOpacity="0.80" />
+                <stop offset="80%" stopColor="#FFF9E6" stopOpacity="0.45" />
                 <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
               </linearGradient>
             </defs>
@@ -135,9 +135,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               fill="#D48800" 
               opacity="1.0" 
             />
-            {/* White/Cream Wave Border with Smooth Bottom Fade */}
+            {/* White/Cream Wave Border with Smooth Bottom Fade (Extended deep down to 450) */}
             <path 
-              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,280 L-60,280 Z" 
+              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,450 L-60,450 Z" 
               fill="url(#whiteBorderBottomFadeGrad)" 
             />
           </svg>
@@ -665,11 +665,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         /* ── ORGANIC CURVED BOTTOM SEPARATOR (White Fade Extended Way Down) ── */
         .hero-curved-bottom-separator {
           position: absolute;
-          bottom: -50px;
+          bottom: -110px;
           left: 0;
           right: 0;
           width: 100%;
-          height: 250px;
+          height: 380px;
           z-index: 4; /* Completely conceals phone, grandma, fezu, and kolam behind it */
           pointer-events: none;
           line-height: 0;
