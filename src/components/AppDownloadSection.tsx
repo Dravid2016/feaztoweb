@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, QrCode, ArrowRight, Apple, Play, CheckCircle2 } from 'lucide-react';
+import { Sparkles, QrCode, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface AppDownloadSectionProps {
   navigate?: (route: string) => void;
@@ -96,27 +96,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 </div>
               )}
 
-              <div className="store-buttons-row">
-                <div className="store-btn-pending" title="Pilot Rollout in Progress">
-                  <Play size={18} />
-                  <div className="store-btn-text">
-                    <span>GET IT ON</span>
-                    <strong>Google Play (Pilot)</strong>
-                  </div>
-                </div>
-
-                <div className="store-btn-pending" title="Pilot Rollout in Progress">
-                  <Apple size={20} />
-                  <div className="store-btn-text">
-                    <span>Download on the</span>
-                    <strong>App Store (Pilot)</strong>
-                  </div>
-                </div>
-              </div>
-
-              <span className="store-status-note">
-                * Official store build undergoing phased internal staging. Staged invite is required for access.
-              </span>
+              
             </div>
           </div>
 
