@@ -127,7 +127,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             {/* Deep Curled Lower Boundary into Section Below */}
             <path 
               d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
-              fill="#FFF3C4" 
+              fill="none" 
             />
           </svg>
         </div>
@@ -663,6 +663,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           z-index: 4;
           pointer-events: none;
           line-height: 0;
+          mask-image: linear-gradient(to bottom, black 0%, black 40%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
         }
 
         .curved-svg-canvas {
