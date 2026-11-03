@@ -122,23 +122,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </linearGradient>
             </defs>
 
-            {/* Upper Flowing Golden Ribbon Layer (100% Solid Rich Ochre Gold) */}
+            {/* Upper Flowing Golden Ribbon Layer */}
             <path 
               d="M-60,75 C280,180 480,220 720,160 C980,90 1200,40 1500,120 L1500,165 C1200,85 980,135 720,205 C480,265 280,225 -60,125 Z" 
               fill="#E5A300" 
               opacity="1.0" 
             />
-            {/* Dynamic Accent Golden Wave Sweep (100% Solid Caramel Amber Gold) */}
+            {/* Dynamic Accent Golden Wave Sweep (Darker Caramel Amber Gold) */}
             <path 
               d="M-60,110 C300,210 500,245 720,185 C960,115 1180,65 1500,150 L1500,195 C1180,110 960,160 720,230 C500,290 300,250 -60,155 Z" 
               fill="#D48800" 
               opacity="1.0" 
-            />
-            {/* Lower Wave Boundary: 100% Solid Page Background Shield - completely blocks and conceals everything behind it */}
-            <path 
-              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,280 L-60,280 Z" 
-              fill="#FFF3C4" 
-              opacity="1.0"
             />
           </svg>
         </div>
