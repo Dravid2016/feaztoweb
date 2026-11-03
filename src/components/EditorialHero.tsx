@@ -112,23 +112,32 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             preserveAspectRatio="none"
             className="curved-svg-canvas"
           >
-            {/* Upper Decorative Golden Ribbon Layer */}
+            <defs>
+              {/* Vertical blend gradient: starts with solid page color at wave crest to cover underneath elements, then fades out transparently */}
+              <linearGradient id="waveBottomBlendGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FFF3C4" stopOpacity="1" />
+                <stop offset="42%" stopColor="#FFF3C4" stopOpacity="0.95" />
+                <stop offset="78%" stopColor="#FFF3C4" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+
+            {/* Upper Flowing Yellow Ribbon Layer */}
             <path 
               d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 L1440,280 L0,280 Z" 
               fill="#F8B504" 
-              opacity="0.55" 
+              opacity="0.40" 
             />
             {/* Dynamic Accent Golden Wave Sweep */}
             <path 
               d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 L1440,280 L0,280 Z" 
               fill="#F5B700" 
-              opacity="0.85" 
+              opacity="0.80" 
             />
-            {/* Solid Opaque Lower Boundary: 100% covers and conceals all underneath phone, characters, and kolam edges */}
+            {/* Lower Wave Boundary: Solid at crest to cover phone, Grandma & Fezu, then gracefully fades transparent to blend into page bg */}
             <path 
               d="M0,140 C350,230 530,260 720,205 C950,140 1150,90 1440,190 L1440,280 L0,280 Z" 
-              fill="#FFF3C4" 
-              opacity="1" 
+              fill="url(#waveBottomBlendGrad)" 
             />
           </svg>
         </div>
@@ -580,8 +589,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           justify-content: center;
           margin-top: 16px;
-          margin-bottom: -52px; /* ~10% tucks cleanly behind the organic curved border */
-          z-index: 3; /* Tucks cleanly behind the curved separator (z-index: 4) */
+          margin-bottom: -45px;
+          z-index: 3;
+          /* Fade ONLY the very bottom 10% of the phone/character container so no harsh edges or stray corners ever poke through beneath the wave */
+          mask-image: linear-gradient(to bottom, black 0%, black 86%, transparent 97%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 86%, transparent 97%);
         }
 
         .hero-plenti-phone-container {
@@ -621,9 +633,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           align-items: center;
           justify-content: center;
           opacity: 0.70;
-          /* Fade ONLY the very bottom tail so it never peeks beneath the border, while keeping top 100% unmasked */
-          mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 92%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 75%, transparent 92%);
+          /* Leaves top and middle 100% unmasked, while softly fading out lower tail before the border */
+          mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
         }
 
