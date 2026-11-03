@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         <div className="footer-top-row">
           <div className="footer-brand-column">
             <img 
-              src="/brand/feazto-logo.svg" 
+              src="/brand/feazto-brand-logo-yellow.jpg" 
               alt="feazto — Food • Culture • Connect" 
               className="footer-logo-img"
             />
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   </div>
                 </li>
                 <li>
-                  <button type="button" onClick={() => handleNavClick('/contact')} className="btn btn-white btn-sm mt-2">
+                  <button type="button" onClick={() => handleNavClick('/contact')} className="btn btn-primary btn-sm mt-2">
                     <span>Contact Team</span>
                     <ArrowUpRight size={14} />
                   </button>
@@ -110,24 +110,13 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
       <style>{`
         .feazto-footer {
-          background-color: #111111;
-          color: #FAFAFA;
-          padding-top: 80px;
+          background-color: transparent;
+          color: #222222;
+          padding-top: 70px;
           padding-bottom: 40px;
-          border-top: 4px solid var(--color-brand-yellow);
+          border-top: 1.5px solid rgba(181, 132, 0, 0.22);
           position: relative;
           overflow: hidden;
-        }
-
-        .feazto-footer::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-image: radial-gradient(circle at 10% 20%, rgba(255, 210, 51, 0.04) 0%, transparent 60%);
-          pointer-events: none;
         }
 
         .footer-container {
@@ -139,8 +128,8 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           display: grid;
           grid-template-columns: 1.3fr 2fr;
           gap: 60px;
-          padding-bottom: 60px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding-bottom: 50px;
+          border-bottom: 1px solid rgba(181, 132, 0, 0.18);
         }
 
         .footer-brand-column {
@@ -150,15 +139,16 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         }
 
         .footer-logo-img {
-          height: 52px;
+          height: 48px;
           width: auto;
           align-self: flex-start;
-          border-radius: 12px;
+          border-radius: 8px;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
         }
 
         .footer-brand-mission {
-          color: #A0A0A0;
-          font-size: 0.92rem;
+          color: #4A3B12;
+          font-size: 0.94rem;
           line-height: 1.7;
           max-width: 440px;
         }
@@ -167,19 +157,22 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(255, 210, 51, 0.12);
-          border: 1px solid rgba(255, 210, 51, 0.3);
-          color: var(--color-brand-yellow);
-          font-size: 0.75rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
+          background: rgba(255, 255, 255, 0.7);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1px solid rgba(181, 132, 0, 0.25);
+          color: #7A5B00;
+          font-size: 0.76rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
           padding: 6px 14px;
           border-radius: 9999px;
           width: fit-content;
+          box-shadow: 0 2px 8px rgba(181, 132, 0, 0.08);
         }
 
         .sparkle-icon {
-          color: var(--color-brand-yellow);
+          color: #A87000;
         }
 
         .footer-links-grid {
@@ -189,11 +182,11 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         }
 
         .footer-col-title {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: #FFFFFF;
+          font-size: 0.92rem;
+          font-weight: 800;
+          color: #1A1A1A;
           margin-bottom: 20px;
-          letter-spacing: 0.04em;
+          letter-spacing: 0.06em;
           text-transform: uppercase;
         }
 
@@ -202,18 +195,25 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           display: flex;
           flex-direction: column;
           gap: 12px;
+          padding: 0;
+          margin: 0;
         }
 
         .footer-link {
           font-size: 0.88rem;
-          color: #B5B5B5;
+          color: #554823;
           text-align: left;
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          font-weight: 500;
           transition: color 0.2s ease, transform 0.2s ease;
           display: inline-block;
         }
 
         .footer-link:hover {
-          color: var(--color-brand-yellow);
+          color: #8C6500;
           transform: translateX(3px);
         }
 
@@ -222,12 +222,18 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           align-items: center;
           gap: 10px;
           font-size: 0.86rem;
-          color: #A0A0A0;
+          color: #554823;
+          font-weight: 500;
+        }
+
+        .footer-info-item svg {
+          color: #8C6500;
+          flex-shrink: 0;
         }
 
         .btn-sm {
-          padding: 8px 16px;
-          font-size: 0.82rem;
+          padding: 8px 18px;
+          font-size: 0.84rem;
         }
 
         .mt-2 {
@@ -239,19 +245,20 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding-top: 36px;
-          font-size: 0.82rem;
-          color: #777777;
+          padding-top: 32px;
+          font-size: 0.84rem;
+          color: #6C5A28;
         }
 
         .footer-copy-left p {
-          color: #888888;
+          color: #5C4B1E;
+          margin: 0;
         }
 
         .footer-subtext {
           font-size: 0.78rem;
-          color: #666666;
-          margin-top: 2px;
+          color: #7D6B3C;
+          margin-top: 3px;
         }
 
         .footer-legal-links {
@@ -262,24 +269,29 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         }
 
         .footer-legal-link {
-          color: #888888;
-          font-size: 0.82rem;
+          color: #6C5A28;
+          font-size: 0.84rem;
+          background: none;
+          border: none;
+          padding: 0;
+          cursor: pointer;
+          font-weight: 500;
           transition: color 0.2s ease;
         }
 
         .footer-legal-link:hover {
-          color: #FFFFFF;
+          color: #111111;
         }
 
         .divider {
-          color: #444444;
+          color: rgba(181, 132, 0, 0.4);
         }
 
         .footer-crafted-by {
           display: inline-flex;
           align-items: center;
           gap: 4px;
-          color: #A0A0A0;
+          color: #6C5A28;
         }
 
         .heart-icon {
