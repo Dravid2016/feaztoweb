@@ -686,7 +686,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         .food-discovery-teaser-section {
           position: relative;
           background: transparent;
-          padding-top: 40px;
+          margin-top: -30px;
+          padding-top: 0px;
           padding-bottom: 84px;
           z-index: 5;
         }
