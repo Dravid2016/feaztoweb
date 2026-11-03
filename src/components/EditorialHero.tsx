@@ -106,7 +106,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         {/* ── DRAMATIC DEEP SCULPTURAL ORGANIC S-CURVE TRANSITION ── */}
         <div className="hero-curved-bottom-separator" aria-hidden="true">
           <svg 
-            viewBox="0 0 1440 280" 
+            viewBox="-60 0 1560 280" 
             fill="none" 
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="none"
@@ -122,21 +122,21 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </linearGradient>
             </defs>
 
-            {/* Upper Flowing Yellow Ribbon Layer (Closed with an organic curved bottom, zero straight box lines) */}
+            {/* Upper Flowing Yellow Ribbon Layer (Extends seamlessly off-screen past edges without sharp pinching) */}
             <path 
-              d="M0,80 C320,180 500,220 720,160 C980,90 1180,40 1440,140 C1180,105 980,145 720,215 C500,270 320,230 0,135 Z" 
+              d="M-60,75 C280,180 480,220 720,160 C980,90 1200,40 1500,120 L1500,165 C1200,85 980,135 720,205 C480,265 280,225 -60,125 Z" 
               fill="#F8B504" 
               opacity="0.40" 
             />
-            {/* Dynamic Accent Golden Wave Sweep (Flowing organic ribbon wave, completely curved on both top and bottom) */}
+            {/* Dynamic Accent Golden Wave Sweep (Continues smoothly through viewport edges) */}
             <path 
-              d="M0,115 C340,210 520,245 720,185 C960,115 1160,65 1440,165 C1160,130 960,175 720,240 C520,295 340,255 0,165 Z" 
+              d="M-60,110 C300,210 500,245 720,185 C960,115 1180,65 1500,150 L1500,195 C1180,110 960,160 720,230 C500,290 300,250 -60,155 Z" 
               fill="#F5B700" 
               opacity="0.80" 
             />
-            {/* Lower Wave Boundary: Curvilinear shield that covers bottom elements and blends into the background with zero straight edges */}
+            {/* Lower Wave Boundary: Curvilinear shield that flows completely off-screen and softly blends into page bg */}
             <path 
-              d="M0,140 C350,230 530,260 720,205 C950,140 1150,90 1440,190 C1150,160 950,205 720,265 C530,315 350,275 0,190 Z" 
+              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,230 C1170,145 950,195 720,260 C510,315 320,275 -60,185 Z" 
               fill="url(#waveBottomBlendGrad)" 
             />
           </svg>
