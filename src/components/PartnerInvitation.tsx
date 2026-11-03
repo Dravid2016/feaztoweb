@@ -1,6 +1,7 @@
 import React from 'react';
 import { KolamFrame } from './KolamFrame';
 import { Sparkles, ArrowRight, ShieldCheck, TrendingUp, Cpu } from 'lucide-react';
+import { NarrativeTransitionBand } from './NarrativeTransitionBand';
 
 interface PartnerInvitationProps {
   navigate: (route: string) => void;
@@ -10,7 +11,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
   return (
     <section className="partner-invitation-section">
       <div className="container">
-        {/* KolamFrame with Turmeric Yellow variant matching Visual Reference 2 */}
+        {/* KolamFrame with Turmeric Yellow variant */}
         <KolamFrame variant="turmeric" hasCorners={true}>
           <div className="partner-text-block">
             <div className="badge-tag" style={{ background: '#FFFFFF', color: '#8C6500' }}>
@@ -41,6 +42,11 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
               </div>
             </div>
 
+            {/* Seamless Culinary Dishes Loop inside the FoodPreneur Growth Engine Card */}
+            <div className="card-marquee-wrapper">
+              <NarrativeTransitionBand />
+            </div>
+
             <div className="partner-cta-actions">
               <button 
                 type="button" 
@@ -63,7 +69,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         }
 
         .partner-text-block {
-          max-width: 820px;
+          max-width: 100%;
           position: relative;
           z-index: 1;
         }
@@ -83,13 +89,29 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           color: #222222;
           line-height: 1.65;
           margin-bottom: 32px;
+          max-width: 820px;
         }
 
         .partner-benefits-row {
           display: flex;
           flex-wrap: wrap;
           gap: 14px;
-          margin-bottom: 36px;
+          margin-bottom: 30px;
+        }
+
+        .card-marquee-wrapper {
+          width: 100%;
+          margin: 10px 0 34px 0;
+          border-radius: 16px;
+          overflow: hidden;
+        }
+
+        .card-marquee-wrapper .narrative-transition-wrapper {
+          padding: 12px 0;
+          background: rgba(255, 255, 255, 0.45);
+          border-radius: 16px;
+          border-top: 1px dashed rgba(181, 132, 0, 0.3);
+          border-bottom: 1px dashed rgba(181, 132, 0, 0.3);
         }
 
         .benefit-badge {
@@ -120,4 +142,3 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
     </section>
   );
 };
-

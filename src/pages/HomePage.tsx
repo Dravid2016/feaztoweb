@@ -1,13 +1,12 @@
 import React from 'react';
 import { EditorialHero } from '../components/EditorialHero';
-import { NarrativeTransitionBand } from '../components/NarrativeTransitionBand';
+import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { HomeKitchensSection } from '../components/HomeKitchensSection';
 import { BrandPillarsSection } from '../components/BrandPillarsSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
-import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { PartnerInvitation } from '../components/PartnerInvitation';
-import { AppDownloadSection } from '../components/AppDownloadSection';
 import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
+import { AppDownloadSection } from '../components/AppDownloadSection';
 
 interface HomePageProps {
   navigate: (route: string) => void;
@@ -23,25 +22,22 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       {/* 2. Interactive Layered Phone Showcase (FEAZTO, Book a cook, Carefe) */}
       <LayeredPhoneShowcase navigate={navigate} />
 
-      {/* 3. Inline food-image transitions band (Reference D) */}
-      <NarrativeTransitionBand />
-
-      {/* 6. Home kitchens and FoodPreneurs */}
+      {/* 3. Home kitchens and FoodPreneurs */}
       <HomeKitchensSection navigate={navigate} />
 
-      {/* 7. What makes feazto different */}
+      {/* 4. What makes feazto different */}
       <BrandPillarsSection />
 
-      {/* 8. How feazto works (Documented flow) */}
+      {/* 5. How feazto works (Documented flow) */}
       <HowItWorksSection />
 
-      {/* 12. Partner and kitchen invitation */}
+      {/* 6. Partner and kitchen invitation (includes FoodPreneur Growth Engine loop) */}
       <PartnerInvitation navigate={navigate} />
 
-      {/* 13. feazto Surplus & Zero Food Waste Engine (Regional Home Food Only) */}
+      {/* 7. feazto Surplus & Zero Food Waste Engine (Regional Home Food Only) */}
       <FeaztoSurplusSection navigate={navigate} />
 
-      {/* 14. Dedicated app-download section with QR (Reference G) */}
+      {/* 8. Dedicated app-download section with QR (Reference G) */}
       <AppDownloadSection navigate={navigate} />
     </main>
   );
