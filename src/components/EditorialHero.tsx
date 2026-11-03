@@ -113,11 +113,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             className="curved-svg-canvas"
           >
             <defs>
-              {/* Soft vertical fade gradient so the wave naturally dissipates with no harsh bottom line */}
-              <linearGradient id="waveBottomBlendGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#FFF3C4" stopOpacity="1" />
-                <stop offset="45%" stopColor="#FFF3C4" stopOpacity="0.92" />
-                <stop offset="75%" stopColor="#FFF3C4" stopOpacity="0.40" />
+              {/* White/cream boundary gradient: solid at top wave crest, then smoothly fading to 0% transparent at bottom */}
+              <linearGradient id="whiteBorderBottomFadeGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.92" />
+                <stop offset="35%" stopColor="#FFF9E6" stopOpacity="0.80" />
+                <stop offset="65%" stopColor="#FFF3C4" stopOpacity="0.45" />
                 <stop offset="100%" stopColor="#FFF3C4" stopOpacity="0" />
               </linearGradient>
             </defs>
@@ -128,11 +128,16 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               fill="#E5A300" 
               opacity="1.0" 
             />
-            {/* Dynamic Accent Golden Wave Sweep (Darker Caramel Amber Gold) */}
+            {/* Dynamic Accent Golden Wave Sweep */}
             <path 
               d="M-60,110 C300,210 500,245 720,185 C960,115 1180,65 1500,150 L1500,195 C1180,110 960,160 720,230 C500,290 300,250 -60,155 Z" 
               fill="#D48800" 
               opacity="1.0" 
+            />
+            {/* White/Cream Wave Border with Smooth Bottom Fade */}
+            <path 
+              d="M-60,135 C320,230 510,260 720,205 C950,140 1170,90 1500,175 L1500,280 L-60,280 Z" 
+              fill="url(#whiteBorderBottomFadeGrad)" 
             />
           </svg>
         </div>
