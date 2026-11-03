@@ -581,8 +581,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           margin-top: 16px;
           margin-bottom: -52px;
           z-index: 3;
-          mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 95%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 95%);
+          /* Mask only the bottom edge so the mobile banner base blends gracefully into the wave border without cutting the top kolam */
+          mask-image: linear-gradient(to bottom, black 0%, black 82%, rgba(0, 0, 0, 0.5) 94%, transparent 100%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, rgba(0, 0, 0, 0.5) 94%, transparent 100%);
         }
 
         .hero-plenti-phone-container {
@@ -620,8 +621,6 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
           display: flex;
           align-items: center;
-          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
           justify-content: center;
           opacity: 0.70;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
