@@ -127,7 +127,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             {/* Deep Curled Lower Boundary into Section Below */}
             <path 
               d="M0,145 C350,235 530,265 720,210 C950,145 1150,95 1440,195 L1440,280 L0,280 Z" 
-              fill="#FFF8D6" 
+              fill="#FFF3C4" 
             />
           </svg>
         </div>
@@ -579,8 +579,10 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: flex;
           justify-content: center;
           margin-top: 16px;
-          margin-bottom: -52px; /* ~10% tucks cleanly behind the organic curved border */
-          z-index: 3; /* Tucks cleanly behind the curved separator (z-index: 4) */
+          margin-bottom: -52px;
+          z-index: 3;
+          mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 95%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 95%);
         }
 
         .hero-plenti-phone-container {
@@ -618,6 +620,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           pointer-events: none;
           display: flex;
           align-items: center;
+          mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 65%, transparent 88%);
           justify-content: center;
           opacity: 0.70;
           animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
