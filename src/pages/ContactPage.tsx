@@ -48,8 +48,8 @@ export const ContactPage: React.FC = () => {
               <div className="channel-box">
                 <Mail size={22} className="ch-icon" />
                 <div>
-                  <strong>Email Inquiries</strong>
-                  <p>hello@feazto.com • partners@feazto.com</p>
+                  <strong>Email Inquiries & Partnerships</strong>
+                  <p><a href="mailto:feazto26@gmail.com" style={{ color: 'inherit', fontWeight: 700 }}>feazto26@gmail.com</a></p>
                 </div>
               </div>
 

@@ -1,6 +1,6 @@
 import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
 import React, { useState } from 'react';
-import { Sparkles, Building2, ChefHat, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Building2, ChefHat, CheckCircle2, Mail, Send, ExternalLink } from 'lucide-react';
 
 export const PartnersPage: React.FC = () => {
   const [partnerType, setPartnerType] = useState<'cook' | 'kitchen'>('cook');
@@ -18,6 +18,25 @@ export const PartnersPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+
+    const subject = encodeURIComponent(
+      `Cloud Kitchen Partner Registration: ${partnerForm.name} (${partnerType === 'cook' ? 'FoodPreneur Cook' : 'Cloud Kitchen Operator'})`
+    );
+    const body = encodeURIComponent(
+      `Hi feazto Team,\n\nI would like to register as a Cloud Kitchen Partner on feazto.\n\n` +
+      `── Partner Details ──\n` +
+      `Partner Track: ${partnerType === 'cook' ? 'FoodPreneur / Home Cook' : 'Cloud Kitchen Operator'}\n` +
+      `Full Name: ${partnerForm.name}\n` +
+      `Phone: ${partnerForm.phone}\n` +
+      `Email: ${partnerForm.email}\n` +
+      `Experience: ${partnerForm.experienceYears}\n` +
+      `Cuisine / Infrastructure Specialty: ${partnerForm.specialty}\n` +
+      `Operating City / Area: ${partnerForm.cityArea}\n\n` +
+      `Looking forward to the kitchen audit and onboarding process.\n\nBest regards,\n${partnerForm.name}`
+    );
+
+    // Open mail client addressed to feazto26@gmail.com
+    window.location.href = `mailto:feazto26@gmail.com?subject=${subject}&body=${body}`;
   };
 
   return (
@@ -70,8 +89,12 @@ export const PartnersPage: React.FC = () => {
           <div className="partner-form-wrapper">
             <div className="partner-form-card">
               <div className="form-heading-area">
-                <h2>Begin Your Partnership Application</h2>
-                <p>Fill out this preliminary onboarding questionnaire. Our partner success team will review your profile and schedule a kitchen audit.</p>
+                <h2>Cloud Kitchen Partner Registration</h2>
+                <p>Register your kitchen infrastructure or home cooking craft. Submit your details directly to our partner onboarding desk at <strong>feazto26@gmail.com</strong>.</p>
+                <div className="mail-registration-badge">
+                  <Mail size={15} />
+                  <span>Official Onboarding Mail: <strong>feazto26@gmail.com</strong></span>
+                </div>
               </div>
 
               {/* Type Switcher */}
@@ -169,16 +192,33 @@ export const PartnersPage: React.FC = () => {
                   </div>
 
                   <button type="submit" className="btn btn-yellow btn-submit-partner">
-                    <span>Submit Partner Onboarding Profile</span>
+                    <Send size={16} />
+                    <span>Send Registration via Mail (feazto26@gmail.com)</span>
                   </button>
                 </form>
               ) : (
                 <div className="submission-success-pane">
                   <CheckCircle2 size={44} className="check-success-icon" />
-                  <h3>Application Successfully Submitted!</h3>
+                  <h3>Application Ready & Email Client Opened!</h3>
                   <p>
-                    Thank you, {partnerForm.name}. Your partner interest profile for feazto {partnerType === 'cook' ? 'FoodPreneur' : 'Cloud Kitchen'} has been recorded. Our regional operations team will reach out within 2 business days for document verification.
+                    Thank you, {partnerForm.name}. Your partner interest profile for feazto {partnerType === 'cook' ? 'FoodPreneur' : 'Cloud Kitchen'} has been composed to <strong>feazto26@gmail.com</strong>.
                   </p>
+                  <div className="mail-fallback-box">
+                    <p className="fallback-hint">If your email client did not open automatically, you can send an email directly to:</p>
+                    <a href="mailto:feazto26@gmail.com" className="direct-mail-chip">
+                      <Mail size={16} />
+                      <span>feazto26@gmail.com</span>
+                      <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <button 
+                    type="button" 
+                    onClick={() => setSubmitted(false)} 
+                    className="btn btn-sm mt-3"
+                    style={{ background: '#ECECEC', color: '#222' }}
+                  >
+                    Edit Registration Info
+                  </button>
                 </div>
               )}
             </div>
@@ -306,6 +346,24 @@ export const PartnersPage: React.FC = () => {
           color: var(--color-text-secondary);
         }
 
+        .mail-registration-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 14px;
+          padding: 8px 18px;
+          border-radius: 9999px;
+          background: #FFF3C4;
+          border: 1px solid rgba(181, 132, 0, 0.35);
+          color: #7A5B00;
+          font-size: 0.88rem;
+          font-weight: 600;
+        }
+
+        .mail-registration-badge strong {
+          color: #111111;
+        }
+
         .type-toggle-switch {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -402,6 +460,44 @@ export const PartnersPage: React.FC = () => {
           color: var(--color-text-secondary);
           line-height: 1.6;
           max-width: 540px;
+        }
+
+        .mail-fallback-box {
+          margin-top: 20px;
+          padding: 16px 20px;
+          background: #FFFFFF;
+          border: 1px solid rgba(181, 132, 0, 0.25);
+          border-radius: 12px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .fallback-hint {
+          font-size: 0.84rem;
+          color: #666666 !important;
+          margin: 0;
+        }
+
+        .direct-mail-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: #FAC921;
+          color: #111111;
+          padding: 9px 18px;
+          border-radius: 9999px;
+          font-weight: 700;
+          font-size: 0.92rem;
+          text-decoration: none;
+          box-shadow: 0 4px 12px rgba(250, 201, 33, 0.35);
+          transition: transform 0.2s ease;
+        }
+
+        .direct-mail-chip:hover {
+          transform: translateY(-2px);
+          background: #F5B700;
         }
 
         @media (max-width: 768px) {

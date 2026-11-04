@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChefHat } from 'lucide-react';
 import Strands from './Strands';
 import { useAudioPlayer, FEAZTO_ORB_COLORS } from '../context/AudioPlayerContext';
 
@@ -118,6 +118,18 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             {!isPlaying && (
               <span className="orb-muted-indicator" title="Muted" />
             )}
+          </button>
+
+          {/* Chef Icon Button: Cloud Kitchen Partner Registration */}
+          <button
+            type="button"
+            onClick={() => handleNavClick('/partners')}
+            className={`chef-partner-nav-btn ${currentRoute === '/partners' || currentRoute === '/business-signup' ? 'active' : ''}`}
+            title="Cloud Kitchen Partner Registration"
+            aria-label="Cloud Kitchen Partner Registration"
+          >
+            <ChefHat size={19} className="chef-nav-icon" />
+            <span className="chef-nav-label">Partner</span>
           </button>
 
           {/* iOS App Store Icon Button */}
@@ -467,6 +479,50 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           z-index: 3;
         }
 
+        /* ── CHEF ICON BUTTON IN HEADER (Cloud Kitchen Partner Registration) ── */
+        .chef-partner-nav-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 12px;
+          height: 38px;
+          border-radius: 9999px;
+          background: rgba(255, 255, 255, 0.9) !important;
+          color: #111111;
+          border: 1px solid rgba(255, 255, 255, 0.9) !important;
+          cursor: pointer;
+          font-family: var(--font-heading);
+          font-size: 0.82rem;
+          font-weight: 800;
+          letter-spacing: 0.02em;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px #FFFFFF;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          flex-shrink: 0;
+        }
+
+        .chef-partner-nav-btn:hover {
+          background: #111111 !important;
+          color: #FAC921;
+          transform: translateY(-2px) scale(1.05);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+        }
+
+        .chef-partner-nav-btn.active {
+          background: #111111 !important;
+          color: #FAC921;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .chef-nav-icon {
+          color: inherit;
+        }
+
+        .chef-nav-label {
+          display: inline-block;
+        }
+
         .store-quick-badge {
           display: inline-flex;
           align-items: center;
@@ -643,7 +699,18 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             width: 34px;
             height: 34px;
           }
+          .chef-partner-nav-btn {
+            height: 34px;
+            padding: 5px 9px;
+            font-size: 0.76rem;
+          }
+          .chef-partner-nav-btn .chef-nav-label {
+            display: none;
+          }
           .store-quick-badge {
+            width: 34px;
+            height: 34px;
+          }
             width: 34px;
             height: 34px;
           }

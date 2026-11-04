@@ -75,10 +75,10 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
                   </div>
                 </li>
                 <li>
-                  <div className="footer-info-item">
+                  <a href="mailto:feazto26@gmail.com" className="footer-info-item" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Mail size={16} />
-                    <span>hello@feazto.com</span>
-                  </div>
+                    <span>feazto26@gmail.com</span>
+                  </a>
                 </li>
                 <li>
                   <div className="footer-info-item">
