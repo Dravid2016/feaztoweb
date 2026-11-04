@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, Mail, ExternalLink } from 'lucide-react';
 
 interface AppDownloadSectionProps {
   navigate?: (route: string) => void;
@@ -8,12 +8,21 @@ interface AppDownloadSectionProps {
 export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
   const [registered, setRegistered] = useState(false);
   const [email, setEmail] = useState('');
-  const [platform, setPlatform] = useState<'ios' | 'android'>('android');
 
   const handleInterestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim()) {
       setRegistered(true);
+
+      const subject = encodeURIComponent(`feazto User App Early Access Subscription: ${email.trim()}`);
+      const body = encodeURIComponent(
+        `Hi feazto Team,\n\nI would like to subscribe for priority access to the feazto User App and receive upcoming product roadmap updates.\n\n` +
+        `Subscriber Email: ${email.trim()}\n\n` +
+        `Best regards,\nfeazto Early Adopter`
+      );
+
+      // Connect subscription via email to feazto26@gmail.com
+      window.location.href = `mailto:feazto26@gmail.com?subject=${subject}&body=${body}`;
     }
   };
 
@@ -25,7 +34,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         <div className="download-header-center">
           <div className="badge-tag">
             <Sparkles size={13} />
-            <span>feazto Mobile App Suite</span>
+            <span>feazto User App</span>
           </div>
 
           <h2 className="download-title">
@@ -33,7 +42,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           </h2>
 
           <p className="download-lead">
-            The feazto ecosystem brings together authentic regional heirloom kitchens, precision Kitchen-OS operations, and temperature-controlled doorstep delivery. Reserve priority access to the feazto User App today.
+            The feazto ecosystem brings together authentic regional heirloom kitchens, precision Kitchen-OS operations, and temperature-controlled doorstep delivery. Subscribe with your email for early priority access.
           </p>
         </div>
 
@@ -43,34 +52,11 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           {/* Left Column: Direct store buttons and waitlist form */}
           <div className="download-col-left">
             <div className="waitlist-card-wrapper">
-              <h3 className="sub-box-title">Reserve Priority Access to User App</h3>
-              <p className="sub-box-desc">Select your operating system and enter your email for the early invitation pass.</p>
+              <h3 className="sub-box-title">Subscribe for Priority Access</h3>
+              <p className="sub-box-desc">Enter your email address to receive priority access pass and launch roadmap alerts directly to your inbox.</p>
 
               {!registered ? (
                 <form onSubmit={handleInterestSubmit} className="download-waitlist-form">
-                  <div className="platform-toggle-row">
-                    <label className={`platform-pill ${platform === 'android' ? 'active' : ''}`}>
-                      <input 
-                        type="radio" 
-                        name="platform" 
-                        value="android" 
-                        checked={platform === 'android'}
-                        onChange={() => setPlatform('android')}
-                      />
-                      <span>Android (Play Store)</span>
-                    </label>
-                    <label className={`platform-pill ${platform === 'ios' ? 'active' : ''}`}>
-                      <input 
-                        type="radio" 
-                        name="platform" 
-                        value="ios" 
-                        checked={platform === 'ios'}
-                        onChange={() => setPlatform('ios')}
-                      />
-                      <span>iOS (App Store)</span>
-                    </label>
-                  </div>
-
                   <div className="input-btn-group">
                     <input 
                       type="email" 
@@ -81,7 +67,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                       className="waitlist-input"
                     />
                     <button type="submit" className="btn btn-yellow btn-waitlist-submit">
-                      <span>Reserve Invite</span>
+                      <span>Subscribe</span>
                       <ArrowRight size={16} />
                     </button>
                   </div>
@@ -90,8 +76,15 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 <div className="waitlist-success-banner">
                   <CheckCircle2 size={24} className="success-icon" />
                   <div>
-                    <strong>You're on the priority pilot list!</strong>
-                    <p>We will email your activation pass as soon as your neighborhood kitchen cluster goes live.</p>
+                    <strong>You're subscribed for priority access!</strong>
+                    <p>We've connected your subscription to <strong>feazto26@gmail.com</strong>. We will notify you the moment user access opens in your area.</p>
+                    <div className="subscription-mail-confirm">
+                      <a href={`mailto:feazto26@gmail.com?subject=${encodeURIComponent('feazto Priority User App Access')}&body=${encodeURIComponent(`Hi feazto Team, my email is ${email}`)}`} className="mail-confirm-link">
+                        <Mail size={14} />
+                        <span>Confirm via feazto26@gmail.com</span>
+                        <ExternalLink size={12} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               )}
@@ -294,16 +287,18 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           white-space: nowrap;
         }
 
-        .waitlist-success-banner {
-          display: flex;
-          align-items: flex-start;
-          gap: 12px;
-          background: #E8F5E9;
-          border: 1px solid #C8E6C9;
-          padding: 16px 20px;
-          border-radius: 16px;
-          margin-bottom: 24px;
-          width: 100%;
+        .subscription-mail-confirm {
+          margin-top: 10px;
+        }
+
+        .mail-confirm-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: #1B5E20;
+          text-decoration: underline;
         }
 
         .success-icon {
