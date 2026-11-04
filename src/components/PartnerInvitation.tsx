@@ -161,17 +161,19 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
 
         .card-marquee-wrapper {
           width: 100%;
-          margin: 10px 0 34px 0;
-          border-radius: 16px;
+          margin: 14px 0 34px 0;
+          border-radius: 24px;
           overflow: hidden;
+          background: linear-gradient(180deg, #FDF0C8 0%, #FEF8E3 50%, #FEF4D3 100%);
+          border: 1.5px dashed rgba(181, 132, 0, 0.38);
+          box-shadow: inset 0 2px 6px rgba(181, 132, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.04);
         }
 
         .card-marquee-wrapper .narrative-transition-wrapper {
-          padding: 12px 0;
-          background: rgba(255, 255, 255, 0.45);
-          border-radius: 16px;
-          border-top: 1px dashed rgba(181, 132, 0, 0.3);
-          border-bottom: 1px dashed rgba(181, 132, 0, 0.3);
+          padding: 16px 0 !important;
+          background: transparent !important;
+          border-top: none !important;
+          border-bottom: none !important;
         }
 
         /* ── LIQUID MORPHISM BENEFIT BADGES ── */
