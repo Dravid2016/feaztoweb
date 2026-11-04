@@ -478,7 +478,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           z-index: 3;
         }
 
-        /* ── CHEF ICON BUTTON IN HEADER (Liquid Glass Round Pill) ── */
+        /* ── CHEF ICON BUTTON IN HEADER (Exact Match with Apple/Play Store White & Black Buttons) ── */
         .chef-partner-nav-btn {
           display: inline-flex;
           align-items: center;
@@ -486,61 +486,33 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           width: 38px;
           height: 38px;
           border-radius: 50%;
-          background: linear-gradient(
-            135deg, 
-            rgba(255, 255, 255, 0.92) 0%, 
-            rgba(255, 250, 235, 0.75) 50%, 
-            rgba(250, 201, 33, 0.45) 100%
-          ) !important;
-          color: #2D2200;
-          border: 1.5px solid rgba(255, 255, 255, 0.9) !important;
+          background: rgba(255, 255, 255, 0.85) !important;
+          color: #181B20;
+          border: none !important;
           cursor: pointer;
-          box-shadow: 
-            0 8px 24px rgba(181, 132, 0, 0.2), 
-            0 2px 6px rgba(0, 0, 0, 0.05),
-            inset 0 1.5px 2.5px rgba(255, 255, 255, 0.95),
-            inset 0 -1.5px 2px rgba(181, 132, 0, 0.15);
-          backdrop-filter: blur(18px) saturate(180%);
-          -webkit-backdrop-filter: blur(18px) saturate(180%);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 2px #FFFFFF;
           flex-shrink: 0;
           padding: 0;
         }
 
         .chef-partner-nav-btn:hover {
+          background-color: #111111 !important;
+          color: #FFFFFF;
           transform: translateY(-2px) scale(1.08);
-          background: linear-gradient(
-            135deg, 
-            rgba(255, 255, 255, 1) 0%, 
-            rgba(250, 201, 33, 0.85) 100%
-          ) !important;
-          color: #111111;
-          box-shadow: 
-            0 12px 28px rgba(250, 201, 33, 0.38), 
-            0 4px 10px rgba(0, 0, 0, 0.08),
-            inset 0 2px 3px #FFFFFF;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .chef-partner-nav-btn.active {
-          background: linear-gradient(
-            135deg, 
-            #FAC921 0%, 
-            #F5B700 100%
-          ) !important;
-          color: #111111;
-          border-color: rgba(255, 255, 255, 0.95) !important;
-          box-shadow: 
-            0 8px 24px rgba(245, 183, 0, 0.42),
-            inset 0 2px 3px rgba(255, 255, 255, 0.8);
+          background-color: #111111 !important;
+          color: #FFFFFF;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .chef-nav-icon {
           color: inherit;
-          transition: transform 0.25s ease;
-        }
-
-        .chef-partner-nav-btn:hover .chef-nav-icon {
-          transform: scale(1.1) rotate(-6deg);
         }
 
         .store-quick-badge {
