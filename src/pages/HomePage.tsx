@@ -5,7 +5,6 @@ import { HomeKitchensSection } from '../components/HomeKitchensSection';
 import { BrandPillarsSection } from '../components/BrandPillarsSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
-import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
 import { AppDownloadSection } from '../components/AppDownloadSection';
 
 interface HomePageProps {
@@ -34,10 +33,7 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       {/* 6. Partner and kitchen invitation (includes FoodPreneur Growth Engine loop) */}
       <PartnerInvitation navigate={navigate} />
 
-      {/* 7. feazto Surplus & Zero Food Waste Engine (Regional Home Food Only) */}
-      <FeaztoSurplusSection navigate={navigate} />
-
-      {/* 8. Dedicated app-download section with QR (Reference G) */}
+      {/* 7. Dedicated app-download section with QR (Reference G) */}
       <AppDownloadSection navigate={navigate} />
     </main>
   );

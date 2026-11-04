@@ -1,3 +1,4 @@
+import { FeaztoSurplusSection } from '../components/FeaztoSurplusSection';
 import React, { useState } from 'react';
 import { Sparkles, Building2, ChefHat, CheckCircle2 } from 'lucide-react';
 
@@ -181,6 +182,28 @@ export const PartnersPage: React.FC = () => {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FUTURE ADD-ON: FEAZTO SURPLUS & RESCUE REVENUE ENGINE ── */}
+      <section className="partners-future-addons-section">
+        <div className="container">
+          <div className="future-addons-header">
+            <div className="future-badge">
+              <Sparkles size={13} />
+              <span>Future Add-On For Registered Kitchens</span>
+            </div>
+            <h2 className="future-addons-title">feazto Surplus & Zero Food Waste Engine</h2>
+            <p className="future-addons-subtitle">
+              Coming to your kitchen dashboard: Monetize daily batch preparation surplus with instant neighborhood rescue orders, automated POS telemetry, and zero commission fees.
+            </p>
+          </div>
+
+          <div className="future-addons-card-wrapper">
+            <FeaztoSurplusSection navigate={() => {
+              window.scrollTo({ top: 350, behavior: 'smooth' });
+            }} />
           </div>
         </div>
       </section>
@@ -395,6 +418,60 @@ export const PartnersPage: React.FC = () => {
           .partner-form-card {
             padding: 24px;
           }
+        }
+
+        /* ── FUTURE ADD-ONS SECTION ── */
+        .partners-future-addons-section {
+          padding: 80px 0 100px 0;
+          background: #FFFDF5;
+          border-top: 1.5px dashed rgba(181, 132, 0, 0.3);
+        }
+
+        .future-addons-header {
+          text-align: center;
+          max-width: 760px;
+          margin: 0 auto 48px auto;
+        }
+
+        .future-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 16px;
+          border-radius: var(--radius-capsule, 9999px);
+          background: #FFF3C4;
+          border: 1px solid rgba(181, 132, 0, 0.35);
+          color: #7A5B00;
+          font-family: var(--font-heading);
+          font-size: 0.8rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 16px;
+        }
+
+        .future-addons-title {
+          font-size: clamp(2rem, 3.8vw, 2.7rem);
+          font-weight: 800;
+          color: var(--color-ink-black);
+          line-height: 1.25;
+          margin-bottom: 14px;
+          letter-spacing: -0.02em;
+        }
+
+        .future-addons-subtitle {
+          font-size: 1.05rem;
+          color: #555555;
+          line-height: 1.65;
+        }
+
+        .future-addons-card-wrapper {
+          width: 100%;
+        }
+
+        .future-addons-card-wrapper .feazto-surplus-section {
+          padding-top: 0;
+          padding-bottom: 0;
         }
       `}</style>
     </div>
