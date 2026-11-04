@@ -34,3 +34,4 @@ export interface StrandsProps {
 
 declare const Strands: React.FC<StrandsProps>;
 export default Strands;
+
