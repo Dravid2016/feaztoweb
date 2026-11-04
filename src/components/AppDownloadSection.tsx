@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2, Smartphone, ChefHat, Bike } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface AppDownloadSectionProps {
   navigate?: (route: string) => void;
@@ -25,51 +25,26 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         <div className="download-header-center">
           <div className="badge-tag">
             <Sparkles size={13} />
-            <span>feazto Ecosystem Apps</span>
+            <span>feazto Mobile App Suite</span>
           </div>
 
           <h2 className="download-title">
-            One Unified Platform for Customers, Cloud Kitchens & Riders.
+            Experience Home Food with Cloud Precision.
           </h2>
 
           <p className="download-lead">
-            The feazto mobile suite connects food lovers discovering authentic heirloom feasts, FoodPreneurs & cloud kitchen operators managing batch preparation on Kitchen-OS, and our certified temperature-calibrated rider delivery fleet.
+            The feazto ecosystem brings together authentic regional heirloom kitchens, precision Kitchen-OS operations, and temperature-controlled doorstep delivery. Reserve priority access to the feazto User App today.
           </p>
         </div>
 
-        {/* Hero Showcase Area: Centered Big Phone Mockup Flanked by Actions and Ecosystem Pillars */}
+        {/* Hero Showcase Area: Centered Big Phone Mockup Flanked by Priority Access Waitlist */}
         <div className="download-showcase-stage">
           
-          {/* Left Column: Direct store buttons, waitlist form and ecosystem app chips */}
+          {/* Left Column: Direct store buttons and waitlist form */}
           <div className="download-col-left">
             <div className="waitlist-card-wrapper">
-              {/* Ecosystem Apps Highlights */}
-              <div className="apps-ecosystem-inline-list">
-                <div className="app-inline-chip">
-                  <Smartphone size={16} className="chip-icon" />
-                  <div>
-                    <strong>Customer App</strong>
-                    <span>Regional Food Discovery & Feasts</span>
-                  </div>
-                </div>
-                <div className="app-inline-chip">
-                  <ChefHat size={16} className="chip-icon" />
-                  <div>
-                    <strong>Cloud Kitchen App</strong>
-                    <span>Kitchen-OS & Batch Dispatch</span>
-                  </div>
-                </div>
-                <div className="app-inline-chip">
-                  <Bike size={16} className="chip-icon" />
-                  <div>
-                    <strong>Rider Delivery App</strong>
-                    <span>Thermal Route Fleet Dispatch</span>
-                  </div>
-                </div>
-              </div>
-
-              <h3 className="sub-box-title">Reserve Priority Access</h3>
-              <p className="sub-box-desc">Select your operating system and enter your email for the invitation pass across our ecosystem apps.</p>
+              <h3 className="sub-box-title">Reserve Priority Access to User App</h3>
+              <p className="sub-box-desc">Select your operating system and enter your email for the early invitation pass.</p>
 
               {!registered ? (
                 <form onSubmit={handleInterestSubmit} className="download-waitlist-form">
@@ -218,51 +193,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           margin: 0;
         }
 
-        /* Ecosystem Apps Inline List */
-        .apps-ecosystem-inline-list {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          margin-bottom: 22px;
-          width: 100%;
-        }
-
-        .app-inline-chip {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 10px 14px;
-          border-radius: 12px;
-          background: rgba(255, 255, 255, 0.72);
-          border: 1px solid rgba(181, 132, 0, 0.2);
-          box-shadow: 0 4px 14px rgba(181, 132, 0, 0.06);
-          backdrop-filter: blur(10px);
-          -webkit-backdrop-filter: blur(10px);
-        }
-
-        .chip-icon {
-          color: #B58400;
-          flex-shrink: 0;
-        }
-
-        .app-inline-chip div {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-
-        .app-inline-chip strong {
-          font-size: 0.92rem;
-          color: #111111;
-          font-weight: 800;
-        }
-
-        .app-inline-chip span {
-          font-size: 0.8rem;
-          color: #666666;
-        }
-
-        /* 3-Column Showcase Stage: Completely borderless and transparent (zero outer background card) */
+        /* 2-Column Showcase Stage: Completely borderless and transparent */
         .download-showcase-stage {
           width: 100%;
           display: grid;
