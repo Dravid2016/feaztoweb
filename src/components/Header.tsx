@@ -217,24 +217,40 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
       )}
 
       <style>{`
-        /* ── OUTER HEADER CONTAINER (100% Identical Background with Homepage) ── */
+        /* ── OUTER HEADER CONTAINER WITH SMOOTH BLACK GRADIENT ── */
         .feazto-header-outer {
           position: sticky;
           top: 0;
           left: 0;
           right: 0;
           z-index: 1000;
-          padding: 18px 24px 10px 24px;
-          background: transparent !important;
+          padding: 18px 24px 22px 24px;
+          background: linear-gradient(
+            180deg, 
+            rgba(12, 10, 5, 0.88) 0%, 
+            rgba(18, 15, 8, 0.65) 45%, 
+            rgba(25, 20, 10, 0.3) 78%, 
+            transparent 100%
+          ) !important;
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none; /* Allows click-through outside floating pills */
         }
 
-        /* When scrolling, keep the background transparent and let the pills float over the page smoothly */
+        /* When scrolling, a slightly richer dark glass gradient */
         .feazto-header-outer.is-scrolled {
-          padding-top: 10px;
-          padding-bottom: 8px;
-          background: transparent !important;
+          padding-top: 12px;
+          padding-bottom: 14px;
+          background: linear-gradient(
+            180deg, 
+            rgba(10, 8, 4, 0.94) 0%, 
+            rgba(14, 12, 6, 0.82) 55%, 
+            rgba(20, 16, 8, 0.4) 85%, 
+            transparent 100%
+          ) !important;
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
         }
 
         /* ── 3-PILL ISLAND ROW ── */
