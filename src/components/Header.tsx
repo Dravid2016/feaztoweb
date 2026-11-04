@@ -504,26 +504,54 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         /* ── RESPONSIVE MEDIA QUERIES ── */
         @media (max-width: 1100px) {
           .nav-pill-island {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.35) 100%) !important;
-          backdrop-filter: blur(26px) saturate(180%) !important;
-          -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
-          padding: 6px 18px;
-          border-radius: 9999px;
-          border: 1px solid rgba(255, 255, 255, 0.6) !important;
-          box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06), 
-                      inset 0 1.5px 3px rgba(255, 255, 255, 0.85), 
-                      inset 0 -1.5px 3px rgba(0, 0, 0, 0.03);
-          transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-          flex-grow: 0;
-        }
+            display: none !important;
+          }
           .mobile-pill-toggle {
-            display: inline-flex;
+            display: inline-flex !important;
           }
           .feazto-header-outer {
-            padding: 12px 16px;
+            padding: 10px 14px;
+          }
+          .header-island-wrapper {
+            width: 100%;
+            justify-content: space-between;
+          }
+          .brand-logo-img {
+            height: 28px;
+          }
+          .brand-pill-island {
+            padding: 6px 14px;
+          }
+          .actions-pill-island {
+            padding: 5px 8px;
+            gap: 6px;
+          }
+          .store-quick-badge {
+            width: 34px;
+            height: 34px;
+          }
+          .store-quick-badge svg {
+            width: 17px;
+            height: 17px;
+          }
+          .mobile-pill-toggle {
+            width: 34px;
+            height: 34px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .feazto-header-outer {
+            padding: 8px 10px;
+          }
+          .brand-pill-island {
+            padding: 5px 12px;
+          }
+          .brand-logo-img {
+            height: 24px;
+          }
+          .store-quick-badge:first-of-type {
+            display: none;
           }
         }
       `}</style>

@@ -968,7 +968,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             display: flex;
           }
           .hero-curved-bottom-separator {
-            height: 80px;
+            height: 240px;
+            bottom: -60px;
+          }
+          .food-discovery-teaser-section {
+            margin-top: -10px;
           }
         }
       `}</style>
