@@ -13,6 +13,7 @@ import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
 import { BlogPage } from './pages/BlogPage';
 import { CareersPage } from './pages/CareersPage';
+import { AmbientMusicPlayer } from './components/AmbientMusicPlayer';
 
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
@@ -83,6 +84,8 @@ export function App() {
       <Header currentRoute={currentRoute} navigate={navigate} />
       {renderCurrentPage()}
       <Footer navigate={navigate} />
+      {/* Ambient background player configured at 30% volume */}
+      <AmbientMusicPlayer />
     </div>
   );
 }
