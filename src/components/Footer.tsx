@@ -131,26 +131,26 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         /* ── HERITAGE TEMPLE TOWER STRADDLING FOOTER & UPPER SECTION ── */
         .footer-temple-tower-anchor {
           position: absolute;
-          right: -70px; /* Moved further to the right edge */
+          right: 0; /* Cleanly anchored on the right */
           bottom: 0;
-          top: -620px; /* Extends higher to balance the larger architectural scale */
-          width: 720px; /* Substantially bigger in size */
-          max-width: 55vw;
+          top: -380px; /* Proportionally scaled down */
+          width: 440px; /* Scaled down from 720px */
+          max-width: 40vw;
           pointer-events: none;
           z-index: 0; /* Sits naturally as an architectural backdrop behind footer content */
           display: flex;
           align-items: flex-end;
           justify-content: flex-end;
-          opacity: 0.96;
+          opacity: 0.95;
         }
 
         .footer-temple-tower-img {
           width: 100%;
           height: auto;
-          max-height: 1350px;
+          max-height: 920px;
           object-fit: contain;
           object-position: bottom right;
-          filter: drop-shadow(0 -16px 45px rgba(230, 160, 0, 0.24)) drop-shadow(0 25px 55px rgba(0, 0, 0, 0.12));
+          filter: drop-shadow(0 -12px 36px rgba(230, 160, 0, 0.2)) drop-shadow(0 20px 45px rgba(0, 0, 0, 0.1));
           mask-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 85%, transparent 100%),
                       linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 18%);
           -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 85%, transparent 100%),
@@ -339,19 +339,19 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
         @media (max-width: 960px) {
           .footer-temple-tower-anchor {
-            top: -340px;
-            width: 440px;
-            right: -35px;
-            opacity: 0.52;
+            top: -240px;
+            width: 320px;
+            right: 0;
+            opacity: 0.48;
           }
         }
 
         @media (max-width: 600px) {
           .footer-temple-tower-anchor {
-            top: -220px;
-            width: 310px;
-            right: -20px;
-            opacity: 0.42;
+            top: -160px;
+            width: 220px;
+            right: 0;
+            opacity: 0.38;
           }
         }
 
