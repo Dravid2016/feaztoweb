@@ -127,14 +127,54 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             </div>
           </div>
 
-          {/* Center Column: Prominent, Centered, Bigger Phone Banner with Transparent Background */}
+          {/* Center Column: Animated Kathakali Dancer + Golden Crown Mandala + Phone */}
           <div className="download-col-center">
-            <div className="center-phone-hero-wrapper">
-              <img 
-                src="/brand/feazto-login-signup-phone.png" 
-                alt="feazto Unified Mobile Apps - Customer, Kitchen-OS & Rider Fleet" 
-                className="center-phone-big-img"
-              />
+            <div className="feazto-hero-stage">
+              <div className="feazto-aura-saffron" />
+              <div className="feazto-aura-crimson" />
+
+              {/* Rotating Golden Chakra Mandala behind Crown */}
+              <div className="feazto-mandala-wrap">
+                <svg className="feazto-mandala-outer" viewBox="0 0 200 200" fill="none">
+                  <circle cx="100" cy="100" r="92" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4 6" />
+                  <circle cx="100" cy="100" r="82" stroke="#FDE047" strokeWidth="1.2" opacity="0.7" />
+                  <circle cx="100" cy="100" r="68" stroke="#EA580C" strokeWidth="1.4" strokeDasharray="10 5" />
+                </svg>
+                <svg className="feazto-mandala-inner" viewBox="0 0 200 200" fill="none">
+                  <polygon
+                    points="100,12 122,74 188,74 134,112 154,176 100,138 46,176 66,112 12,74 78,74"
+                    stroke="#FBBF24"
+                    strokeWidth="1.2"
+                    fill="rgba(245, 158, 11, 0.08)"
+                  />
+                  <circle cx="100" cy="100" r="52" stroke="#FDE047" strokeWidth="1" strokeDasharray="3 5" />
+                </svg>
+              </div>
+
+              {/* Kathakali Performer Group */}
+              <div className="feazto-dancer-group">
+                <img
+                  src="/brand/dancer_body.webp"
+                  className="feazto-dancer-body"
+                  alt="Kathakali Performer Body"
+                  draggable={false}
+                />
+                <img
+                  src="/brand/dancer_head.webp"
+                  className="feazto-dancer-head"
+                  alt="Kathakali Performer Head"
+                  draggable={false}
+                />
+              </div>
+
+              {/* Stationary FEAZTO Mobile UI */}
+              <div className="feazto-phone-static">
+                <img
+                  src="/brand/phone_layer.webp"
+                  alt="FEAZTO Mobile App Showcase"
+                  draggable={false}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -421,34 +461,169 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           margin-top: 6px;
         }
 
-        /* Center Big Centered Phone */
+        /* Center Kathakali & Mobile Showcase Stage */
         .download-col-center {
           display: flex;
           justify-content: center;
           align-items: center;
           position: relative;
-        }
-
-        .center-phone-hero-wrapper {
           width: 100%;
-          max-width: 440px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          filter: drop-shadow(0 28px 65px rgba(0, 0, 0, 0.26));
-          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .center-phone-hero-wrapper:hover {
-          transform: translateY(-8px) scale(1.03);
-        }
-
-        .center-phone-big-img {
+        .feazto-hero-stage {
+          position: relative;
           width: 100%;
-          height: auto;
-          max-height: 640px;
+          max-width: 580px;
+          aspect-ratio: 1024 / 935;
+          margin: 0 auto;
+          background: transparent;
+          overflow: visible;
+          user-select: none;
+        }
+
+        /* Warm Ambient Backlights */
+        .feazto-aura-saffron {
+          position: absolute;
+          width: 68%;
+          height: 68%;
+          right: 6%;
+          top: 14%;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(251, 191, 36, 0.42) 0%, rgba(234, 88, 12, 0.18) 45%, rgba(0, 0, 0, 0) 72%);
+          filter: blur(28px);
+          animation: feaztoPulseAura 6s ease-in-out infinite alternate;
+          pointer-events: none;
+        }
+
+        .feazto-aura-crimson {
+          position: absolute;
+          width: 58%;
+          height: 64%;
+          left: 4%;
+          top: 18%;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, rgba(22, 163, 74, 0.15) 50%, rgba(0, 0, 0, 0) 75%);
+          filter: blur(34px);
+          animation: feaztoPulseAura 7.5s ease-in-out infinite alternate-reverse;
+          pointer-events: none;
+        }
+
+        /* Rotating Golden Chakra Mandala behind Crown */
+        .feazto-mandala-wrap {
+          position: absolute;
+          left: 28.2%;
+          top: 16.8%;
+          width: 34%;
+          aspect-ratio: 1 / 1;
+          pointer-events: none;
+          z-index: 1;
+        }
+
+        .feazto-mandala-outer {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 100%;
+          height: 100%;
+          animation: feaztoSpin 32s linear infinite;
+          filter: drop-shadow(0 0 18px rgba(251, 191, 36, 0.55));
+        }
+
+        .feazto-mandala-inner {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 82%;
+          height: 82%;
+          animation: feaztoSpinReverse 24s linear infinite;
+          opacity: 0.65;
+        }
+
+        /* Kathakali Performer Group */
+        .feazto-dancer-group {
+          position: absolute;
+          left: 3.91%;
+          top: 1.28%;
+          width: 40.43%;
+          height: 97.54%;
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        .feazto-dancer-body {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform-origin: 55% 92%;
+          animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
+          filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
+                  drop-shadow(0 0 20px rgba(234, 88, 12, 0.25));
+        }
+
+        .feazto-dancer-head {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transform-origin: 68.5% 31.2%;
+          animation: feaztoHeadLeftRight 6.8s ease-in-out infinite;
+          filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
+        }
+
+        /* Stationary FEAZTO Mobile UI */
+        .feazto-phone-static {
+          position: absolute;
+          left: 41.89%;
+          top: 2.14%;
+          width: 43.46%;
+          height: 94.76%;
+          z-index: 30;
+          pointer-events: none;
+          filter: drop-shadow(-14px 20px 32px rgba(0, 0, 0, 0.28))
+                  drop-shadow(0 0 24px rgba(251, 191, 36, 0.25));
+        }
+
+        .feazto-phone-static img {
+          width: 100%;
+          height: 100%;
           object-fit: contain;
           display: block;
+        }
+
+        @keyframes feaztoHeadLeftRight {
+          0%, 100% {
+            transform: translate3d(-8.5px, 1px, 0) rotate(-3.2deg);
+          }
+          50% {
+            transform: translate3d(8.5px, 1px, 0) rotate(3.2deg);
+          }
+        }
+
+        @keyframes feaztoBodyBreathe {
+          0%, 100% {
+            transform: translate3d(-1.5px, 0px, 0) scaleY(1);
+          }
+          50% {
+            transform: translate3d(1.5px, -2px, 0) scaleY(1.006);
+          }
+        }
+
+        @keyframes feaztoSpin {
+          from { transform: translate(-50%, -50%) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes feaztoSpinReverse {
+          from { transform: translate(-50%, -50%) rotate(360deg); }
+          to { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+
+        @keyframes feaztoPulseAura {
+          0% { transform: scale(0.94); opacity: 0.65; }
+          100% { transform: scale(1.08); opacity: 0.95; }
         }
 
         /* Right QR Panel */
