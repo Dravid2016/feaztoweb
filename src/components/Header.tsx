@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import Strands from './Strands';
 import { useAudioPlayer, FEAZTO_ORB_COLORS } from '../context/AudioPlayerContext';
 
@@ -11,7 +11,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { isPlaying, audioLevel, togglePlayback, openOrbModal } = useAudioPlayer();
+  const { isPlaying, audioLevel, togglePlayback } = useAudioPlayer();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,55 +79,46 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         {/* Right Pill: Audio Reactive Sound Orb & Actions */}
         <div className="actions-pill-island">
-          {/* Sound Orb Interactive Trigger */}
-          <div className="header-sound-orb-group">
-            <button
-              type="button"
-              onClick={openOrbModal}
-              className={`header-sound-orb-btn ${isPlaying ? 'is-active' : ''}`}
-              title="Open Audio Visualizer"
-              aria-label="Open Audio Visualizer"
-            >
-              <div className="header-orb-canvas-wrap">
-                <Strands
-                  colors={FEAZTO_ORB_COLORS}
-                  count={3}
-                  speed={isPlaying ? 1.2 : 0.35}
-                  amplitude={isPlaying ? 0.9 + audioLevel * 0.8 : 0.5}
-                  waviness={isPlaying ? 0.9 + audioLevel * 0.6 : 0.5}
-                  glow={isPlaying ? 1.0 + audioLevel * 1.2 : 0.4}
-                  glass={true}
-                  glassSize={1.0}
-                  refraction={1.2}
-                  dispersion={1.1}
-                  energy={isPlaying ? 0.3 + audioLevel * 0.7 : 0.15}
-                  level={audioLevel}
-                  interactive={false}
-                  clickPulse={false}
-                  intro={false}
-                />
-              </div>
-              {/* Dynamic Aura Ring */}
-              <span 
-                className="header-orb-aura"
-                style={{
-                  opacity: isPlaying ? 0.4 + audioLevel * 0.6 : 0,
-                  transform: `scale(${1 + audioLevel * 0.3})`
-                }}
+          {/* Sound Orb Toggle: Clicking directly toggles sound on/off */}
+          <button
+            type="button"
+            onClick={togglePlayback}
+            className={`header-sound-orb-btn ${isPlaying ? 'is-active' : 'is-muted'}`}
+            title={isPlaying ? 'Click to Mute Sound' : 'Click to Play Sound'}
+            aria-label={isPlaying ? 'Click to Mute Sound' : 'Click to Play Sound'}
+          >
+            <div className="header-orb-canvas-wrap">
+              <Strands
+                colors={FEAZTO_ORB_COLORS}
+                count={3}
+                speed={isPlaying ? 1.2 : 0.25}
+                amplitude={isPlaying ? 0.9 + audioLevel * 0.8 : 0.35}
+                waviness={isPlaying ? 0.9 + audioLevel * 0.6 : 0.35}
+                glow={isPlaying ? 1.0 + audioLevel * 1.2 : 0.25}
+                glass={true}
+                glassSize={1.0}
+                refraction={1.2}
+                dispersion={1.1}
+                energy={isPlaying ? 0.3 + audioLevel * 0.7 : 0.08}
+                level={audioLevel}
+                interactive={false}
+                clickPulse={false}
+                intro={false}
               />
-            </button>
-
-            {/* Quick Mute / Play Icon Button */}
-            <button
-              type="button"
-              onClick={togglePlayback}
-              className="header-sound-toggle-btn"
-              title={isPlaying ? 'Mute Sound (30%)' : 'Play Sound'}
-              aria-label={isPlaying ? 'Mute Sound' : 'Play Sound'}
-            >
-              {isPlaying ? <Volume2 size={16} /> : <VolumeX size={16} />}
-            </button>
-          </div>
+            </div>
+            {/* Dynamic Aura Ring */}
+            <span 
+              className="header-orb-aura"
+              style={{
+                opacity: isPlaying ? 0.45 + audioLevel * 0.55 : 0,
+                transform: `scale(${1 + audioLevel * 0.3})`
+              }}
+            />
+            {/* Subtle muted slash indicator overlay when sound is off */}
+            {!isPlaying && (
+              <span className="orb-muted-indicator" title="Muted" />
+            )}
+          </button>
 
           {/* iOS App Store Icon Button */}
           <button
@@ -407,13 +398,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           flex-shrink: 0;
         }
 
-        /* ── SOUND ORB & AUDIO CONTROLS IN HEADER ── */
-        .header-sound-orb-group {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-        }
-
+        /* ── SOUND ORB INTERACTIVE TOGGLE IN HEADER ── */
         .header-sound-orb-btn {
           position: relative;
           width: 38px;
@@ -429,7 +414,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           cursor: pointer;
           padding: 0;
           overflow: visible;
-          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+          transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -439,6 +424,16 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         .header-sound-orb-btn:hover {
           transform: translateY(-2px) scale(1.08);
           box-shadow: 0 8px 22px rgba(181, 132, 0, 0.4);
+        }
+
+        .header-sound-orb-btn.is-muted {
+          opacity: 0.65;
+          filter: grayscale(40%);
+        }
+
+        .header-sound-orb-btn.is-muted:hover {
+          opacity: 0.95;
+          filter: grayscale(0%);
         }
 
         .header-orb-canvas-wrap {
@@ -454,33 +449,22 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           position: absolute;
           inset: -4px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(250, 201, 33, 0.7) 0%, rgba(226, 109, 45, 0.4) 60%, transparent 80%);
+          background: radial-gradient(circle, rgba(250, 201, 33, 0.75) 0%, rgba(226, 109, 45, 0.4) 60%, transparent 80%);
           pointer-events: none;
           z-index: 1;
           transition: transform 0.15s ease-out, opacity 0.15s ease-out;
         }
 
-        .header-sound-toggle-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 34px;
-          height: 34px;
+        .orb-muted-indicator {
+          position: absolute;
+          bottom: -2px;
+          right: -2px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.85);
-          color: #7A5B00;
-          border: none;
-          cursor: pointer;
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06), inset 0 1px 2px #FFFFFF;
-        }
-
-        .header-sound-toggle-btn:hover {
-          background: #111111;
-          color: #FAC921;
-          transform: translateY(-1.5px) scale(1.06);
+          background: #E26D2D;
+          border: 1.5px solid #FFFFFF;
+          z-index: 3;
         }
 
         .store-quick-badge {
@@ -658,10 +642,6 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           .header-sound-orb-btn {
             width: 34px;
             height: 34px;
-          }
-          .header-sound-toggle-btn {
-            width: 32px;
-            height: 32px;
           }
           .store-quick-badge {
             width: 34px;

@@ -14,7 +14,6 @@ import { LegalPage } from './pages/LegalPage';
 import { BlogPage } from './pages/BlogPage';
 import { CareersPage } from './pages/CareersPage';
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
-import { StrandsOrbModal } from './components/StrandsOrbModal';
 
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
@@ -86,8 +85,6 @@ export function App() {
         <Header currentRoute={currentRoute} navigate={navigate} />
         {renderCurrentPage()}
         <Footer navigate={navigate} />
-        {/* Fullscreen Interactive Strands Orb Visualizer Modal */}
-        <StrandsOrbModal />
       </div>
     </AudioPlayerProvider>
   );
