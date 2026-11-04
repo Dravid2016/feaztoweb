@@ -13,6 +13,14 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
 
   return (
     <footer className="feazto-footer">
+      {/* Intricate Heritage Temple Tower (Gopuram) extending up across footer boundary */}
+      <div className="footer-temple-tower-anchor" aria-hidden="true">
+        <img 
+          src="/brand/temple-tower-transparent.png" 
+          alt="" 
+          className="footer-temple-tower-img" 
+        />
+      </div>
       <div className="container footer-container">
         {/* Top Brand Banner */}
         <div className="footer-top-row">
@@ -116,7 +124,37 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           padding-bottom: 40px;
           border-top: 1.5px solid rgba(181, 132, 0, 0.22);
           position: relative;
-          overflow: hidden;
+          /* Allow temple tower to reach high up into the section above the footer */
+          overflow: visible;
+        }
+
+        /* ── HERITAGE TEMPLE TOWER STRADDLING FOOTER & UPPER SECTION ── */
+        .footer-temple-tower-anchor {
+          position: absolute;
+          right: 2%;
+          bottom: 0;
+          top: -300px; /* Extends way up: half in the section above, half in the footer */
+          width: 380px;
+          max-width: 35vw;
+          pointer-events: none;
+          z-index: 0; /* Sits naturally as an architectural backdrop behind footer content */
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+          opacity: 0.92;
+        }
+
+        .footer-temple-tower-img {
+          width: 100%;
+          height: auto;
+          max-height: 850px;
+          object-fit: contain;
+          object-position: bottom right;
+          filter: drop-shadow(0 -10px 30px rgba(230, 160, 0, 0.18)) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.08));
+          mask-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 85%, transparent 100%),
+                      linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 20%);
+          -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 85%, transparent 100%),
+                              linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 20%);
         }
 
         .footer-container {
@@ -297,6 +335,22 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
         .heart-icon {
           color: #E26D2D;
           fill: #E26D2D;
+        }
+
+        @media (max-width: 960px) {
+          .footer-temple-tower-anchor {
+            top: -180px;
+            width: 260px;
+            opacity: 0.45;
+          }
+        }
+
+        @media (max-width: 600px) {
+          .footer-temple-tower-anchor {
+            top: -120px;
+            width: 180px;
+            opacity: 0.35;
+          }
         }
 
         @media (max-width: 960px) {
