@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowRight, Play, MapPin } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Play, MapPin, Mail, Sparkles, CheckCircle2, X } from 'lucide-react';
 import { PeekingGrandmaFezuBanner } from './PeekingGrandmaFezuBanner';
 
 interface EditorialHeroProps {
@@ -7,6 +7,16 @@ interface EditorialHeroProps {
 }
 
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
+  const [subModalOpen, setSubModalOpen] = useState(false);
+  const [subEmail, setSubEmail] = useState('');
+  const [subSubmitted, setSubSubmitted] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (subEmail.trim()) {
+      setSubSubmitted(true);
+    }
+  };
   return (
     <div className="feazto-hero-and-discovery-wrapper">
       {/* ── TOP HERO SECTION ── */}
@@ -66,10 +76,14 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           <div className="hero-cta-buttons-row">
             <button 
               type="button" 
-              onClick={() => navigate('/discover')}
+              onClick={() => {
+                setSubModalOpen(true);
+                setSubSubmitted(false);
+              }}
               className="master-primary-cta"
+              title="Subscribe to know all our future plans and moves"
             >
-              <span>Explore Food</span>
+              <span>Subscribe for Future Plans</span>
               <ArrowRight size={18} className="cta-arrow-icon" />
             </button>
 
@@ -419,6 +433,188 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           justify-content: center;
           gap: 18px;
           flex-wrap: wrap;
+        }
+
+        .cta-mail-icon {
+          color: #8C6500;
+        }
+
+        /* ── FUTURE PLANS SUBSCRIPTION MODAL ── */
+        .sub-modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(18, 14, 5, 0.65);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          z-index: 10001;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+          animation: fadeInSub 0.25s ease;
+        }
+
+        @keyframes fadeInSub {
+          from { opacity: 0; transform: scale(0.98); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        .sub-modal-box {
+          width: 100%;
+          max-width: 540px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 235, 0.96) 100%);
+          border-radius: 28px;
+          border: 1.5px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 
+            0 24px 60px rgba(0, 0, 0, 0.25),
+            0 0 0 1px rgba(181, 132, 0, 0.15),
+            inset 0 2px 4px rgba(255, 255, 255, 1);
+          padding: 36px 32px 32px 32px;
+          position: relative;
+          text-align: center;
+        }
+
+        .sub-modal-close {
+          position: absolute;
+          top: 18px;
+          right: 18px;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          color: #333333;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .sub-modal-close:hover {
+          background: #FAC921;
+          color: #111111;
+          transform: rotate(90deg);
+        }
+
+        .sub-badge-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          padding: 6px 14px;
+          border-radius: 9999px;
+          background: #FFF3C4;
+          border: 1px solid rgba(181, 132, 0, 0.3);
+          color: #7A5B00;
+          font-family: var(--font-heading);
+          font-size: 0.78rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          margin-bottom: 16px;
+        }
+
+        .sub-modal-title {
+          font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+          font-weight: 800;
+          color: var(--color-ink-black);
+          line-height: 1.25;
+          margin-bottom: 12px;
+          letter-spacing: -0.01em;
+        }
+
+        .sub-modal-desc {
+          font-size: 0.94rem;
+          color: #555555;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+
+        .sub-modal-form {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          width: 100%;
+        }
+
+        .sub-input-row {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
+
+        .sub-input-icon {
+          position: absolute;
+          left: 16px;
+          color: #8C6500;
+          pointer-events: none;
+        }
+
+        .sub-email-input {
+          width: 100%;
+          padding: 14px 18px 14px 46px;
+          border-radius: 9999px;
+          border: 1.5px solid rgba(181, 132, 0, 0.3);
+          background: #FFFFFF;
+          font-size: 0.95rem;
+          color: #111111;
+          outline: none;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .sub-email-input:focus {
+          border-color: #F5B700;
+          box-shadow: 0 0 0 3px rgba(250, 201, 33, 0.25);
+        }
+
+        .sub-submit-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 14px 24px;
+          border-radius: 9999px;
+          background: #FAC921;
+          color: #111111;
+          font-family: var(--font-heading);
+          font-size: 0.95rem;
+          font-weight: 800;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 6px 18px rgba(250, 201, 33, 0.35);
+          transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .sub-submit-btn:hover {
+          transform: translateY(-2px);
+          background: #E5B40F;
+          box-shadow: 0 8px 24px rgba(250, 201, 33, 0.45);
+        }
+
+        .sub-success-message {
+          padding: 16px;
+          background: #FFFDF0;
+          border-radius: 20px;
+          border: 1px solid rgba(181, 132, 0, 0.2);
+        }
+
+        .sub-success-icon {
+          color: #15803D;
+          margin-bottom: 10px;
+        }
+
+        .sub-success-message h4 {
+          font-size: 1.15rem;
+          font-weight: 800;
+          color: #111111;
+          margin-bottom: 6px;
+        }
+
+        .sub-success-message p {
+          font-size: 0.88rem;
+          color: #444444;
+          line-height: 1.5;
         }
 
         .master-primary-cta {
@@ -976,6 +1172,63 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           }
         }
       `}</style>
+    
+      {/* ── FUTURE PLANS & MOVES SUBSCRIPTION MODAL ── */}
+      {subModalOpen && (
+        <div className="sub-modal-overlay" onClick={() => setSubModalOpen(false)}>
+          <div className="sub-modal-box" onClick={(e) => e.stopPropagation()}>
+            <button 
+              type="button" 
+              className="sub-modal-close" 
+              onClick={() => setSubModalOpen(false)}
+              aria-label="Close subscription modal"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="sub-modal-content">
+              <div className="sub-badge-tag">
+                <Sparkles size={13} />
+                <span>Insider Access • Roadmap & Moves</span>
+              </div>
+
+              <h3 className="sub-modal-title">
+                Know All Our Future Plans & Regional Moves
+              </h3>
+
+              <p className="sub-modal-desc">
+                Subscribe to receive early roadmap dispatches: upcoming city cluster launches, new heirloom kitchen custodian reveals, pilot feature rollouts, and surplus food engine milestones.
+              </p>
+
+              {!subSubmitted ? (
+                <form onSubmit={handleSubscribe} className="sub-modal-form">
+                  <div className="sub-input-row">
+                    <Mail size={18} className="sub-input-icon" />
+                    <input 
+                      type="email" 
+                      required 
+                      placeholder="Enter your email address..."
+                      value={subEmail}
+                      onChange={(e) => setSubEmail(e.target.value)}
+                      className="sub-email-input"
+                    />
+                  </div>
+                  <button type="submit" className="sub-submit-btn">
+                    <span>Subscribe to Roadmap</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </form>
+              ) : (
+                <div className="sub-success-message">
+                  <CheckCircle2 size={36} className="sub-success-icon" />
+                  <h4>You're on the Insider Dispatch!</h4>
+                  <p>We've registered <strong>{subEmail}</strong>. You'll receive our executive roadmap dispatches and exclusive launch alerts.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
