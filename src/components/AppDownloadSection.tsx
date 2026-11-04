@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, QrCode, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 interface AppDownloadSectionProps {
   navigate?: (route: string) => void;
@@ -144,58 +144,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               />
             </div>
           </div>
-
-          {/* Right Column: QR Code Direct Registration */}
-          <div className="download-col-right">
-            <div className="qr-code-card">
-              <div className="qr-header-row">
-                <QrCode size={20} />
-                <span>Scan to Register</span>
-              </div>
-
-              <div className="qr-visual-box">
-                <svg viewBox="0 0 100 100" className="qr-svg-graphic" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="5" y="5" width="26" height="26" fill="#111111" rx="4" />
-                  <rect x="9" y="9" width="18" height="18" fill="#FFFFFF" rx="2" />
-                  <rect x="13" y="13" width="10" height="10" fill="#111111" rx="2" />
-
-                  <rect x="69" y="5" width="26" height="26" fill="#111111" rx="4" />
-                  <rect x="73" y="9" width="18" height="18" fill="#FFFFFF" rx="2" />
-                  <rect x="77" y="13" width="10" height="10" fill="#111111" rx="2" />
-
-                  <rect x="5" y="69" width="26" height="26" fill="#111111" rx="4" />
-                  <rect x="9" y="73" width="18" height="18" fill="#FFFFFF" rx="2" />
-                  <rect x="13" y="77" width="10" height="10" fill="#111111" rx="2" />
-
-                  <rect x="36" y="8" width="6" height="6" fill="#111111" />
-                  <rect x="46" y="8" width="6" height="6" fill="#111111" />
-                  <rect x="56" y="8" width="6" height="6" fill="#111111" />
-                  <rect x="36" y="18" width="6" height="6" fill="#111111" />
-                  <rect x="48" y="22" width="8" height="8" fill="#FAC921" rx="1" />
-                  <rect x="36" y="36" width="28" height="28" fill="#111111" rx="2" />
-                  <rect x="42" y="42" width="16" height="16" fill="#FAC921" rx="2" />
-                  <rect x="8" y="36" width="6" height="6" fill="#111111" />
-                  <rect x="18" y="46" width="6" height="6" fill="#111111" />
-                  <rect x="69" y="40" width="6" height="6" fill="#111111" />
-                  <rect x="79" y="46" width="6" height="6" fill="#111111" />
-                  <rect x="89" y="38" width="6" height="6" fill="#111111" />
-                </svg>
-              </div>
-
-              <h4 className="qr-title">Scan on Mobile</h4>
-              <p className="qr-desc">
-                Open your smartphone camera to scan and open the feazto pilot registration on your mobile browser instantly.
-              </p>
-
-              <div className="qr-verified-tag">
-                <span className="dot-green" />
-                <span>Verified Direct Pilot Link</span>
-              </div>
-            </div>
-          </div>
-
         </div>
-
       </div>
 
       <style>{`
@@ -248,7 +197,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         .download-showcase-stage {
           width: 100%;
           display: grid;
-          grid-template-columns: 1.15fr 1.35fr 0.95fr;
+          grid-template-columns: 1.1fr 1.1fr;
+          max-width: 1040px;
+          margin: 0 auto;
           gap: 36px;
           align-items: center;
         }
