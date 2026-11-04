@@ -1,14 +1,47 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, Smartphone, ChefHat, Bike } from 'lucide-react';
 
 interface AppDownloadSectionProps {
   navigate?: (route: string) => void;
 }
 
 export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
+  const [appRole, setAppRole] = useState<'customer' | 'kitchen' | 'rider'>('customer');
   const [registered, setRegistered] = useState(false);
   const [email, setEmail] = useState('');
   const [platform, setPlatform] = useState<'ios' | 'android'>('android');
+
+  const appDetails = {
+    customer: {
+      badge: 'feazto Customer App',
+      title: 'Experience Home Food with Cloud Precision.',
+      lead: 'Explore curated generational recipes from certified home cooks and regional FoodPreneurs delivered in calibrated thermal containers.',
+      formSubtitle: 'Select your app platform to reserve early access for ordering authentic regional feasts.',
+      phoneImg: '/brand/feazto-login-signup-phone.png',
+      phoneAlt: 'feazto Customer App Mobile Experience',
+      tagline: 'Customer Food Discovery & Feast Ordering',
+    },
+    kitchen: {
+      badge: 'feazto Kitchen-OS (Cloud Kitchens & Cooks)',
+      title: 'Power Your Kitchen with Smart OS & Zero Waste.',
+      lead: 'Built for FoodPreneurs, home cooks, and commercial cloud kitchen hosts: live batch order dispatch, standardized hygiene SOPs, and automated surplus revenue telemetry.',
+      formSubtitle: 'Select your platform to receive beta access for the feazto Kitchen-OS tablet & mobile terminal.',
+      phoneImg: '/brand/feazto-grandma-kitchen-phone.jpg',
+      phoneAlt: 'feazto Kitchen-OS Partner Interface',
+      tagline: 'Cloud Kitchen & FoodPreneur Management Terminal',
+    },
+    rider: {
+      badge: 'feazto Delivery Fleet App',
+      title: 'Precision Temperature-Controlled Delivery.',
+      lead: 'Engineered for dedicated logistics partners: hot/cold thermal box verification, optimized route batching, tamper-evident seals, and fair instant payouts.',
+      formSubtitle: 'Select your platform to apply for the certified thermal delivery rider fleet pilot.',
+      phoneImg: '/brand/feazto-doorstep-handover-delivery.png',
+      phoneAlt: 'feazto Delivery Fleet Partner App',
+      tagline: 'Calibrated Route Dispatch & Tamper-Proof Handover',
+    },
+  };
+
+  const currentApp = appDetails[appRole];
 
   const handleInterestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,16 +58,50 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         <div className="download-header-center">
           <div className="badge-tag">
             <Sparkles size={13} />
-            <span>feazto Pilot Testing</span>
+            <span>{currentApp.badge}</span>
           </div>
 
           <h2 className="download-title">
-            Experience Home Food with Cloud Precision.
+            {currentApp.title}
           </h2>
 
           <p className="download-lead">
-            The feazto Customer App is currently in exclusive staged pilot rollout. Reserve your priority invitation to get early access to curated regional kitchens and seasonal feasts.
+            {currentApp.lead}
           </p>
+
+          {/* 3-App Ecosystem Role Switcher */}
+          <div className="ecosystem-role-switcher" role="tablist" aria-label="Select feazto Mobile Application">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={appRole === 'customer'}
+              onClick={() => { setAppRole('customer'); setRegistered(false); }}
+              className={`role-tab-btn ${appRole === 'customer' ? 'active' : ''}`}
+            >
+              <Smartphone size={16} />
+              <span>Customer App</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={appRole === 'kitchen'}
+              onClick={() => { setAppRole('kitchen'); setRegistered(false); }}
+              className={`role-tab-btn ${appRole === 'kitchen' ? 'active' : ''}`}
+            >
+              <ChefHat size={16} />
+              <span>Cloud Kitchen App</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={appRole === 'rider'}
+              onClick={() => { setAppRole('rider'); setRegistered(false); }}
+              className={`role-tab-btn ${appRole === 'rider' ? 'active' : ''}`}
+            >
+              <Bike size={16} />
+              <span>Rider Delivery App</span>
+            </button>
+          </div>
         </div>
 
         {/* Hero Showcase Area: Centered Big Phone Mockup Flanked by Actions and QR */}
@@ -43,8 +110,12 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           {/* Left Column: Direct store buttons and waitlist form */}
           <div className="download-col-left">
             <div className="waitlist-card-wrapper">
+              <div className="waitlist-header-tag">
+                <span className="dot-pulse" />
+                <span>{currentApp.tagline}</span>
+              </div>
               <h3 className="sub-box-title">Reserve Priority Access</h3>
-              <p className="sub-box-desc">Select your operating system and enter your email for the invitation pass.</p>
+              <p className="sub-box-desc">{currentApp.formSubtitle}</p>
 
               {!registered ? (
                 <form onSubmit={handleInterestSubmit} className="download-waitlist-form">
@@ -138,8 +209,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           <div className="download-col-center">
             <div className="center-phone-hero-wrapper">
               <img 
-                src={`/brand/feazto-login-signup-phone.png?v=${Date.now()}`} 
-                alt="feazto Mobile App Login and Signup" 
+                key={currentApp.phoneImg}
+                src={currentApp.phoneImg} 
+                alt={currentApp.phoneAlt} 
                 className="center-phone-big-img"
               />
             </div>
@@ -190,7 +262,71 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           font-size: 1.05rem;
           color: var(--color-text-secondary);
           line-height: 1.6;
-          margin: 0;
+          margin: 0 0 24px 0;
+        }
+
+        /* 3-App Ecosystem Role Switcher */
+        .ecosystem-role-switcher {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1.5px solid rgba(181, 132, 0, 0.28);
+          border-radius: 9999px;
+          padding: 6px;
+          box-shadow: 0 8px 24px rgba(181, 132, 0, 0.12), inset 0 1px 2px #FFFFFF;
+          margin-top: 8px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .role-tab-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 9px 18px;
+          border-radius: 9999px;
+          border: none;
+          background: transparent;
+          color: #554823;
+          font-family: var(--font-heading);
+          font-size: 0.88rem;
+          font-weight: 700;
+          cursor: pointer;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .role-tab-btn:hover {
+          color: #111111;
+          background: rgba(250, 201, 33, 0.25);
+        }
+
+        .role-tab-btn.active {
+          background: #111111;
+          color: #FAC921;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .waitlist-header-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          font-size: 0.76rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          color: #8C6500;
+          margin-bottom: 8px;
+        }
+
+        .dot-pulse {
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #2E7D32;
+          box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
         }
 
         /* 3-Column Showcase Stage: Completely borderless and transparent (zero outer background card) */
