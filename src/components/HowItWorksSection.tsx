@@ -1073,13 +1073,20 @@ export const HowItWorksSection: React.FC = () => {
         @media (max-width: 900px) {
           .how-stage-card {
             flex-direction: column;
-            padding: 32px 20px 28px 20px;
+            padding: 24px 16px 20px 16px;
             gap: 16px;
-            min-height: 520px;
+            min-height: 580px;
             background-size: cover !important;
-            background-position: center center !important;
-            /* Gradient overlay with enhanced top visibility so grandmother and kitchen subject show naturally */
-            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 30%, rgba(0, 0, 0, 0.78) 58%, rgba(0, 0, 0, 0.94) 100%), url('${currentStep.bgImage}') !important;
+            background-position: top center !important;
+            /* Gradient overlay with clear top area so grandma/cook/rider/doorstep background subject is fully visible */
+            background-image: linear-gradient(
+              180deg, 
+              rgba(0, 0, 0, 0.0) 0%, 
+              rgba(0, 0, 0, 0.05) 24%, 
+              rgba(0, 0, 0, 0.45) 48%, 
+              rgba(0, 0, 0, 0.88) 72%, 
+              rgba(0, 0, 0, 0.97) 100%
+            ), url('${currentStep.bgImage}') !important;
             justify-content: flex-end;
           }
 
@@ -1098,13 +1105,17 @@ export const HowItWorksSection: React.FC = () => {
           .stage-glass-info-card {
             max-width: 100%;
             width: 100%;
-            padding: 16px;
-            border-radius: 20px;
-            background: rgba(15, 15, 18, 0.55);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            padding: 20px 18px 18px 18px;
+            border-radius: 24px;
+            background: linear-gradient(
+              135deg,
+              rgba(20, 20, 24, 0.68) 0%,
+              rgba(12, 12, 15, 0.82) 100%
+            );
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
           }
 
           .info-heading {
