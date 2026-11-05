@@ -1682,19 +1682,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           display: flex;
           align-items: center;
           justify-content: space-between;
+          flex-wrap: wrap;
           gap: 16px;
           margin-top: auto;
-          padding-top: 10px;
+          padding-top: 14px;
         }
 
         .tab-benefit-callout {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           gap: 8px;
-          font-size: 0.82rem;
+          font-size: 0.85rem;
           font-weight: 600;
-          line-height: 1.35;
-          max-width: 320px;
+          line-height: 1.45;
+          flex: 1 1 200px;
+          min-width: 180px;
         }
 
         .sparkle-gold {
@@ -1923,6 +1925,27 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
           .blank-card-inner-frame {
             min-height: 240px;
+          }
+
+          .tab-footer-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            width: 100%;
+          }
+
+          .tab-benefit-callout {
+            max-width: 100%;
+            width: 100%;
+            font-size: 0.86rem;
+            line-height: 1.45;
+          }
+
+          .tab-action-btn {
+            width: 100%;
+            justify-content: center;
+            box-sizing: border-box;
+            padding: 13px 20px;
           }
 
           /* On mobile view: show "Cook" instead of full "Book a cook" so it fits cleanly */
