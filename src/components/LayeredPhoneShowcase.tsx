@@ -810,11 +810,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 4%;
+          top: 10%;
         }
 
         .stream-bottom {
-          bottom: 4%;
+          bottom: 8%;
         }
 
         /* ── INTERSTITIAL BUTTONS STREAM (Between the 2 card loops) ── */
@@ -825,8 +825,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 2; /* Sits behind the central card and phone */
-          top: 8%; /* Placed nicely in the upper atmosphere above the card body */
+          z-index: 2; /* Sits right between the background cards and phone */
+          top: 48%;
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
@@ -1209,7 +1209,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           gap: 12px;
           padding-left: 20px;
           position: relative;
-          z-index: 20; /* High z-index to stay well above any background stream */
+          z-index: 15;
           margin-bottom: -1px; /* Fuses tab bottom directly into card top border */
         }
 
@@ -1895,58 +1895,25 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .plenti-stage-showcase-wrapper {
             min-height: auto;
             flex-direction: column;
-            gap: 20px;
-            position: relative;
+            gap: 32px;
           }
 
           .feazto-dosa-device-img {
             max-width: 310px;
           }
 
-          /* Keep the food rally stream present on mobile with calibrated frame placement above tabs */
-          .plenti-cards-stream {
-            display: none !important;
-          }
-
+          .plenti-cards-stream,
           .plenti-buttons-stream {
             position: relative;
             left: 0;
-            top: 0;
             transform: none;
             width: 100%;
-            margin-bottom: 12px;
-            z-index: 5;
-            padding: 6px 0;
-            pointer-events: auto;
-          }
-
-          .stream-dish-button-pill {
-            padding: 6px 14px 6px 8px;
-            gap: 8px;
-          }
-
-          .stream-btn-img-box {
-            width: 32px;
-            height: 32px;
-          }
-
-          .stream-btn-name {
-            font-size: 0.76rem;
-          }
-
-          .stream-btn-desc {
-            font-size: 0.62rem;
           }
 
           .plenti-central-device-container {
             flex-direction: column;
             gap: 28px;
             padding: 0 16px;
-            transform: none;
-          }
-
-          .showcase-card-outer-wrapper {
-            margin-top: 0;
           }
 
           .showcase-left-blank-card {
