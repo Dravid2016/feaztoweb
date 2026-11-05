@@ -123,53 +123,69 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Setup initial audio volume & auto-start handling
+  // Setup initial audio volume & robust auto-start handling
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.3;
 
-    const startAudio = () => {
+    // Direct attempt to play as soon as the website loads
+    const attemptPlay = () => {
       audio.volume = 0.3;
       audio
         .play()
         .then(() => {
           setIsPlaying(true);
           initAudioAnalyser();
+          cleanupListeners();
         })
         .catch(() => {
           setIsPlaying(false);
         });
     };
 
-    startAudio();
+    // 1. Immediate play attempt upon mounting
+    attemptPlay();
 
+    // 2. Fallback when user performs ANY first gesture (click, pointerdown, touch, mousemove, scroll, keydown, visibilitychange)
     const handleFirstInteraction = () => {
-      initAudioAnalyser();
       if (audio.paused) {
         audio.volume = 0.3;
         audio
           .play()
           .then(() => {
             setIsPlaying(true);
+            initAudioAnalyser();
+            cleanupListeners();
           })
           .catch(() => {});
+      } else {
+        setIsPlaying(true);
+        initAudioAnalyser();
+        cleanupListeners();
       }
-      cleanupListeners();
     };
 
     const cleanupListeners = () => {
       window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('pointerdown', handleFirstInteraction);
       window.removeEventListener('touchstart', handleFirstInteraction);
       window.removeEventListener('keydown', handleFirstInteraction);
       window.removeEventListener('scroll', handleFirstInteraction);
+      window.removeEventListener('wheel', handleFirstInteraction);
+      window.removeEventListener('mousemove', handleFirstInteraction);
+      document.removeEventListener('visibilitychange', handleFirstInteraction);
     };
 
-    window.addEventListener('click', handleFirstInteraction, { once: true });
-    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
-    window.addEventListener('keydown', handleFirstInteraction, { once: true });
-    window.addEventListener('scroll', handleFirstInteraction, { once: true });
+    window.addEventListener('click', handleFirstInteraction, { passive: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+    window.addEventListener('keydown', handleFirstInteraction, { passive: true });
+    window.addEventListener('scroll', handleFirstInteraction, { passive: true });
+    window.addEventListener('wheel', handleFirstInteraction, { passive: true });
+    window.addEventListener('mousemove', handleFirstInteraction, { passive: true, once: true });
+    document.addEventListener('visibilitychange', handleFirstInteraction, { passive: true });
 
     return () => {
       cleanupListeners();
