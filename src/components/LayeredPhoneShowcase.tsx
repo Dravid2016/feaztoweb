@@ -834,11 +834,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 4%;
+          top: -3%; /* Clears well above the top tabs and leaves a clean gap for the small cards stream */
         }
 
         .stream-bottom {
-          bottom: 8%;
+          bottom: 2%; /* Positioned cleanly below the small cards stream */
         }
 
         /* ── INTERSTITIAL BUTTONS STREAM (Between the 2 card loops) ── */
@@ -849,11 +849,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 5; /* Visible in the background across the mid-section */
-          top: 48%; /* Dual small card rally lines in the middle as originally placed */
+          z-index: 5; /* Visible in the gap across the mid-section */
+          top: 40%; /* Centered right in the gap between the upper and lower big card streams */
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: 14px;
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
