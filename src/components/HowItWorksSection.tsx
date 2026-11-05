@@ -1076,8 +1076,10 @@ export const HowItWorksSection: React.FC = () => {
             padding: 32px 20px 28px 20px;
             gap: 16px;
             min-height: 520px;
-            /* Dark gradient overlay on mobile so text always has crystal clear contrast */
-            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.72) 40%, rgba(0, 0, 0, 0.92) 100%), url('${currentStep.bgImage}') !important;
+            background-size: cover !important;
+            background-position: center center !important;
+            /* Gradient overlay with enhanced top visibility so grandmother and kitchen subject show naturally */
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 30%, rgba(0, 0, 0, 0.78) 58%, rgba(0, 0, 0, 0.94) 100%), url('${currentStep.bgImage}') !important;
             justify-content: flex-end;
           }
 
@@ -1096,7 +1098,13 @@ export const HowItWorksSection: React.FC = () => {
           .stage-glass-info-card {
             max-width: 100%;
             width: 100%;
-            padding: 0;
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(15, 15, 18, 0.55);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
           }
 
           .info-heading {
