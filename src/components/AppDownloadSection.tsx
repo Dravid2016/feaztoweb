@@ -250,37 +250,17 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Kathakali Performer Group - Scroll-up emergence and Floating Motion */}
+              {/* Unified Kathakali Performer + Mobile App Showcase with Scroll Emergence */}
               <div 
-                className="feazto-dancer-group"
+                className="feazto-dancer-phone-combo"
                 style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 95}px, 0)`
+                  transform: `translate3d(0, ${(1 - scrollYProgress) * 110}px, 0)`
                 }}
               >
                 <img
-                  src="/brand/dancer_head.webp"
-                  className="feazto-dancer-head"
-                  alt="Kathakali Performer Head"
-                  draggable={false}
-                />
-                <img
-                  src="/brand/dancer_body.webp"
-                  className="feazto-dancer-body"
-                  alt="Kathakali Performer Body"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Dynamic FEAZTO Mobile UI - Scroll-up Elevation Motion */}
-              <div 
-                className="feazto-phone-static"
-                style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 125}px, 0)`
-                }}
-              >
-                <img
-                  src="/brand/phone_layer.webp"
-                  alt="FEAZTO Mobile App Showcase"
+                  src="/brand/feazto-hero-dancer-phone.webp"
+                  className="feazto-dancer-phone-img"
+                  alt="FEAZTO Mobile App Showcase with Kathakali Performer"
                   draggable={false}
                 />
               </div>
@@ -774,83 +754,37 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           opacity: 0.65;
         }
 
-        /* Kathakali Performer Group */
-        .feazto-dancer-group {
+        /* Unified Kathakali Performer + Phone Combo */
+        .feazto-dancer-phone-combo {
           position: absolute;
-          left: 3.91%;
-          top: 1.28%;
-          width: 40.43%;
-          height: 97.54%;
+          inset: 0;
+          width: 100%;
+          height: 100%;
           z-index: 10;
           pointer-events: none;
           will-change: transform;
           transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .feazto-dancer-body {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          z-index: 2;
-          transform-origin: 55% 92%;
-          animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
-          filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
-                  drop-shadow(0 0 20px rgba(234, 88, 12, 0.25));
-        }
-
-        .feazto-dancer-head {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          z-index: 1;
-          filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
-        }
-
-        /* Dynamic FEAZTO Mobile UI with Floating Motion */
-        .feazto-phone-static {
-          position: absolute;
-          left: 41.89%;
-          top: 2.14%;
-          width: 43.46%;
-          height: 94.76%;
-          z-index: 30;
-          pointer-events: none;
-          will-change: transform;
-          transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-          filter: drop-shadow(-14px 20px 32px rgba(0, 0, 0, 0.28))
-                  drop-shadow(0 0 24px rgba(251, 191, 36, 0.25));
-        }
-
-        .feazto-phone-static img {
+        .feazto-dancer-phone-img {
           width: 100%;
           height: 100%;
           object-fit: contain;
           display: block;
-          animation: feaztoPhoneLevitate 6s ease-in-out infinite alternate;
+          filter: drop-shadow(-14px 20px 32px rgba(0, 0, 0, 0.3))
+                  drop-shadow(0 0 24px rgba(251, 191, 36, 0.22));
+          animation: feaztoHeroComboLevitate 6.8s ease-in-out infinite alternate;
         }
 
-        @keyframes feaztoFloatGentle {
+        @keyframes feaztoHeroComboLevitate {
           0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(-8px);
-          }
-        }
-
-        @keyframes feaztoPhoneLevitate {
-          0% {
-            transform: translateY(0) rotate(0deg);
+            transform: translateY(0) scale(1);
           }
           50% {
-            transform: translateY(-10px) rotate(0.4deg);
+            transform: translateY(-8px) scale(1.004);
           }
           100% {
-            transform: translateY(-4px) rotate(-0.3deg);
+            transform: translateY(-3px) scale(0.998);
           }
         }
 
