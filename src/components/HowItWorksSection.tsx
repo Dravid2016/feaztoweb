@@ -193,26 +193,6 @@ export const HowItWorksSection: React.FC = () => {
           Here’s how<br />Feazto works.
         </h2>
 
-        {/* 4 Step Pill Buttons Row */}
-        <div className="how-step-tabs-row" role="tablist">
-          {steps.map((st) => {
-            const isActive = st.id === activeStep;
-            return (
-              <button
-                key={st.id}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                className={`step-tab-btn ${isActive ? 'is-active' : ''}`}
-                onClick={() => setActiveStep(st.id)}
-              >
-                <span className="step-tab-icon">{st.tabIcon}</span>
-                <span className="step-tab-label">{st.tabLabel}</span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* Main Stage Display Showcase with Morphing Modal Animation */}
         <motion.div 
           layoutId="how-stage-card-wrapper"
