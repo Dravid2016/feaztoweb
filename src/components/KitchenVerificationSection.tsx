@@ -447,15 +447,21 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
         }
 
         /* Highlighted Approval Commitment Box */
+        /* Liquid Glass Yellow Gradient Approval Commitment Card */
         .approval-commitment-card {
           position: relative;
-          background: #111111;
-          color: #FFFFFF;
+          background: linear-gradient(135deg, rgba(255, 238, 160, 0.88) 0%, rgba(254, 215, 78, 0.78) 50%, rgba(245, 183, 0, 0.88) 100%);
+          backdrop-filter: blur(28px) saturate(200%);
+          -webkit-backdrop-filter: blur(28px) saturate(200%);
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          color: #111111;
           border-radius: 28px;
           padding: 38px 40px;
           margin-bottom: 48px;
           overflow: hidden;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 24px 60px rgba(180, 115, 0, 0.22),
+                      inset 0 2px 4px rgba(255, 255, 255, 0.9),
+                      inset 0 -2px 6px rgba(180, 120, 0, 0.15);
         }
 
         .commitment-card-glow {
@@ -464,7 +470,7 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           right: -10%;
           width: 50%;
           height: 160%;
-          background: radial-gradient(circle, rgba(245, 183, 0, 0.22) 0%, rgba(234, 88, 12, 0.1) 45%, rgba(0,0,0,0) 70%);
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(254, 215, 78, 0.25) 45%, rgba(0,0,0,0) 70%);
           filter: blur(40px);
           pointer-events: none;
         }
@@ -486,12 +492,12 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           width: 72px;
           height: 72px;
           border-radius: 22px;
-          background: linear-gradient(135deg, #F5B700 0%, #EA580C 100%);
-          color: #111111;
+          background: #111111;
+          color: #F5B700;
           display: flex;
           align-items: center;
           justify-content: center;
-          box-shadow: 0 10px 24px rgba(245, 183, 0, 0.35);
+          box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18), inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .commitment-content-col {
@@ -502,38 +508,41 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
         .commitment-eyebrow {
           display: inline-block;
           font-size: 0.78rem;
-          font-weight: 800;
+          font-weight: 900;
           text-transform: uppercase;
           letter-spacing: 0.08em;
-          color: #F5B700;
+          color: #7A4D00;
           margin-bottom: 6px;
         }
 
         .commitment-title {
-          font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+          font-size: clamp(1.4rem, 2.4vw, 1.95rem);
           font-weight: 900;
-          color: #FFFFFF;
+          color: #0A0A0A;
           margin: 0 0 12px;
           line-height: 1.25;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.025em;
         }
 
         .commitment-body {
           font-size: 0.98rem;
           line-height: 1.6;
-          color: rgba(255, 255, 255, 0.92);
+          color: #222222;
           margin: 0 0 8px;
+          font-weight: 600;
         }
 
         .commitment-body strong {
-          color: #F5B700;
+          color: #000000;
+          font-weight: 800;
         }
 
         .commitment-subbody {
           font-size: 0.88rem;
           line-height: 1.6;
-          color: rgba(255, 255, 255, 0.7);
+          color: #444444;
           margin: 0;
+          font-weight: 500;
         }
 
         .commitment-action-col {
@@ -550,21 +559,23 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           gap: 8px;
           padding: 13px 24px;
           border-radius: var(--radius-capsule, 9999px);
-          background: rgba(255, 255, 255, 0.12);
-          color: #FFFFFF;
-          border: 1.5px solid rgba(255, 255, 255, 0.28);
-          font-weight: 700;
+          background: rgba(255, 255, 255, 0.9);
+          color: #111111;
+          border: 1.5px solid rgba(255, 255, 255, 1);
+          font-weight: 800;
           font-size: 0.92rem;
           cursor: pointer;
           transition: all 0.25s ease;
           backdrop-filter: blur(12px);
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
         }
 
         .btn-explore-steps:hover {
-          background: rgba(255, 255, 255, 0.22);
-          border-color: #F5B700;
-          color: #F5B700;
+          background: #111111;
+          border-color: #111111;
+          color: #FFFFFF;
           transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn-outline-gold-light {
@@ -574,18 +585,18 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           gap: 8px;
           padding: 12px 22px;
           border-radius: var(--radius-capsule, 9999px);
-          background: transparent;
-          color: #F5B700;
-          border: 1.5px solid rgba(245, 183, 0, 0.5);
-          font-weight: 700;
+          background: rgba(17, 17, 17, 0.08);
+          color: #111111;
+          border: 1.5px solid rgba(17, 17, 17, 0.25);
+          font-weight: 800;
           font-size: 0.88rem;
           cursor: pointer;
           transition: all 0.25s ease;
         }
 
         .btn-outline-gold-light:hover {
-          background: rgba(245, 183, 0, 0.15);
-          border-color: #F5B700;
+          background: #111111;
+          border-color: #111111;
           color: #FFFFFF;
           transform: translateY(-2px);
         }
@@ -596,8 +607,17 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           justify-content: center;
           gap: 8px;
           padding: 14px 26px;
-          font-weight: 800;
+          font-weight: 900;
           font-size: 0.94rem;
+          background: #111111 !important;
+          color: #FFFFFF !important;
+          border: 1.5px solid #111111 !important;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .commitment-partner-btn:hover {
+          background: #2b2b2b !important;
+          transform: translateY(-2px);
         }
 
         /* Women Empowerment Badge & Spotlight */
@@ -615,32 +635,35 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           gap: 6px;
           padding: 4px 12px;
           border-radius: 9999px;
-          background: linear-gradient(135deg, rgba(234, 88, 12, 0.25) 0%, rgba(245, 183, 0, 0.25) 100%);
-          border: 1px solid rgba(245, 183, 0, 0.5);
-          color: #FFD566;
+          background: rgba(255, 255, 255, 0.85);
+          border: 1px solid rgba(180, 115, 0, 0.35);
+          color: #874700;
           font-size: 0.72rem;
-          font-weight: 800;
+          font-weight: 900;
           letter-spacing: 0.05em;
           text-transform: uppercase;
+          box-shadow: 0 2px 8px rgba(180, 115, 0, 0.12);
         }
 
         .flame-icon {
-          color: #F59E0B;
+          color: #EA580C;
         }
 
         .women-spotlight-quote {
-          background: rgba(245, 183, 0, 0.08);
-          border-left: 3px solid #F5B700;
+          background: rgba(255, 255, 255, 0.7);
+          border-left: 3.5px solid #C07000;
           border-radius: 10px;
           padding: 12px 16px;
           margin: 12px 0 16px;
           font-size: 0.88rem;
           line-height: 1.55;
-          color: rgba(255, 255, 255, 0.9);
+          color: #222222;
+          box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         .women-spotlight-quote strong {
-          color: #FFD566;
+          color: #874700;
+          font-weight: 800;
         }
 
         /* Animation when 5 steps grid is revealed */
