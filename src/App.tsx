@@ -13,6 +13,7 @@ import { ContactPage } from './pages/ContactPage';
 import { LegalPage } from './pages/LegalPage';
 import { BlogPage } from './pages/BlogPage';
 import { CareersPage } from './pages/CareersPage';
+import { KitchenVerificationPage } from './pages/KitchenVerificationPage';
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
 
 export function App() {
@@ -67,7 +68,7 @@ export function App() {
       case '/careers':
         return <CareersPage navigate={navigate} />;
       case '/kitchen-verification':
-        return <HomePage navigate={navigate} />;
+        return <KitchenVerificationPage navigate={navigate} />;
       case '/faq':
         return <FAQPage navigate={navigate} />;
       case '/contact':

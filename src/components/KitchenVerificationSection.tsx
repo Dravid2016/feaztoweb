@@ -163,6 +163,16 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
                 {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
               </button>
 
+              {/* View Full Page Button */}
+              <button
+                type="button"
+                onClick={() => navigate?.('/kitchen-verification')}
+                className="btn btn-outline-gold-light"
+              >
+                <span>Full Verification Page</span>
+                <ArrowRight size={15} />
+              </button>
+
               {/* Partner Button */}
               <button 
                 type="button"
@@ -554,6 +564,29 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           background: rgba(255, 255, 255, 0.22);
           border-color: #F5B700;
           color: #F5B700;
+          transform: translateY(-2px);
+        }
+
+        .btn-outline-gold-light {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 12px 22px;
+          border-radius: var(--radius-capsule, 9999px);
+          background: transparent;
+          color: #F5B700;
+          border: 1.5px solid rgba(245, 183, 0, 0.5);
+          font-weight: 700;
+          font-size: 0.88rem;
+          cursor: pointer;
+          transition: all 0.25s ease;
+        }
+
+        .btn-outline-gold-light:hover {
+          background: rgba(245, 183, 0, 0.15);
+          border-color: #F5B700;
+          color: #FFFFFF;
           transform: translateY(-2px);
         }
 
