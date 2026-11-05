@@ -285,17 +285,32 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Floating Cloud Over Mobile Base & Dancer Feet (Matching user attached image) */}
+              {/* Multi-layered Cloud Over Mobile Base & Dancer Feet (Matching user attached image with extra puffy clouds) */}
               <div 
                 className="feazto-cloud-dancer-feet"
                 style={{
                   transform: `translate3d(${swipeOffset * 0.5}px, 0, 0)`
                 }}
               >
+                {/* Secondary ambient back-cloud under dancer skirt & feet */}
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  className="feazto-cloud-feet-secondary"
+                  alt="Atmospheric Cloud Overlay"
+                  draggable={false}
+                />
+                {/* Primary center puffy cloud extending over phone corner & login pills */}
                 <img
                   src="/brand/cloud_subscribe.webp"
                   className="feazto-cloud-feet-img"
                   alt="Atmospheric Cloud Overlay at Dancer Feet & Phone Base"
+                  draggable={false}
+                />
+                {/* Tertiary airy floating cloud drifting over the phone bottom edge */}
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  className="feazto-cloud-feet-phone-drift"
+                  alt="Atmospheric Cloud Overlay"
                   draggable={false}
                 />
               </div>
@@ -882,12 +897,13 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           animation: feaztoCloudDriftReverse 11s ease-in-out infinite alternate;
         }
 
-        /* Floating Cloud Over Dancer Feet & Phone Bottom Left/Center (z-index: 42) */
+        /* Multi-layered Cloud Over Dancer Feet & Phone Bottom Left/Center (z-index: 42) */
         .feazto-cloud-dancer-feet {
           position: absolute;
-          left: 14%;
-          bottom: -4%;
-          width: 70%;
+          left: 10%;
+          bottom: -6%;
+          width: 86%;
+          height: 140px;
           z-index: 42;
           pointer-events: none;
           user-select: none;
@@ -896,12 +912,39 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         }
 
         .feazto-cloud-feet-img {
-          width: 100%;
+          position: absolute;
+          left: 10%;
+          top: 0;
+          width: 88%;
           height: auto;
           display: block;
-          opacity: 0.96;
-          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.18));
+          opacity: 0.98;
+          filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.22));
           animation: feaztoFeetCloudDrift 8s ease-in-out infinite alternate;
+        }
+
+        .feazto-cloud-feet-secondary {
+          position: absolute;
+          left: -8%;
+          top: 15%;
+          width: 68%;
+          height: auto;
+          display: block;
+          opacity: 0.85;
+          filter: blur(1px) drop-shadow(0 12px 28px rgba(245, 183, 0, 0.2));
+          animation: feaztoFeetCloudDriftReverse 10s ease-in-out infinite alternate;
+        }
+
+        .feazto-cloud-feet-phone-drift {
+          position: absolute;
+          right: -8%;
+          top: -10%;
+          width: 65%;
+          height: auto;
+          display: block;
+          opacity: 0.88;
+          filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.16));
+          animation: feaztoFeetCloudPhoneDrift 9s ease-in-out infinite alternate;
         }
 
         @keyframes feaztoFeetCloudDrift {
@@ -909,19 +952,43 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             transform: translate3d(-6px, 0, 0) scale(1);
           }
           50% {
-            transform: translate3d(8px, -4px, 0) scale(1.02);
+            transform: translate3d(8px, -4px, 0) scale(1.03);
           }
           100% {
             transform: translate3d(-4px, 2px, 0) scale(0.99);
           }
         }
 
+        @keyframes feaztoFeetCloudDriftReverse {
+          0% {
+            transform: translate3d(4px, 0, 0) scale(0.98);
+          }
+          50% {
+            transform: translate3d(-6px, -3px, 0) scale(1.02);
+          }
+          100% {
+            transform: translate3d(5px, 2px, 0) scale(1);
+          }
+        }
+
+        @keyframes feaztoFeetCloudPhoneDrift {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(-8px, -5px, 0) scale(1.04);
+          }
+          100% {
+            transform: translate3d(6px, 3px, 0) scale(0.98);
+          }
+        }
+
         /* Floating Cloud Over Mobile on the Right Side (z-index: 45) */
         .feazto-cloud-front-right {
           position: absolute;
-          right: -16%;
-          bottom: 6%;
-          width: 52%;
+          right: -20%;
+          bottom: 4%;
+          width: 68%;
           z-index: 45;
           pointer-events: none;
           user-select: none;
@@ -933,8 +1000,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           width: 100%;
           height: auto;
           display: block;
-          opacity: 0.94;
-          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.12));
+          opacity: 0.96;
+          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.16));
           animation: feaztoCloudDrift 7.5s ease-in-out infinite alternate;
         }
 
