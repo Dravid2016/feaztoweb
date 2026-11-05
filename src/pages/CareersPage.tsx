@@ -248,28 +248,6 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
             }} 
           />
 
-          {/* Top Pill Badge */}
-          <div 
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '8px 24px',
-              borderRadius: '9999px',
-              background: 'rgba(0, 0, 0, 0.18)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.25)',
-              color: '#FFFFFF',
-              fontSize: '0.74rem',
-              fontWeight: 800,
-              letterSpacing: '0.08em',
-              textTransform: 'uppercase',
-              marginBottom: '32px'
-            }}
-          >
-            <span>FOOD • CULTURE • CONNECT | TRUSTED BY 10,000+ FOODIES</span>
-          </div>
-
           {/* Master Headline */}
           <h1 
             style={{

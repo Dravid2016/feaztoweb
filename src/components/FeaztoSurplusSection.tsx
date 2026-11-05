@@ -347,19 +347,19 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
           min-height: 520px;
           border-radius: 36px;
           overflow: hidden;
-          background: #E0E7FF;
-          box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+          background: #FFF4C4;
+          box-shadow: 0 24px 60px rgba(245, 183, 0, 0.15), 0 4px 16px rgba(0, 0, 0, 0.05);
           display: flex;
           align-items: flex-end;
           justify-content: flex-end;
           padding: 30px 40px 0 30px;
         }
 
-        /* Sunset Atmosphere Background */
+        /* Warm Golden Yellow Gradient Atmosphere Background */
         .sunset-atmosphere-bg {
           position: absolute;
           inset: 0;
-          background: linear-gradient(145deg, #A5C4F7 0%, #D8BFE8 35%, #F8C3B9 65%, #FEE5B8 100%);
+          background: linear-gradient(145deg, #FFF8DB 0%, #FFE98A 35%, #FDC830 75%, #F39C12 100%);
           z-index: 1;
           overflow: hidden;
         }
@@ -370,7 +370,7 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
           right: -20px;
           width: 320px;
           height: 320px;
-          background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, rgba(254, 229, 184, 0.4) 50%, transparent 70%);
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(254, 219, 90, 0.6) 45%, transparent 70%);
           filter: blur(40px);
         }
 
@@ -386,7 +386,7 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
           left: -40px;
           width: 340px;
           height: 240px;
-          background: rgba(255, 255, 255, 0.65);
+          background: rgba(255, 255, 255, 0.75);
         }
 
         .cloud-two {
@@ -394,7 +394,7 @@ export const FeaztoSurplusSection: React.FC<FeaztoSurplusSectionProps> = ({ navi
           right: 40px;
           width: 280px;
           height: 200px;
-          background: rgba(253, 226, 215, 0.75);
+          background: rgba(255, 240, 180, 0.85);
         }
 
         /* 3D Slanted Phone Perspective */
