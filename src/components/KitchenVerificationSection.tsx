@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Sparkles, 
   ShieldCheck, 
@@ -8,7 +8,11 @@ import {
   FileText, 
   GraduationCap, 
   AlertTriangle,
-  ArrowRight
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  HeartHandshake,
+  Flame
 } from 'lucide-react';
 
 interface KitchenVerificationSectionProps {
@@ -16,6 +20,8 @@ interface KitchenVerificationSectionProps {
 }
 
 export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProps> = ({ navigate }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const steps = [
     {
       step: '01',
@@ -113,39 +119,6 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
           </p>
         </div>
 
-        {/* 5-Step Process Cards */}
-        <div className="verification-steps-grid">
-          {steps.map((item, idx) => (
-            <div key={item.step} className="verification-step-card">
-              <div className="step-card-header">
-                <div className="step-number-bubble">{item.step}</div>
-                <div className="step-tag-pill">{item.tag}</div>
-              </div>
-
-              <div className="step-icon-wrapper">
-                {item.icon}
-              </div>
-
-              <h3 className="step-card-title">{item.title}</h3>
-              <div className="step-card-subtitle">{item.subtitle}</div>
-              <p className="step-card-description">{item.description}</p>
-
-              <div className="step-points-list">
-                {item.keyPoints.map((point, pIdx) => (
-                  <div key={pIdx} className="step-point-row">
-                    <CheckCircle2 size={15} className="step-check-bullet" />
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-
-              {idx < steps.length - 1 && (
-                <div className="step-card-connector-line" />
-              )}
-            </div>
-          ))}
-        </div>
-
         {/* Highlighted Approval Commitment Box */}
         <div className="approval-commitment-card">
           <div className="commitment-card-glow" />
@@ -157,8 +130,20 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
             </div>
 
             <div className="commitment-content-col">
-              <span className="commitment-eyebrow">Onboarding Commitment</span>
+              <div className="commitment-badges-wrap">
+                <span className="commitment-eyebrow">Onboarding Commitment</span>
+                <span className="women-empowerment-badge">
+                  <Flame size={13} className="flame-icon" />
+                  <span>EMPOWERING WOMEN HOME CHEFS & FOODPRENEURS</span>
+                </span>
+              </div>
+
               <h3 className="commitment-title">Rigorous Gatekeeping & Re-Inspection Protocol</h3>
+
+              <div className="women-spotlight-quote">
+                <strong>Empowering Women Cloud Kitchen Leaders:</strong> We are especially committed to backing women culinary champions, homemakers, and culinary artists—giving them a professional, verified launchpad to turn heirloom kitchen traditions into thriving, independent food businesses.
+              </div>
+
               <p className="commitment-body">
                 A cloud kitchen is considered for FEAZTO onboarding <strong>only after</strong> all mandatory physical checks, document verification, and the partner training workshop have been completely satisfied.
               </p>
@@ -168,17 +153,64 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
             </div>
 
             <div className="commitment-action-col">
+              {/* Explore 5 Steps Button */}
+              <button
+                type="button"
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="btn btn-explore-steps"
+              >
+                <span>{isExpanded ? 'Hide Verification Steps' : 'Explore the 5 Steps'}</span>
+                {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+              </button>
+
+              {/* Partner Button */}
               <button 
                 type="button"
                 onClick={() => navigate?.('/partners')} 
                 className="btn btn-yellow commitment-partner-btn"
               >
+                <HeartHandshake size={16} />
                 <span>Partner With Us</span>
                 <ArrowRight size={16} />
               </button>
             </div>
           </div>
         </div>
+
+        {/* Collapsible 5-Step Process Cards (Revealed when clicking "Explore the 5 Steps") */}
+        {isExpanded && (
+          <div className="verification-steps-grid is-revealed">
+            {steps.map((item, idx) => (
+              <div key={item.step} className="verification-step-card animate-fade-in">
+                <div className="step-card-header">
+                  <div className="step-number-bubble">{item.step}</div>
+                  <div className="step-tag-pill">{item.tag}</div>
+                </div>
+
+                <div className="step-icon-wrapper">
+                  {item.icon}
+                </div>
+
+                <h3 className="step-card-title">{item.title}</h3>
+                <div className="step-card-subtitle">{item.subtitle}</div>
+                <p className="step-card-description">{item.description}</p>
+
+                <div className="step-points-list">
+                  {item.keyPoints.map((point, pIdx) => (
+                    <div key={pIdx} className="step-point-row">
+                      <CheckCircle2 size={15} className="step-check-bullet" />
+                      <span>{point}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {idx < steps.length - 1 && (
+                  <div className="step-card-connector-line" />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Customer Trust Message */}
         <div className="customer-trust-banner">
@@ -495,13 +527,103 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
         }
 
         .commitment-action-col {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
           flex-shrink: 0;
         }
 
+        .btn-explore-steps {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 13px 24px;
+          border-radius: var(--radius-capsule, 9999px);
+          background: rgba(255, 255, 255, 0.12);
+          color: #FFFFFF;
+          border: 1.5px solid rgba(255, 255, 255, 0.28);
+          font-weight: 700;
+          font-size: 0.92rem;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          backdrop-filter: blur(12px);
+        }
+
+        .btn-explore-steps:hover {
+          background: rgba(255, 255, 255, 0.22);
+          border-color: #F5B700;
+          color: #F5B700;
+          transform: translateY(-2px);
+        }
+
         .commitment-partner-btn {
-          padding: 15px 28px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 14px 26px;
           font-weight: 800;
           font-size: 0.94rem;
+        }
+
+        /* Women Empowerment Badge & Spotlight */
+        .commitment-badges-wrap {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-bottom: 8px;
+        }
+
+        .women-empowerment-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          padding: 4px 12px;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(234, 88, 12, 0.25) 0%, rgba(245, 183, 0, 0.25) 100%);
+          border: 1px solid rgba(245, 183, 0, 0.5);
+          color: #FFD566;
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+        }
+
+        .flame-icon {
+          color: #F59E0B;
+        }
+
+        .women-spotlight-quote {
+          background: rgba(245, 183, 0, 0.08);
+          border-left: 3px solid #F5B700;
+          border-radius: 10px;
+          padding: 12px 16px;
+          margin: 12px 0 16px;
+          font-size: 0.88rem;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .women-spotlight-quote strong {
+          color: #FFD566;
+        }
+
+        /* Animation when 5 steps grid is revealed */
+        .verification-steps-grid.is-revealed {
+          animation: slideDownFade 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes slideDownFade {
+          from {
+            opacity: 0;
+            transform: translateY(-16px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         /* Customer Trust Message */
