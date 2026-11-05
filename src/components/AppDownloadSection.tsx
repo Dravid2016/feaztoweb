@@ -1155,6 +1155,10 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           }
           .download-col-center {
             order: 1;
+            max-width: 100%;
+          }
+          .feazto-hero-stage {
+            max-width: 440px;
           }
           .download-col-left {
             order: 2;
@@ -1162,18 +1166,20 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           .download-col-right {
             order: 3;
           }
-          .center-phone-hero-wrapper {
+        }
+
+        @media (max-width: 768px) {
+          .download-showcase-stage {
+            gap: 36px;
+          }
+          .feazto-hero-stage {
             max-width: 360px;
           }
         }
 
-        /* Hide all cloud elements exclusively on mobile view (screens 768px and under) */
-        @media (max-width: 768px) {
-          .waitlist-clouds-cluster,
-          .feazto-clouds-container-back,
-          .feazto-cloud-dancer-feet,
-          .feazto-cloud-front-right {
-            display: none !important;
+        @media (max-width: 480px) {
+          .feazto-hero-stage {
+            max-width: 320px;
           }
         }
       `}</style>
