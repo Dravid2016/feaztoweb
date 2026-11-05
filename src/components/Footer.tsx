@@ -15,12 +15,6 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
     <footer className="feazto-footer">
       {/* Intricate Heritage Temple Tower (Gopuram) extending up across footer boundary */}
       <div className="footer-temple-tower-anchor" aria-hidden="true">
-        {/* Flock of flying birds soaring gracefully in the sky above the temple tower */}
-        <img
-          src="/brand/temple-flying-birds.png"
-          alt=""
-          className="footer-flying-birds-img"
-        />
         <img 
           src="/brand/temple-tower-transparent.png" 
           alt="" 
@@ -144,32 +138,6 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
           align-items: flex-end;
           justify-content: flex-end;
           opacity: 0.95;
-        }
-
-        .footer-flying-birds-img {
-          position: absolute;
-          top: 14%;
-          left: -15%;
-          width: 175px;
-          height: auto;
-          object-fit: contain;
-          opacity: 0.88;
-          z-index: 1;
-          filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
-          animation: birdsGentleDrift 7s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        @keyframes birdsGentleDrift {
-          0% {
-            transform: translate3d(0, 0, 0) scale(1);
-          }
-          50% {
-            transform: translate3d(-10px, -6px, 0) scale(1.02);
-          }
-          100% {
-            transform: translate3d(8px, -12px, 0) scale(0.98);
-          }
         }
 
         .footer-temple-tower-img {
