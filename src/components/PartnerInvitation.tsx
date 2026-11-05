@@ -284,11 +284,11 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          opacity: 0.15;
+          opacity: 0.42;
           overflow: hidden;
-          filter: saturate(120%) contrast(102%);
-          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.45) 65%, transparent 100%);
-          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.45) 65%, transparent 100%);
+          filter: saturate(135%) contrast(108%);
+          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
         }
 
         .collage-row {
@@ -541,7 +541,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           }
 
           .food-collage-bg-track {
-            opacity: 0.12;
+            opacity: 0.38;
             inset: -10px -5px -10px -5px;
           }
 
