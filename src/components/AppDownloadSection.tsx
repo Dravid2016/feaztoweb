@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Sparkles, ArrowRight, CheckCircle2, Mail, ExternalLink } from 'lucide-react';
 
 interface AppDownloadSectionProps {
@@ -8,59 +8,6 @@ interface AppDownloadSectionProps {
 export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
   const [registered, setRegistered] = useState(false);
   const [email, setEmail] = useState('');
-  const [swipeOffset, setSwipeOffset] = useState(0);
-  const [scrollYProgress, setScrollYProgress] = useState(0);
-
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const section = document.getElementById('app-download');
-          if (section) {
-            const rect = section.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            if (rect.top <= windowHeight && rect.bottom >= 0) {
-              const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-              // Calculate horizontal shift: moves from right (+60px) to left (-90px) as scrolled
-              const offset = (progress - 0.5) * -160;
-              setSwipeOffset(offset);
-              // Calculate scroll-up emergence: starts from 140px below and rises smoothly into full elevation
-              const emergeRatio = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight * 0.75)));
-              setScrollYProgress(emergeRatio);
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Also support horizontal touch swipe directly
-    let touchStartX = 0;
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartX = e.touches[0].clientX;
-    };
-    const handleTouchMove = (e: TouchEvent) => {
-      const touchDiff = e.touches[0].clientX - touchStartX;
-      // swipe right-to-left increases negative offset
-      setSwipeOffset((prev) => Math.max(-120, Math.min(80, prev + touchDiff * 0.2)));
-      touchStartX = e.touches[0].clientX;
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, []);
 
   const handleInterestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -205,130 +152,14 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             </div>
           </div>
 
-          {/* Center Column: Animated Kathakali Dancer + Golden Crown Mandala + Phone */}
+          {/* Center Column: Prominent, Centered, Bigger Phone Banner with Transparent Background */}
           <div className="download-col-center">
-            <div className="feazto-hero-stage">
-              <div className="feazto-aura-saffron" />
-              <div className="feazto-aura-crimson" />
-
-              {/* Rotating Golden Chakra Mandala behind Crown */}
-              <div className="feazto-mandala-wrap">
-                <svg className="feazto-mandala-outer" viewBox="0 0 200 200" fill="none">
-                  <circle cx="100" cy="100" r="92" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4 6" />
-                  <circle cx="100" cy="100" r="82" stroke="#FDE047" strokeWidth="1.2" opacity="0.7" />
-                  <circle cx="100" cy="100" r="68" stroke="#EA580C" strokeWidth="1.4" strokeDasharray="10 5" />
-                </svg>
-                <svg className="feazto-mandala-inner" viewBox="0 0 200 200" fill="none">
-                  <polygon
-                    points="100,12 122,74 188,74 134,112 154,176 100,138 46,176 66,112 12,74 78,74"
-                    stroke="#FBBF24"
-                    strokeWidth="1.2"
-                    fill="rgba(245, 158, 11, 0.08)"
-                  />
-                  <circle cx="100" cy="100" r="52" stroke="#FDE047" strokeWidth="1" strokeDasharray="3 5" />
-                </svg>
-              </div>
-
-              {/* Floating Base Cloud at Backside Bottom of Mobile & Kathakali (Swipes horizontally as user scrolls/swipes) */}
-              <div 
-                className="feazto-clouds-container-back"
-                style={{
-                  transform: `translate3d(${swipeOffset * 0.7}px, 0, 0)`
-                }}
-              >
-                <img
-                  src="/brand/cloud_backdrop.webp"
-                  className="feazto-cloud-layer feazto-cloud-back-primary"
-                  alt="Atmospheric Cloud Backdrop"
-                  draggable={false}
-                />
-                <img
-                  src="/brand/cloud_backdrop.webp"
-                  className="feazto-cloud-layer feazto-cloud-back-ambient"
-                  alt="Atmospheric Cloud Backdrop"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Kathakali Performer Group - Scroll-up emergence and Floating Motion */}
-              <div 
-                className="feazto-dancer-group"
-                style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 95}px, 0)`
-                }}
-              >
-                <img
-                  src="/brand/dancer_head.webp"
-                  className="feazto-dancer-head"
-                  alt="Kathakali Performer Head"
-                  draggable={false}
-                />
-                <img
-                  src="/brand/dancer_body.webp"
-                  className="feazto-dancer-body"
-                  alt="Kathakali Performer Body"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Dynamic FEAZTO Mobile UI - Scroll-up Elevation Motion */}
-              <div 
-                className="feazto-phone-static"
-                style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 125}px, 0)`
-                }}
-              >
-                <img
-                  src="/brand/phone_layer.webp"
-                  alt="FEAZTO Mobile App Showcase"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Multi-layered Cloud Over Mobile Base & Dancer Feet (Matching user attached image with extra puffy clouds) */}
-              <div 
-                className="feazto-cloud-dancer-feet"
-                style={{
-                  transform: `translate3d(${swipeOffset * 0.5}px, 0, 0)`
-                }}
-              >
-                {/* Secondary ambient back-cloud under dancer skirt & feet */}
-                <img
-                  src="/brand/cloud_subscribe.webp"
-                  className="feazto-cloud-feet-secondary"
-                  alt="Atmospheric Cloud Overlay"
-                  draggable={false}
-                />
-                {/* Primary center puffy cloud extending over phone corner & login pills */}
-                <img
-                  src="/brand/cloud_subscribe.webp"
-                  className="feazto-cloud-feet-img"
-                  alt="Atmospheric Cloud Overlay at Dancer Feet & Phone Base"
-                  draggable={false}
-                />
-                {/* Tertiary airy floating cloud drifting over the phone bottom edge */}
-                <img
-                  src="/brand/cloud_subscribe.webp"
-                  className="feazto-cloud-feet-phone-drift"
-                  alt="Atmospheric Cloud Overlay"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Floating Cloud Over Mobile on the Right Side (Parallax Swipe Effect: moves across right to left) */}
-              <div 
-                className="feazto-cloud-front-right"
-                style={{
-                  transform: `translate3d(${swipeOffset}px, 0, 0)`
-                }}
-              >
-                <img
-                  src="/brand/cloud_right.webp"
-                  className="feazto-cloud-right-img"
-                  alt="Atmospheric Cloud Overlay"
-                  draggable={false}
-                />
-              </div>
+            <div className="center-phone-hero-wrapper">
+              <img 
+                src="/brand/feazto-login-signup-phone.png" 
+                alt="feazto Unified Mobile Apps - Customer, Kitchen-OS & Rider Fleet" 
+                className="center-phone-big-img"
+              />
             </div>
           </div>
         </div>
@@ -696,372 +527,34 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           margin-top: 6px;
         }
 
-        /* Center Kathakali & Mobile Showcase Stage */
+        /* Center Big Centered Phone */
         .download-col-center {
           display: flex;
           justify-content: center;
           align-items: center;
           position: relative;
+        }
+
+        .center-phone-hero-wrapper {
           width: 100%;
-        }
-
-        .feazto-hero-stage {
-          position: relative;
-          width: 100%;
-          max-width: 580px;
-          aspect-ratio: 1024 / 935;
-          margin: 0 auto;
-          background: transparent;
-          overflow: visible;
-          user-select: none;
-        }
-
-        /* Warm Ambient Backlights */
-        .feazto-aura-saffron {
-          position: absolute;
-          width: 68%;
-          height: 68%;
-          right: 6%;
-          top: 14%;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(251, 191, 36, 0.42) 0%, rgba(234, 88, 12, 0.18) 45%, rgba(0, 0, 0, 0) 72%);
-          filter: blur(28px);
-          animation: feaztoPulseAura 6s ease-in-out infinite alternate;
-          pointer-events: none;
-        }
-
-        .feazto-aura-crimson {
-          position: absolute;
-          width: 58%;
-          height: 64%;
-          left: 4%;
-          top: 18%;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(220, 38, 38, 0.35) 0%, rgba(22, 163, 74, 0.15) 50%, rgba(0, 0, 0, 0) 75%);
-          filter: blur(34px);
-          animation: feaztoPulseAura 7.5s ease-in-out infinite alternate-reverse;
-          pointer-events: none;
-        }
-
-        /* Rotating Golden Chakra Mandala behind Crown */
-        .feazto-mandala-wrap {
-          position: absolute;
-          left: 28.2%;
-          top: 16.8%;
-          width: 34%;
-          aspect-ratio: 1 / 1;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        .feazto-mandala-outer {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 100%;
-          height: 100%;
-          animation: feaztoSpin 32s linear infinite;
-          filter: drop-shadow(0 0 18px rgba(251, 191, 36, 0.55));
-        }
-
-        .feazto-mandala-inner {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 82%;
-          height: 82%;
-          animation: feaztoSpinReverse 24s linear infinite;
-          opacity: 0.65;
-        }
-
-        /* Kathakali Performer Group */
-        .feazto-dancer-group {
-          position: absolute;
-          left: 3.91%;
-          top: 1.28%;
-          width: 40.43%;
-          height: 97.54%;
-          z-index: 10;
-          pointer-events: none;
-          will-change: transform;
-          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .feazto-dancer-body {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          z-index: 2;
-          transform-origin: 55% 92%;
-          animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
-          filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
-                  drop-shadow(0 0 20px rgba(234, 88, 12, 0.25));
-        }
-
-        .feazto-dancer-head {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          z-index: 1;
-          transform-origin: 68.5% 31.2%;
-          animation: feaztoHeadLeftRight 7.8s ease-in-out infinite;
-          filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
-        }
-
-        /* Dynamic FEAZTO Mobile UI with Floating Motion */
-        .feazto-phone-static {
-          position: absolute;
-          left: 41.89%;
-          top: 2.14%;
-          width: 43.46%;
-          height: 94.76%;
-          z-index: 30;
-          pointer-events: none;
-          will-change: transform;
-          transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
-          filter: drop-shadow(-14px 20px 32px rgba(0, 0, 0, 0.28))
-                  drop-shadow(0 0 24px rgba(251, 191, 36, 0.25));
-        }
-
-        .feazto-phone-static img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          display: block;
-          animation: feaztoPhoneLevitate 6s ease-in-out infinite alternate;
-        }
-
-        @keyframes feaztoFloatGentle {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(-8px);
-          }
-        }
-
-        @keyframes feaztoPhoneLevitate {
-          0% {
-            transform: translateY(0) rotate(0deg);
-          }
-          50% {
-            transform: translateY(-10px) rotate(0.4deg);
-          }
-          100% {
-            transform: translateY(-4px) rotate(-0.3deg);
-          }
-        }
-
-        /* Floating Base Cloud Elements at the Backside Bottom (z-index: 5, behind Kathakali & Mobile) */
-        .feazto-clouds-container-back {
-          position: absolute;
-          bottom: -6%;
-          right: -12%;
-          width: 75%;
-          height: 48%;
-          z-index: 5;
-          pointer-events: none;
+          max-width: 440px;
           display: flex;
-          align-items: flex-end;
-          justify-content: flex-end;
-          will-change: transform;
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          justify-content: center;
+          align-items: center;
+          filter: drop-shadow(0 28px 65px rgba(0, 0, 0, 0.26));
+          transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .feazto-cloud-layer {
-          position: absolute;
-          object-fit: contain;
-          user-select: none;
-          pointer-events: none;
+        .center-phone-hero-wrapper:hover {
+          transform: translateY(-8px) scale(1.03);
         }
 
-        .feazto-cloud-back-primary {
-          bottom: -4%;
-          right: 0%;
-          width: 88%;
-          height: auto;
-          opacity: 0.95;
-          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.14));
-          animation: feaztoCloudDrift 8.5s ease-in-out infinite alternate;
-        }
-
-        .feazto-cloud-back-ambient {
-          bottom: 4%;
-          right: -8%;
-          width: 72%;
-          height: auto;
-          opacity: 0.65;
-          filter: blur(4px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.2));
-          animation: feaztoCloudDriftReverse 11s ease-in-out infinite alternate;
-        }
-
-        /* Multi-layered Cloud Over Dancer Feet & Phone Bottom Left/Center (z-index: 42) */
-        .feazto-cloud-dancer-feet {
-          position: absolute;
-          left: 10%;
-          bottom: -6%;
-          width: 86%;
-          height: 140px;
-          z-index: 42;
-          pointer-events: none;
-          user-select: none;
-          will-change: transform;
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .feazto-cloud-feet-img {
-          position: absolute;
-          left: 10%;
-          top: 0;
-          width: 88%;
-          height: auto;
-          display: block;
-          opacity: 0.98;
-          filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.22));
-          animation: feaztoFeetCloudDrift 8s ease-in-out infinite alternate;
-        }
-
-        .feazto-cloud-feet-secondary {
-          position: absolute;
-          left: -8%;
-          top: 15%;
-          width: 68%;
-          height: auto;
-          display: block;
-          opacity: 0.85;
-          filter: blur(1px) drop-shadow(0 12px 28px rgba(245, 183, 0, 0.2));
-          animation: feaztoFeetCloudDriftReverse 10s ease-in-out infinite alternate;
-        }
-
-        .feazto-cloud-feet-phone-drift {
-          position: absolute;
-          right: -8%;
-          top: -10%;
-          width: 65%;
-          height: auto;
-          display: block;
-          opacity: 0.88;
-          filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.16));
-          animation: feaztoFeetCloudPhoneDrift 9s ease-in-out infinite alternate;
-        }
-
-        @keyframes feaztoFeetCloudDrift {
-          0% {
-            transform: translate3d(-6px, 0, 0) scale(1);
-          }
-          50% {
-            transform: translate3d(8px, -4px, 0) scale(1.03);
-          }
-          100% {
-            transform: translate3d(-4px, 2px, 0) scale(0.99);
-          }
-        }
-
-        @keyframes feaztoFeetCloudDriftReverse {
-          0% {
-            transform: translate3d(4px, 0, 0) scale(0.98);
-          }
-          50% {
-            transform: translate3d(-6px, -3px, 0) scale(1.02);
-          }
-          100% {
-            transform: translate3d(5px, 2px, 0) scale(1);
-          }
-        }
-
-        @keyframes feaztoFeetCloudPhoneDrift {
-          0% {
-            transform: translate3d(0, 0, 0) scale(1);
-          }
-          50% {
-            transform: translate3d(-8px, -5px, 0) scale(1.04);
-          }
-          100% {
-            transform: translate3d(6px, 3px, 0) scale(0.98);
-          }
-        }
-
-        /* Floating Cloud Over Mobile on the Right Side (z-index: 45) */
-        .feazto-cloud-front-right {
-          position: absolute;
-          right: -20%;
-          bottom: 4%;
-          width: 68%;
-          z-index: 45;
-          pointer-events: none;
-          user-select: none;
-          will-change: transform;
-          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .feazto-cloud-right-img {
+        .center-phone-big-img {
           width: 100%;
           height: auto;
+          max-height: 640px;
+          object-fit: contain;
           display: block;
-          opacity: 0.96;
-          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.16));
-          animation: feaztoCloudDrift 7.5s ease-in-out infinite alternate;
-        }
-
-        @keyframes feaztoCloudDrift {
-          0% {
-            transform: translate3d(-10px, 0, 0) scale(1);
-          }
-          50% {
-            transform: translate3d(8px, -6px, 0) scale(1.03);
-          }
-          100% {
-            transform: translate3d(-6px, 3px, 0) scale(0.98);
-          }
-        }
-
-        @keyframes feaztoCloudDriftReverse {
-          0% {
-            transform: translate3d(12px, 0, 0) scale(0.97);
-          }
-          50% {
-            transform: translate3d(-8px, -4px, 0) scale(1.02);
-          }
-          100% {
-            transform: translate3d(10px, 4px, 0) scale(1);
-          }
-        }
-
-        @keyframes feaztoHeadLeftRight {
-          0%, 100% {
-            transform: translate3d(-6px, 1.5px, 0) rotate(-2.4deg);
-          }
-          50% {
-            transform: translate3d(6px, 1.5px, 0) rotate(2.4deg);
-          }
-        }
-
-        @keyframes feaztoBodyBreathe {
-          0%, 100% {
-            transform: translate3d(-1.5px, 0px, 0) scaleY(1);
-          }
-          50% {
-            transform: translate3d(1.5px, -2px, 0) scaleY(1.006);
-          }
-        }
-
-        @keyframes feaztoSpin {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        @keyframes feaztoSpinReverse {
-          from { transform: translate(-50%, -50%) rotate(360deg); }
-          to { transform: translate(-50%, -50%) rotate(0deg); }
-        }
-
-        @keyframes feaztoPulseAura {
-          0% { transform: scale(0.94); opacity: 0.65; }
-          100% { transform: scale(1.08); opacity: 0.95; }
         }
 
         /* Right QR Panel */
@@ -1167,12 +660,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           }
         }
 
-        /* Hide all cloud elements exclusively on mobile view (screens 768px and under) */
+        /* Hide cloud overlays exclusively on mobile view (screens 768px and under) */
         @media (max-width: 768px) {
-          .waitlist-clouds-cluster,
-          .feazto-clouds-container-back,
-          .feazto-cloud-dancer-feet,
-          .feazto-cloud-front-right {
+          .waitlist-clouds-cluster {
             display: none !important;
           }
         }
