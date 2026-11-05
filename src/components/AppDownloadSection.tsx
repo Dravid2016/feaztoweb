@@ -151,6 +151,22 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 </svg>
               </div>
 
+              {/* Floating Base Cloud at Backside Bottom of Mobile & Kathakali */}
+              <div className="feazto-clouds-container-back">
+                <img
+                  src="/brand/cloud_backdrop.webp"
+                  className="feazto-cloud-layer feazto-cloud-back-primary"
+                  alt="Atmospheric Cloud Backdrop"
+                  draggable={false}
+                />
+                <img
+                  src="/brand/cloud_backdrop.webp"
+                  className="feazto-cloud-layer feazto-cloud-back-ambient"
+                  alt="Atmospheric Cloud Backdrop"
+                  draggable={false}
+                />
+              </div>
+
               {/* Kathakali Performer Group */}
               <div className="feazto-dancer-group">
                 <img
@@ -172,22 +188,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 <img
                   src="/brand/phone_layer.webp"
                   alt="FEAZTO Mobile App Showcase"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Floating Base Cloud at Bottom of Mobile & Kathakali */}
-              <div className="feazto-clouds-container">
-                <img
-                  src="/brand/cloud_floating.webp"
-                  className="feazto-cloud-layer feazto-cloud-back"
-                  alt="Atmospheric Cloud"
-                  draggable={false}
-                />
-                <img
-                  src="/brand/cloud_floating.webp"
-                  className="feazto-cloud-layer feazto-cloud-main"
-                  alt="Atmospheric Cloud"
                   draggable={false}
                 />
               </div>
@@ -609,14 +609,14 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           display: block;
         }
 
-        /* Floating Base Cloud Elements */
-        .feazto-clouds-container {
+        /* Floating Base Cloud Elements at the Backside Bottom (z-index: 5, behind Kathakali & Mobile) */
+        .feazto-clouds-container-back {
           position: absolute;
-          bottom: -10%;
+          bottom: -6%;
           left: 0;
           width: 100%;
-          height: 34%;
-          z-index: 40;
+          height: 48%;
+          z-index: 5;
           pointer-events: none;
           display: flex;
           align-items: flex-end;
@@ -630,24 +630,24 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           pointer-events: none;
         }
 
-        .feazto-cloud-main {
-          bottom: -8%;
-          left: 28%;
-          width: 76%;
+        .feazto-cloud-back-primary {
+          bottom: -4%;
+          left: 8%;
+          width: 95%;
           height: auto;
-          opacity: 0.92;
-          filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
-          animation: feaztoCloudDrift 8s ease-in-out infinite alternate;
+          opacity: 0.95;
+          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.14));
+          animation: feaztoCloudDrift 8.5s ease-in-out infinite alternate;
         }
 
-        .feazto-cloud-back {
-          bottom: -4%;
-          right: -4%;
-          width: 62%;
+        .feazto-cloud-back-ambient {
+          bottom: 2%;
+          right: -6%;
+          width: 78%;
           height: auto;
-          opacity: 0.6;
-          filter: blur(2px) drop-shadow(0 8px 18px rgba(234, 88, 12, 0.15));
-          animation: feaztoCloudDriftReverse 10s ease-in-out infinite alternate;
+          opacity: 0.65;
+          filter: blur(4px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.2));
+          animation: feaztoCloudDriftReverse 11s ease-in-out infinite alternate;
         }
 
         @keyframes feaztoCloudDrift {

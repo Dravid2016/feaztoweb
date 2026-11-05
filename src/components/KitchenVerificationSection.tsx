@@ -611,3 +611,4 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
     </section>
   );
 };
+
