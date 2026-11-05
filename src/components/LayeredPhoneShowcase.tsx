@@ -811,7 +811,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 10%;
+          top: -2%; /* Lifted slightly upper so the big cards do not touch or disturb the buttons */
         }
 
         .stream-bottom {
