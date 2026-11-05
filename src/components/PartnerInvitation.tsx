@@ -35,10 +35,10 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
       <div className="container">
         {/* KolamFrame with Turmeric Yellow variant */}
         <KolamFrame variant="turmeric" hasCorners={true} className="partner-card-frame">
-          {/* Ambient Food Rally Loop Collage running lightly & transparently in the card background */}
+          {/* Ambient Multi-Row Food Rally Loop Collage running across the entire card background */}
           <div className="food-collage-bg-track" aria-hidden="true">
-            {/* Top Row Marquee - Scrolls Left */}
-            <div className="collage-row marquee-left">
+            {/* Row 1 Marquee - Scrolls Left */}
+            <div className="collage-row marquee-left speed-fast">
               <div className="collage-track">
                 {foodCollageItems.map((item, idx) => (
                   <div key={`track1-a-${idx}`} className="collage-card-item">
@@ -73,8 +73,8 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
               </div>
             </div>
 
-            {/* Bottom Row Marquee - Scrolls Right */}
-            <div className="collage-row marquee-right">
+            {/* Row 2 Marquee - Scrolls Right */}
+            <div className="collage-row marquee-right speed-medium">
               <div className="collage-track">
                 {[...foodCollageItems].reverse().map((item, idx) => (
                   <div key={`track2-a-${idx}`} className="collage-card-item">
@@ -93,6 +93,114 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
                 ))}
                 {[...foodCollageItems].reverse().map((item, idx) => (
                   <div key={`track2-b-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 3 Marquee - Scrolls Left (Shifted subset) */}
+            <div className="collage-row marquee-left speed-slow">
+              <div className="collage-track">
+                {[...foodCollageItems.slice(8), ...foodCollageItems.slice(0, 8)].map((item, idx) => (
+                  <div key={`track3-a-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+                {[...foodCollageItems.slice(8), ...foodCollageItems.slice(0, 8)].map((item, idx) => (
+                  <div key={`track3-b-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 4 Marquee - Scrolls Right */}
+            <div className="collage-row marquee-right speed-fast">
+              <div className="collage-track">
+                {[...foodCollageItems.slice(4), ...foodCollageItems.slice(0, 4)].reverse().map((item, idx) => (
+                  <div key={`track4-a-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+                {[...foodCollageItems.slice(4), ...foodCollageItems.slice(0, 4)].reverse().map((item, idx) => (
+                  <div key={`track4-b-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 5 Marquee - Scrolls Left (Bottom coverage) */}
+            <div className="collage-row marquee-left speed-medium">
+              <div className="collage-track">
+                {[...foodCollageItems.slice(12), ...foodCollageItems.slice(0, 12)].map((item, idx) => (
+                  <div key={`track5-a-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+                {[...foodCollageItems.slice(12), ...foodCollageItems.slice(0, 12)].map((item, idx) => (
+                  <div key={`track5-b-${idx}`} className="collage-card-item">
                     <img 
                       src={item.img} 
                       alt="" 
@@ -170,17 +278,17 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         /* ── AMBIENT FOOD COLLAGE BACKGROUND MARQUEE LOOP ── */
         .food-collage-bg-track {
           position: absolute;
-          inset: 0;
+          inset: -15px -10px -15px -10px;
           pointer-events: none;
           z-index: 0;
           display: flex;
           flex-direction: column;
-          justify-content: space-around;
-          opacity: 0.22;
+          justify-content: space-between;
+          opacity: 0.15;
           overflow: hidden;
-          filter: saturate(130%) contrast(105%);
-          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.4) 75%, transparent 100%);
-          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.4) 75%, transparent 100%);
+          filter: saturate(120%) contrast(102%);
+          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.45) 65%, transparent 100%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 15%, rgba(0, 0, 0, 0.45) 65%, transparent 100%);
         }
 
         .collage-row {
@@ -188,22 +296,34 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           overflow: hidden;
           display: flex;
           white-space: nowrap;
-          padding: 6px 0;
+          padding: 4px 0;
         }
 
         .collage-track {
           display: flex;
           align-items: center;
-          gap: 22px;
+          gap: 18px;
           width: max-content;
         }
 
-        .marquee-left .collage-track {
-          animation: collageMarqueeLeft 55s linear infinite;
+        .speed-fast.marquee-left .collage-track {
+          animation: collageMarqueeLeft 42s linear infinite;
+        }
+        .speed-medium.marquee-left .collage-track {
+          animation: collageMarqueeLeft 52s linear infinite;
+        }
+        .speed-slow.marquee-left .collage-track {
+          animation: collageMarqueeLeft 62s linear infinite;
         }
 
-        .marquee-right .collage-track {
-          animation: collageMarqueeRight 60s linear infinite;
+        .speed-fast.marquee-right .collage-track {
+          animation: collageMarqueeRight 44s linear infinite;
+        }
+        .speed-medium.marquee-right .collage-track {
+          animation: collageMarqueeRight 54s linear infinite;
+        }
+        .speed-slow.marquee-right .collage-track {
+          animation: collageMarqueeRight 64s linear infinite;
         }
 
         @keyframes collageMarqueeLeft {
@@ -228,29 +348,29 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         .collage-card-item {
           display: inline-flex;
           align-items: center;
-          gap: 12px;
-          padding: 8px 18px 8px 10px;
-          background: rgba(255, 255, 255, 0.85);
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
+          gap: 10px;
+          padding: 6px 14px 6px 8px;
+          background: rgba(255, 255, 255, 0.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
           border-radius: 9999px;
-          border: 1px solid rgba(255, 255, 255, 0.95);
-          box-shadow: 0 4px 14px rgba(181, 132, 0, 0.12);
-          transform: rotate(-1.5deg);
+          border: 1px solid rgba(255, 255, 255, 0.9);
+          box-shadow: 0 3px 10px rgba(181, 132, 0, 0.08);
+          transform: rotate(-1deg);
         }
 
         .marquee-right .collage-card-item {
-          transform: rotate(1.5deg);
+          transform: rotate(1deg);
         }
 
         .collage-card-item img {
-          width: 44px;
-          height: 44px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           object-fit: cover;
           background: #FFF9E6;
           border: 1.5px solid #F5B700;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
         }
 
         .collage-card-info {
@@ -260,14 +380,14 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
 
         .collage-food-title {
           font-family: var(--font-heading, inherit);
-          font-size: 0.88rem;
+          font-size: 0.82rem;
           font-weight: 800;
           color: #2B1D00;
-          line-height: 1.2;
+          line-height: 1.15;
         }
 
         .collage-food-sub {
-          font-size: 0.70rem;
+          font-size: 0.65rem;
           font-weight: 600;
           color: #7A5800;
         }
@@ -418,6 +538,33 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           .partner-benefits-row {
             flex-direction: column;
             gap: 10px;
+          }
+
+          .food-collage-bg-track {
+            opacity: 0.12;
+            inset: -10px -5px -10px -5px;
+          }
+
+          .collage-row {
+            padding: 2px 0;
+          }
+
+          .collage-card-item {
+            padding: 5px 12px 5px 6px;
+            gap: 8px;
+          }
+
+          .collage-card-item img {
+            width: 30px;
+            height: 30px;
+          }
+
+          .collage-food-title {
+            font-size: 0.74rem;
+          }
+
+          .collage-food-sub {
+            font-size: 0.60rem;
           }
         }
       `}</style>
