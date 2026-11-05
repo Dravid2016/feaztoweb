@@ -6,10 +6,27 @@ interface EditorialHeroProps {
   navigate: (route: string) => void;
 }
 
+const HERO_STATEMENT_DISHES = [
+  { name: 'Traditional South Indian Medu Vada & Idli Platter', img: '/brand/hero-home-food-capsule.png' },
+  { name: 'Traditional South Indian Curry Bowl', img: '/dish-capsule-curry.jpg' },
+  { name: 'Crispy Golden Ghee Podi Masala Dosa', img: '/brand/plate-benne-dosa.png' },
+  { name: 'Slow Dum Cooked Fragrant Biryani', img: '/brand/plate-biryani-new.png' },
+  { name: 'Steamed Stone Ground Soft Jasmine Idli', img: '/brand/plate-idli-new.png' },
+  { name: 'Balanced Generational Sattvic Thali', img: '/brand/plate-thali-new.png' },
+];
+
 export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
   const [subModalOpen, setSubModalOpen] = useState(false);
   const [subEmail, setSubEmail] = useState('');
   const [subSubmitted, setSubSubmitted] = useState(false);
+  const [capsuleDishIdx, setCapsuleDishIdx] = useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCapsuleDishIdx((prev) => (prev + 1) % HERO_STATEMENT_DISHES.length);
+    }, 2400);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,8 +78,28 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
 
           {/* Master Headline - Centered */}
           <h1 className="hero-master-headline">
-            <span className="headline-line">The taste of home,</span>
-            <span className="headline-line with-capsule">
+            <span className="headline-line">
+              The taste of h
+              <span 
+                className="hero-home-food-capsule" 
+                title={HERO_STATEMENT_DISHES[capsuleDishIdx].name}
+                onClick={() => setCapsuleDishIdx((prev) => (prev + 1) % HERO_STATEMENT_DISHES.length)}
+              >
+                {HERO_STATEMENT_DISHES.map((dish, idx) => (
+                  <img 
+                    key={dish.name}
+                    src={dish.img} 
+                    alt={dish.name} 
+                    className={`hero-capsule-dish-img ${idx === capsuleDishIdx ? 'is-active-dish' : 'is-hidden-dish'}`}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/brand/hero-home-food-capsule.png';
+                    }}
+                  />
+                ))}
+              </span>
+              me,
+            </span>
+            <span className="headline-line">
               wherever life takes you.
             </span>
           </h1>
@@ -328,6 +365,85 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           justify-content: center;
           gap: 0;
           flex-wrap: nowrap;
+        }
+
+        /* Transition Card / Capsule Image inside the word "home" replacing letter 'o' */
+        .hero-home-food-capsule {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          vertical-align: -0.06em;
+          width: clamp(52px, 6.2vw, 84px);
+          height: clamp(32px, 3.8vw, 50px);
+          margin: 0 3px;
+          border-radius: 9999px;
+          background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.08) 100%);
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          outline: none;
+          box-shadow: 
+            0 12px 28px rgba(0, 0, 0, 0.12),
+            0 4px 10px rgba(0, 0, 0, 0.06),
+            inset 0 2px 6px rgba(255, 255, 255, 0.9),
+            inset 0 -2px 6px rgba(0, 0, 0, 0.06);
+          overflow: hidden;
+          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+          cursor: pointer;
+          flex-shrink: 0;
+          position: relative;
+        }
+
+        .hero-home-food-capsule::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 60%);
+          pointer-events: none;
+          z-index: 4;
+        }
+
+        .hero-home-food-capsule::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5);
+          pointer-events: none;
+          z-index: 3;
+        }
+
+        .hero-home-food-capsule:hover {
+          transform: scale(1.1) translateY(-2px);
+          border-color: rgba(255, 255, 255, 0.98);
+          box-shadow: 
+            0 18px 36px rgba(0, 0, 0, 0.18),
+            0 6px 14px rgba(0, 0, 0, 0.08),
+            inset 0 3px 8px rgba(255, 255, 255, 0.95);
+        }
+
+        .hero-capsule-dish-img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: opacity 0.55s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-capsule-dish-img.is-active-dish {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+          z-index: 2;
+        }
+
+        .hero-capsule-dish-img.is-hidden-dish {
+          opacity: 0;
+          transform: scale(0.85) rotate(-6deg);
+          z-index: 1;
+          pointer-events: none;
         }
 
         /* Transition Card / Capsule Image between the text - Pure Crystal Liquid Glass (Zero Yellow Borders) */
