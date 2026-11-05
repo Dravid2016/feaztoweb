@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Sparkles, ArrowRight, CheckCircle2, Mail, ExternalLink } from 'lucide-react';
 
 interface AppDownloadSectionProps {
@@ -8,6 +8,55 @@ interface AppDownloadSectionProps {
 export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
   const [registered, setRegistered] = useState(false);
   const [email, setEmail] = useState('');
+  const [swipeOffset, setSwipeOffset] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const section = document.getElementById('app-download');
+          if (section) {
+            const rect = section.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+              const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+              // Calculate horizontal shift: moves from right (+60px) to left (-90px) as scrolled
+              const offset = (progress - 0.5) * -160;
+              setSwipeOffset(offset);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    // Also support horizontal touch swipe directly
+    let touchStartX = 0;
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+    };
+    const handleTouchMove = (e: TouchEvent) => {
+      const touchDiff = e.touches[0].clientX - touchStartX;
+      // swipe right-to-left increases negative offset
+      setSwipeOffset((prev) => Math.max(-120, Math.min(80, prev + touchDiff * 0.2)));
+      touchStartX = e.touches[0].clientX;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
 
   const handleInterestSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -151,8 +200,13 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 </svg>
               </div>
 
-              {/* Floating Base Cloud at Backside Bottom of Mobile & Kathakali */}
-              <div className="feazto-clouds-container-back">
+              {/* Floating Base Cloud at Backside Bottom of Mobile & Kathakali (Swipes horizontally as user scrolls/swipes) */}
+              <div 
+                className="feazto-clouds-container-back"
+                style={{
+                  transform: `translate3d(${swipeOffset * 0.7}px, 0, 0)`
+                }}
+              >
                 <img
                   src="/brand/cloud_backdrop.webp"
                   className="feazto-cloud-layer feazto-cloud-back-primary"
@@ -192,8 +246,13 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Floating Cloud Over Mobile on the Right Side */}
-              <div className="feazto-cloud-front-right">
+              {/* Floating Cloud Over Mobile on the Right Side (Parallax Swipe Effect: moves across right to left) */}
+              <div 
+                className="feazto-cloud-front-right"
+                style={{
+                  transform: `translate3d(${swipeOffset}px, 0, 0)`
+                }}
+              >
                 <img
                   src="/brand/cloud_right.webp"
                   className="feazto-cloud-right-img"
@@ -631,6 +690,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           display: flex;
           align-items: flex-end;
           justify-content: flex-end;
+          will-change: transform;
+          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feazto-cloud-layer {
@@ -669,6 +730,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           z-index: 45;
           pointer-events: none;
           user-select: none;
+          will-change: transform;
+          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feazto-cloud-right-img {
