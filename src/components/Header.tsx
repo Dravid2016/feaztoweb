@@ -29,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
   const navLinks = [
     { label: 'Our Story', route: '/our-story' },
+    { label: 'Kitchen Verification', route: '/kitchen-verification' },
     { label: 'Download', route: '/download' },
     { label: 'Blog', route: '/blog' },
     { label: 'Business Sign Up', route: '/business-signup' },
@@ -37,6 +38,17 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   ];
 
   const handleNavClick = (route: string) => {
+    if (route === '/kitchen-verification') {
+      navigate('/kitchen-verification');
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        const el = document.getElementById('kitchen-verification');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return;
+    }
     navigate(route);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -66,6 +66,8 @@ export function App() {
         return <PartnersPage />;
       case '/careers':
         return <CareersPage navigate={navigate} />;
+      case '/kitchen-verification':
+        return <HomePage navigate={navigate} />;
       case '/faq':
         return <FAQPage navigate={navigate} />;
       case '/contact':

@@ -3,6 +3,7 @@ import { EditorialHero } from '../components/EditorialHero';
 import { LayeredPhoneShowcase } from '../components/LayeredPhoneShowcase';
 import { HomeKitchensSection } from '../components/HomeKitchensSection';
 import { BrandPillarsSection } from '../components/BrandPillarsSection';
+import { KitchenVerificationSection } from '../components/KitchenVerificationSection';
 import { HowItWorksSection } from '../components/HowItWorksSection';
 import { PartnerInvitation } from '../components/PartnerInvitation';
 import { AppDownloadSection } from '../components/AppDownloadSection';
@@ -27,13 +28,16 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
       {/* 4. What makes feazto different */}
       <BrandPillarsSection />
 
-      {/* 5. How feazto works (Documented flow) */}
+      {/* 5. Customer Promise and Five-Step Kitchen Verification */}
+      <KitchenVerificationSection navigate={navigate} />
+
+      {/* 6. How feazto works (Documented flow) */}
       <HowItWorksSection />
 
-      {/* 6. Partner and kitchen invitation (includes FoodPreneur Growth Engine loop) */}
+      {/* 7. Partner and kitchen invitation (includes FoodPreneur Growth Engine loop) */}
       <PartnerInvitation navigate={navigate} />
 
-      {/* 7. Dedicated app-download section with QR (Reference G) */}
+      {/* 8. Dedicated app-download section with QR (Reference G) */}
       <AppDownloadSection navigate={navigate} />
     </main>
   );
