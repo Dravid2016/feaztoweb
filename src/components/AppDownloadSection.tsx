@@ -1098,36 +1098,39 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           .feazto-hero-stage {
             max-width: 360px;
           }
-          /* Way bigger, dramatic clouds across dancer feet and phone base on mobile */
+          /* Align clouds strictly to the bottom on mobile without occluding phone UI */
           .feazto-cloud-dancer-feet {
-            left: -12%;
-            bottom: -2%;
-            width: 124%;
-            height: 190px;
-            transform: scale(1.35) !important;
+            left: -10%;
+            bottom: -20%;
+            width: 120%;
+            height: 130px;
+            transform: scale(1.15) !important;
             transform-origin: bottom center;
           }
           .feazto-cloud-feet-img {
-            width: 105%;
+            width: 100%;
+            top: 15px;
           }
           .feazto-cloud-feet-secondary {
-            width: 85%;
+            width: 80%;
+            top: 25px;
           }
           .feazto-cloud-feet-phone-drift {
-            width: 82%;
+            width: 75%;
+            top: 20px;
           }
           .feazto-cloud-front-right {
-            right: -25%;
-            bottom: 0%;
-            width: 88%;
-            transform: scale(1.3) !important;
+            right: -20%;
+            bottom: -15%;
+            width: 80%;
+            transform: scale(1.1) !important;
           }
           .feazto-clouds-container-back {
-            width: 100%;
-            height: 60%;
-            bottom: -8%;
-            right: -15%;
-            transform: scale(1.25) !important;
+            width: 95%;
+            height: 48%;
+            bottom: -18%;
+            right: -10%;
+            transform: scale(1.1) !important;
           }
         }
 
@@ -1136,11 +1139,17 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             max-width: 320px;
           }
           .feazto-cloud-dancer-feet {
-            left: -15%;
-            bottom: 0%;
-            width: 130%;
-            height: 200px;
-            transform: scale(1.45) !important;
+            left: -12%;
+            bottom: -22%;
+            width: 124%;
+            height: 120px;
+            transform: scale(1.18) !important;
+          }
+          .feazto-cloud-front-right {
+            bottom: -18%;
+          }
+          .feazto-clouds-container-back {
+            bottom: -20%;
           }
         }
       `}</style>
