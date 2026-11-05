@@ -7,7 +7,6 @@ import {
   Search, 
   FileText, 
   GraduationCap, 
-  AlertTriangle,
   ArrowRight,
   ChevronDown,
   ChevronUp,
@@ -221,26 +220,6 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
             ))}
           </div>
         )}
-
-        {/* Customer Trust Message */}
-        <div className="customer-trust-banner">
-          <div className="trust-banner-badge">Our Covenant with Food Lovers</div>
-          <h3 className="trust-banner-title">A CLEAR AND RESPONSIBLE PROMISE</h3>
-          <p className="trust-banner-text">
-            FEAZTO is committed to checking its cloud kitchen partners against the verification standards described above. These checks are intended to support customer confidence in kitchen hygiene, food quality, and operational readiness.
-          </p>
-        </div>
-
-        {/* Important Statutory Disclaimer / Note */}
-        <div className="verification-disclaimer-box">
-          <div className="disclaimer-header">
-            <AlertTriangle size={18} className="disclaimer-icon" />
-            <h4 className="disclaimer-heading">Important Regulatory Note & Statutory Clarity</h4>
-          </div>
-          <p className="disclaimer-text">
-            FEAZTO verification is an independent, additional platform quality and food-hygiene assessment designed to maintain high culinary standards across our community. It does not replace statutory government inspections, FSSAI regulatory enforcement, municipal licences, or the direct legal obligations and liabilities of independent food business operators under applicable law.
-          </p>
-        </div>
 
       </div>
 
