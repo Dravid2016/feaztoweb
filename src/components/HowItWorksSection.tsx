@@ -1105,49 +1105,81 @@ export const HowItWorksSection: React.FC = () => {
           .stage-glass-info-card {
             max-width: 100%;
             width: 100%;
-            padding: 20px 18px 18px 18px;
-            border-radius: 24px;
+            padding: 22px 20px 20px 20px;
+            border-radius: 28px;
+            /* Vibrant Signature Liquid Yellow Glassmorphism Card matching user request */
             background: linear-gradient(
-              135deg,
-              rgba(20, 20, 24, 0.68) 0%,
-              rgba(12, 12, 15, 0.82) 100%
+              145deg,
+              rgba(255, 230, 90, 0.94) 0%,
+              rgba(250, 201, 33, 0.92) 50%,
+              rgba(229, 168, 0, 0.96) 100%
             );
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(24px) saturate(200%);
+            -webkit-backdrop-filter: blur(24px) saturate(200%);
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 
+              0 20px 50px rgba(181, 132, 0, 0.4),
+              0 6px 16px rgba(0, 0, 0, 0.12),
+              inset 0 2px 4px rgba(255, 255, 255, 0.9),
+              inset 0 -2px 4px rgba(181, 132, 0, 0.2);
           }
 
           .info-heading {
             font-size: 1.35rem;
             line-height: 1.3;
             margin-bottom: 10px;
-            color: #FAC921;
+            color: #111111;
+            font-weight: 900;
+            text-shadow: none;
           }
 
           .info-description {
             font-size: 0.92rem;
             line-height: 1.55;
             margin-bottom: 18px;
-            color: #FFFFFF;
+            color: #261A00;
+            font-weight: 600;
+            text-shadow: none;
           }
 
           .info-stat-row {
             padding-top: 14px;
             gap: 10px;
+            border-top: 1px solid rgba(135, 71, 0, 0.2);
           }
 
           .info-stat-number {
             font-size: 1.8rem;
+            color: #111111 !important;
+            font-weight: 900;
+            text-shadow: none;
           }
 
           .info-stat-caption {
             font-size: 0.82rem;
-            color: #FFECA1;
+            color: #4A3500;
+            font-weight: 700;
+            text-shadow: none;
           }
 
           .info-step-action-row {
             margin-top: 18px;
+            gap: 10px;
+          }
+
+          .next-stage-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px;
+            background: #111111;
+            color: #FFFFFF;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+          }
+
+          .next-stage-btn:hover {
+            background: #000000;
+            color: #FFFFFF;
+          }
             gap: 10px;
           }
 
