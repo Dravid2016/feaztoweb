@@ -251,10 +251,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
               
               <button 
                 type="button" 
-                className={`mode-tab-item tab-pill ${activeTab === 'book' ? 'is-pill-active' : ''}`}
+                className={`mode-tab-item tab-pill tab-book-pill ${activeTab === 'book' ? 'is-pill-active' : ''}`}
                 onClick={() => setActiveTab('book')}
               >
-                <span className="mode-btn-label">Book a cook</span>
+                <span className="mode-btn-label mode-btn-label-desktop">Book a cook</span>
+                <span className="mode-btn-label mode-btn-label-mobile">Cook</span>
               </button>
 
               <button 
@@ -482,13 +483,6 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
       {/* Plenti Reference App Download Banner Placed Directly Under FEAZTO, Book a Cook & Carefe Stage Layer */}
       <div className="plenti-download-cta-banner under-stage-placement">
-        {/* Rating Pill */}
-        <div className="download-rating-pill">
-          <span className="rating-star-icon">★</span>
-          <span className="rating-score">4.5 rating</span>
-          <span className="rating-count">(based on 1000 reviews)</span>
-        </div>
-
         {/* Marketing Copy */}
         <p className="download-banner-headline">
           Download the Feazto app today and unlock unbeatable deals on delicious meals. Great food, big savings, just a tap away! 🍽️📱
@@ -1440,6 +1434,14 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           letter-spacing: -0.01em;
         }
 
+        .mode-btn-label-mobile {
+          display: none;
+        }
+
+        .mode-btn-label-desktop {
+          display: inline;
+        }
+
         .badge-new {
           background: #FF0015;
           color: #FFFFFF;
@@ -1921,6 +1923,24 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
           .blank-card-inner-frame {
             min-height: 240px;
+          }
+
+          /* On mobile view: show "Cook" instead of full "Book a cook" so it fits cleanly */
+          .mode-btn-label-desktop {
+            display: none !important;
+          }
+
+          .mode-btn-label-mobile {
+            display: inline !important;
+          }
+
+          .app-mode-tabs-header {
+            gap: 8px;
+            padding-left: 12px;
+          }
+
+          .tab-pill {
+            padding: 8px 18px;
           }
         }
       `}</style>
