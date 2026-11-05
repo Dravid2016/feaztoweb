@@ -36,7 +36,6 @@ interface WorkflowStep {
 
 export const HowItWorksSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState<string>('step-1');
-  const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const steps: WorkflowStep[] = [
@@ -144,16 +143,17 @@ export const HowItWorksSection: React.FC = () => {
 
   const currentStep = steps.find((s) => s.id === activeStep) || steps[0];
 
+  // Auto-loop transition every 3 seconds across the 4 steps
   useEffect(() => {
-    if (!isAutoPlaying || isModalOpen) return;
+    if (isModalOpen) return;
     const interval = setInterval(() => {
       setActiveStep((prev) => {
         const idx = steps.findIndex((s) => s.id === prev);
         return steps[(idx + 1) % steps.length].id;
       });
-    }, 6000);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, isModalOpen, steps]);
+  }, [isModalOpen, steps]);
 
   // Lock body scroll when modal is active
   useEffect(() => {
@@ -180,7 +180,6 @@ export const HowItWorksSection: React.FC = () => {
     <section 
       className="feazto-how-it-works-section" 
       id="how-it-works"
-      onMouseEnter={() => setIsAutoPlaying(false)}
     >
       <div className="how-inner-container">
         
@@ -1074,14 +1073,73 @@ export const HowItWorksSection: React.FC = () => {
         @media (max-width: 900px) {
           .how-stage-card {
             flex-direction: column;
-            padding: 36px 20px;
-            gap: 32px;
+            padding: 32px 20px 28px 20px;
+            gap: 16px;
+            min-height: 520px;
+            /* Dark gradient overlay on mobile so text always has crystal clear contrast */
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.72) 40%, rgba(0, 0, 0, 0.92) 100%), url('${currentStep.bgImage}') !important;
+            justify-content: flex-end;
           }
 
-          .stage-media-slot-container,
+          .stage-expand-pill {
+            display: none !important; /* Remove clumsy click to expand on mobile */
+          }
+
+          .empty-media-space {
+            display: none !important;
+          }
+
+          .stage-media-slot-container {
+            display: none !important;
+          }
+
           .stage-glass-info-card {
             max-width: 100%;
             width: 100%;
+            padding: 0;
+          }
+
+          .info-heading {
+            font-size: 1.35rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: #FAC921;
+          }
+
+          .info-description {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            margin-bottom: 18px;
+            color: #FFFFFF;
+          }
+
+          .info-stat-row {
+            padding-top: 14px;
+            gap: 10px;
+          }
+
+          .info-stat-number {
+            font-size: 1.8rem;
+          }
+
+          .info-stat-caption {
+            font-size: 0.82rem;
+            color: #FFECA1;
+          }
+
+          .info-step-action-row {
+            margin-top: 18px;
+            gap: 10px;
+          }
+
+          .stage-view-details-btn {
+            display: none !important; /* Keep mobile clean and focused on the auto-looping steps */
+          }
+
+          .next-stage-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 12px 20px;
           }
 
           .modal-content-grid {
