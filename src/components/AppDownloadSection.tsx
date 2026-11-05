@@ -175,6 +175,22 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                   draggable={false}
                 />
               </div>
+
+              {/* Floating Base Cloud at Bottom of Mobile & Kathakali */}
+              <div className="feazto-clouds-container">
+                <img
+                  src="/brand/cloud_floating.webp"
+                  className="feazto-cloud-layer feazto-cloud-back"
+                  alt="Atmospheric Cloud"
+                  draggable={false}
+                />
+                <img
+                  src="/brand/cloud_floating.webp"
+                  className="feazto-cloud-layer feazto-cloud-main"
+                  alt="Atmospheric Cloud"
+                  draggable={false}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -591,6 +607,71 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           display: block;
+        }
+
+        /* Floating Base Cloud Elements */
+        .feazto-clouds-container {
+          position: absolute;
+          bottom: -4%;
+          left: 0;
+          width: 100%;
+          height: 38%;
+          z-index: 40;
+          pointer-events: none;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+        }
+
+        .feazto-cloud-layer {
+          position: absolute;
+          object-fit: contain;
+          user-select: none;
+          pointer-events: none;
+        }
+
+        .feazto-cloud-main {
+          bottom: -2%;
+          left: 14%;
+          width: 82%;
+          height: auto;
+          opacity: 0.94;
+          filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
+          animation: feaztoCloudDrift 8s ease-in-out infinite alternate;
+        }
+
+        .feazto-cloud-back {
+          bottom: 2%;
+          right: 2%;
+          width: 68%;
+          height: auto;
+          opacity: 0.65;
+          filter: blur(2px) drop-shadow(0 8px 18px rgba(234, 88, 12, 0.15));
+          animation: feaztoCloudDriftReverse 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes feaztoCloudDrift {
+          0% {
+            transform: translate3d(-10px, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(8px, -6px, 0) scale(1.03);
+          }
+          100% {
+            transform: translate3d(-6px, 3px, 0) scale(0.98);
+          }
+        }
+
+        @keyframes feaztoCloudDriftReverse {
+          0% {
+            transform: translate3d(12px, 0, 0) scale(0.97);
+          }
+          50% {
+            transform: translate3d(-8px, -4px, 0) scale(1.02);
+          }
+          100% {
+            transform: translate3d(10px, 4px, 0) scale(1);
+          }
         }
 
         @keyframes feaztoHeadLeftRight {
