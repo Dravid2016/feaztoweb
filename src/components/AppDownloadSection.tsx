@@ -1164,6 +1164,16 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             max-width: 360px;
           }
         }
+
+        /* Hide all cloud elements exclusively on mobile view (screens 768px and under) */
+        @media (max-width: 768px) {
+          .waitlist-clouds-cluster,
+          .feazto-clouds-container-back,
+          .feazto-cloud-dancer-feet,
+          .feazto-cloud-front-right {
+            display: none !important;
+          }
+        }
       `}</style>
     </section>
   );
