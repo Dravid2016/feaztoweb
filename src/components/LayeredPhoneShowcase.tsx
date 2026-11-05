@@ -810,7 +810,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 10%;
+          top: 8%;
         }
 
         .stream-bottom {
@@ -826,7 +826,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           overflow: hidden;
           pointer-events: none;
           z-index: 2; /* Sits right between the background cards and phone */
-          top: 48%;
+          top: 36%; /* Lifted up cleanly so food rally loop does not collide with FEAZTO / Cook / Carefe tabs */
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
@@ -1209,7 +1209,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           gap: 12px;
           padding-left: 20px;
           position: relative;
-          z-index: 15;
+          z-index: 20; /* High z-index to stay well above any background stream */
           margin-bottom: -1px; /* Fuses tab bottom directly into card top border */
         }
 
