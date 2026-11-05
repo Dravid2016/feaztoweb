@@ -807,8 +807,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           z-index: 1;
-          transform-origin: 68.5% 31.2%;
-          animation: feaztoHeadLeftRight 7.8s ease-in-out infinite;
           filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
         }
 
@@ -1028,15 +1026,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           }
           100% {
             transform: translate3d(10px, 4px, 0) scale(1);
-          }
-        }
-
-        @keyframes feaztoHeadLeftRight {
-          0%, 100% {
-            transform: translate3d(-6px, 1.5px, 0) rotate(-2.4deg);
-          }
-          50% {
-            transform: translate3d(6px, 1.5px, 0) rotate(2.4deg);
           }
         }
 
