@@ -9,6 +9,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
   const [registered, setRegistered] = useState(false);
   const [email, setEmail] = useState('');
   const [swipeOffset, setSwipeOffset] = useState(0);
+  const [scrollYProgress, setScrollYProgress] = useState(0);
 
   useEffect(() => {
     let ticking = false;
@@ -26,6 +27,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               // Calculate horizontal shift: moves from right (+60px) to left (-90px) as scrolled
               const offset = (progress - 0.5) * -160;
               setSwipeOffset(offset);
+              // Clamp progress between 0 and 1 for scroll-up reveal animation
+              const clamped = Math.max(0, Math.min(1, progress));
+              setScrollYProgress(clamped);
             }
           }
           ticking = false;
@@ -246,8 +250,13 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Kathakali Performer Group */}
-              <div className="feazto-dancer-group">
+              {/* Kathakali Performer Group - Scroll-up and Floating Motion */}
+              <div 
+                className="feazto-dancer-group"
+                style={{
+                  transform: `translate3d(0, ${(1 - scrollYProgress) * 45}px, 0)`
+                }}
+              >
                 <img
                   src="/brand/dancer_body.webp"
                   className="feazto-dancer-body"
@@ -262,8 +271,13 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Stationary FEAZTO Mobile UI */}
-              <div className="feazto-phone-static">
+              {/* Dynamic FEAZTO Mobile UI - Scroll-up Elevation Motion */}
+              <div 
+                className="feazto-phone-static"
+                style={{
+                  transform: `translate3d(0, ${(1 - scrollYProgress) * 65}px, 0)`
+                }}
+              >
                 <img
                   src="/brand/phone_layer.webp"
                   alt="FEAZTO Mobile App Showcase"
@@ -754,6 +768,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 97.54%;
           z-index: 10;
           pointer-events: none;
+          will-change: transform;
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .feazto-dancer-body {
@@ -763,7 +779,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           transform-origin: 55% 92%;
-          animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
+          animation: feaztoBodyBreathe 6.8s ease-in-out infinite, feaztoFloatGentle 5s ease-in-out infinite alternate;
           filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
                   drop-shadow(0 0 20px rgba(234, 88, 12, 0.25));
         }
@@ -775,11 +791,11 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           transform-origin: 68.5% 31.2%;
-          animation: feaztoHeadLeftRight 6.8s ease-in-out infinite;
+          animation: feaztoHeadLeftRight 6.8s ease-in-out infinite, feaztoFloatGentle 5s ease-in-out infinite alternate;
           filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
         }
 
-        /* Stationary FEAZTO Mobile UI */
+        /* Dynamic FEAZTO Mobile UI with Floating Motion */
         .feazto-phone-static {
           position: absolute;
           left: 41.89%;
@@ -788,6 +804,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 94.76%;
           z-index: 30;
           pointer-events: none;
+          will-change: transform;
+          transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
           filter: drop-shadow(-14px 20px 32px rgba(0, 0, 0, 0.28))
                   drop-shadow(0 0 24px rgba(251, 191, 36, 0.25));
         }
@@ -797,6 +815,28 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           display: block;
+          animation: feaztoPhoneLevitate 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes feaztoFloatGentle {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-8px);
+          }
+        }
+
+        @keyframes feaztoPhoneLevitate {
+          0% {
+            transform: translateY(0) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(0.4deg);
+          }
+          100% {
+            transform: translateY(-4px) rotate(-0.3deg);
+          }
         }
 
         /* Floating Base Cloud Elements at the Backside Bottom (z-index: 5, behind Kathakali & Mobile) */
