@@ -256,6 +256,21 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
+              {/* Floating Cloud Over Mobile Base & Dancer Feet (Matching user attached image) */}
+              <div 
+                className="feazto-cloud-dancer-feet"
+                style={{
+                  transform: `translate3d(${swipeOffset * 0.5}px, 0, 0)`
+                }}
+              >
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  className="feazto-cloud-feet-img"
+                  alt="Atmospheric Cloud Overlay at Dancer Feet & Phone Base"
+                  draggable={false}
+                />
+              </div>
+
               {/* Floating Cloud Over Mobile on the Right Side (Parallax Swipe Effect: moves across right to left) */}
               <div 
                 className="feazto-cloud-front-right"
@@ -759,6 +774,40 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           opacity: 0.65;
           filter: blur(4px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.2));
           animation: feaztoCloudDriftReverse 11s ease-in-out infinite alternate;
+        }
+
+        /* Floating Cloud Over Dancer Feet & Phone Bottom Left/Center (z-index: 42) */
+        .feazto-cloud-dancer-feet {
+          position: absolute;
+          left: 18%;
+          bottom: -2%;
+          width: 56%;
+          z-index: 42;
+          pointer-events: none;
+          user-select: none;
+          will-change: transform;
+          transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .feazto-cloud-feet-img {
+          width: 100%;
+          height: auto;
+          display: block;
+          opacity: 0.95;
+          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.15));
+          animation: feaztoFeetCloudDrift 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes feaztoFeetCloudDrift {
+          0% {
+            transform: translate3d(-6px, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(8px, -4px, 0) scale(1.02);
+          }
+          100% {
+            transform: translate3d(-4px, 2px, 0) scale(0.99);
+          }
         }
 
         /* Floating Cloud Over Mobile on the Right Side (z-index: 45) */
