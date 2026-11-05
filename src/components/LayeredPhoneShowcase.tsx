@@ -810,11 +810,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 8%;
+          top: 4%;
         }
 
         .stream-bottom {
-          bottom: 8%;
+          bottom: 4%;
         }
 
         /* ── INTERSTITIAL BUTTONS STREAM (Between the 2 card loops) ── */
@@ -825,8 +825,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 2; /* Sits right between the background cards and phone */
-          top: 36%; /* Lifted up cleanly so food rally loop does not collide with FEAZTO / Cook / Carefe tabs */
+          z-index: 2; /* Sits behind the central card and phone */
+          top: 22%; /* Lifted safely up above the FEAZTO, Cook, and Carefe tabs */
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
@@ -1904,10 +1904,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
           .plenti-cards-stream,
           .plenti-buttons-stream {
-            position: relative;
-            left: 0;
-            transform: none;
-            width: 100%;
+            display: none !important; /* Hide background overlay streams on mobile to prevent overlapping mobile tabs */
           }
 
           .plenti-central-device-container {
