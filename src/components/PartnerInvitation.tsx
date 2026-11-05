@@ -7,26 +7,26 @@ interface PartnerInvitationProps {
 }
 
 const foodCollageItems = [
-  { title: 'Dum Biryani', subtitle: 'Handi Dum', img: '/brand/plate-biryani.png' },
-  { title: 'Sattvic Thali', subtitle: 'Shadrasa', img: '/brand/plate-thali.png' },
-  { title: 'Jasmine Idli', subtitle: 'Stone Ground', img: '/brand/plate-idli.png' },
-  { title: 'Potli Samosa', subtitle: 'Ajwain Crust', img: '/brand/plate-samosa.png' },
-  { title: 'Filter Kaapi', subtitle: 'Clay Pot', img: '/brand/doodle-chai.png' },
-  { title: 'Benne Dosa', subtitle: 'Makkhan Roast', img: '/brand/plate-benne-dosa.png' },
-  { title: 'Chettinad Curry', subtitle: 'Hand Spices', img: '/brand/plate-chettinad-curry.png' },
-  { title: 'Dal Baati', subtitle: 'Pure Ghee', img: '/brand/plate-daal-baati.png' },
-  { title: 'Malabar Fish', subtitle: 'Kodampuli', img: '/brand/plate-malabar-fish.png' },
-  { title: 'Shahi Haleem', subtitle: 'Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
-  { title: 'Rogan Josh', subtitle: 'Ratanjot', img: '/brand/plate-rogan-josh.png' },
-  { title: 'Litti Chokha', subtitle: 'Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
-  { title: 'Tambda Rassa', subtitle: 'Kolhapuri', img: '/brand/plate-kolhapuri-rassa.png' },
-  { title: 'Khaman Dhokla', subtitle: 'Steamed', img: '/brand/plate-surati-dhokla.png' },
-  { title: 'Pindi Chole', subtitle: 'Amritsari', img: '/brand/plate-pindi-chole.png' },
-  { title: 'Prawn Balchão', subtitle: 'Goan Toddy', img: '/brand/plate-goan-prawn.png' },
-  { title: 'Gongura Mamsam', subtitle: 'Sorrel Leaf', img: '/brand/plate-gongura-mamsam.png' },
-  { title: 'Irani Kheema', subtitle: 'Caramel Onion', img: '/brand/plate-irani-kheema.png' },
-  { title: 'Palada Pradhaman', subtitle: 'Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
-  { title: 'Palappam Stew', subtitle: 'Coconut Milk', img: '/brand/plate-palappam-stew.png' },
+  { title: 'Dum Biryani Handi', subtitle: 'Slow Dum Cooking', img: '/brand/plate-biryani.png' },
+  { title: 'Sattvic Thali', subtitle: 'Balanced Shadrasa', img: '/brand/plate-thali.png' },
+  { title: 'Jasmine Idli & Sambar', subtitle: 'Stone Ground Batter', img: '/brand/plate-idli.png' },
+  { title: 'Potli Samosa', subtitle: 'Hand-Rolled Ajwain Crust', img: '/brand/plate-samosa.png' },
+  { title: 'Filter Kaapi & Chai', subtitle: 'Clay Pot Infusion', img: '/brand/doodle-chai.png' },
+  { title: 'Davangere Benne Dosa', subtitle: 'Fresh Makkhan Roast', img: '/brand/plate-benne-dosa.png' },
+  { title: 'Chettinad Kozhi Curry', subtitle: 'Stone-Pounded Spices', img: '/brand/plate-chettinad-curry.png' },
+  { title: 'Dal Baati Churma', subtitle: 'Pure Ghee Baati', img: '/brand/plate-daal-baati.png' },
+  { title: 'Malabar Fish Curry', subtitle: 'Kodampuli & Coconut', img: '/brand/plate-malabar-fish.png' },
+  { title: 'Nizami Shahi Haleem', subtitle: '12-Hour Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
+  { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
+  { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
+  { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
+  { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
+  { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
+  { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
+  { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
+  { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
+  { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
+  { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
 ];
 
 export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }) => {
@@ -181,7 +181,7 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
               </div>
             </div>
 
-            {/* Row 5 Marquee - Scrolls Left (Bottom coverage) */}
+            {/* Row 5 Marquee - Scrolls Left */}
             <div className="collage-row marquee-left speed-medium">
               <div className="collage-track">
                 {[...foodCollageItems.slice(12), ...foodCollageItems.slice(0, 12)].map((item, idx) => (
@@ -201,6 +201,78 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
                 ))}
                 {[...foodCollageItems.slice(12), ...foodCollageItems.slice(0, 12)].map((item, idx) => (
                   <div key={`track5-b-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 6 Marquee - Scrolls Right (Added extra rally line) */}
+            <div className="collage-row marquee-right speed-slow">
+              <div className="collage-track">
+                {[...foodCollageItems.slice(6), ...foodCollageItems.slice(0, 6)].reverse().map((item, idx) => (
+                  <div key={`track6-a-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+                {[...foodCollageItems.slice(6), ...foodCollageItems.slice(0, 6)].reverse().map((item, idx) => (
+                  <div key={`track6-b-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Row 7 Marquee - Scrolls Left (Added extra rally line for rich wall-to-wall coverage) */}
+            <div className="collage-row marquee-left speed-fast">
+              <div className="collage-track">
+                {[...foodCollageItems.slice(15), ...foodCollageItems.slice(0, 15)].map((item, idx) => (
+                  <div key={`track7-a-${idx}`} className="collage-card-item">
+                    <img 
+                      src={item.img} 
+                      alt="" 
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                      }} 
+                    />
+                    <div className="collage-card-info">
+                      <span className="collage-food-title">{item.title}</span>
+                      <span className="collage-food-sub">{item.subtitle}</span>
+                    </div>
+                  </div>
+                ))}
+                {[...foodCollageItems.slice(15), ...foodCollageItems.slice(0, 15)].map((item, idx) => (
+                  <div key={`track7-b-${idx}`} className="collage-card-item">
                     <img 
                       src={item.img} 
                       alt="" 
@@ -284,11 +356,11 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          opacity: 0.42;
+          opacity: 0.22; /* Soft, delicate transparency so main headlines and badges stay crisp */
           overflow: hidden;
-          filter: saturate(135%) contrast(108%);
-          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
-          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 30%, rgba(0, 0, 0, 0.75) 75%, transparent 100%);
+          filter: saturate(125%) contrast(104%);
+          mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
+          -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.95) 20%, rgba(0, 0, 0, 0.55) 70%, transparent 100%);
         }
 
         .collage-row {
@@ -348,15 +420,17 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         .collage-card-item {
           display: inline-flex;
           align-items: center;
-          gap: 10px;
-          padding: 6px 14px 6px 8px;
-          background: rgba(255, 255, 255, 0.82);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
+          gap: 12px;
+          padding: 8px 18px 8px 10px;
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
           border-radius: 9999px;
-          border: 1px solid rgba(255, 255, 255, 0.9);
-          box-shadow: 0 3px 10px rgba(181, 132, 0, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.95);
+          box-shadow: 0 4px 14px rgba(181, 132, 0, 0.1);
           transform: rotate(-1deg);
+          white-space: nowrap;
+          flex-shrink: 0;
         }
 
         .marquee-right .collage-card-item {
@@ -364,32 +438,34 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
         }
 
         .collage-card-item img {
-          width: 36px;
-          height: 36px;
+          width: 42px;
+          height: 42px;
           border-radius: 50%;
           object-fit: cover;
           background: #FFF9E6;
-          border: 1.5px solid #F5B700;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+          border: 2px solid #F5B700;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+          flex-shrink: 0;
         }
 
         .collage-card-info {
           display: flex;
           flex-direction: column;
+          white-space: nowrap;
         }
 
         .collage-food-title {
           font-family: var(--font-heading, inherit);
-          font-size: 0.82rem;
+          font-size: 0.88rem;
           font-weight: 800;
-          color: #2B1D00;
-          line-height: 1.15;
+          color: #221500;
+          line-height: 1.2;
         }
 
         .collage-food-sub {
-          font-size: 0.65rem;
+          font-size: 0.70rem;
           font-weight: 600;
-          color: #7A5800;
+          color: #6E4E00;
         }
 
         .partner-text-block {
@@ -541,30 +617,30 @@ export const PartnerInvitation: React.FC<PartnerInvitationProps> = ({ navigate }
           }
 
           .food-collage-bg-track {
-            opacity: 0.38;
+            opacity: 0.18;
             inset: -10px -5px -10px -5px;
           }
 
           .collage-row {
-            padding: 2px 0;
+            padding: 3px 0;
           }
 
           .collage-card-item {
-            padding: 5px 12px 5px 6px;
-            gap: 8px;
+            padding: 6px 14px 6px 8px;
+            gap: 9px;
           }
 
           .collage-card-item img {
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
           }
 
           .collage-food-title {
-            font-size: 0.74rem;
+            font-size: 0.78rem;
           }
 
           .collage-food-sub {
-            font-size: 0.60rem;
+            font-size: 0.62rem;
           }
         }
       `}</style>
