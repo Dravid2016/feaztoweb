@@ -612,10 +612,10 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         /* Floating Base Cloud Elements */
         .feazto-clouds-container {
           position: absolute;
-          bottom: -4%;
+          bottom: -10%;
           left: 0;
           width: 100%;
-          height: 38%;
+          height: 34%;
           z-index: 40;
           pointer-events: none;
           display: flex;
@@ -631,21 +631,21 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         }
 
         .feazto-cloud-main {
-          bottom: -2%;
-          left: 14%;
-          width: 82%;
+          bottom: -8%;
+          left: 28%;
+          width: 76%;
           height: auto;
-          opacity: 0.94;
+          opacity: 0.92;
           filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12));
           animation: feaztoCloudDrift 8s ease-in-out infinite alternate;
         }
 
         .feazto-cloud-back {
-          bottom: 2%;
-          right: 2%;
-          width: 68%;
+          bottom: -4%;
+          right: -4%;
+          width: 62%;
           height: auto;
-          opacity: 0.65;
+          opacity: 0.6;
           filter: blur(2px) drop-shadow(0 8px 18px rgba(234, 88, 12, 0.15));
           animation: feaztoCloudDriftReverse 10s ease-in-out infinite alternate;
         }
