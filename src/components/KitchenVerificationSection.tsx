@@ -629,20 +629,25 @@ export const KitchenVerificationSection: React.FC<KitchenVerificationSectionProp
         }
 
         .women-spotlight-quote {
-          background: rgba(255, 255, 255, 0.7);
-          border-left: 3.5px solid #C07000;
-          border-radius: 10px;
-          padding: 12px 16px;
-          margin: 12px 0 16px;
-          font-size: 0.88rem;
-          line-height: 1.55;
-          color: #222222;
-          box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
+          background: rgba(255, 255, 255, 0.45);
+          backdrop-filter: blur(24px) saturate(180%);
+          -webkit-backdrop-filter: blur(24px) saturate(180%);
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          border-left: 4px solid #C07000;
+          border-radius: 16px;
+          padding: 16px 20px;
+          margin: 14px 0 18px;
+          font-size: 0.9rem;
+          line-height: 1.6;
+          color: #1A1A1A;
+          box-shadow: 0 10px 30px rgba(180, 115, 0, 0.12),
+                      inset 0 1.5px 3px rgba(255, 255, 255, 0.9),
+                      inset 0 -1.5px 2px rgba(180, 115, 0, 0.08);
         }
 
         .women-spotlight-quote strong {
-          color: #874700;
-          font-weight: 800;
+          color: #7A4200;
+          font-weight: 900;
         }
 
         /* Animation when 5 steps grid is revealed */
