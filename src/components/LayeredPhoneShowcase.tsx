@@ -1929,8 +1929,22 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             gap: 32px;
           }
 
-          .feazto-dosa-device-img {
-            max-width: 310px;
+          .device-banner-card {
+            width: 100%;
+            max-width: 320px;
+            height: 480px;
+          }
+
+          .feazto-device-img {
+            height: 450px;
+            max-height: 100%;
+            width: auto;
+          }
+
+          .device-backdrop-glow {
+            width: 260px;
+            height: 400px;
+            filter: blur(35px);
           }
 
           .plenti-cards-stream {
