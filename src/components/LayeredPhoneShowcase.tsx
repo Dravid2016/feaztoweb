@@ -1419,7 +1419,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .mode-btn-brand-pill {
           font-family: inherit;
-          font-style: italic;
+          font-style: normal;
           font-weight: 800;
           font-size: 1.02rem;
           letter-spacing: -0.01em;
@@ -1428,7 +1428,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .mode-btn-label {
           font-weight: 800;
-          font-style: italic;
+          font-style: normal;
           font-size: 1.02rem;
           color: #1a1a1a;
           letter-spacing: -0.01em;
