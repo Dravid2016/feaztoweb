@@ -811,7 +811,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: -2%; /* Lifted slightly upper so the big cards do not touch or disturb the buttons */
+          top: 4%;
         }
 
         .stream-bottom {
@@ -826,8 +826,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 2; /* Sits right between the background cards and phone */
-          top: 48%;
+          z-index: 5; /* Visible in the background above the stage wrapper */
+          top: 50%; /* Runs continuously across the mid-section as in reference */
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
