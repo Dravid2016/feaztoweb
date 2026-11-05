@@ -1167,8 +1167,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             height: 240px;
             bottom: -60px;
           }
+          /* Hide the regional teaser on mobile view only */
           .food-discovery-teaser-section {
-            margin-top: -10px;
+            display: none !important;
           }
         }
       `}</style>
