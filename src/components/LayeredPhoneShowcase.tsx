@@ -826,7 +826,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           overflow: hidden;
           pointer-events: none;
           z-index: 2; /* Sits behind the central card and phone */
-          top: 22%; /* Lifted safely up above the FEAZTO, Cook, and Carefe tabs */
+          top: 8%; /* Placed nicely in the upper atmosphere above the card body */
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
@@ -1895,22 +1895,58 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .plenti-stage-showcase-wrapper {
             min-height: auto;
             flex-direction: column;
-            gap: 32px;
+            gap: 20px;
+            position: relative;
           }
 
           .feazto-dosa-device-img {
             max-width: 310px;
           }
 
-          .plenti-cards-stream,
+          /* Keep the food rally stream present on mobile with calibrated frame placement above tabs */
+          .plenti-cards-stream {
+            display: none !important;
+          }
+
           .plenti-buttons-stream {
-            display: none !important; /* Hide background overlay streams on mobile to prevent overlapping mobile tabs */
+            position: relative;
+            left: 0;
+            top: 0;
+            transform: none;
+            width: 100%;
+            margin-bottom: 12px;
+            z-index: 5;
+            padding: 6px 0;
+            pointer-events: auto;
+          }
+
+          .stream-dish-button-pill {
+            padding: 6px 14px 6px 8px;
+            gap: 8px;
+          }
+
+          .stream-btn-img-box {
+            width: 32px;
+            height: 32px;
+          }
+
+          .stream-btn-name {
+            font-size: 0.76rem;
+          }
+
+          .stream-btn-desc {
+            font-size: 0.62rem;
           }
 
           .plenti-central-device-container {
             flex-direction: column;
             gap: 28px;
             padding: 0 16px;
+            transform: none;
+          }
+
+          .showcase-card-outer-wrapper {
+            margin-top: 0;
           }
 
           .showcase-left-blank-card {
