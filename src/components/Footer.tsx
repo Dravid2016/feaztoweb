@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Sparkles, MapPin, Mail, ShieldCheck, ArrowUpRight } from 'lucide-react';
+import { Heart, MapPin, Mail, ShieldCheck, ArrowUpRight } from 'lucide-react';
 
 interface FooterProps {
   navigate: (route: string) => void;
@@ -33,10 +33,6 @@ export const Footer: React.FC<FooterProps> = ({ navigate }) => {
             <p className="footer-brand-mission">
               feazto is a food discovery and home kitchen ecosystem connecting passionate FoodPreneurs with customers seeking authentic regional culinary provenance, crafted with cloud kitchen precision.
             </p>
-            <div className="footer-tagline-badge">
-              <Sparkles size={14} className="sparkle-icon" />
-              <span>FOOD • CULTURE • CONNECT</span>
-            </div>
           </div>
 
           <div className="footer-links-grid">
