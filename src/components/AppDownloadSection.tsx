@@ -623,14 +623,14 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         .feazto-clouds-container-back {
           position: absolute;
           bottom: -6%;
-          left: 0;
-          width: 100%;
+          right: -12%;
+          width: 75%;
           height: 48%;
           z-index: 5;
           pointer-events: none;
           display: flex;
           align-items: flex-end;
-          justify-content: center;
+          justify-content: flex-end;
         }
 
         .feazto-cloud-layer {
@@ -642,8 +642,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         .feazto-cloud-back-primary {
           bottom: -4%;
-          left: 8%;
-          width: 95%;
+          right: 0%;
+          width: 88%;
           height: auto;
           opacity: 0.95;
           filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.14));
@@ -651,9 +651,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         }
 
         .feazto-cloud-back-ambient {
-          bottom: 2%;
-          right: -6%;
-          width: 78%;
+          bottom: 4%;
+          right: -8%;
+          width: 72%;
           height: auto;
           opacity: 0.65;
           filter: blur(4px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.2));
@@ -663,9 +663,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         /* Floating Cloud Over Mobile on the Right Side (z-index: 45) */
         .feazto-cloud-front-right {
           position: absolute;
-          right: -10%;
-          bottom: 12%;
-          width: 58%;
+          right: -16%;
+          bottom: 6%;
+          width: 52%;
           z-index: 45;
           pointer-events: none;
           user-select: none;
