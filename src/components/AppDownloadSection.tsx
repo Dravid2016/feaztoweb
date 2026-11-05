@@ -1175,11 +1175,49 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           .feazto-hero-stage {
             max-width: 360px;
           }
+          /* Way bigger, dramatic clouds across dancer feet and phone base on mobile */
+          .feazto-cloud-dancer-feet {
+            left: -12%;
+            bottom: -2%;
+            width: 124%;
+            height: 190px;
+            transform: scale(1.35) !important;
+            transform-origin: bottom center;
+          }
+          .feazto-cloud-feet-img {
+            width: 105%;
+          }
+          .feazto-cloud-feet-secondary {
+            width: 85%;
+          }
+          .feazto-cloud-feet-phone-drift {
+            width: 82%;
+          }
+          .feazto-cloud-front-right {
+            right: -25%;
+            bottom: 0%;
+            width: 88%;
+            transform: scale(1.3) !important;
+          }
+          .feazto-clouds-container-back {
+            width: 100%;
+            height: 60%;
+            bottom: -8%;
+            right: -15%;
+            transform: scale(1.25) !important;
+          }
         }
 
         @media (max-width: 480px) {
           .feazto-hero-stage {
             max-width: 320px;
+          }
+          .feazto-cloud-dancer-feet {
+            left: -15%;
+            bottom: 0%;
+            width: 130%;
+            height: 200px;
+            transform: scale(1.45) !important;
           }
         }
       `}</style>
