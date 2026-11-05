@@ -101,12 +101,27 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           {/* Left Column: Direct store buttons and waitlist form */}
           <div className="download-col-left">
             <div className="waitlist-card-wrapper">
-              {/* Atmospheric Cloud positioned above/decorating Priority Access */}
-              <div className="waitlist-cloud-banner">
+              {/* Multi-layered Atmospheric Clouds floating above Priority Access (without covering text) */}
+              <div className="waitlist-clouds-cluster">
+                {/* Secondary ambient cloud trailing left */}
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  alt="Atmospheric Cloud"
+                  className="waitlist-floating-cloud-ambient"
+                  draggable={false}
+                />
+                {/* Primary center prominent cloud */}
                 <img
                   src="/brand/cloud_subscribe.webp"
                   alt="Atmospheric Cloud"
                   className="waitlist-floating-cloud-img"
+                  draggable={false}
+                />
+                {/* Tertiary airy cloud drifting right */}
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  alt="Atmospheric Cloud"
+                  className="waitlist-floating-cloud-airy"
                   draggable={false}
                 />
               </div>
@@ -360,21 +375,48 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           position: relative;
         }
 
-        .waitlist-cloud-banner {
+        /* Multi-layered Cloud Cluster positioned above Priority Access */
+        .waitlist-clouds-cluster {
+          position: relative;
           width: 100%;
-          max-width: 320px;
-          margin-bottom: -18px;
-          margin-left: -8px;
+          max-width: 380px;
+          height: 120px;
+          margin-bottom: -15px;
           pointer-events: none;
           user-select: none;
         }
 
-        .waitlist-floating-cloud-img {
-          width: 100%;
+        .waitlist-floating-cloud-ambient {
+          position: absolute;
+          left: -8%;
+          top: 15%;
+          width: 65%;
           height: auto;
-          display: block;
-          filter: drop-shadow(0 10px 24px rgba(245, 183, 0, 0.25));
+          opacity: 0.75;
+          filter: blur(1.5px) drop-shadow(0 8px 20px rgba(245, 183, 0, 0.2));
+          animation: waitlistCloudFloatLeft 9s ease-in-out infinite alternate;
+        }
+
+        .waitlist-floating-cloud-img {
+          position: absolute;
+          left: 12%;
+          top: 0;
+          width: 78%;
+          height: auto;
+          z-index: 2;
+          filter: drop-shadow(0 12px 28px rgba(245, 183, 0, 0.3));
           animation: waitlistCloudFloat 7s ease-in-out infinite alternate;
+        }
+
+        .waitlist-floating-cloud-airy {
+          position: absolute;
+          right: -5%;
+          top: 25%;
+          width: 55%;
+          height: auto;
+          opacity: 0.65;
+          filter: blur(2px) drop-shadow(0 6px 18px rgba(245, 183, 0, 0.18));
+          animation: waitlistCloudFloatRight 11s ease-in-out infinite alternate;
         }
 
         @keyframes waitlistCloudFloat {
@@ -382,10 +424,34 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
             transform: translate3d(0, 0, 0) scale(1);
           }
           50% {
-            transform: translate3d(8px, -6px, 0) scale(1.03);
+            transform: translate3d(6px, -5px, 0) scale(1.02);
           }
           100% {
-            transform: translate3d(-6px, 2px, 0) scale(0.98);
+            transform: translate3d(-5px, 3px, 0) scale(0.99);
+          }
+        }
+
+        @keyframes waitlistCloudFloatLeft {
+          0% {
+            transform: translate3d(-4px, 0, 0) scale(0.98);
+          }
+          50% {
+            transform: translate3d(5px, -4px, 0) scale(1.01);
+          }
+          100% {
+            transform: translate3d(-2px, 2px, 0) scale(1);
+          }
+        }
+
+        @keyframes waitlistCloudFloatRight {
+          0% {
+            transform: translate3d(5px, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(-6px, -3px, 0) scale(0.97);
+          }
+          100% {
+            transform: translate3d(4px, 3px, 0) scale(1.02);
           }
         }
 
