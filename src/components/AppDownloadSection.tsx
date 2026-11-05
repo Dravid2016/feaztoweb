@@ -806,8 +806,11 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           transform-origin: 68.5% 31.2%;
-          animation: feaztoHeadLeftRight 4.5s ease-in-out infinite;
+          animation: feaztoHeadLeftRight 7.8s ease-in-out infinite;
           filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
+          /* Feather the bottom severed neck seam into the body garment/scarf */
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 86%, rgba(0, 0, 0, 0.6) 92%, transparent 98%);
+          mask-image: linear-gradient(to bottom, black 0%, black 86%, rgba(0, 0, 0, 0.6) 92%, transparent 98%);
         }
 
         /* Dynamic FEAZTO Mobile UI with Floating Motion */
@@ -1031,10 +1034,10 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         @keyframes feaztoHeadLeftRight {
           0%, 100% {
-            transform: translate3d(-12px, 1px, 0) rotate(-4.5deg);
+            transform: translate3d(-6px, 1.5px, 0) rotate(-2.4deg);
           }
           50% {
-            transform: translate3d(12px, 1px, 0) rotate(4.5deg);
+            transform: translate3d(6px, 1.5px, 0) rotate(2.4deg);
           }
         }
 
