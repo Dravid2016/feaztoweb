@@ -27,9 +27,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               // Calculate horizontal shift: moves from right (+60px) to left (-90px) as scrolled
               const offset = (progress - 0.5) * -160;
               setSwipeOffset(offset);
-              // Clamp progress between 0 and 1 for scroll-up reveal animation
-              const clamped = Math.max(0, Math.min(1, progress));
-              setScrollYProgress(clamped);
+              // Calculate scroll-up emergence: starts from 140px below and rises smoothly into full elevation
+              const emergeRatio = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight * 0.75)));
+              setScrollYProgress(emergeRatio);
             }
           }
           ticking = false;
@@ -250,11 +250,11 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 />
               </div>
 
-              {/* Kathakali Performer Group - Scroll-up and Floating Motion */}
+              {/* Kathakali Performer Group - Scroll-up emergence and Floating Motion */}
               <div 
                 className="feazto-dancer-group"
                 style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 45}px, 0)`
+                  transform: `translate3d(0, ${(1 - scrollYProgress) * 95}px, 0)`
                 }}
               >
                 <img
@@ -275,7 +275,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               <div 
                 className="feazto-phone-static"
                 style={{
-                  transform: `translate3d(0, ${(1 - scrollYProgress) * 65}px, 0)`
+                  transform: `translate3d(0, ${(1 - scrollYProgress) * 125}px, 0)`
                 }}
               >
                 <img
@@ -794,7 +794,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           transform-origin: 55% 92%;
-          animation: feaztoBodyBreathe 6.8s ease-in-out infinite, feaztoFloatGentle 5s ease-in-out infinite alternate;
+          animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
           filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
                   drop-shadow(0 0 20px rgba(234, 88, 12, 0.25));
         }
@@ -806,7 +806,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           height: 100%;
           object-fit: contain;
           transform-origin: 68.5% 31.2%;
-          animation: feaztoHeadLeftRight 6.8s ease-in-out infinite, feaztoFloatGentle 5s ease-in-out infinite alternate;
+          animation: feaztoHeadLeftRight 4.5s ease-in-out infinite;
           filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
         }
 
@@ -1031,10 +1031,10 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         @keyframes feaztoHeadLeftRight {
           0%, 100% {
-            transform: translate3d(-8.5px, 1px, 0) rotate(-3.2deg);
+            transform: translate3d(-12px, 1px, 0) rotate(-4.5deg);
           }
           50% {
-            transform: translate3d(8.5px, 1px, 0) rotate(3.2deg);
+            transform: translate3d(12px, 1px, 0) rotate(4.5deg);
           }
         }
 
