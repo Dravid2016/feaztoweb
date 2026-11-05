@@ -193,8 +193,9 @@ export const PartnersPage: React.FC = () => {
 
                   <button type="submit" className="btn btn-yellow btn-submit-partner">
                     <Send size={16} />
-                    <span>Send Registration via Mail (feazto26@gmail.com)</span>
+                    <span>Send Registration</span>
                   </button>
+                  <p className="partner-submit-hint">Sent directly to feazto26@gmail.com</p>
                 </form>
               ) : (
                 <div className="submission-success-pane">
@@ -433,8 +434,25 @@ export const PartnersPage: React.FC = () => {
 
         .btn-submit-partner {
           margin-top: 10px;
-          padding: 16px;
-          font-size: 1rem;
+          padding: 14px 24px;
+          font-size: 0.98rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          white-space: normal;
+          text-align: center;
+          line-height: 1.3;
+        }
+
+        .partner-submit-hint {
+          text-align: center;
+          font-size: 0.78rem;
+          color: #7A5B00;
+          font-weight: 600;
+          margin-top: -8px;
+          margin-bottom: 0;
         }
 
         .submission-success-pane {
