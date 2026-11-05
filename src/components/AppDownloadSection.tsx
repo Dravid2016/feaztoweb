@@ -101,6 +101,16 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           {/* Left Column: Direct store buttons and waitlist form */}
           <div className="download-col-left">
             <div className="waitlist-card-wrapper">
+              {/* Atmospheric Cloud positioned above/decorating Priority Access */}
+              <div className="waitlist-cloud-banner">
+                <img
+                  src="/brand/cloud_subscribe.webp"
+                  alt="Atmospheric Cloud"
+                  className="waitlist-floating-cloud-img"
+                  draggable={false}
+                />
+              </div>
+
               <h3 className="sub-box-title">Subscribe for Priority Access</h3>
               <p className="sub-box-desc">Enter your email address to receive priority access pass and launch roadmap alerts directly to your inbox.</p>
 
@@ -332,6 +342,36 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         .waitlist-card-wrapper {
           width: 100%;
+          position: relative;
+        }
+
+        .waitlist-cloud-banner {
+          width: 100%;
+          max-width: 320px;
+          margin-bottom: -18px;
+          margin-left: -8px;
+          pointer-events: none;
+          user-select: none;
+        }
+
+        .waitlist-floating-cloud-img {
+          width: 100%;
+          height: auto;
+          display: block;
+          filter: drop-shadow(0 10px 24px rgba(245, 183, 0, 0.25));
+          animation: waitlistCloudFloat 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes waitlistCloudFloat {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+          50% {
+            transform: translate3d(8px, -6px, 0) scale(1.03);
+          }
+          100% {
+            transform: translate3d(-6px, 2px, 0) scale(0.98);
+          }
         }
 
         .sub-box-title {
