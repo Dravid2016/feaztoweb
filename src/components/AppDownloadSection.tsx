@@ -258,15 +258,15 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                 }}
               >
                 <img
-                  src="/brand/dancer_body.webp"
-                  className="feazto-dancer-body"
-                  alt="Kathakali Performer Body"
-                  draggable={false}
-                />
-                <img
                   src="/brand/dancer_head.webp"
                   className="feazto-dancer-head"
                   alt="Kathakali Performer Head"
+                  draggable={false}
+                />
+                <img
+                  src="/brand/dancer_body.webp"
+                  className="feazto-dancer-body"
+                  alt="Kathakali Performer Body"
                   draggable={false}
                 />
               </div>
@@ -793,6 +793,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           width: 100%;
           height: 100%;
           object-fit: contain;
+          z-index: 2;
           transform-origin: 55% 92%;
           animation: feaztoBodyBreathe 6.8s ease-in-out infinite;
           filter: drop-shadow(-8px 14px 28px rgba(0, 0, 0, 0.35))
@@ -805,12 +806,10 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           width: 100%;
           height: 100%;
           object-fit: contain;
+          z-index: 1;
           transform-origin: 68.5% 31.2%;
           animation: feaztoHeadLeftRight 7.8s ease-in-out infinite;
           filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.25));
-          /* Feather the bottom severed neck seam into the body garment/scarf */
-          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 86%, rgba(0, 0, 0, 0.6) 92%, transparent 98%);
-          mask-image: linear-gradient(to bottom, black 0%, black 86%, rgba(0, 0, 0, 0.6) 92%, transparent 98%);
         }
 
         /* Dynamic FEAZTO Mobile UI with Floating Motion */
