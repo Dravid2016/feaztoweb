@@ -1906,8 +1906,10 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .plenti-cards-stream {
             position: relative;
             left: 0;
+            top: -24px; /* Lift the dish card slightly upper on mobile view */
             transform: none;
             width: 100%;
+            margin-bottom: -14px;
           }
 
           /* Small food buttons loop: kept exclusively on web, hidden on mobile to avoid overlapping */
