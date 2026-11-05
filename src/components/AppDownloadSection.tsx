@@ -379,43 +379,43 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         .waitlist-clouds-cluster {
           position: relative;
           width: 100%;
-          max-width: 380px;
-          height: 120px;
-          margin-bottom: -15px;
+          max-width: 500px;
+          height: 165px;
+          margin-bottom: -10px;
           pointer-events: none;
           user-select: none;
         }
 
         .waitlist-floating-cloud-ambient {
           position: absolute;
-          left: -8%;
-          top: 15%;
-          width: 65%;
+          left: -12%;
+          top: 10%;
+          width: 78%;
           height: auto;
-          opacity: 0.75;
-          filter: blur(1.5px) drop-shadow(0 8px 20px rgba(245, 183, 0, 0.2));
+          opacity: 0.82;
+          filter: blur(1.5px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.22));
           animation: waitlistCloudFloatLeft 9s ease-in-out infinite alternate;
         }
 
         .waitlist-floating-cloud-img {
           position: absolute;
-          left: 12%;
-          top: 0;
-          width: 78%;
+          left: 4%;
+          top: -12px;
+          width: 98%;
           height: auto;
           z-index: 2;
-          filter: drop-shadow(0 12px 28px rgba(245, 183, 0, 0.3));
+          filter: drop-shadow(0 16px 36px rgba(245, 183, 0, 0.32));
           animation: waitlistCloudFloat 7s ease-in-out infinite alternate;
         }
 
         .waitlist-floating-cloud-airy {
           position: absolute;
-          right: -5%;
-          top: 25%;
-          width: 55%;
+          right: -10%;
+          top: 20%;
+          width: 70%;
           height: auto;
-          opacity: 0.65;
-          filter: blur(2px) drop-shadow(0 6px 18px rgba(245, 183, 0, 0.18));
+          opacity: 0.72;
+          filter: blur(2px) drop-shadow(0 8px 22px rgba(245, 183, 0, 0.2));
           animation: waitlistCloudFloatRight 11s ease-in-out infinite alternate;
         }
 
@@ -845,9 +845,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
         /* Floating Cloud Over Dancer Feet & Phone Bottom Left/Center (z-index: 42) */
         .feazto-cloud-dancer-feet {
           position: absolute;
-          left: 18%;
-          bottom: -2%;
-          width: 56%;
+          left: 14%;
+          bottom: -4%;
+          width: 70%;
           z-index: 42;
           pointer-events: none;
           user-select: none;
@@ -859,8 +859,8 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           width: 100%;
           height: auto;
           display: block;
-          opacity: 0.95;
-          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.15));
+          opacity: 0.96;
+          filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.18));
           animation: feaztoFeetCloudDrift 8s ease-in-out infinite alternate;
         }
 
