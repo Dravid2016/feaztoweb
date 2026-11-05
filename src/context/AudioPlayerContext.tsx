@@ -123,35 +123,45 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Setup initial audio volume & robust auto-start handling
+  // Setup initial audio volume & robust instant auto-start handling
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.3;
 
-    // Direct attempt to play as soon as the website loads
-    const attemptPlay = () => {
+    // Direct attempt to play unmuted as soon as the website loads
+    const attemptDirectPlay = () => {
       audio.volume = 0.3;
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          initAudioAnalyser();
-          cleanupListeners();
-        })
-        .catch(() => {
-          setIsPlaying(false);
-        });
+      audio.muted = false;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            setIsPlaying(true);
+            initAudioAnalyser();
+            cleanupListeners();
+          })
+          .catch(() => {
+            // If browser autoplay policy strictly blocked audible autoplay without a gesture,
+            // play muted immediately so playback is already running in sync, then unmute on first gesture
+            audio.muted = true;
+            audio.play().then(() => {
+              setIsPlaying(true);
+            }).catch(() => {});
+          });
+      }
     };
 
-    // 1. Immediate play attempt upon mounting
-    attemptPlay();
+    attemptDirectPlay();
 
-    // 2. Fallback when user performs ANY first gesture (click, pointerdown, touch, mousemove, scroll, keydown, visibilitychange)
+    // Universal gesture unlock: immediately unmute and ensure full 30% playback
     const handleFirstInteraction = () => {
+      if (audio.muted) {
+        audio.muted = false;
+      }
+      audio.volume = 0.3;
       if (audio.paused) {
-        audio.volume = 0.3;
         audio
           .play()
           .then(() => {
@@ -168,23 +178,24 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
 
     const cleanupListeners = () => {
-      window.removeEventListener('click', handleFirstInteraction);
-      window.removeEventListener('pointerdown', handleFirstInteraction);
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('keydown', handleFirstInteraction);
-      window.removeEventListener('scroll', handleFirstInteraction);
-      window.removeEventListener('wheel', handleFirstInteraction);
-      window.removeEventListener('mousemove', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstInteraction, true);
+      window.removeEventListener('pointerdown', handleFirstInteraction, true);
+      window.removeEventListener('touchstart', handleFirstInteraction, true);
+      window.removeEventListener('keydown', handleFirstInteraction, true);
+      window.removeEventListener('scroll', handleFirstInteraction, true);
+      window.removeEventListener('wheel', handleFirstInteraction, true);
+      window.removeEventListener('mousemove', handleFirstInteraction, true);
       document.removeEventListener('visibilitychange', handleFirstInteraction);
     };
 
-    window.addEventListener('click', handleFirstInteraction, { passive: true });
-    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
-    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
-    window.addEventListener('keydown', handleFirstInteraction, { passive: true });
-    window.addEventListener('scroll', handleFirstInteraction, { passive: true });
-    window.addEventListener('wheel', handleFirstInteraction, { passive: true });
-    window.addEventListener('mousemove', handleFirstInteraction, { passive: true, once: true });
+    // Use capture phase (true) so it intercepts the very first touch/click instantly
+    window.addEventListener('click', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('keydown', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('scroll', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('wheel', handleFirstInteraction, { capture: true, passive: true });
+    window.addEventListener('mousemove', handleFirstInteraction, { capture: true, passive: true, once: true });
     document.addEventListener('visibilitychange', handleFirstInteraction, { passive: true });
 
     return () => {
