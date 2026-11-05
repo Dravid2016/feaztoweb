@@ -171,8 +171,9 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           </div>
         </div>
 
-        {/* 2. Middle Interstitial Buttons Loop (All 20 Button-Style Dishes running continuously between the card streams) */}
+        {/* 2. Middle Interstitial Buttons Loops (Two running small card rally lines in the middle as originally placed) */}
         <div className="plenti-buttons-stream stream-middle">
+          {/* Row 1 - Running Right */}
           <div className="plenti-buttons-track scroll-buttons-right">
             {[
               { title: 'Dum Biryani Handi', subtitle: 'Slow Dum Cooking', img: '/brand/plate-biryani.png' },
@@ -185,16 +186,6 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
               { title: 'Dal Baati Churma', subtitle: 'Pure Ghee Baati', img: '/brand/plate-daal-baati.png' },
               { title: 'Malabar Fish Curry', subtitle: 'Kodampuli & Coconut', img: '/brand/plate-malabar-fish.png' },
               { title: 'Nizami Shahi Haleem', subtitle: '12-Hour Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
-              { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
-              { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
-              { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
-              { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
-              { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
-              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
-              { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
-              { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
-              { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
-              { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
               { title: 'Dum Biryani Handi', subtitle: 'Slow Dum Cooking', img: '/brand/plate-biryani.png' },
               { title: 'Sattvic Thali', subtitle: 'Balanced Shadrasa', img: '/brand/plate-thali.png' },
               { title: 'Jasmine Idli & Sambar', subtitle: 'Stone Ground Batter', img: '/brand/plate-idli.png' },
@@ -205,18 +196,50 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
               { title: 'Dal Baati Churma', subtitle: 'Pure Ghee Baati', img: '/brand/plate-daal-baati.png' },
               { title: 'Malabar Fish Curry', subtitle: 'Kodampuli & Coconut', img: '/brand/plate-malabar-fish.png' },
               { title: 'Nizami Shahi Haleem', subtitle: '12-Hour Slow Simmer', img: '/brand/plate-nizami-haleem.png' },
+            ].map((btn, idx) => (
+              <div key={`mid-btn-r1-${idx}`} className="stream-dish-button-pill">
+                <div className="stream-btn-img-box">
+                  <img 
+                    src={btn.img} 
+                    alt={btn.title} 
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/brand/plate-thali.png';
+                    }}
+                  />
+                </div>
+                <div className="stream-btn-text">
+                  <span className="stream-btn-name">{btn.title}</span>
+                  <span className="stream-btn-desc">{btn.subtitle}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 2 - Running Left */}
+          <div className="plenti-buttons-track scroll-buttons-left">
+            {[
+              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
+              { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
               { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
               { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
               { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
               { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
               { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
-              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
               { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
+              { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
+              { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
+              { title: 'Goan Prawn Balchão', subtitle: 'Toddy Vinegar Reduction', img: '/brand/plate-goan-prawn.png' },
               { title: 'Irani Kheema Pav', subtitle: 'Caramelized Onion Gravy', img: '/brand/plate-irani-kheema.png' },
+              { title: 'Kashmiri Rogan Josh', subtitle: 'Ratanjot & Fennel Infusion', img: '/brand/plate-rogan-josh.png' },
+              { title: 'Litti Chokha', subtitle: 'Charcoal Smoked Sattu', img: '/brand/plate-litti-chokha.png' },
+              { title: 'Kolhapuri Tambda Rassa', subtitle: 'Fierce Nagli Spices', img: '/brand/plate-kolhapuri-rassa.png' },
+              { title: 'Surati Khaman Dhokla', subtitle: 'Steamed Mustard Sponge', img: '/brand/plate-surati-dhokla.png' },
+              { title: 'Amritsari Pindi Chole', subtitle: 'Anardana & Black Tea Boil', img: '/brand/plate-pindi-chole.png' },
+              { title: 'Andhra Gongura Mamsam', subtitle: 'Tangy Sorrel Leaf Simmer', img: '/brand/plate-gongura-mamsam.png' },
               { title: 'Palada Pradhaman', subtitle: 'Condensed Cardamom Milk', img: '/brand/plate-palada-pradhaman.png' },
               { title: 'Palappam & Veg Stew', subtitle: 'Fermented Toddy Batter', img: '/brand/plate-palappam-stew.png' },
             ].map((btn, idx) => (
-              <div key={`mid-btn-${idx}`} className="stream-dish-button-pill">
+              <div key={`mid-btn-r2-${idx}`} className="stream-dish-button-pill">
                 <div className="stream-btn-img-box">
                   <img 
                     src={btn.img} 
@@ -826,8 +849,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 5; /* Visible in the background above the stage wrapper */
-          top: 50%; /* Runs continuously across the mid-section as in reference */
+          z-index: 5; /* Visible in the background across the mid-section */
+          top: 48%; /* Dual small card rally lines in the middle as originally placed */
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
           mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
         }
@@ -841,6 +867,10 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .scroll-buttons-right {
           animation: marqueeRight 68s linear infinite;
+        }
+
+        .scroll-buttons-left {
+          animation: marqueeLeft 68s linear infinite;
         }
 
         .plenti-buttons-track:hover {
