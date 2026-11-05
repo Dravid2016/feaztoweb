@@ -191,6 +191,16 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
                   draggable={false}
                 />
               </div>
+
+              {/* Floating Cloud Over Mobile on the Right Side */}
+              <div className="feazto-cloud-front-right">
+                <img
+                  src="/brand/cloud_right.webp"
+                  className="feazto-cloud-right-img"
+                  alt="Atmospheric Cloud Overlay"
+                  draggable={false}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -648,6 +658,26 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           opacity: 0.65;
           filter: blur(4px) drop-shadow(0 10px 24px rgba(245, 183, 0, 0.2));
           animation: feaztoCloudDriftReverse 11s ease-in-out infinite alternate;
+        }
+
+        /* Floating Cloud Over Mobile on the Right Side (z-index: 45) */
+        .feazto-cloud-front-right {
+          position: absolute;
+          right: -10%;
+          bottom: 12%;
+          width: 58%;
+          z-index: 45;
+          pointer-events: none;
+          user-select: none;
+        }
+
+        .feazto-cloud-right-img {
+          width: 100%;
+          height: auto;
+          display: block;
+          opacity: 0.94;
+          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.12));
+          animation: feaztoCloudDrift 7.5s ease-in-out infinite alternate;
         }
 
         @keyframes feaztoCloudDrift {
