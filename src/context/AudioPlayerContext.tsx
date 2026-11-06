@@ -134,7 +134,10 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       try {
         audio.muted = false;
         audio.volume = 0.35;
-        await audio.play();
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
         setIsPlaying(true);
         initAudioAnalyser();
         return true;
@@ -148,18 +151,21 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       if (!audio) return;
       try {
         audio.muted = true;
-        await audio.play();
-        setIsPlaying(true);
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+        // Audio is actively running in background
       } catch {
         // Ignored
       }
     };
 
-    // 1. Immediate unmuted attempt on load
+    // 1. Immediate unmuted attempt on initial page load / refresh
     playUnmuted().then((success) => {
       if (!success) {
         // If modern browser autoplay policy rejects unmuted sound prior to user gesture,
-        // start playback muted right away so track is already running and ready
+        // start playback muted right away so track is already running and ready to unmute
         playMuted();
       }
     });
@@ -178,12 +184,15 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       audio.muted = false;
       audio.volume = 0.35;
 
-      if (audio.paused) {
-        audio.play().then(() => {
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => {
           setIsPlaying(true);
           initAudioAnalyser();
           detachUnlock();
-        }).catch(() => {});
+        }).catch(() => {
+          // If still blocked, will retry on next user touch/click/scroll
+        });
       } else {
         setIsPlaying(true);
         initAudioAnalyser();
@@ -215,7 +224,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       document.addEventListener(evt, unlockSound, { capture: true, passive: true });
     });
 
-    // Also unmute when user switches back to tab
+    // Also unmute when user switches back to tab or focuses window
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
         unlockSound();
@@ -224,10 +233,18 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     document.addEventListener('visibilitychange', handleVisibility);
     window.addEventListener('focus', handleVisibility);
 
+    // Sync isPlaying state with audio element events
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+    audio.addEventListener('play', onPlay);
+    audio.addEventListener('pause', onPause);
+
     return () => {
       detachUnlock();
       document.removeEventListener('visibilitychange', handleVisibility);
       window.removeEventListener('focus', handleVisibility);
+      audio.removeEventListener('play', onPlay);
+      audio.removeEventListener('pause', onPause);
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {});
       }
