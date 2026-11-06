@@ -39,30 +39,17 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const animationFrameRef = useRef<number | null>(null);
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem('feazto_audio_muted') === 'true';
-    } catch {
-      return false;
-    }
-  });
+  const [isMuted, setIsMuted] = useState<boolean>(false);
   const [needsInteraction, setNeedsInteraction] = useState<boolean>(false);
   const [audioLevel, setAudioLevel] = useState<number>(0);
   const [isOrbModalOpen, setIsOrbModalOpen] = useState<boolean>(false);
 
-  // Reference to track user manual mute intention across re-renders
-  const userMutedRef = useRef<boolean>(
-    typeof window !== 'undefined' && localStorage.getItem('feazto_audio_muted') === 'true'
-  );
+  // User manual mute flag (only true when user explicitly taps orb to mute in current session)
+  const userMutedRef = useRef<boolean>(false);
 
   const setManualMuteState = (muted: boolean) => {
     userMutedRef.current = muted;
     setIsMuted(muted);
-    try {
-      localStorage.setItem('feazto_audio_muted', muted ? 'true' : 'false');
-    } catch {
-      // Ignored
-    }
   };
 
   // Smooth filter for audio level tracking to eliminate visual jumps
