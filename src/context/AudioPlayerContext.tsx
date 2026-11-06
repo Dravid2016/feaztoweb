@@ -127,7 +127,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Universal cross-device immediate autoplay & first-gesture unlock
+  // Multi-tier automatic playback strategy with zero-delay fallback
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -135,33 +135,40 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     audio.volume = 0.35;
 
     // Direct attempt to play unmuted immediately when site is visited
-    const attemptImmediatePlay = () => {
+    const startAudio = () => {
+      if (!audio) return;
+
       audio.muted = false;
       audio.volume = 0.35;
-      const p = audio.play();
-      if (p !== undefined) {
-        p.then(() => {
-          setIsPlaying(true);
-          initAudioAnalyser();
-        }).catch(() => {
-          // If browser policy restricted unmuted autoplay, start muted so audio timeline is live,
-          // then instantly unmute on first user interaction anywhere on screen
-          audio.muted = true;
-          audio.play().then(() => {
+      const playPromise = audio.play();
+
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
             setIsPlaying(true);
-          }).catch(() => {});
-        });
+            initAudioAnalyser();
+            removeUnlockListeners();
+          })
+          .catch(() => {
+            // If browser blocks audible autoplay before user engagement,
+            // start muted in background so audio is immediately spinning and ready,
+            // and unmute on the earliest interaction
+            audio.muted = true;
+            audio.play().then(() => {
+              setIsPlaying(true);
+            }).catch(() => {});
+          });
       }
     };
 
-    attemptImmediatePlay();
+    startAudio();
 
     // Universal gesture unlock for all mobile and desktop browsers:
-    // Triggers on any touch, swipe, tap, scroll, click, or key press
+    // Triggers on any touch, swipe, tap, scroll, click, mousemove, or keypress
     const unlockAndPlay = () => {
       if (!audio) return;
 
-      // Resume AudioContext if suspended (mobile Safari / Chrome Web Audio requirement)
+      // Resume AudioContext if suspended
       if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
         audioContextRef.current.resume().catch(() => {});
       }
@@ -177,9 +184,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
           setIsPlaying(true);
           initAudioAnalyser();
           removeUnlockListeners();
-        }).catch(() => {
-          // If still blocked, keep listeners active for next touch
-        });
+        }).catch(() => {});
       } else {
         setIsPlaying(true);
         initAudioAnalyser();
@@ -188,21 +193,42 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
 
     const removeUnlockListeners = () => {
-      const events = ['touchstart', 'touchend', 'touchmove', 'pointerdown', 'pointerup', 'click', 'keydown', 'scroll', 'wheel'];
+      const events = [
+        'touchstart', 'touchend', 'touchmove', 
+        'pointerdown', 'pointerup', 'pointermove',
+        'click', 'mousedown', 'mouseup', 
+        'keydown', 'scroll', 'wheel'
+      ];
       events.forEach((evt) => {
         window.removeEventListener(evt, unlockAndPlay, true);
         document.removeEventListener(evt, unlockAndPlay, true);
       });
     };
 
-    const events = ['touchstart', 'touchend', 'touchmove', 'pointerdown', 'pointerup', 'click', 'keydown', 'scroll', 'wheel'];
+    const events = [
+      'touchstart', 'touchend', 'touchmove', 
+      'pointerdown', 'pointerup', 'pointermove',
+      'click', 'mousedown', 'mouseup', 
+      'keydown', 'scroll', 'wheel'
+    ];
     events.forEach((evt) => {
       window.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
       document.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
     });
 
+    // Also retry unmuting on page visibility / focus change
+    const onVisibilityOrFocus = () => {
+      if (document.visibilityState === 'visible') {
+        unlockAndPlay();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityOrFocus);
+    window.addEventListener('focus', onVisibilityOrFocus);
+
     return () => {
       removeUnlockListeners();
+      document.removeEventListener('visibilitychange', onVisibilityOrFocus);
+      window.removeEventListener('focus', onVisibilityOrFocus);
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {});
       }
