@@ -1182,7 +1182,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           margin: 0 auto;
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           padding: 0 clamp(16px, 3vw, 48px);
           pointer-events: auto;
           box-sizing: border-box;
@@ -1302,6 +1302,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         /* Rectangular Card on the Left Side of the page */
         .showcase-left-blank-card {
           width: 100%;
+          height: fit-content;
           min-height: auto;
           background: linear-gradient(145deg, #FFFDF8 0%, #FFF8E6 100%);
           border-radius: 28px;
@@ -1392,7 +1393,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .blank-card-inner-frame {
           width: 100%;
-          height: auto;
+          height: fit-content;
           min-height: auto;
           border: none;
           border-radius: 20px;
@@ -1459,7 +1460,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
-          height: auto;
+          height: fit-content;
           margin-top: 12px;
           animation: fadeInContent 0.35s ease forwards;
         }
@@ -1937,11 +1938,13 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .showcase-left-blank-card {
             width: 100%;
             max-width: 100%;
+            height: fit-content;
             min-height: auto;
             padding: 18px;
           }
 
           .blank-card-inner-frame {
+            height: fit-content;
             min-height: auto;
             padding: 16px;
           }
@@ -1952,7 +1955,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             gap: 12px;
             width: 100%;
             margin-top: 4px;
-            padding-top: 6px;
+            padding-top: 4px;
           }
 
           .tab-benefit-callout {
