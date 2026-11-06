@@ -15,8 +15,6 @@ interface AudioPlayerContextType {
   isMuted: boolean;
   audioLevel: number;
   togglePlayback: () => void;
-  toggleMute: () => void;
-  enableSound: () => Promise<void>;
   needsInteraction: boolean;
   dismissPrompt: () => void;
   openOrbModal: () => void;
@@ -149,156 +147,60 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Multi-tier immediate autoplay & un-mute orchestration
+  // ── AUTOPLAY ORCHESTRATION ──
+  // Attempt unmuted playback on fresh load or reload.
+  // If the browser blocks it, remain muted and show subtle audio button indicator.
+  // NEVER trigger audio through random taps, touches, scrolls, or clicks.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Check if user previously chosen to mute
-    const isUserMuted = userMutedRef.current;
-
     audio.volume = 0.35;
-    if (isUserMuted) {
+
+    // If visitor previously clicked to mute, respect it strictly
+    if (userMutedRef.current) {
       audio.muted = true;
+      setIsMuted(true);
+      setNeedsInteraction(false);
+      return;
     }
 
-    // Helper: start unmuted sound
-    const playUnmuted = async () => {
-      if (!audio) return false;
-      if (userMutedRef.current) {
-        return false;
-      }
-      try {
-        audio.muted = false;
-        audio.volume = 0.35;
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-        }
-        setIsPlaying(true);
-        setIsMuted(false);
-        setNeedsInteraction(false);
-        initAudioAnalyser();
-        return true;
-      } catch {
-        return false;
-      }
-    };
+    // Fresh visit or reload without manual mute: attempt autoplay
+    audio.muted = false;
+    audio.volume = 0.35;
 
-    // Helper: start muted sound as background fallback
-    const playMuted = async () => {
-      if (!audio) return;
-      try {
-        audio.muted = true;
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-        }
-        // If user didn't intentionally mute, show prompt to let them enable sound with one tap
-        if (!userMutedRef.current) {
-          setNeedsInteraction(true);
-        }
-      } catch {
-        if (!userMutedRef.current) {
-          setNeedsInteraction(true);
-        }
-      }
-    };
-
-    if (!isUserMuted) {
-      // 1. Immediate unmuted attempt on initial page load / refresh
-      playUnmuted().then((success) => {
-        if (!success) {
-          // If browser policy rejects unmuted sound prior to user gesture,
-          // start muted in background and present subtle prompt
-          playMuted();
-        }
-      });
-    }
-
-    // 2. Universal gesture un-mute on mobile & desktop:
-    // Any screen tap, touchstart, swipe, mouse move, pointer press, scroll, or keypress
-    // un-mutes the running audio instantly without having to search for a button
-    const unlockSound = () => {
-      const curAudio = audioRef.current;
-      if (!curAudio) return;
-
-      // Never un-mute automatically if user manually muted
-      if (userMutedRef.current) return;
-
-      // Resume AudioContext if suspended (required by Safari / WebKit)
-      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
-        audioContextRef.current.resume().catch(() => {});
-      }
-
-      curAudio.muted = false;
-      curAudio.volume = 0.35;
-
-      const p = curAudio.play();
-      if (p !== undefined) {
-        p.then(() => {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
           setIsPlaying(true);
           setIsMuted(false);
           setNeedsInteraction(false);
           initAudioAnalyser();
-          detachUnlock();
-        }).catch(() => {
-          // If still blocked, wait for next user action
+        })
+        .catch(() => {
+          // Autoplay blocked by browser policy without prior explicit user activation.
+          // Keep audio paused/muted and show subtle prompt to click the dedicated audio button.
+          audio.muted = true;
+          setIsMuted(true);
+          setIsPlaying(false);
+          setNeedsInteraction(true);
         });
-      } else {
-        setIsPlaying(true);
-        setIsMuted(false);
-        setNeedsInteraction(false);
-        initAudioAnalyser();
-        detachUnlock();
-      }
-    };
-
-    const detachUnlock = () => {
-      const events = [
-        'touchstart', 'touchend', 'touchmove',
-        'pointerdown', 'pointerup', 'pointermove',
-        'click', 'mousedown', 'mouseup',
-        'keydown', 'scroll', 'wheel'
-      ];
-      events.forEach((evt) => {
-        window.removeEventListener(evt, unlockSound, true);
-        document.removeEventListener(evt, unlockSound, true);
-        document.body?.removeEventListener(evt, unlockSound, true);
-      });
-    };
-
-    const events = [
-      'touchstart', 'touchend', 'touchmove',
-      'pointerdown', 'pointerup', 'pointermove',
-      'click', 'mousedown', 'mouseup',
-      'keydown', 'scroll', 'wheel'
-    ];
-    events.forEach((evt) => {
-      window.addEventListener(evt, unlockSound, { capture: true, passive: true });
-      document.addEventListener(evt, unlockSound, { capture: true, passive: true });
-      document.body?.addEventListener(evt, unlockSound, { capture: true, passive: true });
-    });
-
-    // Also unmute when user switches back to tab or focuses window
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible' && !userMutedRef.current) {
-        unlockSound();
-      }
-    };
-    document.addEventListener('visibilitychange', handleVisibility);
-    window.addEventListener('focus', handleVisibility);
+    }
 
     // Sync isPlaying state with audio element events
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
+    const onPlay = () => {
+      setIsPlaying(true);
+      setIsMuted(audio.muted);
+    };
+    const onPause = () => {
+      setIsPlaying(false);
+    };
+
     audio.addEventListener('play', onPlay);
     audio.addEventListener('pause', onPause);
 
     return () => {
-      detachUnlock();
-      document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('focus', handleVisibility);
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
       if (audioContextRef.current) {
@@ -307,6 +209,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, [initAudioAnalyser]);
 
+  // Dedicated Audio Button Controller (Strictly the only manual trigger)
   const togglePlayback = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -315,69 +218,29 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       audioContextRef.current.resume().catch(() => {});
     }
 
+    // If currently producing sound -> mute it immediately
     if (isPlaying && !audio.paused && !audio.muted) {
-      audio.pause();
-      setIsPlaying(false);
-      setManualMuteState(true);
-    } else {
-      audio.muted = false;
-      audio.volume = 0.35;
-      setManualMuteState(false);
-      setNeedsInteraction(false);
-      audio
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          initAudioAnalyser();
-        })
-        .catch(() => {});
-    }
-  };
-
-  const toggleMute = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
-      audioContextRef.current.resume().catch(() => {});
-    }
-
-    if (!audio.muted && isPlaying) {
       audio.muted = true;
       setManualMuteState(true);
+      setIsPlaying(false);
+      audio.pause();
     } else {
+      // If currently muted/paused -> unmute and play immediately
       audio.muted = false;
       audio.volume = 0.35;
       setManualMuteState(false);
       setNeedsInteraction(false);
-      if (audio.paused) {
-        audio.play().then(() => {
+
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => {
           setIsPlaying(true);
           initAudioAnalyser();
         }).catch(() => {});
+      } else {
+        setIsPlaying(true);
+        initAudioAnalyser();
       }
-    }
-  };
-
-  const enableSound = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
-      audioContextRef.current.resume().catch(() => {});
-    }
-
-    audio.muted = false;
-    audio.volume = 0.35;
-    setManualMuteState(false);
-    setNeedsInteraction(false);
-
-    try {
-      await audio.play();
-      setIsPlaying(true);
-      initAudioAnalyser();
-    } catch {
-      // Ignored
     }
   };
 
@@ -395,8 +258,6 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         isMuted,
         audioLevel,
         togglePlayback,
-        toggleMute,
-        enableSound,
         needsInteraction,
         dismissPrompt,
         openOrbModal,

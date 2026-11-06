@@ -3,9 +3,9 @@ import { Volume2, X } from 'lucide-react';
 import { useAudioPlayer } from '../context/AudioPlayerContext';
 
 export const AudioPromptBanner: React.FC = () => {
-  const { needsInteraction, enableSound, dismissPrompt, isPlaying, isMuted } = useAudioPlayer();
+  const { needsInteraction, togglePlayback, dismissPrompt, isPlaying, isMuted } = useAudioPlayer();
 
-  if (!needsInteraction || isPlaying || isMuted) {
+  if (!needsInteraction || (isPlaying && !isMuted)) {
     return null;
   }
 
@@ -18,15 +18,15 @@ export const AudioPromptBanner: React.FC = () => {
       <button 
         type="button"
         className="audio-prompt-action-pill"
-        onClick={enableSound}
-        aria-label="Enable Feazto ambient background music"
+        onClick={togglePlayback}
+        aria-label="Click to enable Feazto background audio"
       >
         <span className="audio-prompt-icon-bubble">
           <Volume2 size={16} className="audio-pulse-icon" />
         </span>
         <span className="audio-prompt-text-group">
-          <strong className="audio-prompt-title">Experience with Sound</strong>
-          <span className="audio-prompt-subtitle">Tap to enable authentic regional culinary audio</span>
+          <strong className="audio-prompt-title">Sound Available</strong>
+          <span className="audio-prompt-subtitle">Click the audio button to enable authentic regional culinary audio</span>
         </span>
       </button>
 
@@ -170,3 +170,4 @@ export const AudioPromptBanner: React.FC = () => {
     </aside>
   );
 };
+
