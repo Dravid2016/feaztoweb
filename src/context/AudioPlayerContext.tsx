@@ -48,30 +48,34 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (!audioContextRef.current) {
-      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AudioContextClass) return;
+    try {
+      if (!audioContextRef.current) {
+        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        if (!AudioContextClass) return;
 
-      const ctx = new AudioContextClass();
-      audioContextRef.current = ctx;
+        const ctx = new AudioContextClass();
+        audioContextRef.current = ctx;
 
-      const analyser = ctx.createAnalyser();
-      analyser.fftSize = 256;
-      analyser.smoothingTimeConstant = 0.85; // smooth FFT response
-      analyserRef.current = analyser;
+        const analyser = ctx.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.85;
+        analyserRef.current = analyser;
 
-      try {
-        const source = ctx.createMediaElementSource(audio);
-        sourceNodeRef.current = source;
-        source.connect(analyser);
-        analyser.connect(ctx.destination);
-      } catch (err) {
-        console.warn('Web Audio source connection warning:', err);
+        try {
+          const source = ctx.createMediaElementSource(audio);
+          sourceNodeRef.current = source;
+          source.connect(analyser);
+          analyser.connect(ctx.destination);
+        } catch (err) {
+          console.warn('Web Audio source connection notice:', err);
+        }
       }
-    }
 
-    if (audioContextRef.current.state === 'suspended') {
-      audioContextRef.current.resume().catch(() => {});
+      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume().catch(() => {});
+      }
+    } catch {
+      // Graceful fallback to standard HTML5 audio playback without visualizer if Web Audio throws
     }
   }, []);
 
@@ -123,83 +127,82 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Setup initial audio volume & robust instant auto-start handling
+  // Universal cross-device immediate autoplay & first-gesture unlock
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    audio.volume = 0.3;
+    audio.volume = 0.35;
 
-    // Direct attempt to play unmuted as soon as the website loads
-    const attemptDirectPlay = () => {
-      audio.volume = 0.3;
+    // Direct attempt to play unmuted immediately when site is visited
+    const attemptImmediatePlay = () => {
       audio.muted = false;
-      const playPromise = audio.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
+      audio.volume = 0.35;
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => {
+          setIsPlaying(true);
+          initAudioAnalyser();
+        }).catch(() => {
+          // If browser policy restricted unmuted autoplay, start muted so audio timeline is live,
+          // then instantly unmute on first user interaction anywhere on screen
+          audio.muted = true;
+          audio.play().then(() => {
             setIsPlaying(true);
-            initAudioAnalyser();
-            cleanupListeners();
-          })
-          .catch(() => {
-            // If browser autoplay policy strictly blocked audible autoplay without a gesture,
-            // play muted immediately so playback is already running in sync, then unmute on first gesture
-            audio.muted = true;
-            audio.play().then(() => {
-              setIsPlaying(true);
-            }).catch(() => {});
-          });
+          }).catch(() => {});
+        });
       }
     };
 
-    attemptDirectPlay();
+    attemptImmediatePlay();
 
-    // Universal gesture unlock: immediately unmute and ensure full 30% playback
-    const handleFirstInteraction = () => {
+    // Universal gesture unlock for all mobile and desktop browsers:
+    // Triggers on any touch, swipe, tap, scroll, click, or key press
+    const unlockAndPlay = () => {
+      if (!audio) return;
+
+      // Resume AudioContext if suspended (mobile Safari / Chrome Web Audio requirement)
+      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume().catch(() => {});
+      }
+
       if (audio.muted) {
         audio.muted = false;
       }
-      audio.volume = 0.3;
-      if (audio.paused) {
-        audio
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-            initAudioAnalyser();
-            cleanupListeners();
-          })
-          .catch(() => {});
+      audio.volume = 0.35;
+
+      const p = audio.play();
+      if (p !== undefined) {
+        p.then(() => {
+          setIsPlaying(true);
+          initAudioAnalyser();
+          removeUnlockListeners();
+        }).catch(() => {
+          // If still blocked, keep listeners active for next touch
+        });
       } else {
         setIsPlaying(true);
         initAudioAnalyser();
-        cleanupListeners();
+        removeUnlockListeners();
       }
     };
 
-    const cleanupListeners = () => {
-      window.removeEventListener('click', handleFirstInteraction, true);
-      window.removeEventListener('pointerdown', handleFirstInteraction, true);
-      window.removeEventListener('touchstart', handleFirstInteraction, true);
-      window.removeEventListener('keydown', handleFirstInteraction, true);
-      window.removeEventListener('scroll', handleFirstInteraction, true);
-      window.removeEventListener('wheel', handleFirstInteraction, true);
-      window.removeEventListener('mousemove', handleFirstInteraction, true);
-      document.removeEventListener('visibilitychange', handleFirstInteraction);
+    const removeUnlockListeners = () => {
+      const events = ['touchstart', 'touchend', 'touchmove', 'pointerdown', 'pointerup', 'click', 'keydown', 'scroll', 'wheel'];
+      events.forEach((evt) => {
+        window.removeEventListener(evt, unlockAndPlay, true);
+        document.removeEventListener(evt, unlockAndPlay, true);
+      });
     };
 
-    // Use capture phase (true) so it intercepts the very first touch/click instantly
-    window.addEventListener('click', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('pointerdown', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('touchstart', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('keydown', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('scroll', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('wheel', handleFirstInteraction, { capture: true, passive: true });
-    window.addEventListener('mousemove', handleFirstInteraction, { capture: true, passive: true, once: true });
-    document.addEventListener('visibilitychange', handleFirstInteraction, { passive: true });
+    const events = ['touchstart', 'touchend', 'touchmove', 'pointerdown', 'pointerup', 'click', 'keydown', 'scroll', 'wheel'];
+    events.forEach((evt) => {
+      window.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
+      document.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
+    });
 
     return () => {
-      cleanupListeners();
+      removeUnlockListeners();
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {});
       }
@@ -210,16 +213,22 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const audio = audioRef.current;
     if (!audio) return;
 
-    initAudioAnalyser();
+    if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+      audioContextRef.current.resume().catch(() => {});
+    }
 
-    if (isPlaying) {
+    if (isPlaying && !audio.paused && !audio.muted) {
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.volume = 0.3;
+      audio.muted = false;
+      audio.volume = 0.35;
       audio
         .play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          setIsPlaying(true);
+          initAudioAnalyser();
+        })
         .catch(() => {});
     }
   };
@@ -243,10 +252,10 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         src="/brand/feazto-ambient.mp3"
         loop
         preload="auto"
-        crossOrigin="anonymous"
+        autoPlay
+        playsInline
       />
       {children}
     </AudioPlayerContext.Provider>
   );
 };
-
