@@ -1459,7 +1459,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           flex-direction: column;
           align-items: flex-start;
           width: 100%;
-          height: 100%;
+          height: auto;
           margin-top: 12px;
           animation: fadeInContent 0.35s ease forwards;
         }
@@ -1949,8 +1949,10 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .tab-footer-row {
             flex-direction: column;
             align-items: stretch;
-            gap: 16px;
+            gap: 12px;
             width: 100%;
+            margin-top: 4px;
+            padding-top: 6px;
           }
 
           .tab-benefit-callout {
