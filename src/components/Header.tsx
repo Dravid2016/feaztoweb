@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, ChefHat, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, ArrowRight, ChefHat } from 'lucide-react';
 import Strands from './Strands';
 import { useAudioPlayer, FEAZTO_ORB_COLORS } from '../context/AudioPlayerContext';
 
@@ -115,14 +115,6 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
                 transform: `scale(${1 + audioLevel * 0.3})`
               }}
             />
-            {/* Direct speaker status badge */}
-            <span className={`header-sound-speaker-badge ${isPlaying && !isMuted ? 'speaker-on' : 'speaker-off'}`}>
-              {isPlaying && !isMuted ? (
-                <Volume2 size={10} strokeWidth={2.5} />
-              ) : (
-                <VolumeX size={10} strokeWidth={2.5} />
-              )}
-            </span>
           </button>
 
           {/* Chef Icon Button: Cloud Kitchen Partner Registration (Liquid Glass Icon-Only) */}
@@ -469,36 +461,6 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           pointer-events: none;
           z-index: 1;
           transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-        }
-
-        .header-sound-speaker-badge {
-          position: absolute;
-          bottom: -3px;
-          right: -3px;
-          width: 16px;
-          height: 16px;
-          border-radius: 50%;
-          border: 1.5px solid #FFFFFF;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 3;
-          transition: all 0.2s ease;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-        }
-
-        .header-sound-speaker-badge.speaker-on {
-          background: #111111;
-          color: #F5B700;
-        }
-
-        .header-sound-speaker-badge.speaker-off {
-          background: #D32F2F;
-          color: #FFFFFF;
-        }
-
-        .orb-muted-indicator {
-          display: none;
         }
 
         /* ── CHEF ICON BUTTON IN HEADER (Exact Match with Apple/Play Store White & Black Buttons) ── */
