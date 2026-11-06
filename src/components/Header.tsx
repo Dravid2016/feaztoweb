@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowRight, ChefHat } from 'lucide-react';
+import { Menu, X, ArrowRight, ChefHat, Volume2, VolumeX } from 'lucide-react';
 import Strands from './Strands';
 import { useAudioPlayer, FEAZTO_ORB_COLORS } from '../context/AudioPlayerContext';
 
@@ -11,7 +11,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { isPlaying, audioLevel, togglePlayback } = useAudioPlayer();
+  const { isPlaying, isMuted, audioLevel, togglePlayback } = useAudioPlayer();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,24 +84,24 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           <button
             type="button"
             onClick={togglePlayback}
-            className={`header-sound-orb-btn ${isPlaying ? 'is-active' : 'is-muted'}`}
-            title={isPlaying ? 'Click to Mute Sound' : 'Click to Play Sound'}
-            aria-label={isPlaying ? 'Click to Mute Sound' : 'Click to Play Sound'}
+            className={`header-sound-orb-btn ${isPlaying && !isMuted ? 'is-active' : 'is-muted'}`}
+            title={isPlaying && !isMuted ? 'Click to Mute Audio' : 'Click to Play Audio'}
+            aria-label={isPlaying && !isMuted ? 'Click to Mute Audio' : 'Click to Play Audio'}
           >
             <div className="header-orb-canvas-wrap">
               <Strands
                 colors={FEAZTO_ORB_COLORS}
                 count={3}
-                speed={isPlaying ? 1.2 : 0.25}
-                amplitude={isPlaying ? 0.9 + audioLevel * 0.8 : 0.35}
-                waviness={isPlaying ? 0.9 + audioLevel * 0.6 : 0.35}
-                glow={isPlaying ? 1.0 + audioLevel * 1.2 : 0.25}
+                speed={isPlaying && !isMuted ? 1.2 : 0.25}
+                amplitude={isPlaying && !isMuted ? 0.9 + audioLevel * 0.8 : 0.35}
+                waviness={isPlaying && !isMuted ? 0.9 + audioLevel * 0.6 : 0.35}
+                glow={isPlaying && !isMuted ? 1.0 + audioLevel * 1.2 : 0.25}
                 glass={true}
                 glassSize={1.0}
                 refraction={1.2}
                 dispersion={1.1}
-                energy={isPlaying ? 0.3 + audioLevel * 0.7 : 0.08}
-                level={audioLevel}
+                energy={isPlaying && !isMuted ? 0.3 + audioLevel * 0.7 : 0.08}
+                level={isMuted ? 0 : audioLevel}
                 interactive={false}
                 clickPulse={false}
                 intro={false}
@@ -111,14 +111,18 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
             <span 
               className="header-orb-aura"
               style={{
-                opacity: isPlaying ? 0.45 + audioLevel * 0.55 : 0,
+                opacity: isPlaying && !isMuted ? 0.45 + audioLevel * 0.55 : 0,
                 transform: `scale(${1 + audioLevel * 0.3})`
               }}
             />
-            {/* Subtle muted slash indicator overlay when sound is off */}
-            {!isPlaying && (
-              <span className="orb-muted-indicator" title="Muted" />
-            )}
+            {/* Direct speaker status badge */}
+            <span className={`header-sound-speaker-badge ${isPlaying && !isMuted ? 'speaker-on' : 'speaker-off'}`}>
+              {isPlaying && !isMuted ? (
+                <Volume2 size={10} strokeWidth={2.5} />
+              ) : (
+                <VolumeX size={10} strokeWidth={2.5} />
+              )}
+            </span>
           </button>
 
           {/* Chef Icon Button: Cloud Kitchen Partner Registration (Liquid Glass Icon-Only) */}
@@ -467,16 +471,34 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           transition: transform 0.15s ease-out, opacity 0.15s ease-out;
         }
 
-        .orb-muted-indicator {
+        .header-sound-speaker-badge {
           position: absolute;
-          bottom: -2px;
-          right: -2px;
-          width: 10px;
-          height: 10px;
+          bottom: -3px;
+          right: -3px;
+          width: 16px;
+          height: 16px;
           border-radius: 50%;
-          background: #E26D2D;
           border: 1.5px solid #FFFFFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           z-index: 3;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .header-sound-speaker-badge.speaker-on {
+          background: #111111;
+          color: #F5B700;
+        }
+
+        .header-sound-speaker-badge.speaker-off {
+          background: #D32F2F;
+          color: #FFFFFF;
+        }
+
+        .orb-muted-indicator {
+          display: none;
         }
 
         /* ── CHEF ICON BUTTON IN HEADER (Exact Match with Apple/Play Store White & Black Buttons) ── */
