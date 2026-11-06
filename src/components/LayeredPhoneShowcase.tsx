@@ -87,24 +87,8 @@ const StreamCulturalFoodCard: React.FC<{ dish: FoodItem }> = ({ dish }) => {
   );
 };
 
-const STATEMENT_DISH_LOOP = [
-  { name: 'Traditional South Indian Curry Bowl', img: '/dish-capsule-curry.jpg' },
-  { name: 'Crispy Golden Ghee Podi Masala Dosa', img: '/brand/plate-benne-dosa.png' },
-  { name: 'Slow Dum Cooked Fragrant Biryani', img: '/brand/plate-biryani-new.png' },
-  { name: 'Steamed Stone Ground Soft Jasmine Idli', img: '/brand/plate-idli-new.png' },
-  { name: 'Balanced Generational Sattvic Thali', img: '/brand/plate-thali-new.png' },
-];
-
 export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navigate }) => {
   const [activeTab, setActiveTab] = React.useState<'feazto' | 'book' | 'carefe'>('feazto');
-  const [statementDishIdx, setStatementDishIdx] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setStatementDishIdx((prev) => (prev + 1) % STATEMENT_DISH_LOOP.length);
-    }, 2400);
-    return () => clearInterval(timer);
-  }, []);
 
   // Top Layer: 10 Distinct Cultural Dish Varieties
   const topLayerDishes = REGIONAL_FOODS.slice(0, 10);
@@ -117,24 +101,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
       {/* Plenti-Style Grand Editorial Statement Header */}
       <div className="plenti-statement-container">
         <h2 className="plenti-statement-title">
-          Every day authentic home chefs,{' '}
-          <span 
-            className="statement-dish-capsule" 
-            title={STATEMENT_DISH_LOOP[statementDishIdx].name}
-            onClick={() => setStatementDishIdx((prev) => (prev + 1) % STATEMENT_DISH_LOOP.length)}
-          >
-            {STATEMENT_DISH_LOOP.map((dish, idx) => (
-              <img 
-                key={dish.name}
-                src={dish.img} 
-                alt={dish.name} 
-                className={`statement-inline-img ${idx === statementDishIdx ? 'is-active-dish' : 'is-hidden-dish'}`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/dish-capsule-curry.jpg';
-                }}
-              />
-            ))}
-          </span>
+          Every day authentic home chefs,
           <br />
           regional foodpreneurs and cloud kitchens
           <br />
