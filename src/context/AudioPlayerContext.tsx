@@ -147,13 +147,12 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // ── AUTOPLAY & ONE-SHOT INTERACTION FALLBACK ──
+  // ── AUTOPLAY & ANYWHERE TOUCH/CLICK/SCROLL ACTIVATION ──
   // 1. On fresh opening or reload: attempt unmuted autoplay immediately.
-  // 2. If blocked by browser: listen for the visitor's first genuine scroll or touch.
-  // 3. On that first interaction: make ONE controlled attempt to start audio.
-  // 4. Do NOT repeatedly attempt on every scroll/touch.
-  // 5. If still blocked: show the dedicated Enable Sound button.
-  // 6. If visitor manually muted: never automatically unmute through scroll/touch/navigation.
+  // 2. If blocked by browser: listen for user interaction anywhere (touch, click, scroll).
+  // 3. On interaction: start audio playback immediately.
+  // 4. Orb button controls manual mute/unmute normally.
+  // 5. If user manually muted via orb button, respect preference.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -204,45 +203,41 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         return;
       }
 
-      // If autoplay was blocked and user hasn't manually muted:
-      // Listen for the visitor's FIRST genuine scroll or touch interaction.
-      let hasAttemptedFallback = false;
+      // If autoplay was blocked by browser (mobile / desktop autoplay policy):
+      // Listen for the visitor's interaction anywhere on the website.
+      let activated = false;
 
-      const onFirstInteraction = () => {
-        if (hasAttemptedFallback) return;
-        hasAttemptedFallback = true;
-
-        // Immediately detach so we do NOT attempt on every subsequent scroll or touch
-        if (cleanupInteractionListener) {
-          cleanupInteractionListener();
-          cleanupInteractionListener = null;
+      const onUserInteractionAnywhere = () => {
+        if (activated) return;
+        if (userMutedRef.current) {
+          if (cleanupInteractionListener) {
+            cleanupInteractionListener();
+            cleanupInteractionListener = null;
+          }
+          return;
         }
 
-        // If user manually muted in the interim, do nothing
-        if (userMutedRef.current) return;
-
-        // Make ONE controlled attempt to start audio
         attemptStartAudio().then((fallbackSuccess) => {
-          if (!fallbackSuccess) {
-            // Still blocked: keep muted and show the dedicated Enable Sound button
-            audio.muted = true;
-            setIsMuted(true);
-            setIsPlaying(false);
-            setNeedsInteraction(true);
+          if (fallbackSuccess) {
+            activated = true;
+            if (cleanupInteractionListener) {
+              cleanupInteractionListener();
+              cleanupInteractionListener = null;
+            }
           }
         });
       };
 
-      const interactionEvents = ['touchstart', 'scroll', 'wheel'];
+      const interactionEvents = ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'];
       interactionEvents.forEach((evt) => {
-        window.addEventListener(evt, onFirstInteraction, { capture: true, passive: true });
-        document.addEventListener(evt, onFirstInteraction, { capture: true, passive: true });
+        window.addEventListener(evt, onUserInteractionAnywhere, { capture: true, passive: true });
+        document.addEventListener(evt, onUserInteractionAnywhere, { capture: true, passive: true });
       });
 
       cleanupInteractionListener = () => {
         interactionEvents.forEach((evt) => {
-          window.removeEventListener(evt, onFirstInteraction, true);
-          document.removeEventListener(evt, onFirstInteraction, true);
+          window.removeEventListener(evt, onUserInteractionAnywhere, true);
+          document.removeEventListener(evt, onUserInteractionAnywhere, true);
         });
       };
     });
