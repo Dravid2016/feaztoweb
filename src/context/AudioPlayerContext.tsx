@@ -33,7 +33,6 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
-  const sourceNodeRef = useRef<MediaElementAudioSourceNode | null>(null);
   const animationFrameRef = useRef<number | null>(null);
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -63,11 +62,10 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
         try {
           const source = ctx.createMediaElementSource(audio);
-          sourceNodeRef.current = source;
           source.connect(analyser);
           analyser.connect(ctx.destination);
-        } catch (err) {
-          console.warn('Web Audio source connection notice:', err);
+        } catch {
+          // If already connected or restricted, continue
         }
       }
 
@@ -75,11 +73,11 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         audioContextRef.current.resume().catch(() => {});
       }
     } catch {
-      // Graceful fallback to standard HTML5 audio playback without visualizer if Web Audio throws
+      // Graceful fallback: audio still plays directly via HTMLAudioElement
     }
   }, []);
 
-  // Audio analysis frame loop
+  // Audio analysis frame loop for reactive orb
   useEffect(() => {
     const updateAudioLevel = () => {
       const analyser = analyserRef.current;
@@ -104,13 +102,9 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
         const totalAvg = totalSum / (bufferLength * 255);
 
-        // Combined normalized audio energy (0 to 1) with bass weighting
         const rawEnergy = Math.min(1.0, bassAvg * 0.7 + totalAvg * 0.5);
-
-        // Smooth interpolation to avoid abrupt visual flickering
         smoothedLevelRef.current += (rawEnergy - smoothedLevelRef.current) * 0.22;
       } else {
-        // Smoothly decay to idle (0) when paused or stopped
         smoothedLevelRef.current += (0 - smoothedLevelRef.current) * 0.08;
       }
 
@@ -127,108 +121,113 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // Multi-tier automatic playback strategy with zero-delay fallback
+  // Multi-tier immediate autoplay & un-mute orchestration
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.35;
 
-    // Direct attempt to play unmuted immediately when site is visited
-    const startAudio = () => {
-      if (!audio) return;
-
-      audio.muted = false;
-      audio.volume = 0.35;
-      const playPromise = audio.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            setIsPlaying(true);
-            initAudioAnalyser();
-            removeUnlockListeners();
-          })
-          .catch(() => {
-            // If browser blocks audible autoplay before user engagement,
-            // start muted in background so audio is immediately spinning and ready,
-            // and unmute on the earliest interaction
-            audio.muted = true;
-            audio.play().then(() => {
-              setIsPlaying(true);
-            }).catch(() => {});
-          });
+    // Helper: start unmuted sound
+    const playUnmuted = async () => {
+      if (!audio) return false;
+      try {
+        audio.muted = false;
+        audio.volume = 0.35;
+        await audio.play();
+        setIsPlaying(true);
+        initAudioAnalyser();
+        return true;
+      } catch {
+        return false;
       }
     };
 
-    startAudio();
+    // Helper: start muted sound as background fallback
+    const playMuted = async () => {
+      if (!audio) return;
+      try {
+        audio.muted = true;
+        await audio.play();
+        setIsPlaying(true);
+      } catch {
+        // Ignored
+      }
+    };
 
-    // Universal gesture unlock for all mobile and desktop browsers:
-    // Triggers on any touch, swipe, tap, scroll, click, mousemove, or keypress
-    const unlockAndPlay = () => {
+    // 1. Immediate unmuted attempt on load
+    playUnmuted().then((success) => {
+      if (!success) {
+        // If modern browser autoplay policy rejects unmuted sound prior to user gesture,
+        // start playback muted right away so track is already running and ready
+        playMuted();
+      }
+    });
+
+    // 2. Universal gesture un-mute on mobile & desktop:
+    // Any screen tap, touchstart, swipe, mouse move, pointer press, scroll, or keypress
+    // un-mutes the running audio instantly without having to press a play button
+    const unlockSound = () => {
       if (!audio) return;
 
-      // Resume AudioContext if suspended
+      // Resume AudioContext if suspended (required by Safari / WebKit)
       if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
         audioContextRef.current.resume().catch(() => {});
       }
 
-      if (audio.muted) {
-        audio.muted = false;
-      }
+      audio.muted = false;
       audio.volume = 0.35;
 
-      const p = audio.play();
-      if (p !== undefined) {
-        p.then(() => {
+      if (audio.paused) {
+        audio.play().then(() => {
           setIsPlaying(true);
           initAudioAnalyser();
-          removeUnlockListeners();
+          detachUnlock();
         }).catch(() => {});
       } else {
         setIsPlaying(true);
         initAudioAnalyser();
-        removeUnlockListeners();
+        detachUnlock();
       }
     };
 
-    const removeUnlockListeners = () => {
+    const detachUnlock = () => {
       const events = [
-        'touchstart', 'touchend', 'touchmove', 
+        'touchstart', 'touchend', 'touchmove',
         'pointerdown', 'pointerup', 'pointermove',
-        'click', 'mousedown', 'mouseup', 
+        'click', 'mousedown', 'mouseup',
         'keydown', 'scroll', 'wheel'
       ];
       events.forEach((evt) => {
-        window.removeEventListener(evt, unlockAndPlay, true);
-        document.removeEventListener(evt, unlockAndPlay, true);
+        window.removeEventListener(evt, unlockSound, true);
+        document.removeEventListener(evt, unlockSound, true);
       });
     };
 
     const events = [
-      'touchstart', 'touchend', 'touchmove', 
+      'touchstart', 'touchend', 'touchmove',
       'pointerdown', 'pointerup', 'pointermove',
-      'click', 'mousedown', 'mouseup', 
+      'click', 'mousedown', 'mouseup',
       'keydown', 'scroll', 'wheel'
     ];
     events.forEach((evt) => {
-      window.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
-      document.addEventListener(evt, unlockAndPlay, { capture: true, passive: true });
+      window.addEventListener(evt, unlockSound, { capture: true, passive: true });
+      document.addEventListener(evt, unlockSound, { capture: true, passive: true });
     });
 
-    // Also retry unmuting on page visibility / focus change
-    const onVisibilityOrFocus = () => {
+    // Also unmute when user switches back to tab
+    const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
-        unlockAndPlay();
+        unlockSound();
       }
     };
-    document.addEventListener('visibilitychange', onVisibilityOrFocus);
-    window.addEventListener('focus', onVisibilityOrFocus);
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleVisibility);
 
     return () => {
-      removeUnlockListeners();
-      document.removeEventListener('visibilitychange', onVisibilityOrFocus);
-      window.removeEventListener('focus', onVisibilityOrFocus);
+      detachUnlock();
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleVisibility);
       if (audioContextRef.current) {
         audioContextRef.current.close().catch(() => {});
       }
