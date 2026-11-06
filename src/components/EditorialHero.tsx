@@ -65,7 +65,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
               </svg>
             </span>
             <span className="eyebrow-text">
-              REGIONAL FOOD <span className="eyebrow-spark">✦</span> HOME KITCHENS <span className="eyebrow-spark">✦</span> CULTURE
+              FOOD <span className="eyebrow-spark">✦</span> CULTURE <span className="eyebrow-spark">✦</span> CONNECT
             </span>
             <span className="eyebrow-kolam" aria-hidden="true">
               <svg width="28" height="28" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
