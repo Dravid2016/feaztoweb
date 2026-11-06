@@ -174,17 +174,18 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     // Any screen tap, touchstart, swipe, mouse move, pointer press, scroll, or keypress
     // un-mutes the running audio instantly without having to press a play button
     const unlockSound = () => {
-      if (!audio) return;
+      const curAudio = audioRef.current;
+      if (!curAudio) return;
 
       // Resume AudioContext if suspended (required by Safari / WebKit)
       if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
         audioContextRef.current.resume().catch(() => {});
       }
 
-      audio.muted = false;
-      audio.volume = 0.35;
+      curAudio.muted = false;
+      curAudio.volume = 0.35;
 
-      const p = audio.play();
+      const p = curAudio.play();
       if (p !== undefined) {
         p.then(() => {
           setIsPlaying(true);
@@ -210,6 +211,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       events.forEach((evt) => {
         window.removeEventListener(evt, unlockSound, true);
         document.removeEventListener(evt, unlockSound, true);
+        document.body?.removeEventListener(evt, unlockSound, true);
       });
     };
 
@@ -222,6 +224,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     events.forEach((evt) => {
       window.addEventListener(evt, unlockSound, { capture: true, passive: true });
       document.addEventListener(evt, unlockSound, { capture: true, passive: true });
+      document.body?.addEventListener(evt, unlockSound, { capture: true, passive: true });
     });
 
     // Also unmute when user switches back to tab or focuses window
