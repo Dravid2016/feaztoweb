@@ -367,16 +367,17 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           flex-wrap: nowrap;
         }
 
-        /* Transition Card / Capsule Image inside the word "home" replacing letter 'o' */
+        /* Transition Card / Circle Food Pod inside the word "home" replacing letter 'o' */
         .hero-home-food-capsule {
           display: inline-flex;
           align-items: center;
           justify-content: center;
           vertical-align: -0.06em;
-          width: clamp(52px, 6.2vw, 84px);
-          height: clamp(32px, 3.8vw, 50px);
-          margin: 0 3px;
-          border-radius: 9999px;
+          width: clamp(38px, 4.4vw, 56px);
+          height: clamp(38px, 4.4vw, 56px);
+          aspect-ratio: 1 / 1;
+          margin: 0 4px;
+          border-radius: 50%;
           background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.08) 100%);
           backdrop-filter: blur(16px) saturate(180%);
           -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -398,7 +399,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 9999px;
+          border-radius: 50%;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 60%);
           pointer-events: none;
           z-index: 4;
@@ -408,7 +409,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 9999px;
+          border-radius: 50%;
           box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5);
           pointer-events: none;
           z-index: 3;
@@ -451,10 +452,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: clamp(62px, 8.4vw, 94px);
-          height: clamp(38px, 5.2vw, 58px);
+          width: clamp(40px, 5.4vw, 62px);
+          height: clamp(40px, 5.4vw, 62px);
+          aspect-ratio: 1 / 1;
           margin: 0 7px;
-          border-radius: 9999px;
+          border-radius: 50%;
           background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 60%, rgba(255, 255, 255, 0.05) 100%);
           backdrop-filter: blur(16px) saturate(180%);
           -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -478,7 +480,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 9999px;
+          border-radius: 50%;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 60%);
           pointer-events: none;
           z-index: 4;
@@ -489,7 +491,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 9999px;
+          border-radius: 50%;
           box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.45);
           pointer-events: none;
           z-index: 3;
