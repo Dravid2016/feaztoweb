@@ -26,10 +26,10 @@ export const KitchenVerificationPage: React.FC<KitchenVerificationPageProps> = (
       icon: <UtensilsCrossed size={28} className="step-icon-svg" />,
       tag: 'Sanitation Baseline',
       description:
-        'FEAZTO strictly verifies personal hygiene standards and safe food-handling practices for every cook. This includes clean attire, grooming, handwashing protocols, cross-contamination prevention, and clean workstations.',
+        'FEAZTO strictly verifies personal hygiene standards and safe food handling practices for every cook. This includes clean attire, grooming, handwashing protocols, cross-contamination prevention, and clean workstations.',
       keyPoints: [
         'Mandatory grooming & clean apron protocols',
-        'Handwashing & glove-usage compliance',
+        'Handwashing & glove usage compliance',
         'Rigorous cross-contamination prevention'
       ]
     },
