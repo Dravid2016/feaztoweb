@@ -949,7 +949,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           /* Keeps top and sides 100% unmasked while softly dissolving lower edge before reaching the border bottom */
           mask-image: linear-gradient(to bottom, black 0%, black 66%, transparent 84%);
           -webkit-mask-image: linear-gradient(to bottom, black 0%, black 66%, transparent 84%);
-          animation: slowSpinKolam 240s linear infinite; /* Calming, slow rotation */
+          animation: slowSpinKolam 90s linear infinite; /* Graceful, slightly increased rotation speed */
         }
 
         @keyframes slowSpinKolam {
