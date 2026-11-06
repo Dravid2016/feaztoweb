@@ -1302,7 +1302,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         /* Rectangular Card on the Left Side of the page */
         .showcase-left-blank-card {
           width: 100%;
-          min-height: 520px;
+          min-height: auto;
           background: linear-gradient(145deg, #FFFDF8 0%, #FFF8E6 100%);
           border-radius: 28px;
           border: none;
@@ -1311,7 +1311,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           display: flex;
           align-items: stretch;
           justify-content: stretch;
-          padding: 28px;
+          padding: 24px;
           box-sizing: border-box;
           transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.4s ease;
         }
@@ -1392,8 +1392,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .blank-card-inner-frame {
           width: 100%;
-          height: 100%;
-          min-height: 440px;
+          height: auto;
+          min-height: auto;
           border: none;
           border-radius: 20px;
           background: rgba(255, 253, 247, 0.65);
@@ -1401,7 +1401,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           flex-direction: column;
           align-items: flex-start;
           justify-content: flex-start;
-          padding: 24px;
+          padding: 22px;
           box-sizing: border-box;
           transition: background 0.35s ease, border-color 0.35s ease;
         }
@@ -1592,7 +1592,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           grid-template-columns: repeat(2, 1fr);
           gap: 10px;
           width: 100%;
-          margin-bottom: 24px;
+          margin-bottom: 16px;
         }
 
         .tab-highlight-pill {
@@ -1651,7 +1651,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .tab-section-block {
           width: 100%;
-          margin-bottom: 16px;
+          margin-bottom: 12px;
         }
 
         .tab-section-label {
@@ -1682,8 +1682,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           justify-content: space-between;
           flex-wrap: wrap;
           gap: 16px;
-          margin-top: auto;
-          padding-top: 14px;
+          margin-top: 8px;
+          padding-top: 12px;
         }
 
         .tab-benefit-callout {
@@ -1937,12 +1937,13 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .showcase-left-blank-card {
             width: 100%;
             max-width: 100%;
-            min-height: 280px;
-            padding: 20px;
+            min-height: auto;
+            padding: 18px;
           }
 
           .blank-card-inner-frame {
-            min-height: 240px;
+            min-height: auto;
+            padding: 16px;
           }
 
           .tab-footer-row {
