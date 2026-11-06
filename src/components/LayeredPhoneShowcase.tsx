@@ -308,22 +308,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
                       </div>
                     </div>
 
-                    <div className="tab-footer-row">
-                      <div className="tab-benefit-callout">
-                        <Sparkles size={13} className="sparkle-gold" />
-                        <span>Sip clean energy without the afternoon crash or digestive distress.</span>
-                      </div>
-                      {navigate && (
-                        <button 
-                          type="button" 
-                          className="tab-action-btn carefe-btn"
-                          onClick={() => navigate('food')}
-                        >
-                          <span>Explore Carefe Menu</span>
-                          <ArrowRight size={16} />
-                        </button>
-                      )}
+                    <div className="tab-benefit-callout">
+                      <Sparkles size={13} className="sparkle-gold" />
+                      <span>Sip clean energy without the afternoon crash or digestive distress.</span>
                     </div>
+
+                    {navigate && (
+                      <button 
+                        type="button" 
+                        className="tab-action-btn carefe-btn"
+                        onClick={() => navigate('food')}
+                      >
+                        <span>Explore Carefe Menu</span>
+                        <ArrowRight size={16} />
+                      </button>
+                    )}
                   </div>
                 ) : activeTab === 'book' ? (
                   <div className="showcase-tab-content book-tab-body">
@@ -360,22 +359,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
                       </div>
                     </div>
 
-                    <div className="tab-footer-row">
-                      <div className="tab-benefit-callout">
-                        <Sparkles size={13} className="sparkle-gold" />
-                        <span>Save 3+ hours daily. Enjoy piping hot food cooked just the way your family likes it.</span>
-                      </div>
-                      {navigate && (
-                        <button 
-                          type="button" 
-                          className="tab-action-btn book-btn"
-                          onClick={() => navigate('cook')}
-                        >
-                          <span>Book Professional Cook</span>
-                          <ArrowRight size={16} />
-                        </button>
-                      )}
+                    <div className="tab-benefit-callout">
+                      <Sparkles size={13} className="sparkle-gold" />
+                      <span>Save 3+ hours daily. Enjoy piping hot food cooked just the way your family likes it.</span>
                     </div>
+
+                    {navigate && (
+                      <button 
+                        type="button" 
+                        className="tab-action-btn book-btn"
+                        onClick={() => navigate('cook')}
+                      >
+                        <span>Book Professional Cook</span>
+                        <ArrowRight size={16} />
+                      </button>
+                    )}
                   </div>
                 ) : (
                   <div className="showcase-tab-content feazto-tab-body">
@@ -412,22 +410,21 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
                       </div>
                     </div>
 
-                    <div className="tab-footer-row">
-                      <div className="tab-benefit-callout">
-                        <Sparkles size={13} className="sparkle-gold" />
-                        <span>Wholesome home cooked taste that comforts your gut and nourishes your family.</span>
-                      </div>
-                      {navigate && (
-                        <button 
-                          type="button" 
-                          className="tab-action-btn feazto-btn"
-                          onClick={() => navigate('food')}
-                        >
-                          <span>Explore Today's Batches</span>
-                          <ArrowRight size={16} />
-                        </button>
-                      )}
+                    <div className="tab-benefit-callout">
+                      <Sparkles size={13} className="sparkle-gold" />
+                      <span>Wholesome home cooked taste that comforts your gut and nourishes your family.</span>
                     </div>
+
+                    {navigate && (
+                      <button 
+                        type="button" 
+                        className="tab-action-btn feazto-btn"
+                        onClick={() => navigate('food')}
+                      >
+                        <span>Explore Today's Batches</span>
+                        <ArrowRight size={16} />
+                      </button>
+                    )}
                   </div>
                 )}
               </div>
@@ -1676,17 +1673,6 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           color: #FFD233;
         }
 
-        .tab-footer-row {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          flex-wrap: wrap;
-          gap: 16px;
-          margin-top: 8px;
-          padding-top: 12px;
-        }
-
         .tab-benefit-callout {
           display: flex;
           align-items: flex-start;
@@ -1694,8 +1680,9 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           font-size: 0.85rem;
           font-weight: 600;
           line-height: 1.45;
-          flex: 1 1 200px;
-          min-width: 180px;
+          width: 100%;
+          margin-top: 10px;
+          margin-bottom: 16px;
         }
 
         .sparkle-gold {
@@ -1949,20 +1936,13 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             padding: 16px;
           }
 
-          .tab-footer-row {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
-            width: 100%;
-            margin-top: 4px;
-            padding-top: 4px;
-          }
-
           .tab-benefit-callout {
             max-width: 100%;
             width: 100%;
             font-size: 0.86rem;
             line-height: 1.45;
+            margin-top: 6px;
+            margin-bottom: 14px;
           }
 
           .tab-action-btn {
