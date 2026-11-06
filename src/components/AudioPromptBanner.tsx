@@ -25,8 +25,8 @@ export const AudioPromptBanner: React.FC = () => {
           <Volume2 size={16} className="audio-pulse-icon" />
         </span>
         <span className="audio-prompt-text-group">
-          <strong className="audio-prompt-title">Sound Available</strong>
-          <span className="audio-prompt-subtitle">Click the audio button to enable authentic regional culinary audio</span>
+          <strong className="audio-prompt-title">Enable Sound</strong>
+          <span className="audio-prompt-subtitle">Click to enable authentic regional culinary audio</span>
         </span>
       </button>
 

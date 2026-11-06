@@ -147,10 +147,13 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // ── AUTOPLAY ORCHESTRATION ──
-  // Attempt unmuted playback on fresh load or reload.
-  // If the browser blocks it, remain muted and show subtle audio button indicator.
-  // NEVER trigger audio through random taps, touches, scrolls, or clicks.
+  // ── AUTOPLAY & ONE-SHOT INTERACTION FALLBACK ──
+  // 1. On fresh opening or reload: attempt unmuted autoplay immediately.
+  // 2. If blocked by browser: listen for the visitor's first genuine scroll or touch.
+  // 3. On that first interaction: make ONE controlled attempt to start audio.
+  // 4. Do NOT repeatedly attempt on every scroll/touch.
+  // 5. If still blocked: show the dedicated Enable Sound button.
+  // 6. If visitor manually muted: never automatically unmute through scroll/touch/navigation.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -165,28 +168,84 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return;
     }
 
-    // Fresh visit or reload without manual mute: attempt autoplay
-    audio.muted = false;
-    audio.volume = 0.35;
+    // Helper: controlled attempt to start audio with sound
+    const attemptStartAudio = async (): Promise<boolean> => {
+      if (!audio) return false;
+      if (userMutedRef.current) return false;
 
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          setIsPlaying(true);
-          setIsMuted(false);
-          setNeedsInteraction(false);
-          initAudioAnalyser();
-        })
-        .catch(() => {
-          // Autoplay blocked by browser policy without prior explicit user activation.
-          // Keep audio paused/muted and show subtle prompt to click the dedicated audio button.
-          audio.muted = true;
-          setIsMuted(true);
-          setIsPlaying(false);
-          setNeedsInteraction(true);
+      try {
+        if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+          audioContextRef.current.resume().catch(() => {});
+        }
+
+        audio.muted = false;
+        audio.volume = 0.35;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          await playPromise;
+        }
+
+        setIsPlaying(true);
+        setIsMuted(false);
+        setNeedsInteraction(false);
+        initAudioAnalyser();
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    let cleanupInteractionListener: (() => void) | null = null;
+
+    // First: attempt unmuted autoplay on initial load / reload
+    attemptStartAudio().then((success) => {
+      if (success) {
+        // Autoplay succeeded right away
+        return;
+      }
+
+      // If autoplay was blocked and user hasn't manually muted:
+      // Listen for the visitor's FIRST genuine scroll or touch interaction.
+      let hasAttemptedFallback = false;
+
+      const onFirstInteraction = () => {
+        if (hasAttemptedFallback) return;
+        hasAttemptedFallback = true;
+
+        // Immediately detach so we do NOT attempt on every subsequent scroll or touch
+        if (cleanupInteractionListener) {
+          cleanupInteractionListener();
+          cleanupInteractionListener = null;
+        }
+
+        // If user manually muted in the interim, do nothing
+        if (userMutedRef.current) return;
+
+        // Make ONE controlled attempt to start audio
+        attemptStartAudio().then((fallbackSuccess) => {
+          if (!fallbackSuccess) {
+            // Still blocked: keep muted and show the dedicated Enable Sound button
+            audio.muted = true;
+            setIsMuted(true);
+            setIsPlaying(false);
+            setNeedsInteraction(true);
+          }
         });
-    }
+      };
+
+      const interactionEvents = ['touchstart', 'scroll', 'wheel'];
+      interactionEvents.forEach((evt) => {
+        window.addEventListener(evt, onFirstInteraction, { capture: true, passive: true });
+        document.addEventListener(evt, onFirstInteraction, { capture: true, passive: true });
+      });
+
+      cleanupInteractionListener = () => {
+        interactionEvents.forEach((evt) => {
+          window.removeEventListener(evt, onFirstInteraction, true);
+          document.removeEventListener(evt, onFirstInteraction, true);
+        });
+      };
+    });
 
     // Sync isPlaying state with audio element events
     const onPlay = () => {
@@ -201,6 +260,9 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     audio.addEventListener('pause', onPause);
 
     return () => {
+      if (cleanupInteractionListener) {
+        cleanupInteractionListener();
+      }
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
       if (audioContextRef.current) {
