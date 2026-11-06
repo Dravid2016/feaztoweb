@@ -372,11 +372,11 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          vertical-align: -0.06em;
-          width: clamp(38px, 4.4vw, 56px);
-          height: clamp(38px, 4.4vw, 56px);
+          vertical-align: -0.04em;
+          width: 0.74em;
+          height: 0.74em;
           aspect-ratio: 1 / 1;
-          margin: 0 4px;
+          margin: 0 0.05em;
           border-radius: 50%;
           background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.08) 100%);
           backdrop-filter: blur(16px) saturate(180%);
@@ -1242,6 +1242,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           .hero-master-headline {
             font-size: 2.2rem;
             line-height: 1.2;
+          }
+          .hero-home-food-capsule {
+            width: 0.74em !important;
+            height: 0.74em !important;
+            vertical-align: -0.04em !important;
+            margin: 0 0.05em !important;
           }
           .hero-master-subcopy {
             font-size: 0.98rem;
