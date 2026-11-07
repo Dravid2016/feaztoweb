@@ -163,8 +163,19 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
     audio.volume = 0.35;
 
+    // Detailed console diagnostics
+    console.log('[Feazto Audio Diagnostics] Context mounted.', {
+      audioElementReady: audio.readyState,
+      audioSrc: audio.currentSrc || audio.src,
+      audioPaused: audio.paused,
+      audioMuted: audio.muted,
+      userMutedSaved: userMutedRef.current,
+      localStoragePref: typeof window !== 'undefined' ? localStorage.getItem('feazto_audio_muted') : null
+    });
+
     // If visitor previously clicked to mute, preserve mute preference and do not force playback
     if (userMutedRef.current) {
+      console.log('[Feazto Audio Diagnostics] User previously manually muted audio. Skipping automatic playback.');
       audio.muted = true;
       setIsMuted(true);
       return;
@@ -174,6 +185,13 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     const triggerAudioPlayback = (triggerSource: string): Promise<boolean> => {
       if (!audio) return Promise.resolve(false);
       if (userMutedRef.current) return Promise.resolve(false);
+
+      console.log(`[Feazto Audio Diagnostics] triggerAudioPlayback invoked by: ${triggerSource}`, {
+        audioReadyState: audio.readyState,
+        audioPaused: audio.paused,
+        audioMuted: audio.muted,
+        audioVolume: audio.volume
+      });
 
       try {
         if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
@@ -189,7 +207,11 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         if (playPromise !== undefined) {
           return playPromise
             .then(() => {
-              console.info(`[Feazto Audio] Playback started successfully via: ${triggerSource}`);
+              console.info(`[Feazto Audio Diagnostics] Playback SUCCESSFUL via: ${triggerSource}`, {
+                currentTime: audio.currentTime,
+                paused: audio.paused,
+                muted: audio.muted
+              });
               setIsPlaying(true);
               setIsMuted(false);
               initAudioAnalyser();
@@ -198,13 +220,14 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
             .catch((err: unknown) => {
               const error = err as Error;
               console.warn(
-                `[Feazto Audio] Playback attempt via ${triggerSource} rejected by browser autoplay policy:`,
+                `[Feazto Audio Diagnostics] Playback attempt via ${triggerSource} REJECTED by browser policy:`,
                 error.name,
                 error.message
               );
               return false;
             });
         } else {
+          console.info(`[Feazto Audio Diagnostics] Playback initiated (no Promise returned) via: ${triggerSource}`);
           setIsPlaying(true);
           setIsMuted(false);
           initAudioAnalyser();
@@ -212,7 +235,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
       } catch (err: unknown) {
         const error = err as Error;
-        console.warn(`[Feazto Audio] Playback call error via ${triggerSource}:`, error);
+        console.error(`[Feazto Audio Diagnostics] Synchronous exception during play() call via ${triggerSource}:`, error);
         return Promise.resolve(false);
       }
     };
@@ -227,10 +250,11 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         return;
       }
 
-      console.info('[Feazto Audio] Initial autoplay blocked by browser policy. Registering first-interaction listeners.');
+      console.info('[Feazto Audio Diagnostics] Initial unmuted autoplay blocked or requires interaction. Registering desktop click / mobile touch listeners.');
 
       const removeTemporaryListeners = () => {
         if (cleanupListeners) {
+          console.log('[Feazto Audio Diagnostics] Removing temporary user interaction listeners.');
           cleanupListeners();
           cleanupListeners = null;
         }
@@ -243,6 +267,8 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
           return;
         }
 
+        console.log(`[Feazto Audio Diagnostics] First user interaction detected: event="${evt.type}", target=`, evt.target);
+
         // Call play synchronously in the event dispatch thread
         triggerAudioPlayback(`event:${evt.type}`).then((success) => {
           if (success) {
@@ -253,19 +279,21 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       };
 
       // Events for:
-      // - First desktop scroll: 'wheel', 'scroll'
-      // - First mobile touch: 'touchstart', 'touchend', 'pointerup', 'pointerdown'
-      // - First mobile scroll: 'touchmove', 'scroll'
-      // - First interaction: 'click', 'keydown'
+      // - Desktop first click: 'click', 'pointerdown', 'pointerup', 'mousedown', 'mouseup'
+      // - Desktop keyboard interaction: 'keydown'
+      // - Mobile touch interaction: 'touchstart', 'touchend', 'touchmove'
+      // - Scrolling: 'wheel', 'scroll'
       const targetEvents = [
+        'click',
+        'pointerdown',
+        'pointerup',
+        'mousedown',
+        'mouseup',
         'touchstart',
         'touchend',
         'touchmove',
         'wheel',
         'scroll',
-        'pointerup',
-        'pointerdown',
-        'click',
         'keydown',
       ];
 
