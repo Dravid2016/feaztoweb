@@ -1134,6 +1134,24 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           }
         }
 
+        @media (max-width: 640px) {
+          .input-btn-group {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .waitlist-input {
+            width: 100%;
+            box-sizing: border-box;
+          }
+
+          .btn-waitlist-submit {
+            width: 100%;
+            justify-content: center;
+            box-sizing: border-box;
+          }
+        }
+
         @media (max-width: 480px) {
           .feazto-hero-stage {
             max-width: 320px;
