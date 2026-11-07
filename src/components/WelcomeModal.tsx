@@ -167,16 +167,16 @@ export const WelcomeModal: React.FC = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          margin: 0 auto 18px;
+          margin: 0 auto 16px;
           width: 100%;
         }
 
         .feazto-welcome-logo-img {
-          height: 58px;
+          height: 84px;
           width: auto;
-          max-width: 160px;
+          max-width: 260px;
           object-fit: contain;
-          filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+          filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.15));
         }
 
         .feazto-welcome-heading {
@@ -197,7 +197,8 @@ export const WelcomeModal: React.FC = () => {
           }
 
           .feazto-welcome-logo-img {
-            height: 50px;
+            height: 72px;
+            max-width: 220px;
           }
 
           .feazto-welcome-heading {
