@@ -4,7 +4,7 @@ import { useAudioPlayer } from '../context/AudioPlayerContext';
 
 export const WelcomeModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { startAudioWithSound, muteAudio } = useAudioPlayer();
+  const { startAudioWithSound } = useAudioPlayer();
 
   useEffect(() => {
     // Show only on a new browser session / fresh visit
@@ -22,26 +22,18 @@ export const WelcomeModal: React.FC = () => {
     }
   }, []);
 
-  const handleDismissAndPlay = () => {
+  const handleClose = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
     try {
       sessionStorage.setItem('feazto_welcome_seen', 'true');
     } catch {
       // Ignore
     }
     setIsOpen(false);
-    // Clicking anywhere on the card or overlay activates background audio
+    // When canceling/closing the welcome card, audio starts playing immediately
     startAudioWithSound();
-  };
-
-  const handleCloseOnly = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    try {
-      sessionStorage.setItem('feazto_welcome_seen', 'true');
-    } catch {
-      // Ignore
-    }
-    setIsOpen(false);
-    muteAudio();
   };
 
   if (!isOpen) return null;
@@ -52,16 +44,16 @@ export const WelcomeModal: React.FC = () => {
       role="dialog"
       aria-modal="true"
       aria-labelledby="welcome-title"
-      onClick={handleDismissAndPlay}
+      onClick={() => handleClose()}
     >
       <div
         className="feazto-welcome-card"
-        onClick={handleDismissAndPlay}
+        onClick={() => handleClose()}
       >
         {/* Top close button */}
         <button
           type="button"
-          onClick={handleCloseOnly}
+          onClick={(e) => handleClose(e)}
           className="feazto-welcome-close"
           aria-label="Close welcome dialog"
           title="Close"
