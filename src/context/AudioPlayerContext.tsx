@@ -39,17 +39,30 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
   const animationFrameRef = useRef<number | null>(null);
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [isMuted, setIsMuted] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem('feazto_audio_muted') === 'true';
+    } catch {
+      return false;
+    }
+  });
   const [needsInteraction, setNeedsInteraction] = useState<boolean>(false);
   const [audioLevel, setAudioLevel] = useState<number>(0);
   const [isOrbModalOpen, setIsOrbModalOpen] = useState<boolean>(false);
 
-  // User manual mute flag (only true when user explicitly taps orb to mute in current session)
-  const userMutedRef = useRef<boolean>(false);
+  // User manual mute flag (true when visitor has explicitly muted and preserved in localStorage)
+  const userMutedRef = useRef<boolean>(
+    typeof window !== 'undefined' && localStorage.getItem('feazto_audio_muted') === 'true'
+  );
 
   const setManualMuteState = (muted: boolean) => {
     userMutedRef.current = muted;
     setIsMuted(muted);
+    try {
+      localStorage.setItem('feazto_audio_muted', muted ? 'true' : 'false');
+    } catch {
+      // Ignored
+    }
   };
 
   // Smooth filter for audio level tracking to eliminate visual jumps
@@ -134,19 +147,26 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // ── AUTOPLAY & ANYWHERE TOUCH/CLICK/SCROLL ACTIVATION ──
-  // 1. On fresh opening or reload: attempt unmuted autoplay immediately.
-  // 2. If blocked by browser: listen for user interaction anywhere (touch, click, scroll).
-  // 3. On interaction: start audio playback immediately.
-  // 4. Orb button controls manual mute/unmute normally.
-  // 5. If user manually muted via orb button, respect preference.
+  // ── AUTOPLAY & FIRST SCROLL / TOUCH ACTIVATION ──
+  // 1. Initial Opening/Reload: immediately attempt to play background audio with sound.
+  // 2. If browser autoplay is permitted, audio starts automatically.
+  // 3. If autoplay is blocked: wait for the visitor's first genuine scroll or touch interaction.
+  //    - Supports desktop mouse wheel scrolling, mobile touch scrolling, and touch interaction.
+  //    - Registers listeners only for the initial activation attempt.
+  //    - Once audio successfully starts, immediately removes these temporary listeners.
+  //    - Does NOT repeatedly trigger playback attempts on every scroll or touch.
+  //    - Does not interfere with normal scrolling or navigation (passive listeners, standard events).
+  // 4. If visitor manually mutes audio with the circular button:
+  //    - Saves preference in localStorage.
+  //    - Never automatically unmutes through scrolling, touching, or navigation.
+  //    - Preserves mute preference after reload.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.35;
 
-    // If visitor previously clicked to mute, respect it strictly
+    // If visitor previously muted, preserve mute preference and do not attempt unmuted playback
     if (userMutedRef.current) {
       audio.muted = true;
       setIsMuted(true);
@@ -154,7 +174,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       return;
     }
 
-    // Helper: controlled attempt to start audio with sound
+    // Helper: attempt starting audio with sound using native play()
     const attemptStartAudio = async (): Promise<boolean> => {
       if (!audio) return false;
       if (userMutedRef.current) return false;
@@ -181,50 +201,68 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       }
     };
 
-    let cleanupInteractionListener: (() => void) | null = null;
+    let cleanupListeners: (() => void) | null = null;
 
-    // First: attempt unmuted autoplay on initial load / reload
-    attemptStartAudio().then((success) => {
-      if (success) {
-        // Autoplay succeeded right away
+    // 1. Immediate unmuted autoplay attempt on initial opening / reload
+    attemptStartAudio().then((autoplayPermitted) => {
+      if (autoplayPermitted) {
+        // Autoplay succeeded right away without user interaction
         return;
       }
 
-      // If autoplay was blocked by browser (mobile / desktop autoplay policy):
-      // Listen for the visitor's interaction anywhere on the website.
-      let activated = false;
+      // If autoplay was blocked, listen for the visitor's FIRST genuine scroll or touch
+      let activatedOrAttempted = false;
 
-      const onUserInteractionAnywhere = () => {
-        if (activated) return;
+      const removeTemporaryListeners = () => {
+        if (cleanupListeners) {
+          cleanupListeners();
+          cleanupListeners = null;
+        }
+      };
+
+      const handleFirstInteraction = () => {
+        // Prevent repeated activation attempts
+        if (activatedOrAttempted) return;
+        activatedOrAttempted = true;
+
+        // If user manually muted in the interim, abort
         if (userMutedRef.current) {
-          if (cleanupInteractionListener) {
-            cleanupInteractionListener();
-            cleanupInteractionListener = null;
-          }
+          removeTemporaryListeners();
           return;
         }
 
-        attemptStartAudio().then((fallbackSuccess) => {
-          if (fallbackSuccess) {
-            activated = true;
-            if (cleanupInteractionListener) {
-              cleanupInteractionListener();
-              cleanupInteractionListener = null;
-            }
+        // Single controlled attempt to start audio
+        attemptStartAudio().then((started) => {
+          if (started) {
+            // Once audio successfully starts, remove listeners immediately
+            removeTemporaryListeners();
+          } else {
+            // If the browser still rejected this specific event, leave circular button
+            // and remove listeners to avoid repeated triggers on every subsequent scroll/touch
+            removeTemporaryListeners();
+            audio.muted = true;
+            setIsMuted(true);
+            setIsPlaying(false);
+            setNeedsInteraction(true);
           }
         });
       };
 
-      const interactionEvents = ['pointerdown', 'touchstart', 'touchend', 'click', 'scroll', 'wheel', 'keydown'];
-      interactionEvents.forEach((evt) => {
-        window.addEventListener(evt, onUserInteractionAnywhere, { capture: true, passive: true });
-        document.addEventListener(evt, onUserInteractionAnywhere, { capture: true, passive: true });
+      // Events for:
+      // - First desktop scroll (wheel, scroll)
+      // - First mobile touch interaction (touchstart, pointerdown)
+      // - First mobile scroll (touchmove, scroll)
+      const targetEvents = ['touchstart', 'touchmove', 'wheel', 'scroll', 'pointerdown'];
+
+      targetEvents.forEach((evt) => {
+        window.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
+        document.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
       });
 
-      cleanupInteractionListener = () => {
-        interactionEvents.forEach((evt) => {
-          window.removeEventListener(evt, onUserInteractionAnywhere, true);
-          document.removeEventListener(evt, onUserInteractionAnywhere, true);
+      cleanupListeners = () => {
+        targetEvents.forEach((evt) => {
+          window.removeEventListener(evt, handleFirstInteraction, true);
+          document.removeEventListener(evt, handleFirstInteraction, true);
         });
       };
     });
@@ -242,8 +280,8 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     audio.addEventListener('pause', onPause);
 
     return () => {
-      if (cleanupInteractionListener) {
-        cleanupInteractionListener();
+      if (cleanupListeners) {
+        cleanupListeners();
       }
       audio.removeEventListener('play', onPlay);
       audio.removeEventListener('pause', onPause);
