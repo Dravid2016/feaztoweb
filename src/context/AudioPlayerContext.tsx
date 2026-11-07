@@ -15,6 +15,8 @@ interface AudioPlayerContextType {
   isMuted: boolean;
   audioLevel: number;
   togglePlayback: () => void;
+  startAudioWithSound: () => Promise<boolean>;
+  muteAudio: () => void;
   needsInteraction: boolean;
   dismissPrompt: () => void;
   openOrbModal: () => void;
@@ -369,6 +371,55 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     }
   };
 
+  // Dedicated method to synchronously start audio from a trusted user gesture (e.g. Welcome Popup button)
+  const startAudioWithSound = (): Promise<boolean> => {
+    const audio = audioRef.current;
+    if (!audio) return Promise.resolve(false);
+
+    try {
+      if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
+        audioContextRef.current.resume().catch(() => {});
+      }
+
+      audio.muted = false;
+      audio.volume = 0.35;
+      setManualMuteState(false);
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        return playPromise
+          .then(() => {
+            console.info('[Feazto Audio] Audio successfully started via Welcome Popup.');
+            setIsPlaying(true);
+            setIsMuted(false);
+            initAudioAnalyser();
+            return true;
+          })
+          .catch((err: unknown) => {
+            console.warn('[Feazto Audio] Playback attempt via Welcome Popup rejected:', err);
+            return false;
+          });
+      } else {
+        setIsPlaying(true);
+        setIsMuted(false);
+        initAudioAnalyser();
+        return Promise.resolve(true);
+      }
+    } catch (err: unknown) {
+      console.error('[Feazto Audio] Exception during startAudioWithSound:', err);
+      return Promise.resolve(false);
+    }
+  };
+
+  const muteAudio = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.muted = true;
+    setManualMuteState(true);
+    setIsPlaying(false);
+    audio.pause();
+  };
+
   const dismissPrompt = () => {
     setNeedsInteraction(false);
   };
@@ -383,6 +434,8 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         isMuted,
         audioLevel,
         togglePlayback,
+        startAudioWithSound,
+        muteAudio,
         needsInteraction,
         dismissPrompt,
         openOrbModal,
