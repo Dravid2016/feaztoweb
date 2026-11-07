@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Volume2, VolumeX, ArrowRight, X } from 'lucide-react';
+import { Volume2, VolumeX, ArrowRight, X } from 'lucide-react';
 import { useAudioPlayer } from '../context/AudioPlayerContext';
 
 export const WelcomeModal: React.FC = () => {
@@ -61,18 +61,12 @@ export const WelcomeModal: React.FC = () => {
         {/* Brand Icon Badge */}
         <div className="feazto-welcome-badge">
           <img src="/brand/feazto-logo.svg" alt="Feazto" className="feazto-welcome-logo" />
-          <span className="feazto-welcome-sparkle">
-            <Sparkles size={14} />
-          </span>
         </div>
 
-        {/* Content */}
+        {/* Heading Only */}
         <h2 id="welcome-title" className="feazto-welcome-heading">
           Welcome to Feazto!
         </h2>
-        <p className="feazto-welcome-desc">
-          Discover a smarter way to experience fresh food, crafted with care and delivered with trust.
-        </p>
 
         {/* Primary Action Button: Let's Explore */}
         <button
@@ -191,36 +185,13 @@ export const WelcomeModal: React.FC = () => {
           object-fit: contain;
         }
 
-        .feazto-welcome-sparkle {
-          position: absolute;
-          top: -4px;
-          right: -4px;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #111111;
-          color: #FAC921;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
         .feazto-welcome-heading {
           font-family: 'Poppins', sans-serif;
           font-size: 26px;
           font-weight: 700;
           color: #1A1A1A;
-          margin: 0 0 10px;
+          margin: 0 0 24px;
           letter-spacing: -0.02em;
-        }
-
-        .feazto-welcome-desc {
-          font-family: 'Inter', sans-serif;
-          font-size: 14.5px;
-          line-height: 1.55;
-          color: #555555;
-          margin: 0 0 28px;
         }
 
         .feazto-welcome-btn-primary {
