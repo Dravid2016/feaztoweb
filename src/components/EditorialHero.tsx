@@ -136,13 +136,12 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             </button>
           </div>
 
-          {/* Exclusive Bengaluru Launch Indicator Badge */}
-          <div className="hero-bengaluru-launch-badge" role="status" aria-label="Now serving in Bengaluru">
+          {/* Exclusive Bengaluru & Tamil Nadu Launch Indicator Badge */}
+          <div className="hero-bengaluru-launch-badge" role="status" aria-label="Coming soon in Bangalore and Tamil Nadu">
             {/* removed blinker */}
             <MapPin size={15} className="bengaluru-pin-icon" />
-            <span className="bengaluru-city-label">Now Live in</span>
-            <span className="bengaluru-city-name">Bengaluru</span>
-            <span className="bengaluru-tag-pill">Only</span>
+            <span className="bengaluru-city-label">Coming Soon in</span>
+            <span className="bengaluru-city-name">Bangalore and Tamil Nadu</span>
           </div>
         </div>
 
@@ -1257,6 +1256,19 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             flex-direction: column;
             width: 100%;
             gap: 12px;
+          }
+          .hero-bengaluru-launch-badge {
+            padding: 6px 14px;
+            gap: 6px;
+            margin-top: 18px;
+            margin-bottom: 16px;
+            max-width: 96%;
+          }
+          .bengaluru-city-label {
+            font-size: 0.76rem;
+          }
+          .bengaluru-city-name {
+            font-size: 0.82rem;
           }
           .master-primary-cta, .master-secondary-cta {
           position: relative;
