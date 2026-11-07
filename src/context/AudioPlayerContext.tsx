@@ -211,7 +211,7 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       }
 
       // If autoplay was blocked, listen for the visitor's FIRST genuine scroll or touch
-      let activatedOrAttempted = false;
+      let activated = false;
 
       const removeTemporaryListeners = () => {
         if (cleanupListeners) {
@@ -221,38 +221,28 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       };
 
       const handleFirstInteraction = () => {
-        // Prevent repeated activation attempts
-        if (activatedOrAttempted) return;
-        activatedOrAttempted = true;
+        if (activated) return;
 
-        // If user manually muted in the interim, abort
+        // If user manually muted in the interim, abort and clean up
         if (userMutedRef.current) {
           removeTemporaryListeners();
           return;
         }
 
-        // Single controlled attempt to start audio
+        // Attempt to start audio on user gesture
         attemptStartAudio().then((started) => {
           if (started) {
-            // Once audio successfully starts, remove listeners immediately
+            activated = true;
             removeTemporaryListeners();
-          } else {
-            // If the browser still rejected this specific event, leave circular button
-            // and remove listeners to avoid repeated triggers on every subsequent scroll/touch
-            removeTemporaryListeners();
-            audio.muted = true;
-            setIsMuted(true);
-            setIsPlaying(false);
-            setNeedsInteraction(true);
           }
         });
       };
 
       // Events for:
       // - First desktop scroll (wheel, scroll)
-      // - First mobile touch interaction (touchstart, pointerdown)
+      // - First mobile touch interaction (touchstart, touchend, pointerdown, click)
       // - First mobile scroll (touchmove, scroll)
-      const targetEvents = ['touchstart', 'touchmove', 'wheel', 'scroll', 'pointerdown'];
+      const targetEvents = ['touchstart', 'touchend', 'touchmove', 'wheel', 'scroll', 'pointerdown', 'click'];
 
       targetEvents.forEach((evt) => {
         window.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });

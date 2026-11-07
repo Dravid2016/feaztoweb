@@ -15,7 +15,6 @@ import { BlogPage } from './pages/BlogPage';
 import { CareersPage } from './pages/CareersPage';
 import { KitchenVerificationPage } from './pages/KitchenVerificationPage';
 import { AudioPlayerProvider } from './context/AudioPlayerContext';
-import { AudioPromptBanner } from './components/AudioPromptBanner';
 
 export function App() {
   const [currentRoute, setCurrentRoute] = useState<string>(() => {
@@ -89,7 +88,6 @@ export function App() {
         <Header currentRoute={currentRoute} navigate={navigate} />
         {renderCurrentPage()}
         <Footer navigate={navigate} />
-        <AudioPromptBanner />
       </div>
     </AudioPlayerProvider>
   );
