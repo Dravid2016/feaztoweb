@@ -147,20 +147,16 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // ── AUTOPLAY & FIRST INTERACTION (TOUCH, SCROLL, WHEEL, CLICK) PLAYBACK ──
+  // ── AUTOPLAY & FIRST INTERACTION (DESKTOP CLICK / POINTER, MOBILE TOUCH / SCROLL) ──
   // 1. Initial Opening / Reload: immediately attempt to play background audio with sound.
   // 2. If browser autoplay is permitted, audio starts automatically.
-  // 3. If autoplay is blocked: wait for the visitor's first genuine interaction.
-  //    - On mobile: touchstart, touchend, touchmove (mobile scroll).
-  //    - On desktop: wheel (mouse scroll), scroll, pointerup, click, keydown.
-  //    - Crucial: audio.play() is called SYNCHRONOUSLY directly inside the event handler stack
-  //      so modern browsers (iOS Safari, Android Chrome, Desktop Chrome/Firefox) do NOT drop
-  //      transient user activation due to microtasks or Promise delays.
-  //    - Listeners stay active until audio successfully starts producing sound.
-  //    - If audio.play() throws NotAllowedError on a passive gesture (e.g. desktop wheel without click),
-  //      we catch the error without breaking, log the browser diagnostic, and keep waiting for
-  //      a qualifying interaction or direct click on the circular Orb button.
-  //    - Once audio successfully starts, remove all temporary listeners immediately.
+  // 3. If autoplay is blocked:
+  //    - Desktop: triggers on first genuine mouse click anywhere on the page, pointer interaction, or keydown.
+  //    - Mobile: triggers on first genuine touch (touchstart, touchend, touchmove, pointerup).
+  //    - Crucial: audio.play() is called SYNCHRONOUSLY directly inside the trusted interaction event handler.
+  //    - Does NOT preventDefault or stopPropagation: the clicked element performs its normal action seamlessly.
+  //    - Once playback succeeds, all temporary activation listeners are immediately detached.
+  //    - Manual mute preference in localStorage is strictly honored and never overwritten.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
