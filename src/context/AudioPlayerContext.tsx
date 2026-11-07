@@ -147,37 +147,37 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     };
   }, []);
 
-  // ── AUTOPLAY & FIRST SCROLL / TOUCH ACTIVATION ──
-  // 1. Initial Opening/Reload: immediately attempt to play background audio with sound.
+  // ── AUTOPLAY & FIRST INTERACTION (TOUCH, SCROLL, WHEEL, CLICK) PLAYBACK ──
+  // 1. Initial Opening / Reload: immediately attempt to play background audio with sound.
   // 2. If browser autoplay is permitted, audio starts automatically.
-  // 3. If autoplay is blocked: wait for the visitor's first genuine scroll or touch interaction.
-  //    - Supports desktop mouse wheel scrolling, mobile touch scrolling, and touch interaction.
-  //    - Registers listeners only for the initial activation attempt.
-  //    - Once audio successfully starts, immediately removes these temporary listeners.
-  //    - Does NOT repeatedly trigger playback attempts on every scroll or touch.
-  //    - Does not interfere with normal scrolling or navigation (passive listeners, standard events).
-  // 4. If visitor manually mutes audio with the circular button:
-  //    - Saves preference in localStorage.
-  //    - Never automatically unmutes through scrolling, touching, or navigation.
-  //    - Preserves mute preference after reload.
+  // 3. If autoplay is blocked: wait for the visitor's first genuine interaction.
+  //    - On mobile: touchstart, touchend, touchmove (mobile scroll).
+  //    - On desktop: wheel (mouse scroll), scroll, pointerup, click, keydown.
+  //    - Crucial: audio.play() is called SYNCHRONOUSLY directly inside the event handler stack
+  //      so modern browsers (iOS Safari, Android Chrome, Desktop Chrome/Firefox) do NOT drop
+  //      transient user activation due to microtasks or Promise delays.
+  //    - Listeners stay active until audio successfully starts producing sound.
+  //    - If audio.play() throws NotAllowedError on a passive gesture (e.g. desktop wheel without click),
+  //      we catch the error without breaking, log the browser diagnostic, and keep waiting for
+  //      a qualifying interaction or direct click on the circular Orb button.
+  //    - Once audio successfully starts, remove all temporary listeners immediately.
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     audio.volume = 0.35;
 
-    // If visitor previously muted, preserve mute preference and do not attempt unmuted playback
+    // If visitor previously clicked to mute, preserve mute preference and do not force playback
     if (userMutedRef.current) {
       audio.muted = true;
       setIsMuted(true);
-      setNeedsInteraction(false);
       return;
     }
 
-    // Helper: attempt starting audio with sound using native play()
-    const attemptStartAudio = async (): Promise<boolean> => {
-      if (!audio) return false;
-      if (userMutedRef.current) return false;
+    // Direct synchronous playback trigger
+    const triggerAudioPlayback = (triggerSource: string): Promise<boolean> => {
+      if (!audio) return Promise.resolve(false);
+      if (userMutedRef.current) return Promise.resolve(false);
 
       try {
         if (audioContextRef.current && audioContextRef.current.state === 'suspended') {
@@ -186,32 +186,52 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
         audio.muted = false;
         audio.volume = 0.35;
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          await playPromise;
-        }
 
-        setIsPlaying(true);
-        setIsMuted(false);
-        setNeedsInteraction(false);
-        initAudioAnalyser();
-        return true;
-      } catch {
-        return false;
+        // Synchronous call to audio.play() preserving current event call stack
+        const playPromise = audio.play();
+
+        if (playPromise !== undefined) {
+          return playPromise
+            .then(() => {
+              console.info(`[Feazto Audio] Playback started successfully via: ${triggerSource}`);
+              setIsPlaying(true);
+              setIsMuted(false);
+              initAudioAnalyser();
+              return true;
+            })
+            .catch((err: unknown) => {
+              const error = err as Error;
+              console.warn(
+                `[Feazto Audio] Playback attempt via ${triggerSource} rejected by browser autoplay policy:`,
+                error.name,
+                error.message
+              );
+              return false;
+            });
+        } else {
+          setIsPlaying(true);
+          setIsMuted(false);
+          initAudioAnalyser();
+          return Promise.resolve(true);
+        }
+      } catch (err: unknown) {
+        const error = err as Error;
+        console.warn(`[Feazto Audio] Playback call error via ${triggerSource}:`, error);
+        return Promise.resolve(false);
       }
     };
 
     let cleanupListeners: (() => void) | null = null;
+    let hasSuccessfullyStarted = false;
 
     // 1. Immediate unmuted autoplay attempt on initial opening / reload
-    attemptStartAudio().then((autoplayPermitted) => {
-      if (autoplayPermitted) {
-        // Autoplay succeeded right away without user interaction
+    triggerAudioPlayback('initial-autoplay').then((started) => {
+      if (started) {
+        hasSuccessfullyStarted = true;
         return;
       }
 
-      // If autoplay was blocked, listen for the visitor's FIRST genuine scroll or touch
-      let activated = false;
+      console.info('[Feazto Audio] Initial autoplay blocked by browser policy. Registering first-interaction listeners.');
 
       const removeTemporaryListeners = () => {
         if (cleanupListeners) {
@@ -220,39 +240,48 @@ export const AudioPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
         }
       };
 
-      const handleFirstInteraction = () => {
-        if (activated) return;
-
-        // If user manually muted in the interim, abort and clean up
+      const handleUserGesture = (evt: Event) => {
+        if (hasSuccessfullyStarted) return;
         if (userMutedRef.current) {
           removeTemporaryListeners();
           return;
         }
 
-        // Attempt to start audio on user gesture
-        attemptStartAudio().then((started) => {
-          if (started) {
-            activated = true;
+        // Call play synchronously in the event dispatch thread
+        triggerAudioPlayback(`event:${evt.type}`).then((success) => {
+          if (success) {
+            hasSuccessfullyStarted = true;
             removeTemporaryListeners();
           }
         });
       };
 
       // Events for:
-      // - First desktop scroll (wheel, scroll)
-      // - First mobile touch interaction (touchstart, touchend, pointerdown, click)
-      // - First mobile scroll (touchmove, scroll)
-      const targetEvents = ['touchstart', 'touchend', 'touchmove', 'wheel', 'scroll', 'pointerdown', 'click'];
+      // - First desktop scroll: 'wheel', 'scroll'
+      // - First mobile touch: 'touchstart', 'touchend', 'pointerup', 'pointerdown'
+      // - First mobile scroll: 'touchmove', 'scroll'
+      // - First interaction: 'click', 'keydown'
+      const targetEvents = [
+        'touchstart',
+        'touchend',
+        'touchmove',
+        'wheel',
+        'scroll',
+        'pointerup',
+        'pointerdown',
+        'click',
+        'keydown',
+      ];
 
-      targetEvents.forEach((evt) => {
-        window.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
-        document.addEventListener(evt, handleFirstInteraction, { capture: true, passive: true });
+      targetEvents.forEach((evtName) => {
+        window.addEventListener(evtName, handleUserGesture, { capture: true, passive: true });
+        document.addEventListener(evtName, handleUserGesture, { capture: true, passive: true });
       });
 
       cleanupListeners = () => {
-        targetEvents.forEach((evt) => {
-          window.removeEventListener(evt, handleFirstInteraction, true);
-          document.removeEventListener(evt, handleFirstInteraction, true);
+        targetEvents.forEach((evtName) => {
+          window.removeEventListener(evtName, handleUserGesture, true);
+          document.removeEventListener(evtName, handleUserGesture, true);
         });
       };
     });
