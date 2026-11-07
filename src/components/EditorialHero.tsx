@@ -826,7 +826,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           gap: 9px;
           background: linear-gradient(135deg, rgba(255, 255, 255, 0.72) 0%, rgba(255, 251, 235, 0.48) 100%) !important;
           border: none !important;
-          padding: 8px 20px 8px 16px;
+          padding: 6px 6px 6px 16px;
           border-radius: 9999px;
           margin-top: 26px;
           margin-bottom: 22px;
@@ -836,6 +836,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
                       inset 0 1.5px 2px rgba(255, 255, 255, 0.9), 
                       inset 0 -1px 2px rgba(0, 0, 0, 0.03);
           transition: transform 0.22s ease, box-shadow 0.22s ease;
+          max-width: 95%;
+          flex-wrap: wrap;
         }
 
         .hero-bengaluru-launch-badge:hover {
@@ -880,10 +882,18 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .bengaluru-city-name {
-          font-size: 0.92rem;
+          font-size: 0.88rem;
           font-weight: 800;
-          color: #111111;
+          color: #1A1A1A;
           letter-spacing: -0.01em;
+          background: linear-gradient(135deg, #FFDF40 0%, #FAC921 50%, #F5B700 100%);
+          padding: 4px 14px;
+          border-radius: 9999px;
+          box-shadow: 0 2px 10px rgba(245, 183, 0, 0.35);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
         }
 
         .bengaluru-tag-pill {
@@ -1258,7 +1268,7 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             gap: 12px;
           }
           .hero-bengaluru-launch-badge {
-            padding: 6px 14px;
+            padding: 5px 5px 5px 12px;
             gap: 6px;
             margin-top: 18px;
             margin-bottom: 16px;
@@ -1268,7 +1278,8 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             font-size: 0.76rem;
           }
           .bengaluru-city-name {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
+            padding: 3px 10px;
           }
           .master-primary-cta, .master-secondary-cta {
           position: relative;
