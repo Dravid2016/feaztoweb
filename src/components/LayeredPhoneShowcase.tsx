@@ -1962,12 +1962,48 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           }
 
           .app-mode-tabs-header {
-            gap: 8px;
-            padding-left: 12px;
+            gap: 6px;
+            padding-left: 8px;
+            flex-wrap: wrap;
           }
 
           .tab-pill {
-            padding: 8px 18px;
+            padding: 7px 14px;
+            font-size: 0.88rem;
+          }
+
+          .tab-feazto {
+            padding: 10px 18px 8px 18px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .plenti-statement-title {
+            font-size: 1.35rem;
+          }
+
+          .statement-dish-capsule {
+            width: 50px;
+            height: 28px;
+            margin: 0 4px;
+          }
+
+          .download-store-actions-row {
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .store-action-btn {
+            width: 100%;
+          }
+
+          .device-banner-card {
+            max-width: 290px;
+            height: 430px;
+          }
+
+          .feazto-device-img {
+            height: 410px;
           }
         }
       `}</style>

@@ -600,20 +600,45 @@ export const DiscoverPage: React.FC<DiscoverPageProps> = ({ navigate }) => {
             grid-template-columns: 1fr;
           }
           .dish-detailed-card {
-            padding: 22px 20px;
+            padding: 20px 16px;
             min-height: auto;
+            overflow: hidden;
           }
           .dish-info-side {
-            padding-right: 90px;
+            padding-right: 75px;
           }
           .card-plate-anchor {
-            right: -110px;
-            width: 220px;
-            height: 220px;
+            right: -95px;
+            width: 180px;
+            height: 180px;
           }
           .plate-circular-frame {
-            width: 210px;
-            height: 210px;
+            width: 170px;
+            height: 170px;
+          }
+          .dish-metrics-row {
+            gap: 8px;
+          }
+          .metric-pill {
+            padding: 3px 7px;
+          }
+          .dish-card-name {
+            font-size: 1.15rem;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .dish-info-side {
+            padding-right: 65px;
+          }
+          .card-plate-anchor {
+            right: -85px;
+            width: 160px;
+            height: 160px;
+          }
+          .plate-circular-frame {
+            width: 150px;
+            height: 150px;
           }
         }
       `}</style>
