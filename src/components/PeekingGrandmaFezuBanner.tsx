@@ -23,13 +23,22 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
       //   Grandma and Fezu emerge and HIDE OUT slowly to the sides, peeking into full view!
       // - As you scroll further down past the hero:
       //   Grandma and Fezu glide back behind the banner to HIDE IN completely!
-      const grandmaTransX = currentHide * 255;
-      const grandmaTransY = currentHide * 20;
+      const currentWidth = typeof window !== 'undefined' ? (window.innerWidth || 1020) : 1020;
+      // Proportional displacement based on device category:
+      // Desktop (>= 1024px): 255px / 280px
+      // Tablet (768px - 1023px): 140px / 155px
+      // Mobile (< 768px): 50px / 55px (keeps them perfectly visible flanking the phone inside screen)
+      const maxTransXG = currentWidth >= 1024 ? 255 : currentWidth >= 768 ? 140 : 50;
+      const maxTransXF = currentWidth >= 1024 ? 280 : currentWidth >= 768 ? 155 : 55;
+      const transYScale = currentWidth < 768 ? 8 : 20;
+
+      const grandmaTransX = currentHide * maxTransXG;
+      const grandmaTransY = currentHide * transYScale;
       const grandmaTilt = currentHide * 3.5;
       const grandmaOpacity = Math.max(1 - currentHide * 1.3, 0);
 
-      const fezuTransX = -currentHide * 280;
-      const fezuTransY = currentHide * 20;
+      const fezuTransX = -currentHide * maxTransXF;
+      const fezuTransY = currentHide * transYScale;
       const fezuTilt = -currentHide * 3.5;
       const fezuOpacity = Math.max(1 - currentHide * 1.3, 0);
 
@@ -97,6 +106,8 @@ export const PeekingGrandmaFezuBanner: React.FC = () => {
         .peeking-banner-outer-wrapper {
           position: relative;
           width: 100%;
+          max-width: 100vw;
+          overflow-x: clip;
           display: flex;
           justify-content: center;
           margin-top: 10px;

@@ -519,6 +519,10 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           display: flex;
           flex-direction: column;
           align-items: center;
+          width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
+          overflow-x: clip;
         }
 
         .plenti-statement-container {
@@ -1882,6 +1886,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             min-height: auto;
             flex-direction: column;
             gap: 32px;
+            overflow: hidden;
+            max-width: 100vw;
           }
 
           .device-banner-card {
@@ -1908,6 +1914,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             top: -24px; /* Lift the dish card slightly upper on mobile view */
             transform: none;
             width: 100%;
+            max-width: 100vw;
+            overflow: hidden;
             margin-bottom: -14px;
           }
 
@@ -1979,31 +1987,40 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         @media (max-width: 480px) {
           .plenti-statement-title {
-            font-size: 1.35rem;
+            font-size: clamp(1.2rem, 5.5vw, 1.45rem);
           }
 
           .statement-dish-capsule {
-            width: 50px;
-            height: 28px;
-            margin: 0 4px;
+            width: 48px;
+            height: 26px;
+            margin: 0 3px;
           }
 
           .download-store-actions-row {
             flex-direction: column;
             gap: 10px;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
           }
 
           .store-action-btn {
             width: 100%;
+            min-height: 48px;
+            justify-content: center;
           }
 
           .device-banner-card {
-            max-width: 290px;
-            height: 430px;
+            max-width: min(290px, calc(100vw - 32px));
+            height: auto;
+            min-height: 380px;
           }
 
           .feazto-device-img {
-            height: 410px;
+            max-width: 100%;
+            height: auto;
+            max-height: 410px;
+            object-fit: contain;
           }
         }
       `}</style>

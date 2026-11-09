@@ -10,3 +10,7 @@ docx_extracted
 docx_summary.txt
 feazto_doc_summary.txt
 feazto_doc_summary_utf8.txt
+dist-previous/
+feazto_main/
+*.zip
+test_screenshots*/
