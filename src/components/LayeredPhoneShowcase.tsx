@@ -523,11 +523,13 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .plenti-statement-container {
           max-width: 960px;
-          margin: 0 auto 56px auto;
+          margin: 0 auto 64px auto;
           text-align: center;
           display: flex;
           flex-direction: column;
           align-items: center;
+          position: relative;
+          z-index: 2;
         }
 
         .plenti-statement-title {
@@ -752,6 +754,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           flex-wrap: wrap;
           justify-content: center;
           gap: 10px;
+          margin-top: 8px;
+          margin-bottom: 24px;
         }
 
         .plenti-tag-pill {
@@ -798,7 +802,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: -3%; /* Clears well above the top tabs and leaves a clean gap for the small cards stream */
+          top: 10px; /* Clears well above the top tabs and leaves a clean gap for the small cards stream */
         }
 
         .stream-bottom {
@@ -1184,7 +1188,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           pointer-events: auto;
           box-sizing: border-box;
           gap: 48px;
-          transform: translateY(-40px); /* Lifts the card and phone up */
+          transform: none;
         }
 
         /* Card Outer Wrapper holding Top Tabs and Main Card */
@@ -1194,7 +1198,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           display: flex;
           flex-direction: column;
           position: relative;
-          margin-top: -30px; /* Extra lift so top tabs clear the viewport and upper streams */
+          margin-top: 0;
         }
 
         /* Top Header Tabs Row */
@@ -1920,6 +1924,11 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
             flex-direction: column;
             gap: 28px;
             padding: 0 16px;
+            transform: none;
+          }
+
+          .showcase-card-outer-wrapper {
+            margin-top: 0;
           }
 
           .showcase-left-blank-card {
