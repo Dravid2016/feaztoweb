@@ -270,6 +270,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           position: relative;
           background: transparent !important;
           overflow: hidden;
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: clip;
         }
 
         /* ── HERO MAIN SECTION ── */
@@ -285,6 +288,9 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           padding-bottom: 20px;
           box-sizing: border-box;
           text-align: center;
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: clip;
         }
 
         /* Transparent layer to seamlessly blend with page */
@@ -1239,6 +1245,16 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           .feazto-master-hero {
             padding-top: 56px;
             padding-bottom: 160px;
+          }
+          .hero-kolam-art-bg {
+            width: min(680px, 130vw) !important;
+            height: min(680px, 130vw) !important;
+            max-width: 130vw !important;
+          }
+          .hero-phone-ambient-glow {
+            width: min(500px, 115vw) !important;
+            height: min(500px, 115vw) !important;
+            max-width: 115vw !important;
           }
           .hero-content-wrapper {
             padding-left: 16px;

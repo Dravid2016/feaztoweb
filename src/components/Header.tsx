@@ -231,11 +231,15 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           top: 0;
           left: 0;
           right: 0;
+          width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
           z-index: 1000;
           padding: 18px 24px 10px 24px;
           background: transparent !important;
           transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: none; /* Allows click-through outside floating pills */
+          overflow-x: clip;
         }
 
         /* When scrolling, keep the background transparent and let the pills float over the page smoothly */
@@ -248,6 +252,8 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         /* ── 3-PILL ISLAND ROW ── */
         .header-island-wrapper {
           max-width: 1360px;
+          width: 100%;
+          box-sizing: border-box;
           margin: 0 auto;
           display: flex;
           align-items: center;
@@ -546,7 +552,7 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         /* ── MOBILE DRAWER ── */
         .mobile-nav-drawer {
           position: fixed;
-          top: 80px;
+          top: 60px;
           left: 0;
           right: 0;
           bottom: 0;
@@ -561,12 +567,13 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
 
         .mobile-nav-inner {
           background: #FFFFFF;
-          padding: 24px 20px;
+          padding: 20px 18px;
           border-radius: 0 0 24px 24px;
           border-bottom: 3px solid #F5B700;
           box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-          max-height: 80vh;
+          max-height: calc(100dvh - 70px);
           overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
         }
 
         .mobile-brand-row {
@@ -648,7 +655,30 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
         }
 
         /* ── RESPONSIVE MEDIA QUERIES ── */
-        @media (max-width: 1100px) {
+        @media (max-width: 1280px) {
+          .feazto-header-outer {
+            padding-left: 14px;
+            padding-right: 14px;
+          }
+          .header-island-wrapper {
+            gap: 10px;
+          }
+          .nav-pill-list {
+            gap: clamp(4px, 0.9vw, 12px);
+          }
+          .nav-pill-link {
+            padding: 6px 9px;
+            font-size: 0.84rem;
+          }
+          .brand-pill-island {
+            padding: 6px 14px;
+          }
+          .brand-logo-img {
+            height: 32px;
+          }
+        }
+
+        @media (max-width: 1140px) {
           .nav-pill-island {
             display: none !important;
           }
@@ -694,18 +724,62 @@ export const Header: React.FC<HeaderProps> = ({ currentRoute, navigate }) => {
           }
         }
 
-        @media (max-width: 480px) {
+        /* On screens under 640px, hide store badges from header - available in mobile drawer & page */
+        @media (max-width: 640px) {
+          .store-quick-badge {
+            display: none !important;
+          }
+        }
+
+        /* On narrow mobile phones under 420px (e.g. 320px-390px), keep header clean and uncrowded */
+        @media (max-width: 420px) {
           .feazto-header-outer {
             padding: 8px 10px;
           }
           .brand-pill-island {
-            padding: 5px 12px;
+            padding: 4px 10px;
           }
           .brand-logo-img {
-            height: 24px;
+            height: 22px;
           }
-          .store-quick-badge:first-of-type {
-            display: none;
+          .chef-partner-nav-btn {
+            display: none !important;
+          }
+          .actions-pill-island {
+            padding: 4px 6px;
+            gap: 6px;
+          }
+          .header-sound-orb-btn {
+            width: 32px;
+            height: 32px;
+          }
+          .mobile-pill-toggle {
+            width: 32px;
+            height: 32px;
+          }
+        }
+
+        @media (max-width: 340px) {
+          .feazto-header-outer {
+            padding: 6px 8px;
+          }
+          .brand-pill-island {
+            padding: 3px 8px;
+          }
+          .brand-logo-img {
+            height: 20px;
+          }
+          .actions-pill-island {
+            padding: 3px 5px;
+            gap: 4px;
+          }
+          .header-sound-orb-btn {
+            width: 30px;
+            height: 30px;
+          }
+          .mobile-pill-toggle {
+            width: 30px;
+            height: 30px;
           }
         }
       `}</style>

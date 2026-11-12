@@ -320,6 +320,9 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           padding-bottom: 110px;
           background: transparent;
           width: 100%;
+          max-width: 100vw;
+          box-sizing: border-box;
+          overflow-x: clip;
           display: flex;
           justify-content: center;
         }
@@ -1154,7 +1157,7 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
 
         @media (max-width: 480px) {
           .feazto-hero-stage {
-            max-width: 320px;
+            max-width: min(320px, calc(100vw - 32px));
           }
           .feazto-cloud-dancer-feet {
             left: -12%;
