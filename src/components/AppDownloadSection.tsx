@@ -211,24 +211,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
               <div className="feazto-aura-saffron" />
               <div className="feazto-aura-crimson" />
 
-              {/* Rotating Golden Chakra Mandala behind Crown */}
-              <div className="feazto-mandala-wrap">
-                <svg className="feazto-mandala-outer" viewBox="0 0 200 200" fill="none">
-                  <circle cx="100" cy="100" r="92" stroke="#F59E0B" strokeWidth="1.5" strokeDasharray="4 6" />
-                  <circle cx="100" cy="100" r="82" stroke="#FDE047" strokeWidth="1.2" opacity="0.7" />
-                  <circle cx="100" cy="100" r="68" stroke="#EA580C" strokeWidth="1.4" strokeDasharray="10 5" />
-                </svg>
-                <svg className="feazto-mandala-inner" viewBox="0 0 200 200" fill="none">
-                  <polygon
-                    points="100,12 122,74 188,74 134,112 154,176 100,138 46,176 66,112 12,74 78,74"
-                    stroke="#FBBF24"
-                    strokeWidth="1.2"
-                    fill="rgba(245, 158, 11, 0.08)"
-                  />
-                  <circle cx="100" cy="100" r="52" stroke="#FDE047" strokeWidth="1" strokeDasharray="3 5" />
-                </svg>
-              </div>
-
               {/* Floating Base Cloud at Backside Bottom of Mobile & Kathakali (Swipes horizontally as user scrolls/swipes) */}
               <div 
                 className="feazto-clouds-container-back"
@@ -726,37 +708,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           pointer-events: none;
         }
 
-        /* Rotating Golden Chakra Mandala behind Crown */
-        .feazto-mandala-wrap {
-          position: absolute;
-          left: 28.2%;
-          top: 16.8%;
-          width: 34%;
-          aspect-ratio: 1 / 1;
-          pointer-events: none;
-          z-index: 1;
-        }
-
-        .feazto-mandala-outer {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 100%;
-          height: 100%;
-          animation: feaztoSpin 32s linear infinite;
-          filter: drop-shadow(0 0 18px rgba(251, 191, 36, 0.55));
-        }
-
-        .feazto-mandala-inner {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          width: 82%;
-          height: 82%;
-          animation: feaztoSpinReverse 24s linear infinite;
-          opacity: 0.65;
-        }
-
         /* Unified Kathakali Performer + Phone Combo */
         .feazto-dancer-phone-combo {
           position: absolute;
@@ -973,16 +924,6 @@ export const AppDownloadSection: React.FC<AppDownloadSectionProps> = () => {
           50% {
             transform: translate3d(1.5px, -2px, 0) scaleY(1.006);
           }
-        }
-
-        @keyframes feaztoSpin {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        @keyframes feaztoSpinReverse {
-          from { transform: translate(-50%, -50%) rotate(360deg); }
-          to { transform: translate(-50%, -50%) rotate(0deg); }
         }
 
         @keyframes feaztoPulseAura {
