@@ -527,7 +527,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .plenti-statement-container {
           max-width: 960px;
-          margin: 0 auto 48px auto;
+          margin: 0 auto 36px auto;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -783,13 +783,14 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           max-width: 1400px;
           margin: 0 auto;
           display: flex;
-          flex-direction: column;
-          align-items: center;
-          min-height: 800px;
+          justify-content: center;
+          align-items: flex-start;
+          min-height: 640px;
           overflow: visible;
         }
 
         .plenti-cards-stream {
+          position: absolute;
           width: 100vw;
           left: 50%;
           transform: translateX(-50%);
@@ -801,9 +802,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          position: relative;
-          top: 0;
-          margin-bottom: 28px;
+          top: 50px; /* Positioned directly behind the card body, below the buttons so buttons never overlap */
         }
 
         .stream-bottom {
@@ -820,7 +819,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           overflow: hidden;
           pointer-events: none;
           z-index: 5;
-          top: 55%;
+          top: 45%;
           display: flex;
           flex-direction: column;
           gap: 14px;
