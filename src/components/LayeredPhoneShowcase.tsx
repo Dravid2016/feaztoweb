@@ -527,7 +527,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .plenti-statement-container {
           max-width: 960px;
-          margin: 0 auto 80px auto;
+          margin: 0 auto 48px auto;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -758,8 +758,6 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           flex-wrap: wrap;
           justify-content: center;
           gap: 10px;
-          margin-top: 8px;
-          margin-bottom: 24px;
         }
 
         .plenti-tag-pill {
@@ -785,16 +783,13 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           max-width: 1400px;
           margin: 0 auto;
           display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-          min-height: 640px;
+          min-height: 800px;
           overflow: visible;
         }
 
-
-
         .plenti-cards-stream {
-          position: absolute;
           width: 100vw;
           left: 50%;
           transform: translateX(-50%);
@@ -806,11 +801,14 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: -85px; /* Lifted upper so backside loop rally cards are clearly visible above the tabs without being covered */
+          position: relative;
+          top: 0;
+          margin-bottom: 28px;
         }
 
         .stream-bottom {
-          bottom: 2%; /* Positioned cleanly below the small cards stream */
+          position: absolute;
+          bottom: 2%;
         }
 
         /* ── INTERSTITIAL BUTTONS STREAM (Between the 2 card loops) ── */
@@ -821,8 +819,8 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           transform: translateX(-50%);
           overflow: hidden;
           pointer-events: none;
-          z-index: 5; /* Visible in the gap across the mid-section */
-          top: 40%; /* Centered right in the gap between the upper and lower big card streams */
+          z-index: 5;
+          top: 55%;
           display: flex;
           flex-direction: column;
           gap: 14px;
@@ -1915,12 +1913,12 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           .plenti-cards-stream {
             position: relative;
             left: 0;
-            top: -24px; /* Lift the dish card slightly upper on mobile view */
+            top: 0;
             transform: none;
             width: 100%;
             max-width: 100vw;
             overflow: hidden;
-            margin-bottom: -14px;
+            margin-bottom: 16px;
           }
 
           /* Small food buttons loop: kept exclusively on web, hidden on mobile to avoid overlapping */
