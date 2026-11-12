@@ -527,7 +527,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
 
         .plenti-statement-container {
           max-width: 960px;
-          margin: 0 auto 64px auto;
+          margin: 0 auto 80px auto;
           text-align: center;
           display: flex;
           flex-direction: column;
@@ -806,7 +806,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
         }
 
         .stream-top {
-          top: 10px; /* Clears well above the top tabs and leaves a clean gap for the small cards stream */
+          top: -85px; /* Lifted upper so backside loop rally cards are clearly visible above the tabs without being covered */
         }
 
         .stream-bottom {
