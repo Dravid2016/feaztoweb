@@ -46,7 +46,7 @@ export const HowItWorksSection: React.FC = () => {
       tabIcon: <ShoppingBag size={18} fill="currentColor" strokeWidth={1.5} />,
       badgeText: 'Live Order Placement',
       cardHeading: 'Browse neighborhood kitchens & order fresh heirloom meals.',
-      cardDescription: 'Customer selects authentic regional dishes prepared in limited daily home batches with zero palm oil and pure cold pressed ingredients.',
+      cardDescription: 'Customer selects authentic regional dishes prepared in limited daily home batches with pure cold pressed ingredients.',
       statValue: 'Instant',
       statLabel: 'order routed directly to certified local home kitchens',
       footerNote: 'Transparent ingredient transparency, zero artificial coloring, and verified home recipes.',

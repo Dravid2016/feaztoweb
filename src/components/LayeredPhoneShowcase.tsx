@@ -401,7 +401,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
                         </div>
                         <div className="tab-highlight-pill">
                           <ShieldCheck size={14} className="highlight-icon" />
-                          <span><strong>Clean Ingredients:</strong> Cold pressed oils, pure desi ghee, zero palm oil</span>
+                          <span><strong>Clean Ingredients:</strong> Cold pressed oils and pure desi ghee</span>
                         </div>
                         <div className="tab-highlight-pill">
                           <MapPin size={14} className="highlight-icon" />

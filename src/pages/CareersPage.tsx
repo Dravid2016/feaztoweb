@@ -80,7 +80,7 @@ export const CareersPage: React.FC<CareersPageProps> = () => {
       location: 'Bengaluru / Kozhikode',
       type: 'Full-time',
       tagline: 'Safeguard authentic generational recipes and enforce commercial hygiene standards.',
-      description: 'You will bridge authentic grandma kitchen techniques with calibrated hygiene SOPs. You will audit home kitchens, calibrate regional spice blends, and ensure zero palm oil compliance.',
+      description: 'You will bridge authentic grandma kitchen techniques with calibrated hygiene SOPs. You will audit home kitchens, calibrate regional spice blends, and ensure clean cooking standards.',
       whatYoullDo: [
         'Conduct hygiene audits and assist home cooks with FSSAI licensing and food safety certifications.',
         'Taste and calibrate heirloom batches to preserve recipe provenance and authentic flavors.',
