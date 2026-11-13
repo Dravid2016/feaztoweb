@@ -230,13 +230,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <div className="dish-preview-card text-center-card teaser-heritage-card">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">South Traditions</span>
-                <h4 className="dish-name-heading">Golden Crispy Dosas & Chutneys</h4>
+                <h4 className="dish-name-heading">Moru Moru Dosaum Rusiyana chutneyum!!</h4>
                 <p className="dish-name-desc">Cast-iron seasoned crisps, fresh fermented batters, and roasted gram chutneys.</p>
               </div>
               <div className="teaser-dish-bottom-anchor">
                 <img 
                   src="/brand/dish-south-dosa.png" 
-                  alt="Golden Crispy Dosas & Chutneys" 
+                  alt="Moru Moru Dosaum Rusiyana chutneyum!!" 
                   className="teaser-settled-dish-img dosa-dish-img" 
                   loading="lazy"
                 />
