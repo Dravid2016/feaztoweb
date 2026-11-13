@@ -1207,22 +1207,25 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
         }
 
         .biryani-bottom-anchor {
-          height: 275px;
+          height: 220px;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
         }
 
         .biryani-dish-img {
           object-fit: contain;
-          object-position: right bottom;
-          width: 110%;
-          max-width: 320px;
-          height: 260px;
-          transform-origin: right bottom;
-          transform: scale(1.15) translate(4%, 3%);
-          filter: drop-shadow(0 16px 28px rgba(90, 40, 0, 0.40)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.22));
+          object-position: center bottom;
+          width: 92%;
+          max-width: 290px;
+          height: 185px;
+          transform-origin: center bottom;
+          transform: scale(1.0);
+          filter: drop-shadow(0 12px 22px rgba(90, 40, 0, 0.32)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
         }
 
         .teaser-heritage-card:hover .biryani-dish-img {
-          transform: scale(1.22) translate(3%, 2%);
+          transform: scale(1.05);
         }
 
         /* ── RESPONSIVE DESIGN ── */
