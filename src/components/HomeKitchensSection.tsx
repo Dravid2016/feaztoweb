@@ -50,7 +50,7 @@ export const HomeKitchensSection: React.FC<HomeKitchensSectionProps> = ({ naviga
 
             {/* Main Headline */}
             <h3 className="card-headline">
-              Curating True Regional Custodians
+              Bringing Local Food Traditions to You!
             </h3>
 
             {/* Description */}
