@@ -107,7 +107,7 @@ export const LayeredPhoneShowcase: React.FC<LayeredPhoneShowcaseProps> = ({ navi
           <br />
           prepare fresh generational recipes
           <br />
-          as daily curated batches — and you enjoy real India
+          as daily curated batches and you enjoy real India
           <br />
           delivered straight to your table.
         </h2>
