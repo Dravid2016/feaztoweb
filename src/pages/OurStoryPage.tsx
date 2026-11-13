@@ -17,7 +17,7 @@ export const OurStoryPage: React.FC<OurStoryPageProps> = ({ navigate }) => {
             <span>Our Founding Philosophy</span>
           </div>
           <h1 className="page-hero-title">
-            Preserving Regional Soul in a Fast-Moving World
+            Preserving Regional Soul in a Fast Moving World
           </h1>
           <p className="page-hero-subtitle">
             feazto was conceived to bridge the emotional divide between memories of home food and the realities of modern urban living.
