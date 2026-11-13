@@ -213,13 +213,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <div className="dish-preview-card text-center-card teaser-heritage-card coastal-card-special">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">Coastal Heritage</span>
-                <h4 className="dish-name-heading">Fragrant Coastal Curries</h4>
+                <h4 className="dish-name-heading">Namba uuru Meenkozhambu</h4>
                 <p className="dish-name-desc">Slow-simmered kokum, stone ground coconut pastes, and fresh coastal temperings.</p>
               </div>
               <div className="teaser-dish-bottom-anchor coastal-full-bottom-anchor">
                 <img 
                   src="/brand/dish-coastal-curry-full-bottom.png" 
-                  alt="Fragrant Coastal Curries" 
+                  alt="Namba uuru Meenkozhambu" 
                   className="teaser-settled-dish-img coastal-full-dish-img" 
                   loading="lazy"
                 />
