@@ -247,13 +247,13 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
             <div className="dish-preview-card text-center-card teaser-heritage-card">
               <div className="dish-card-caption">
                 <span className="dish-origin-tag">Deccani Spice</span>
-                <h4 className="dish-name-heading">Slow-Fire Dum Biryani</h4>
+                <h4 className="dish-name-heading">Manamakum dum briyani</h4>
                 <p className="dish-name-desc">Dough-sealed handis, saffron strands, aromatic spices, and tender long-grain rice.</p>
               </div>
               <div className="teaser-dish-bottom-anchor biryani-bottom-anchor">
                 <img 
                   src="/brand/dish-deccani-biryani.png" 
-                  alt="Slow-Fire Dum Biryani" 
+                  alt="Manamakum dum briyani" 
                   className="teaser-settled-dish-img biryani-dish-img" 
                   loading="lazy"
                 />
