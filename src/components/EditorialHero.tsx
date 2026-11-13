@@ -1210,22 +1210,22 @@ export const EditorialHero: React.FC<EditorialHeroProps> = ({ navigate }) => {
           height: 220px;
           display: flex;
           align-items: flex-end;
-          justify-content: center;
+          justify-content: flex-end;
         }
 
         .biryani-dish-img {
           object-fit: contain;
-          object-position: center bottom;
-          width: 92%;
+          object-position: right bottom;
+          width: 95%;
           max-width: 290px;
-          height: 185px;
-          transform-origin: center bottom;
-          transform: scale(1.0);
+          height: 190px;
+          transform-origin: right bottom;
+          transform: translate(6%, 2%);
           filter: drop-shadow(0 12px 22px rgba(90, 40, 0, 0.32)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
         }
 
         .teaser-heritage-card:hover .biryani-dish-img {
-          transform: scale(1.05);
+          transform: scale(1.05) translate(4%, 1%);
         }
 
         /* ── RESPONSIVE DESIGN ── */
